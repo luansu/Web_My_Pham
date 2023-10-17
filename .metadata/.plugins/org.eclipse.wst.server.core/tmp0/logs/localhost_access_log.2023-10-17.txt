@@ -1,0 +1,11 @@
+127.0.0.1 - - [17/Oct/2023:14:13:07 +0700] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:10 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:10 +0700] "GET /Selling/templates/user/css/style.css HTTP/1.1" 200 1176
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:15 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:18 +0700] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:18 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:19 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:19 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:20 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:20 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:21 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389

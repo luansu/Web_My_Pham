@@ -1,0 +1,15 @@
+package luansu.services;
+
+import java.util.List;
+
+import luansu.DAO.CategoryDAOImp;
+import luansu.DAO.ICategoryDAO;
+import luansu.models.CategoryModels;
+
+public class CategoryServiceImp implements ICategoryService{
+	ICategoryDAO cateDAO = new CategoryDAOImp();
+	public List<CategoryModels> findAll() {
+		return cateDAO.findAll();
+	}
+	
+}
