@@ -32,7 +32,8 @@ Go
 --DROP TABLE LOAI_SAN_PHAM
 CREATE TABLE LOAI_SAN_PHAM(
 MaLSP varchar(10) PRIMARY KEY,
-TenLSP nvarchar(100) NOT NULL
+TenLSP nvarchar(100) NOT NULL,
+HinhAnh nvarchar(200)
 )
 GO
 
@@ -66,7 +67,7 @@ create table NHAN_VIEN (
 	Chucvu nvarchar(100) NOT NULL,
 	MaCV varchar(10) CONSTRAINT FK_NV_CV FOREIGN KEY REFERENCES CONG_VIEC(MaCV),
 	MaTK varchar(10) CONSTRAINT FK_TK_NV FOREIGN KEY REFERENCES TAI_KHOAN(MaTK),
-	
+	HinhAnh nvarchar(200)
 )
 GO
 
@@ -87,7 +88,8 @@ CREATE TABLE SAN_PHAM(
 	TenSP nvarchar(100) NOT NULL,
 	SoLuongConLai int NOT NULL,
 	DonGia float NOT NULL,
-	MaLSP varchar(10) FOREIGN KEY REFERENCES LOAI_SAN_PHAM(MaLSP)
+	MaLSP varchar(10) FOREIGN KEY REFERENCES LOAI_SAN_PHAM(MaLSP),
+	HinhAnh nvarchar(200)
 )
 GO
 
