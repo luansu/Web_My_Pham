@@ -64,7 +64,6 @@ create table NHAN_VIEN (
 	GioiTinh nvarchar(3),
 	DiaChi nvarchar(100),
 	SDT varchar(10) NOT NULL check (len(SDT)=10),
-	Chucvu nvarchar(100) NOT NULL,
 	MaCV varchar(10) CONSTRAINT FK_NV_CV FOREIGN KEY REFERENCES CONG_VIEC(MaCV),
 	MaTK varchar(10) CONSTRAINT FK_TK_NV FOREIGN KEY REFERENCES TAI_KHOAN(MaTK),
 	HinhAnh nvarchar(200)
@@ -86,7 +85,9 @@ GO
 CREATE TABLE SAN_PHAM(
 	MaSP varchar(10) PRIMARY KEY,
 	TenSP nvarchar(100) NOT NULL,
+	MoTaSP nvarchar(2000) NOT NULL,
 	SoLuongConLai int NOT NULL,
+	SoLuongDaBan int NOT NULL,
 	DonGia float NOT NULL,
 	MaLSP varchar(10) FOREIGN KEY REFERENCES LOAI_SAN_PHAM(MaLSP),
 	HinhAnh nvarchar(200)
