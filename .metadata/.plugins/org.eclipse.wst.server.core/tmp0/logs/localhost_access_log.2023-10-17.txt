@@ -9,3 +9,13 @@
 0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:20 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
 0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:20 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
 0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:13:21 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+127.0.0.1 - - [17/Oct/2023:14:37:29 +0700] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:31 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:39 +0700] "GET /Selling/update?id=2 HTTP/1.1" 200 1888
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:41 +0700] "GET /Selling/update?id=2 HTTP/1.1" 200 1888
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:42 +0700] "GET /Selling/update?id=2 HTTP/1.1" 200 1888
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:42 +0700] "GET /Selling/update?id=2 HTTP/1.1" 200 1888
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:43 +0700] "GET /Selling/addcate HTTP/1.1" 200 1888
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:45 +0700] "GET /Selling/addcate HTTP/1.1" 200 1888
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:51 +0700] "GET /Selling/user-category/cart.html HTTP/1.1" 404 790
+0:0:0:0:0:0:0:1 - - [17/Oct/2023:14:37:54 +0700] "GET /Selling/user-category/category.html HTTP/1.1" 404 794
