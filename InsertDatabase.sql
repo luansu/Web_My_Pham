@@ -1,5 +1,8 @@
 ﻿-- Insert data into TAI_KHOAN table
-INSERT INTO TAI_KHOAN (MaTK, TenTK, MatKhau)
+Use CuaHangBanMyPham
+Go
+
+INSERT INTO TAI_KHOAN(MaTK, TenTK, MatKhau)
 VALUES ('TK001', N'User1', N'Password1'),
        ('TK002', N'User2', N'Password2'),
        ('TK003', N'User3', N'Password3');
