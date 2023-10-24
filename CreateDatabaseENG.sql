@@ -66,7 +66,7 @@ CREATE TABLE EMPLOYEE (
     EmployeeID varchar(10) PRIMARY KEY,
     EmployeeName nvarchar(100) NOT NULL,
     BirthDate date,
-    Gender nvarchar(3),
+    Gender nvarchar(10),
     Address nvarchar(100),
     Phone varchar(10) NOT NULL check (len(Phone)=10),
     JobID varchar(10) CONSTRAINT FK_EMPLOYEE_JOB FOREIGN KEY REFERENCES JOB(JobID),
