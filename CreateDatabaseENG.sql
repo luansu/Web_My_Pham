@@ -10,18 +10,18 @@ GO
 
 --DROP TABLE ACCOUNT
 CREATE TABLE ACCOUNT (
-AccountID varchar(10),
-Username nvarchar(30) not null,
-Password nvarchar(30) not null,
-primary key (AccountID)
+	AccountID varchar(10),
+	Username nvarchar(30) not null,
+	Password nvarchar(30) not null,
+	primary key (AccountID)
 )
 GO
 
 --DROP TABLE JOB
 CREATE TABLE JOB (
-JobID  varchar(10),
-JobTitle nvarchar(30) not null,
-primary key (JobID)
+	JobID  varchar(10),
+	JobTitle nvarchar(30) not null,
+	primary key (JobID)
 ) 
 GO
 
@@ -34,7 +34,7 @@ create table CART (
 Go
 
 --DROP TABLE PRODUCT_CATEGORY
-CREATE TABLE PRODUCT_CATEGORY (
+CREATE TABLE CATEGORY (
 	CategoryID varchar(10),
 	CategoryName nvarchar(100) NOT NULL,
 	ImageURL nvarchar(200)
@@ -100,7 +100,7 @@ CREATE TABLE PRODUCT (
 GO
 
 -- DROP TABLE ORDER_DETAILS
-CREATE TABLE ORDER_DETAILS (
+CREATE TABLE CART_ITEM (
     Quantity int NOT NULL,
     TotalPrice float,
     ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
@@ -110,7 +110,7 @@ CREATE TABLE ORDER_DETAILS (
 GO
 
 -- DROP TABLE SUPPLY_DETAILS
-CREATE TABLE SUPPLY_DETAILS (
+CREATE TABLE IMPORTING_GOODS (
     Quantity int NOT NULL,
     Cost float,
     ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),

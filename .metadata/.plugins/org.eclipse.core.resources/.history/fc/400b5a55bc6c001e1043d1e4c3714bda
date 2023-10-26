@@ -1,9 +1,0 @@
-package luansu.services;
-
-import java.util.List;
-
-import luansu.models.CategoryModels;
-
-public interface ICategoryService {
-	List<CategoryModels> findAll();
-}
