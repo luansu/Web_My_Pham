@@ -16,9 +16,9 @@ GO
 
 --DROP TABLE CONG_VIEC
 CREATE TABLE CONG_VIEC(
-MaCV varchar(10),
-TenCV nvarchar(30) not null,
-primary key (MaCV)
+	MaCV varchar(10),
+	TenCV nvarchar(30) not null,
+	primary key (MaCV)
 ) 
 GO
 
