@@ -2,4 +2,10 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="orishop.DAO.IProductDAO"/>
     <fullyQualifiedTypeName name="orishop.services.IProductService"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="orishop.models.EmployeeModels"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="orishop.DAO.IEmployeeDAO"/>
+    <fullyQualifiedTypeName name="orishop.DAO.EmployeeDAOImp"/>
 </qualifiedTypeNameHistroy>
