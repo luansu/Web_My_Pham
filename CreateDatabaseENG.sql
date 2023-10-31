@@ -11,7 +11,7 @@ GO
 --DROP TABLE ACCOUNT
 CREATE TABLE ACCOUNT (
 	AccountID varchar(10),
-	Username nvarchar(30) not null,
+	Username nvarchar(30) not null unique,
 	Password nvarchar(30) not null,
 	primary key (AccountID)
 )
