@@ -1,4 +1,4 @@
-USE CosmeticStore
+﻿USE CosmeticStore
 GO
 
 INSERT INTO ACCOUNT(AccountID, Username, Password)
@@ -18,8 +18,8 @@ VALUES ('GH001', 0.0),
        ('GH002', 0.0),
        ('GH003', 0.0);
 
--- Insert data into PRODUCT_CATEGORY table
-INSERT INTO PRODUCT_CATEGORY (CategoryID, CategoryName, ImageURL)
+-- Insert data into CATEGORY table
+INSERT INTO CATEGORY (CategoryID, CategoryName, ImageURL)
 VALUES ('LSP001', N'Category1', N'Category1.jpg'),
        ('LSP002', N'Category2', N'Category2.jpg'),
        ('LSP003', N'Category3', N'Category3.jpg');
@@ -54,13 +54,13 @@ VALUES ('SP001', N'Product1', N'Description1', 100, 0, 10.0, 'LSP001', N'Product
        ('SP002', N'Product2', N'Description2', 80, 10, 15.0, 'LSP002', N'Product2.jpg'),
        ('SP003', N'Product3', N'Description3', 120, 20, 20.0, 'LSP003', N'Product3.jpg');
 
--- Insert data into ORDER_DETAILS table
+-- Insert data into CART_ITEM table
 INSERT INTO CART_ITEM (Quantity, TotalPrice, ProductID, OrderID)
 VALUES (5, 50.0, 'SP001', 'DH001'),
        (2, 30.0, 'SP002', 'DH002'),
        (3, 60.0, 'SP003', 'DH003');
 
--- Insert data into SUPPLY_DETAILS table
+-- Insert data into IMPORTING_GOODS table
 INSERT INTO IMPORTING_GOODS (Quantity, Cost, ProductID, SupplierID)
 VALUES (50, 500.0, 'SP001', 'NCC001'),
        (30, 450.0, 'SP002', 'NCC002'),
