@@ -1,4 +1,4 @@
---DROP DATABASE CosmeticStore
+﻿--DROP DATABASE CosmeticStore
 --GO
 
 CREATE DATABASE CosmeticStore
@@ -17,17 +17,25 @@ CREATE TABLE ACCOUNT (
 )
 GO
 
---DROP TABLE JOB
-CREATE TABLE JOB (
-	JobID  varchar(10),
-	JobTitle nvarchar(30) not null,
-	primary key (JobID)
-) 
-GO
+
+-- DROP TABLE CUSTOMER
+create table CUSTOMER (
+	CustomerID varchar(10) PRIMARY KEY,
+	CustomerName nvarchar(100) NOT NULL,
+	Birthday date,
+	Gender nvarchar(10),
+	Address nvarchar(100),
+	Phone numeric unique check (len(Phone)=10),
+	Mail varchar(30) unique,
+	RewardPoints int NOT NULL CHECK (RewardPoints >=0),
+	AccountID varchar(10) CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(AccountID),
+)
+Go
 
 --DROP TABLE CART
 create table CART (
 	CartID varchar(10),
+	CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID),
 	TotalPrice float
 	primary key (CartID)
 )
@@ -50,16 +58,7 @@ CREATE TABLE SUPPLIER (
 )
 GO
 
--- DROP TABLE CUSTOMER
-create table CUSTOMER (
-	CustomerID varchar(10) PRIMARY KEY,
-	CustomerName nvarchar(100) NOT NULL,
-	Address nvarchar(100),
-	Phone varchar(10) NOT NULL unique check (len(Phone)=10),
-	RewardPoints int NOT NULL CHECK (RewardPoints >=0),
-	AccountID varchar(10) CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(AccountID),
-)
-Go
+
 
 --DROP TABLE EMPLOYEE 
 CREATE TABLE EMPLOYEE (
@@ -69,9 +68,10 @@ CREATE TABLE EMPLOYEE (
     Gender nvarchar(10),
     Address nvarchar(100),
     Phone varchar(10) NOT NULL check (len(Phone)=10),
-    JobID varchar(10) CONSTRAINT FK_EMPLOYEE_JOB FOREIGN KEY REFERENCES JOB(JobID),
+    Job nvarchar(100),
     AccountID varchar(10) CONSTRAINT FK_ACCOUNT_EMPLOYEE FOREIGN KEY REFERENCES ACCOUNT(AccountID),
-    ImageURL nvarchar(200)
+    ActivityArea nvarchar(100),
+	ImageURL nvarchar(200)
 )
 GO
 
@@ -82,7 +82,11 @@ CREATE TABLE ORDERS (
     OrderDate DATE NOT NULL,
     OrderTime TIME NOT NULL,
     CartID varchar(10) FOREIGN KEY REFERENCES CART(CartID),
-    CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID)
+    CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID),
+	--Status include: Save, 'Chưa giao cho shipper','Đã giao cho shipper' , paid, unpaid,  "Đã giao khách hàng"
+	Status nvarchar(100),
+	PaymentMethod nvarchar(100),
+	DeliveryMethod nvarchar(100)
 )
 GO
 
@@ -93,7 +97,7 @@ CREATE TABLE PRODUCT (
     Description nvarchar(2000) NOT NULL,
     Stock int NOT NULL,
     Amount int NOT NULL,
-    UnitPrice float NOT NULL,
+    Price float NOT NULL,
     CategoryID varchar(10) FOREIGN KEY REFERENCES CATEGORY(CategoryID),
     ImageURL nvarchar(200)
 )
@@ -101,20 +105,20 @@ GO
 
 -- DROP TABLE CART_ITEM
 CREATE TABLE CART_ITEM (
-    Quantity int NOT NULL,
-    TotalPrice float,
     ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
     OrderID varchar(10) FOREIGN KEY REFERENCES ORDERS(OrderID),
+	Quantity int NOT NULL,
+    TotalPrice float
     PRIMARY KEY(ProductID, OrderID)
 )
 GO
 
 -- DROP TABLE IMPORTING_GOODS
 CREATE TABLE IMPORTING_GOODS (
-    Quantity int NOT NULL,
-    Cost float,
     ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
     SupplierID varchar(10) FOREIGN KEY REFERENCES SUPPLIER(SupplierID),
+    Quantity int NOT NULL,
+    Cost float
     PRIMARY KEY(ProductID, SupplierID)
 )
 GO
