@@ -27,6 +27,8 @@ create table CUSTOMER (
 	Address nvarchar(100),
 	Phone numeric unique check (len(Phone)=10),
 	Mail varchar(30) unique,
+	Rank nvarchar(50),
+	Reputation int,
 	RewardPoints int NOT NULL CHECK (RewardPoints >=0),
 	AccountID varchar(10) CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(AccountID),
 )
@@ -84,9 +86,11 @@ CREATE TABLE ORDERS (
     CartID varchar(10) FOREIGN KEY REFERENCES CART(CartID),
     CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID),
 	--Status include: Save, 'Chưa giao cho shipper','Đã giao cho shipper' , paid, unpaid,  "Đã giao khách hàng"
-	Status nvarchar(100),
+	PaymentStatus nvarchar(100),
+	OrderStatus nvarchar(100),
 	PaymentMethod nvarchar(100),
-	DeliveryMethod nvarchar(100)
+	DeliveryMethod nvarchar(100),
+	EmployeeID nvarchar(10),
 )
 GO
 
@@ -104,7 +108,7 @@ CREATE TABLE PRODUCT (
 GO
 
 -- DROP TABLE CART_ITEM
-CREATE TABLE CART_ITEM (
+CREATE TABLE ORDER_ITEM (
     ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
     OrderID varchar(10) FOREIGN KEY REFERENCES ORDERS(OrderID),
 	Quantity int NOT NULL,
@@ -118,6 +122,7 @@ CREATE TABLE IMPORTING_GOODS (
     ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
     SupplierID varchar(10) FOREIGN KEY REFERENCES SUPPLIER(SupplierID),
     Quantity int NOT NULL,
+	ImportingDate Date,
     Cost float
     PRIMARY KEY(ProductID, SupplierID)
 )
