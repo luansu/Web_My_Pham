@@ -1,5 +1,5 @@
-DROP DATABASE CosmeticStore
-GO
+--DROP DATABASE CosmeticStore
+--GO
 
 CREATE DATABASE CosmeticStore
 GO
@@ -33,7 +33,7 @@ create table CART (
 )
 Go
 
---DROP TABLE PRODUCT_CATEGORY
+--DROP TABLE CATEGORY
 CREATE TABLE CATEGORY (
 	CategoryID varchar(10),
 	CategoryName nvarchar(100) NOT NULL,
@@ -94,12 +94,12 @@ CREATE TABLE PRODUCT (
     Stock int NOT NULL,
     Amount int NOT NULL,
     UnitPrice float NOT NULL,
-    CategoryID varchar(10) FOREIGN KEY REFERENCES PRODUCT_CATEGORY(CategoryID),
+    CategoryID varchar(10) FOREIGN KEY REFERENCES CATEGORY(CategoryID),
     ImageURL nvarchar(200)
 )
 GO
 
--- DROP TABLE ORDER_DETAILS
+-- DROP TABLE CART_ITEM
 CREATE TABLE CART_ITEM (
     Quantity int NOT NULL,
     TotalPrice float,
@@ -109,7 +109,7 @@ CREATE TABLE CART_ITEM (
 )
 GO
 
--- DROP TABLE SUPPLY_DETAILS
+-- DROP TABLE IMPORTING_GOODS
 CREATE TABLE IMPORTING_GOODS (
     Quantity int NOT NULL,
     Cost float,
