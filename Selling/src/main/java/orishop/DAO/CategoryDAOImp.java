@@ -34,5 +34,20 @@ public class CategoryDAOImp implements ICategoryDAO{
 		}
 		return listCate;
 	}
+	
+	public float totalRevenue(String categoryID) {
+		String sql = "SELECT p.stock*p.UnitPrice as doanhThu FROM PRODUCT p WHERE p.categoryID = ?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, categoryID);
+			rs = ps.executeQuery();
+			rs.next();
+			return rs.getInt("doanhThu");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 }

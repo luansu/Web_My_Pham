@@ -6,6 +6,7 @@ VALUES ('TK001', N'User1', N'Password1'),
        ('TK002', N'User2', N'Password2'),
        ('TK003', N'User3', N'Password3');
 
+
 -- Insert data into JOB table
 INSERT INTO JOB (JobID, JobTitle)
 VALUES ('CV001', N'Employee1'),
@@ -19,7 +20,7 @@ VALUES ('GH001', 0.0),
        ('GH003', 0.0);
 
 -- Insert data into PRODUCT_CATEGORY table
-INSERT INTO PRODUCT_CATEGORY (CategoryID, CategoryName, ImageURL)
+INSERT INTO CATEGORY (CateID, CateName, images)
 VALUES ('LSP001', N'Category1', N'Category1.jpg'),
        ('LSP002', N'Category2', N'Category2.jpg'),
        ('LSP003', N'Category3', N'Category3.jpg');
@@ -55,13 +56,16 @@ VALUES ('SP001', N'Product1', N'Description1', 100, 0, 10.0, 'LSP001', N'Product
        ('SP003', N'Product3', N'Description3', 120, 20, 20.0, 'LSP003', N'Product3.jpg');
 
 -- Insert data into ORDER_DETAILS table
-INSERT INTO CART_ITEM (Quantity, TotalPrice, ProductID, OrderID)
+INSERT INTO ORDER_DETAILS(Quantity, TotalPrice, ProductID, OrderID)
 VALUES (5, 50.0, 'SP001', 'DH001'),
        (2, 30.0, 'SP002', 'DH002'),
        (3, 60.0, 'SP003', 'DH003');
 
 -- Insert data into SUPPLY_DETAILS table
-INSERT INTO IMPORTING_GOODS (Quantity, Cost, ProductID, SupplierID)
+INSERT INTO SUPPLY_DETAILS(Quantity, Cost, ProductID, SupplierID)
 VALUES (50, 500.0, 'SP001', 'NCC001'),
        (30, 450.0, 'SP002', 'NCC002'),
        (40, 800.0, 'SP003', 'NCC003');
+select * from product
+
+SELECT p.stock*p.UnitPrice as doanhThu,p.productID FROM PRODUCT p WHERE p.productID =  'SP001'

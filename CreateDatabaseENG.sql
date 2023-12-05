@@ -1,5 +1,5 @@
-DROP DATABASE CosmeticStore
-GO
+﻿--DROP DATABASE CosmeticStore
+--GO
 
 CREATE DATABASE CosmeticStore
 GO
@@ -10,111 +10,118 @@ GO
 
 --DROP TABLE ACCOUNT
 CREATE TABLE ACCOUNT (
-	AccountID varchar(10),
-	Username nvarchar(30) not null,
-	Password nvarchar(30) not null,
-	primary key (AccountID)
-)
-GO
-
---DROP TABLE JOB
-CREATE TABLE JOB (
-	JobID  varchar(10),
-	JobTitle nvarchar(30) not null,
-	primary key (JobID)
-) 
-GO
-
---DROP TABLE CART
-create table CART (
-	CartID varchar(10),
-	TotalPrice float
-	primary key (CartID)
-)
-Go
-
---DROP TABLE PRODUCT_CATEGORY
-CREATE TABLE CATEGORY (
-	CategoryID varchar(10),
-	CategoryName nvarchar(100) NOT NULL,
-	ImageURL nvarchar(200)
-	primary key (CategoryID)
-)
-GO
-
---DROP TABLE SUPPLIER
-CREATE TABLE SUPPLIER (
-	SupplierID varchar(10),
-	SupplierName  nvarchar(100) NOT NULL
-	primary key (SupplierID)
+	accountId int Identity,
+	username nvarchar(30) not null unique,
+	[password] nvarchar(30) not null,
+	primary key (accountId)
 )
 GO
 
 -- DROP TABLE CUSTOMER
 create table CUSTOMER (
-	CustomerID varchar(10) PRIMARY KEY,
-	CustomerName nvarchar(100) NOT NULL,
-	Address nvarchar(100),
-	Phone varchar(10) NOT NULL unique check (len(Phone)=10),
-	RewardPoints int NOT NULL CHECK (RewardPoints >=0),
-	AccountID varchar(10) CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(AccountID),
+	customerId int Identity PRIMARY KEY ,
+	customerName nvarchar(100) NOT NULL,
+	birthday date,
+	gender nvarchar(10),
+	[address] nvarchar(100),
+	phone numeric unique check (len(Phone)=10),
+	mail varchar(30) unique,
+	[rank] nvarchar(50),
+	reputation int,
+	rewardPoints int NOT NULL CHECK (rewardPoints >=0),
+	accountId int CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(accountId),
 )
 Go
 
+--DROP TABLE CART
+create table CART (
+	cartId int Identity,
+	customerId int FOREIGN KEY REFERENCES CUSTOMER(customerId),
+	totalPrice float
+	primary key (cartId)
+)
+Go
+
+--DROP TABLE CATEGORY
+CREATE TABLE CATEGORY (
+	categoryId int Identity,
+	categoryName nvarchar(100) NOT NULL,
+	imageURL nvarchar(2000)
+	primary key (categoryId)
+)
+GO
+
+--DROP TABLE SUPPLIER
+CREATE TABLE SUPPLIER (
+	supplierId int Identity,
+	supplierName  nvarchar(100) NOT NULL
+	primary key (supplierId)
+)
+GO
+
+
+
 --DROP TABLE EMPLOYEE 
 CREATE TABLE EMPLOYEE (
-    EmployeeID varchar(10) PRIMARY KEY,
-    EmployeeName nvarchar(100) NOT NULL,
-    BirthDate date,
-    Gender nvarchar(10),
-    Address nvarchar(100),
-    Phone varchar(10) NOT NULL check (len(Phone)=10),
-    JobID varchar(10) CONSTRAINT FK_EMPLOYEE_JOB FOREIGN KEY REFERENCES JOB(JobID),
-    AccountID varchar(10) CONSTRAINT FK_ACCOUNT_EMPLOYEE FOREIGN KEY REFERENCES ACCOUNT(AccountID),
-    ImageURL nvarchar(200)
+    employeeId int Identity PRIMARY KEY,
+    employeeName nvarchar(100) NOT NULL,
+    birthdate date,
+    gender nvarchar(10),
+    [address] nvarchar(100),
+    phone varchar(10) NOT NULL check (len(Phone)=10),
+    job nvarchar(100), -- 
+    accountId int CONSTRAINT FK_ACCOUNT_EMPLOYEE FOREIGN KEY REFERENCES ACCOUNT(accountId),
+    activityArea nvarchar(100),
+	imageURL nvarchar(2000)
 )
 GO
 
 -- DROP TABLE ORDERS
 CREATE TABLE ORDERS (
-    OrderID varchar(10) PRIMARY KEY,
-    OrderValue float,
-    OrderDate DATE NOT NULL,
-    OrderTime TIME NOT NULL,
-    CartID varchar(10) FOREIGN KEY REFERENCES CART(CartID),
-    CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID)
+    orderId int Identity PRIMARY KEY,
+    orderValue float,
+    orderDate DATETIME NOT NULL,
+    cartId int FOREIGN KEY REFERENCES CART(cartId),
+    customerId int FOREIGN KEY REFERENCES CUSTOMER(customerId),
+	--Status include: Save, 'Chưa giao cho shipper','Đã giao cho shipper' , paid, unpaid,  "Đã giao khách hàng"
+	paymentStatus nvarchar(100),
+	orderStatus nvarchar(100),
+	paymentMethod nvarchar(100),
+	deliveryMethod nvarchar(100),
+	employeeId int REFERENCES EMPLOYEE(employeeId),
 )
 GO
 
 -- DROP TABLE PRODUCT
 CREATE TABLE PRODUCT (
-    ProductID varchar(10) PRIMARY KEY,
-    ProductName nvarchar(100) NOT NULL,
-    Description nvarchar(2000) NOT NULL,
-    Stock int NOT NULL,
-    Amount int NOT NULL,
-    UnitPrice float NOT NULL,
-    CategoryID varchar(10) FOREIGN KEY REFERENCES PRODUCT_CATEGORY(CategoryID),
-    ImageURL nvarchar(200)
+    productId int Identity PRIMARY KEY,
+    productName nvarchar(100) NOT NULL,
+    [description] nvarchar(2000) NOT NULL,
+    stock int NOT NULL,
+    amount int NOT NULL,
+    price float NOT NULL,
+    categoryId int FOREIGN KEY REFERENCES CATEGORY(categoryId),
+    imageURL nvarchar(2000)
 )
 GO
 
--- DROP TABLE ORDER_DETAILS
-CREATE TABLE CART_ITEM (
-    Quantity int NOT NULL,
-    TotalPrice float,
-    ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
-    OrderID varchar(10) FOREIGN KEY REFERENCES ORDERS(OrderID),
-    PRIMARY KEY(ProductID, OrderID)
+-- DROP TABLE ORDER_ITEM
+CREATE TABLE ORDER_ITEM (
+    productId int FOREIGN KEY REFERENCES PRODUCT(productId),
+    orderId int FOREIGN KEY REFERENCES ORDERS(orderId),
+	quantity int NOT NULL,
+    totalPrice float
+    PRIMARY KEY(productId, orderId)
 )
 GO
 
--- DROP TABLE SUPPLY_DETAILS
+-- DROP TABLE IMPORTING_GOODS
 CREATE TABLE IMPORTING_GOODS (
-    Quantity int NOT NULL,
-    Cost float,
-    ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
-    SupplierID varchar(10) FOREIGN KEY REFERENCES SUPPLIER(SupplierID),
-    PRIMARY KEY(ProductID, SupplierID)
+    productId int FOREIGN KEY REFERENCES PRODUCT(productId),
+	supplierId int FOREIGN KEY REFERENCES SUPPLIER(supplierId),
+    quantity int NOT NULL,
+	importingDate Date,
+    cost float
+    PRIMARY KEY(productId, supplierId)
 )
 GO

@@ -1,0 +1,6 @@
+package orishop.DAO;
+
+public interface IProductDAO {
+	float totalRevenue(String productID);
+	float totalRevenue(String categoryID);
+}
