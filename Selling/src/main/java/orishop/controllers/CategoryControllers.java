@@ -33,7 +33,9 @@ public class CategoryControllers extends HttpServlet {
 		List<CategoryModels> listCate = cateService.findAll();
 		
 		req.setAttribute("list", listCate);
-		RequestDispatcher rd = req.getRequestDispatcher("/views/category/listCate.jsp");
+		req.setAttribute("end", 4);
+		req.setAttribute("begin", 1);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listorder.jsp");
 		rd.forward(req, resp);
 	}
 }

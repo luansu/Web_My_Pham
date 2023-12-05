@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="orishop.services.IProductService"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="orishop.models.EmployeeModels"/>
     <fullyQualifiedTypeName name="orishop.DAO.IEmployeeDAO"/>
@@ -14,4 +15,10 @@
     <fullyQualifiedTypeName name="orishop.services.ICustomerService"/>
     <fullyQualifiedTypeName name="orishop.DAO.ICustomerDAO"/>
     <fullyQualifiedTypeName name="orishop.DAO.CustomerDAOImp"/>
+=======
+    <fullyQualifiedTypeName name="java.lang.StrictMath"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.Float"/>
+>>>>>>> main
 </qualifiedTypeNameHistroy>
