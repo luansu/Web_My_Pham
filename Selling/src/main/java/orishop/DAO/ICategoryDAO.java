@@ -6,6 +6,4 @@ import orishop.models.CategoryModels;
 
 public interface ICategoryDAO {
 	List<CategoryModels> findAll();
-	
-	float totalRevenue(String categoryID);
 }

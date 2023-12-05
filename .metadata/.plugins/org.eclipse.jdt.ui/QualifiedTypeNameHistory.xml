@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="orishop.services.IProductService"/>
-<<<<<<< HEAD
-    <fullyQualifiedTypeName name="java.sql.Date"/>
-    <fullyQualifiedTypeName name="orishop.models.EmployeeModels"/>
-    <fullyQualifiedTypeName name="orishop.DAO.IEmployeeDAO"/>
-    <fullyQualifiedTypeName name="orishop.DAO.EmployeeDAOImp"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="orishop.DAO.IProductDAO"/>
-    <fullyQualifiedTypeName name="orishop.DAO.ProductDAOImp"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="orishop.services.ICustomerService"/>
-    <fullyQualifiedTypeName name="orishop.DAO.ICustomerDAO"/>
-    <fullyQualifiedTypeName name="orishop.DAO.CustomerDAOImp"/>
-=======
+    <fullyQualifiedTypeName name="orishop.services.IProductService"/>
     <fullyQualifiedTypeName name="java.lang.StrictMath"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.Float"/>
->>>>>>> main
 </qualifiedTypeNameHistroy>

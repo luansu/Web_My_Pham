@@ -1,7 +1,0 @@
-package orishop.services;
-
-public class ProductServiceImp implements IProductService {
-	public float totalRevenue(String productID) {
-		
-	}
-}

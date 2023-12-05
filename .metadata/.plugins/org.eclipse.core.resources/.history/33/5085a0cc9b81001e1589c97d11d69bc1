@@ -1,6 +1,0 @@
-package orishop.DAO;
-
-import orishop.models.*;
-public class CustomerDAOImp implements ICustomerDAO{
-
-}

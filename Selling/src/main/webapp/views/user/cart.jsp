@@ -30,13 +30,7 @@
           </div>
         </div>
         
-<<<<<<< HEAD
-        
-        
-		<c:forEach var="i" items="${listCartItem}">
-=======
 
->>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
         <div class="card rounded-3 mb-4">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
@@ -72,12 +66,6 @@
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-        
-		</c:forEach>
-
-           
-=======
 
         <div class="card rounded-3 mb-4">
           <div class="card-body p-4">
@@ -192,7 +180,6 @@
         </div>
       
       
->>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
    <div class="row g-0 align-items-center pb-4">
         <div class="col-sm-6">
             <div><p class="mb-sm-0">Hiển thị 1 đến 10 trong 57 mục</p></div>
@@ -215,10 +202,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    
-=======
->>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
     <div class="card rounded-3 mb-4">
       <div class="card-body p-4">
           <div class="row d-flex justify-content-between align-items-center"> 
@@ -226,11 +209,7 @@
                   <div></div>
                   <!-- Thêm thẻ div cho tổng tiền thanh toán -->
                   <div class="total-payment-container">
-<<<<<<< HEAD
-                      <div class="total-payment">Tổng tiền thanh toán: <span class="amount">${cart.totalPrice}</span></div>
-=======
                       <div class="total-payment">Tổng tiền thanh toán: <span class="amount">$100.00</span></div>
->>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
                       <button type="button" class="btn btn-outline-primary btn-block btn-lg">Thanh toán</button>
                   </div>
               </div>

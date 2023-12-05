@@ -11,5 +11,3 @@ C:\Users\Admin\Documents\LuanSu\CNTT\HK5\Web\Project\web\.metadata\.plugins\org.
 \Selling\src\main\java
 C:\Users\Admin\Documents\LuanSu\CNTT\HK5\Web\Project\web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1577607701.index
 \Selling\src\main\java
-C:\Users\Admin\Documents\LuanSu\CNTT\HK5\Web\Project\web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3174482959.index
-\Selling\src\main\java

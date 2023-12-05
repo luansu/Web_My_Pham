@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿--DROP DATABASE CosmeticStore
 --GO
 
@@ -11,52 +10,53 @@ GO
 
 --DROP TABLE ACCOUNT
 CREATE TABLE ACCOUNT (
-	accountId int Identity,
-	username nvarchar(30) not null unique,
-	[password] nvarchar(30) not null,
-	primary key (accountId)
+	AccountID varchar(10),
+	Username nvarchar(30) not null unique,
+	Password nvarchar(30) not null,
+	primary key (AccountID)
 )
 GO
 
+
 -- DROP TABLE CUSTOMER
 create table CUSTOMER (
-	customerId int Identity PRIMARY KEY ,
-	customerName nvarchar(100) NOT NULL,
-	birthday date,
-	gender nvarchar(10),
-	[address] nvarchar(100),
-	phone numeric unique check (len(Phone)=10),
-	mail varchar(30) unique,
-	[rank] nvarchar(50),
-	reputation int,
-	rewardPoints int NOT NULL CHECK (rewardPoints >=0),
-	accountId int CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(accountId),
+	CustomerID varchar(10) PRIMARY KEY,
+	CustomerName nvarchar(100) NOT NULL,
+	Birthday date,
+	Gender nvarchar(10),
+	Address nvarchar(100),
+	Phone numeric unique check (len(Phone)=10),
+	Mail varchar(30) unique,
+	Rank nvarchar(50),
+	Reputation int,
+	RewardPoints int NOT NULL CHECK (RewardPoints >=0),
+	AccountID varchar(10) CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(AccountID),
 )
 Go
 
 --DROP TABLE CART
 create table CART (
-	cartId int Identity,
-	customerId int FOREIGN KEY REFERENCES CUSTOMER(customerId),
-	totalPrice float
-	primary key (cartId)
+	CartID varchar(10),
+	CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID),
+	TotalPrice float
+	primary key (CartID)
 )
 Go
 
 --DROP TABLE CATEGORY
 CREATE TABLE CATEGORY (
-	categoryId int Identity,
-	categoryName nvarchar(100) NOT NULL,
-	imageURL nvarchar(2000)
-	primary key (categoryId)
+	CategoryID varchar(10),
+	CategoryName nvarchar(100) NOT NULL,
+	ImageURL nvarchar(200)
+	primary key (CategoryID)
 )
 GO
 
 --DROP TABLE SUPPLIER
 CREATE TABLE SUPPLIER (
-	supplierId int Identity,
-	supplierName  nvarchar(100) NOT NULL
-	primary key (supplierId)
+	SupplierID varchar(10),
+	SupplierName  nvarchar(100) NOT NULL
+	primary key (SupplierID)
 )
 GO
 
@@ -64,146 +64,66 @@ GO
 
 --DROP TABLE EMPLOYEE 
 CREATE TABLE EMPLOYEE (
-    employeeId int Identity PRIMARY KEY,
-    employeeName nvarchar(100) NOT NULL,
-    birthdate date,
-    gender nvarchar(10),
-    [address] nvarchar(100),
-    phone varchar(10) NOT NULL check (len(Phone)=10),
-    job nvarchar(100), -- 
-    accountId int CONSTRAINT FK_ACCOUNT_EMPLOYEE FOREIGN KEY REFERENCES ACCOUNT(accountId),
-    activityArea nvarchar(100),
-	imageURL nvarchar(2000)
-)
-GO
-
--- DROP TABLE ORDERS
-CREATE TABLE ORDERS (
-    orderId int Identity PRIMARY KEY,
-    orderValue float,
-    orderDate DATETIME NOT NULL,
-    cartId int FOREIGN KEY REFERENCES CART(cartId),
-    customerId int FOREIGN KEY REFERENCES CUSTOMER(customerId),
-	--Status include: Save, 'Chưa giao cho shipper','Đã giao cho shipper' , paid, unpaid,  "Đã giao khách hàng"
-	paymentStatus nvarchar(100),
-	orderStatus nvarchar(100),
-	paymentMethod nvarchar(100),
-	deliveryMethod nvarchar(100),
-	employeeId int REFERENCES EMPLOYEE(employeeId),
-)
-GO
-
--- DROP TABLE PRODUCT
-CREATE TABLE PRODUCT (
-    productId int Identity PRIMARY KEY,
-    productName nvarchar(100) NOT NULL,
-    [description] nvarchar(2000) NOT NULL,
-    stock int NOT NULL,
-    amount int NOT NULL,
-    price float NOT NULL,
-    categoryId int FOREIGN KEY REFERENCES CATEGORY(categoryId),
-    imageURL nvarchar(2000)
-)
-GO
-
--- DROP TABLE ORDER_ITEM
-CREATE TABLE ORDER_ITEM (
-    productId int FOREIGN KEY REFERENCES PRODUCT(productId),
-    orderId int FOREIGN KEY REFERENCES ORDERS(orderId),
-	quantity int NOT NULL,
-    totalPrice float
-    PRIMARY KEY(productId, orderId)
-)
-GO
-
--- DROP TABLE IMPORTING_GOODS
-CREATE TABLE IMPORTING_GOODS (
-    productId int FOREIGN KEY REFERENCES PRODUCT(productId),
-	supplierId int FOREIGN KEY REFERENCES SUPPLIER(supplierId),
-    quantity int NOT NULL,
-	importingDate Date,
-    cost float
-    PRIMARY KEY(productId, supplierId)
-)
-GO
-=======
-﻿--DROP DATABASE CosmeticStore
---GO
-
-CREATE DATABASE CosmeticStore
-GO
-
-USE CosmeticStore
-GO
-
-
---DROP TABLE ACCOUNT
-
---DROP TABLE CUSTOMER
-
---DROP TABLE EMPLOYEE 
-
-CREATE TABLE ACCOUNT (
-	AccountID int identity(1, 1) PRIMARY KEY,
-	Username nvarchar(30),
-	Password nvarchar(30),
-	Fullname nvarchar(30),
-	Mail varchar(30),
-	RoleID int,
-	Status int,
-	Code nvarchar(30),
-)
-GO
-
-create table CUSTOMER (
-	CustomerID int identity(1, 1) PRIMARY KEY,
-	CustomerName nvarchar(100),
-	Birthday date,
-	Gender nvarchar(10),
-	Address nvarchar(100),
-	Phone numeric check (len(Phone)=10),
-	Mail varchar(30),
-	Rank nvarchar(50),
-	Reputation int,
-	RewardPoints int CHECK (RewardPoints >=0),
-	AccountID int CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(AccountID),
-)
-Go
-
-CREATE TABLE EMPLOYEE (
-    EmployeeID int identity(1, 1) PRIMARY KEY,
-    EmployeeName nvarchar(100),
+    EmployeeID varchar(10) PRIMARY KEY,
+    EmployeeName nvarchar(100) NOT NULL,
     BirthDate date,
     Gender nvarchar(10),
     Address nvarchar(100),
-    Phone varchar(10) check (len(Phone)=10),
-	Mail varchar(30),
+    Phone varchar(10) NOT NULL check (len(Phone)=10),
     Job nvarchar(100),
-    AccountID int CONSTRAINT FK_ACCOUNT_EMPLOYEE FOREIGN KEY REFERENCES ACCOUNT(AccountID),
+    AccountID varchar(10) CONSTRAINT FK_ACCOUNT_EMPLOYEE FOREIGN KEY REFERENCES ACCOUNT(AccountID),
     ActivityArea nvarchar(100),
 	ImageURL nvarchar(200)
 )
 GO
 
-CREATE Or Alter TRIGGER TG_TaoTaiKhoanSQL
-ON Account
-AFTER INSERT
-AS
-DECLARE @username nvarchar(30), @password nvarchar(30), @accountID int, @roleID int, @mail varchar(30), @fullname nvarchar(30)
-SELECT @username=i.Username, @password=i.Password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail, @fullname=Fullname
-FROM inserted i
-BEGIN
-	DECLARE @sqlString nvarchar(2000)
-	if (@roleID = 1)
-	SET @sqlString = 'Insert into Customer (Mail, CustomerName, AccountID) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+')';
-	else if (@roleID = 2)
-	SET @sqlString = 'Insert into EMPLOYEE (Mail, EmployeeName, AccountID, Job) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+',''admin'')';
-	else if (@roleID = 3)
-	SET @sqlString = 'Insert into EMPLOYEE (Mail, EmployeeName, AccountID, Job) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+',''seller'')';
-	EXEC (@sqlString)
-END
+-- DROP TABLE ORDERS
+CREATE TABLE ORDERS (
+    OrderID varchar(10) PRIMARY KEY,
+    OrderValue float,
+    OrderDate DATE NOT NULL,
+    OrderTime TIME NOT NULL,
+    CartID varchar(10) FOREIGN KEY REFERENCES CART(CartID),
+    CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID),
+	--Status include: Save, 'Chưa giao cho shipper','Đã giao cho shipper' , paid, unpaid,  "Đã giao khách hàng"
+	PaymentStatus nvarchar(100),
+	OrderStatus nvarchar(100),
+	PaymentMethod nvarchar(100),
+	DeliveryMethod nvarchar(100),
+	EmployeeID nvarchar(10),
+)
 GO
 
-Insert into ACCOUNT(Username,PASSWORD, Fullname,Mail,RoleID,Status,Code) values ('vietphap1','vietphap96','Nguyễn Hoàng Việt Pháp','vietphap1@gmail.com',1,1,963);
+-- DROP TABLE PRODUCT
+CREATE TABLE PRODUCT (
+    ProductID varchar(10) PRIMARY KEY,
+    ProductName nvarchar(100) NOT NULL,
+    Description nvarchar(2000) NOT NULL,
+    Stock int NOT NULL,
+    Amount int NOT NULL,
+    Price float NOT NULL,
+    CategoryID varchar(10) FOREIGN KEY REFERENCES CATEGORY(CategoryID),
+    ImageURL nvarchar(200)
+)
+GO
 
->>>>>>> main
+-- DROP TABLE CART_ITEM
+CREATE TABLE ORDER_ITEM (
+    ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
+    OrderID varchar(10) FOREIGN KEY REFERENCES ORDERS(OrderID),
+	Quantity int NOT NULL,
+    TotalPrice float
+    PRIMARY KEY(ProductID, OrderID)
+)
+GO
+
+-- DROP TABLE IMPORTING_GOODS
+CREATE TABLE IMPORTING_GOODS (
+    ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
+    SupplierID varchar(10) FOREIGN KEY REFERENCES SUPPLIER(SupplierID),
+    Quantity int NOT NULL,
+	ImportingDate Date,
+    Cost float
+    PRIMARY KEY(ProductID, SupplierID)
+)
+GO
