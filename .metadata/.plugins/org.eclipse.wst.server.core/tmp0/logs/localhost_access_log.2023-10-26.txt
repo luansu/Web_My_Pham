@@ -1,0 +1,5 @@
+127.0.0.1 - - [26/Oct/2023:22:52:43 +0700] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [26/Oct/2023:22:52:46 +0700] "GET /Selling/user-category/listCate HTTP/1.1" 200 7389
+0:0:0:0:0:0:0:1 - - [26/Oct/2023:22:52:46 +0700] "GET /Selling/templates/user/css/style.css HTTP/1.1" 200 1236
+0:0:0:0:0:0:0:1 - - [26/Oct/2023:22:52:46 +0700] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [26/Oct/2023:22:52:58 +0700] "GET /Selling/user-category/addcate HTTP/1.1" 404 788
