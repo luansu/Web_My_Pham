@@ -4,30 +4,28 @@ import java.sql.Date;
 public class OrdersModels implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String orderID;
+	private int orderID;
 	private Float orderValue;
 	private Date orderDate;
-	private Date orderTime;
-	private String cartID;
-	private String customerID;
+	private int cartID;
+	private int customerID;
+	
+	
 	public OrdersModels() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public OrdersModels(String orderID, Float orderValue, Date orderDate, Date orderTime, String cartID,
-			String customerID) {
+	public OrdersModels(int orderID, Float orderValue, Date orderDate, int cartID, int customerID) {
 		super();
 		this.orderID = orderID;
 		this.orderValue = orderValue;
 		this.orderDate = orderDate;
-		this.orderTime = orderTime;
 		this.cartID = cartID;
 		this.customerID = customerID;
 	}
-	public String getOrderID() {
+	public int getOrderID() {
 		return orderID;
 	}
-	public void setOrderID(String orderID) {
+	public void setOrderID(int orderID) {
 		this.orderID = orderID;
 	}
 	public Float getOrderValue() {
@@ -42,22 +40,17 @@ public class OrdersModels implements Serializable{
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public Date getOrderTime() {
-		return orderTime;
-	}
-	public void setOrderTime(Date orderTime) {
-		this.orderTime = orderTime;
-	}
-	public String getCartID() {
+	public int getCartID() {
 		return cartID;
 	}
-	public void setCartID(String cartID) {
+	public void setCartID(int cartID) {
 		this.cartID = cartID;
 	}
-	public String getCustomerID() {
+	public int getCustomerID() {
 		return customerID;
 	}
-	public void setCustomerID(String customerID) {
+	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
 	}
+	
 }

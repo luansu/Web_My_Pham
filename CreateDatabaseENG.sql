@@ -9,121 +9,71 @@ GO
 
 
 --DROP TABLE ACCOUNT
+
+--DROP TABLE CUSTOMER
+
+--DROP TABLE EMPLOYEE 
+
 CREATE TABLE ACCOUNT (
-	AccountID varchar(10),
-	Username nvarchar(30) not null,
-	Password nvarchar(30) not null,
-	primary key (AccountID)
+	AccountID int identity(1, 1) PRIMARY KEY,
+	Username nvarchar(30),
+	Password nvarchar(30),
+	Fullname nvarchar(30),
+	Mail varchar(30),
+	RoleID int,
+	Status int,
+	Code nvarchar(30),
 )
 GO
 
-
--- DROP TABLE CUSTOMER
 create table CUSTOMER (
-	CustomerID varchar(10) PRIMARY KEY,
-	CustomerName nvarchar(100) NOT NULL,
+	CustomerID int identity(1, 1) PRIMARY KEY,
+	CustomerName nvarchar(100),
 	Birthday date,
 	Gender nvarchar(10),
 	Address nvarchar(100),
-	Phone numeric unique check (len(Phone)=10),
-	Mail varchar(30) unique,
+	Phone numeric check (len(Phone)=10),
+	Mail varchar(30),
 	Rank nvarchar(50),
 	Reputation int,
-	RewardPoints int NOT NULL CHECK (RewardPoints >=0),
-	AccountID varchar(10) CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(AccountID),
+	RewardPoints int CHECK (RewardPoints >=0),
+	AccountID int CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(AccountID),
 )
 Go
 
---DROP TABLE CART
-create table CART (
-	CartID varchar(10),
-	CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID),
-	TotalPrice float
-	primary key (CartID)
-)
-Go
-
---DROP TABLE CATEGORY
-CREATE TABLE CATEGORY (
-	CategoryID varchar(10),
-	CategoryName nvarchar(100) NOT NULL,
-	ImageURL nvarchar(200)
-	primary key (CategoryID)
-)
-GO
-
---DROP TABLE SUPPLIER
-CREATE TABLE SUPPLIER (
-	SupplierID varchar(10),
-	SupplierName  nvarchar(100) NOT NULL
-	primary key (SupplierID)
-)
-GO
-
-
-
---DROP TABLE EMPLOYEE 
 CREATE TABLE EMPLOYEE (
-    EmployeeID varchar(10) PRIMARY KEY,
-    EmployeeName nvarchar(100) NOT NULL,
+    EmployeeID int identity(1, 1) PRIMARY KEY,
+    EmployeeName nvarchar(100),
     BirthDate date,
     Gender nvarchar(10),
     Address nvarchar(100),
-    Phone varchar(10) NOT NULL check (len(Phone)=10),
+    Phone varchar(10) check (len(Phone)=10),
+	Mail varchar(30),
     Job nvarchar(100),
-    AccountID varchar(10) CONSTRAINT FK_ACCOUNT_EMPLOYEE FOREIGN KEY REFERENCES ACCOUNT(AccountID),
+    AccountID int CONSTRAINT FK_ACCOUNT_EMPLOYEE FOREIGN KEY REFERENCES ACCOUNT(AccountID),
     ActivityArea nvarchar(100),
 	ImageURL nvarchar(200)
 )
 GO
 
--- DROP TABLE ORDERS
-CREATE TABLE ORDERS (
-    OrderID varchar(10) PRIMARY KEY,
-    OrderValue float,
-    OrderDate DATE NOT NULL,
-    OrderTime TIME NOT NULL,
-    CartID varchar(10) FOREIGN KEY REFERENCES CART(CartID),
-    CustomerID varchar(10) FOREIGN KEY REFERENCES CUSTOMER(CustomerID),
-	--Status include: Save, 'Chưa giao cho shipper','Đã giao cho shipper' , paid, unpaid,  "Đã giao khách hàng"
-	PaymentStatus nvarchar(100),
-	OrderStatus nvarchar(100),
-	PaymentMethod nvarchar(100),
-	DeliveryMethod nvarchar(100),
-	EmployeeID nvarchar(10),
-)
+CREATE Or Alter TRIGGER TG_TaoTaiKhoanSQL
+ON Account
+AFTER INSERT
+AS
+DECLARE @username nvarchar(30), @password nvarchar(30), @accountID int, @roleID int, @mail varchar(30), @fullname nvarchar(30)
+SELECT @username=i.Username, @password=i.Password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail, @fullname=Fullname
+FROM inserted i
+BEGIN
+	DECLARE @sqlString nvarchar(2000)
+	if (@roleID = 1)
+	SET @sqlString = 'Insert into Customer (Mail, CustomerName, AccountID) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+')';
+	else if (@roleID = 2)
+	SET @sqlString = 'Insert into EMPLOYEE (Mail, EmployeeName, AccountID, Job) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+',''admin'')';
+	else if (@roleID = 3)
+	SET @sqlString = 'Insert into EMPLOYEE (Mail, EmployeeName, AccountID, Job) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+',''seller'')';
+	EXEC (@sqlString)
+END
 GO
 
--- DROP TABLE PRODUCT
-CREATE TABLE PRODUCT (
-    ProductID varchar(10) PRIMARY KEY,
-    ProductName nvarchar(100) NOT NULL,
-    Description nvarchar(2000) NOT NULL,
-    Stock int NOT NULL,
-    Amount int NOT NULL,
-    Price float NOT NULL,
-    CategoryID varchar(10) FOREIGN KEY REFERENCES CATEGORY(CategoryID),
-    ImageURL nvarchar(200)
-)
-GO
+Insert into ACCOUNT(Username,PASSWORD, Fullname,Mail,RoleID,Status,Code) values ('vietphap1','vietphap96','Nguyễn Hoàng Việt Pháp','vietphap1@gmail.com',1,1,963);
 
--- DROP TABLE CART_ITEM
-CREATE TABLE ORDER_ITEM (
-    ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
-    OrderID varchar(10) FOREIGN KEY REFERENCES ORDERS(OrderID),
-	Quantity int NOT NULL,
-    TotalPrice float
-    PRIMARY KEY(ProductID, OrderID)
-)
-GO
-
--- DROP TABLE IMPORTING_GOODS
-CREATE TABLE IMPORTING_GOODS (
-    ProductID varchar(10) FOREIGN KEY REFERENCES PRODUCT(ProductID),
-    SupplierID varchar(10) FOREIGN KEY REFERENCES SUPPLIER(SupplierID),
-    Quantity int NOT NULL,
-	ImportingDate Date,
-    Cost float
-    PRIMARY KEY(ProductID, SupplierID)
-)
-GO
