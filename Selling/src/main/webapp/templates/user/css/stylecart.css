@@ -1,0 +1,18 @@
+.total-payment-container {
+    background-color: #ffffff; /* Màu trắng */
+    border-radius: 5px; /* Bo tròn góc nếu cần thiết */
+
+}
+
+.total-payment {
+    font-size: 25px; /* Đặt kích thước chữ cho "Tổng tiền thanh toán" */
+    margin-bottom: 20px;
+}
+
+.amount {
+    color: #007bff; /* Đặt màu xanh cho số tiền */
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
