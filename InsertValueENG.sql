@@ -34,12 +34,13 @@ VALUES ('NCC001', N'Supplier1'),
 INSERT INTO CUSTOMER (CustomerID, CustomerName, Address, Phone, RewardPoints, AccountID)
 VALUES ('KH001', N'Customer1', N'Address1', '1234567890', 0, 'TK001'),
        ('KH002', N'Customer2', N'Address2', '9876543210', 0, 'TK002'),
+       ('KH003', N'Customer3', N'Address3', '4567891230', 0, 'TK003');
 
 -- Insert data into EMPLOYEE table
-INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, BirthDate, Gender, Address, Phone, Job, AccountID, ImageURL)
-VALUES ('NV001', N'Employee1', '1990-01-01', N'Male', N'Address1', '1234567890', 'BanHang', 'TK001', N'Image1.jpg'),
-       ('NV002', N'Employee2', '1995-02-02', N'Female', N'Address2', '9876543210', 'BanHang', 'TK002', N'Image2.jpg'),
-       ('NV003', N'Employee3', '2000-03-03', N'Male', N'Address3', '4567891230', 'BanHang', 'TK003', N'Image3.jpg');
+INSERT INTO EMPLOYEE (EmployeeID, EmployeeName, BirthDate, Gender, Address, Phone, JobID, AccountID, ImageURL)
+VALUES ('NV001', N'Employee1', '1990-01-01', N'Male', N'Address1', '1234567890', 'CV001', 'TK001', N'Image1.jpg'),
+       ('NV002', N'Employee2', '1995-02-02', N'Female', N'Address2', '9876543210', 'CV002', 'TK002', N'Image2.jpg'),
+       ('NV003', N'Employee3', '2000-03-03', N'Male', N'Address3', '4567891230', 'CV003', 'TK003', N'Image3.jpg');
 
 -- Insert data into ORDERS table
 INSERT INTO ORDERS (OrderID, OrderValue, OrderDate, OrderTime, CartID, CustomerID)

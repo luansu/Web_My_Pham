@@ -1,0 +1,5 @@
+package orishop.services1;
+
+public class AccountServiceImp implements IAccountService{
+
+}

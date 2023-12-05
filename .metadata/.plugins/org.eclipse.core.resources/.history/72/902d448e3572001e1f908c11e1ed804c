@@ -1,0 +1,64 @@
+package orishop.models.copy;
+
+import java.io.Serializable;
+
+public class CustomerModels implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	private String cusID;
+	private String cusName;
+	private String cusAddress;
+	private String cusPhoneNum;
+	private int cusPoint;
+	private String accountID;
+	public CustomerModels() {
+		super();
+	}
+	public CustomerModels(String cusID, String cusName, String cusAddress, String cusPhoneNum, int cusPoint,
+			String accountID) {
+		super();
+		this.cusID = cusID;
+		this.cusName = cusName;
+		this.cusAddress = cusAddress;
+		this.cusPhoneNum = cusPhoneNum;
+		this.cusPoint = cusPoint;
+		this.accountID = accountID;
+	}
+	public String getCusID() {
+		return cusID;
+	}
+	public void setCusID(String cusID) {
+		this.cusID = cusID;
+	}
+	public String getCusName() {
+		return cusName;
+	}
+	public void setCusName(String cusName) {
+		this.cusName = cusName;
+	}
+	public String getCusAddress() {
+		return cusAddress;
+	}
+	public void setCusAddress(String cusAddress) {
+		this.cusAddress = cusAddress;
+	}
+	public String getCusPhoneNum() {
+		return cusPhoneNum;
+	}
+	public void setCusPhoneNum(String cusPhoneNum) {
+		this.cusPhoneNum = cusPhoneNum;
+	}
+	public int getCusPoint() {
+		return cusPoint;
+	}
+	public void setCusPoint(int cusPoint) {
+		this.cusPoint = cusPoint;
+	}
+	public String getAccountID() {
+		return accountID;
+	}
+	public void setAccountID(String accountID) {
+		this.accountID = accountID;
+	}
+	
+}
