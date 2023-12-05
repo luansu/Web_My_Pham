@@ -13,8 +13,9 @@
 			<td colspan="2"><%@ include file="/common/admin/header.jsp" %></td>
 		</tr>
 		<tr>
+		<td colspan="2"><%@ include file="/views/admin/listorder.jsp" %></td>
 			<td><decorator:body></decorator:body></td>
-			<td colspan="2"><%@ include file="/common/admin/right.jsp" %></td>
+
 		</tr>
 		<tr>
 			<td colspan="2"><%@ include file="/common/admin/footer.jsp" %></td>
