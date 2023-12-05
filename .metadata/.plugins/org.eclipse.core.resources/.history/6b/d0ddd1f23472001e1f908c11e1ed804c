@@ -1,5 +1,0 @@
-package orishop.services.copy;
-
-public class AccountServiceImp implements IAccountService{
-
-}
