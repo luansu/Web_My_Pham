@@ -4,35 +4,130 @@ import java.io.Serializable;
 public class AccountModels implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private String accountID;
-	private String userName;
+	private int accountID;
+	private String username;
 	private String password;
+	private String fullname;
+	private String mail;
+	private int roleID;
+	private int status;
+	private String code;
+	
+	
 	public AccountModels() {
 		super();
-		// TODO Auto-generated constructor stub
+		}
+	
+	public AccountModels(String username, String fullname, String mail, String code) {
+		super();
+		this.username = username;
+		this.fullname = fullname;
+		this.mail = mail;
+		this.code = code;
 	}
-	public AccountModels(String accountID, String userName, String password) {
+
+	public AccountModels(String username, String password, String fullname, String mail, int roleID, int status,
+			String code) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.fullname = fullname;
+		this.mail = mail;
+		this.roleID = roleID;
+		this.status = status;
+		this.code = code;
+	}
+
+	public AccountModels(int accountID, String username, String password, String fullname, String mail, int roleID,
+			int status, String code) {
 		super();
 		this.accountID = accountID;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
+		this.fullname = fullname;
+		this.mail = mail;
+		this.roleID = roleID;
+		this.status = status;
+		this.code = code;
 	}
-	public String getAccountID() {
+
+
+	public int getAccountID() {
 		return accountID;
 	}
-	public void setAccountID(String accountID) {
+
+
+	public void setAccountID(int accountID) {
 		this.accountID = accountID;
 	}
-	public String getUserName() {
-		return userName;
+
+
+	public String getUsername() {
+		return username;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
+
+
 	public String getPassword() {
 		return password;
 	}
+
+
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public String getFullname() {
+		return fullname;
+	}
+
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+
+
+	public String getMail() {
+		return mail;
+	}
+
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+
+	public int getRoleID() {
+		return roleID;
+	}
+
+
+	public void setRoleID(int roleID) {
+		this.roleID = roleID;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
+	public String getCode() {
+		return code;
+	}
+
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 }
