@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
+<<<<<<< HEAD
  <%@ include file="/common/taglib.jsp"%>
+=======
+ <%@ include file="/common/taglist.jsp"%>
+>>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
 
 <!DOCTYPE html>
 <html>

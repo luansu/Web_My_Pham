@@ -30,9 +30,13 @@
           </div>
         </div>
         
+<<<<<<< HEAD
         
         
 		<c:forEach var="i" items="${listCartItem}">
+=======
+
+>>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
         <div class="card rounded-3 mb-4">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
@@ -68,10 +72,127 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
         
 		</c:forEach>
 
            
+=======
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F29696%2F29696.png%3Fversion%3D1607364000&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Nuit Eau de Parfum for her</p>
+                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                  class="form-control form-control-sm" />
+
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">$89.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F35653%2F35653.png%3Fversion%3D1607561110&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Rose Nectar Hand & Body Wash</p>
+                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                  class="form-control form-control-sm" />
+
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">$76.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+            
+              
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42519%2F42519.png%3Fversion%3D1605800700&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Rose Nectar Hand & Body Cream</p>
+                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                  class="form-control form-control-sm" />
+
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">$49.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      
+>>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
    <div class="row g-0 align-items-center pb-4">
         <div class="col-sm-6">
             <div><p class="mb-sm-0">Hiển thị 1 đến 10 trong 57 mục</p></div>
@@ -94,7 +215,10 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     
+=======
+>>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
     <div class="card rounded-3 mb-4">
       <div class="card-body p-4">
           <div class="row d-flex justify-content-between align-items-center"> 
@@ -102,7 +226,11 @@
                   <div></div>
                   <!-- Thêm thẻ div cho tổng tiền thanh toán -->
                   <div class="total-payment-container">
+<<<<<<< HEAD
                       <div class="total-payment">Tổng tiền thanh toán: <span class="amount">${cart.totalPrice}</span></div>
+=======
+                      <div class="total-payment">Tổng tiền thanh toán: <span class="amount">$100.00</span></div>
+>>>>>>> 1bda766b20ff65fa4df61fbb0afb10d5536e7c06
                       <button type="button" class="btn btn-outline-primary btn-block btn-lg">Thanh toán</button>
                   </div>
               </div>

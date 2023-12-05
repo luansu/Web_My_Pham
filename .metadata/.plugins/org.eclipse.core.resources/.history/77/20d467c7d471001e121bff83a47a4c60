@@ -1,7 +1,0 @@
-package orishop.models;
-
-import java.io.Serializable;
-
-public class ProductOrderedModels implements Serializable{
-
-}
