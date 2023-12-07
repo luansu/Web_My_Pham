@@ -21,6 +21,11 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>12.4.1.jre11</version>
 		</dependency>
+				<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>9.4.1.jre8</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/opensymphony/sitemesh -->
 		<dependency>
 			<groupId>opensymphony</groupId>
