@@ -8,18 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1">
+
 		<tr>
 			<td colspan="2"><%@ include file="/common/admin/header.jsp" %></td>
 		</tr>
 		<tr>
-		<td colspan="2"><%@ include file="/views/admin/listorder.jsp" %></td>
-			<td><decorator:body></decorator:body></td>
+		<td colspan="2"><%@ include file="/views/admin/detailinforuser.jsp" %></td>
 
 		</tr>
 		<tr>
 			<td colspan="2"><%@ include file="/common/admin/footer.jsp" %></td>
 		</tr>
-	</table>
+
 </body>
 </html>
