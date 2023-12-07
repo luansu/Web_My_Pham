@@ -12,8 +12,8 @@ public class CartItemServiceImpl implements ICartItemService{
 	ICartItemDAO cartItemDao = new CartItemDAOImpl();
 
 	@Override
-	public List<CartItemModels> find(int cartId) {
-		return cartItemDao.find(cartId);
+	public List<CartItemModels> findByCartID(int cartId) {
+		return cartItemDao.findByCartID(cartId);
 	}
 
 	@Override

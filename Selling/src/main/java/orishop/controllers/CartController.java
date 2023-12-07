@@ -17,7 +17,7 @@ import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;
 import orishop.services.ICartItemService;
 import orishop.services.ICartService;
-@WebServlet(urlPatterns = { "/findCartbyCustomerId", "/findCartItem", "/insertCartItem", "/updateCartItem", "/deleteCartItem"})
+@WebServlet(urlPatterns = { "/findCartbyCartId", "/findCartItem", "/insertCartItem", "/updateCartItem", "/deleteCartItem"})
 
 public class CartController extends HttpServlet  {
 private static final long serialVersionUID = 1L;
@@ -28,7 +28,7 @@ private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String url = req.getRequestURI().toString();
-		if (url.contains("findCartbyCardId")) {
+		if (url.contains("findCartbyCardID")) {
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
 
@@ -37,7 +37,7 @@ private static final long serialVersionUID = 1L;
 			CartModels cart = cartService.findCartId(Integer.parseInt(cartId));
 			req.setAttribute("cart", cart);
 
-			List<CartItemModels> listCartItem = cartItemService.find(Integer.parseInt(cartId));
+			List<CartItemModels> listCartItem = cartItemService.findByCartID(Integer.parseInt(cartId));
 			req.setAttribute("listCartItem", listCartItem);
 
 			req.getRequestDispatcher("/views/user/cart.jsp").forward(req, resp);

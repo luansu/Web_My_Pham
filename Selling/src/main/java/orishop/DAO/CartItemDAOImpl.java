@@ -21,7 +21,7 @@ public class CartItemDAOImpl implements ICartItemDAO {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	public List<CartItemModels> find(int cartId) {
+	public List<CartItemModels> findByCartID(int cartId) {
 		List<CartItemModels> listCartItem = new ArrayList<CartItemModels>();
 		String sql = "Select * from CartItem where cartId = ?";
 		try {
@@ -117,7 +117,7 @@ public class CartItemDAOImpl implements ICartItemDAO {
 	
 	public static void main(String[] args) {
 		ICartItemDAO cartItemDAO = new CartItemDAOImpl();
-		List<CartItemModels> list1 = cartItemDAO.find(1);
+		List<CartItemModels> list1 = cartItemDAO.findByCartID(1);
 		System.out.println(list1);
 		
 	}
