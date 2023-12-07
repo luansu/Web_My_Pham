@@ -4,22 +4,33 @@ import java.io.Serializable;
 public class CartModels implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String cartID;
+	private int cartId;
+	private int customerId;
 	private Float totalPrice;
+	CustomerModels customer;
+	
 	public CartModels() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public CartModels(String cartID, Float totalPrice) {
+	
+	public CartModels(int cartId, int customerId, Float totalPrice, CustomerModels customer) {
 		super();
-		this.cartID = cartID;
+		this.cartId = cartId;
+		this.customerId = customerId;
 		this.totalPrice = totalPrice;
+		this.customer = customer;
 	}
-	public String getCartID() {
-		return cartID;
+	public int getCartId() {
+		return cartId;
 	}
-	public void setCartID(String cartID) {
-		this.cartID = cartID;
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+	public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 	public Float getTotalPrice() {
 		return totalPrice;
@@ -27,4 +38,13 @@ public class CartModels implements Serializable{
 	public void setTotalPrice(Float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	public CustomerModels getCustomer() {
+		return customer;
+	}
+	public void setCustomer(CustomerModels customer) {
+		this.customer = customer;
+	}
+	
+	
+	
 }
