@@ -6,12 +6,12 @@ import java.sql.DriverManager;
 import orishop.DAO.DBConnectionSQLServer;
 
 public class DBConnectionSQLServer {
-	private final static String serverName = "DESKTOP-2I3JU9D";
-	private final static String dbName = "BT";
+	private final static String serverName = "LUAN-SU\\SQLEXPRESS";
+	private final static String dbName = "CosmeticStore";
 	private final static String portNumber = "1433";
 	private final static String instance = "";// MSSQLSERVER LEAVE THIS ONE
-	private final static String userID = "LanAnh";
-	private final static String password = "lananh113388";
+	private final static String userID = "sa";
+	private final static String password = "07102003";
 	
 	public static Connection getConnectionW() throws Exception {
 		String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + "\\" + instance + ";databaseName=" + dbName+";encrypt=true" + ";trustServerCertificate=true";

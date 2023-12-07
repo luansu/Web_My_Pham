@@ -14,7 +14,8 @@ import orishop.models.CategoryModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.ICategoryService;
 
-@WebServlet(urlPatterns = {"/user-category/listCate", "/delete", "/update", "/addcate"})
+@WebServlet(urlPatterns = {"/admin/listCate", "/admin/delete", "/admin/update", "/admin/addcate"})
+
 public class CategoryControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
 	
@@ -35,7 +36,7 @@ public class CategoryControllers extends HttpServlet {
 		req.setAttribute("list", listCate);
 		req.setAttribute("end", 4);
 		req.setAttribute("begin", 1);
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listorder.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/detailinforuser.jsp");
 		rd.forward(req, resp);
 	}
 }
