@@ -34,10 +34,10 @@ private static final long serialVersionUID = 1L;
 
 			String cartId = req.getParameter("cartId");
 
-			CartModels cart = cartService.findCartId(Integer.parseInt(cartId));
+			CartModels cart = cartService.findCartByCartID(Integer.parseInt(cartId));
 			req.setAttribute("cart", cart);
 
-			List<CartItemModels> listCartItem = cartItemService.findByCartID(Integer.parseInt(cartId));
+			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(Integer.parseInt(cartId));
 			req.setAttribute("listCartItem", listCartItem);
 
 			req.getRequestDispatcher("/views/user/cart.jsp").forward(req, resp);
@@ -75,7 +75,7 @@ private static final long serialVersionUID = 1L;
 			int cartId = Integer.parseInt(req.getParameter("cartId"));
 			int productId = Integer.parseInt(req.getParameter("productId"));
 
-			cartItemService.delete(cartId, productId);
+			cartItemService.deleteCartItem(cartId, productId);
 
 			req.setAttribute("message", "Đã xóa thành công");
 
@@ -108,7 +108,7 @@ private static final long serialVersionUID = 1L;
 		cartItem.setQuantity(quantity);
 		cartItem.setTotalPrice(totalPrice);
 
-		cartItemService.update(cartItem);
+		cartItemService.updateCartItem(cartItem);
 		resp.sendRedirect(req.getContextPath() + "/findCartItem");
 
 	}
@@ -128,7 +128,7 @@ private static final long serialVersionUID = 1L;
 		cartItem.setQuantity(quantity);
 		cartItem.setTotalPrice(totalPrice);
 		
-		cartItemService.insert(cartItem);
+		cartItemService.insertCartItem(cartItem);
 	}
 }
 

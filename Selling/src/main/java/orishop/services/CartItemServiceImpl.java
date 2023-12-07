@@ -8,27 +8,26 @@ import orishop.models.CartItemModels;
 
 public class CartItemServiceImpl implements ICartItemService{
 
-	// gọi các phương thức trong DAO
 	ICartItemDAO cartItemDao = new CartItemDAOImpl();
 
 	@Override
-	public List<CartItemModels> findByCartID(int cartId) {
-		return cartItemDao.findByCartID(cartId);
+	public List<CartItemModels> findCartItemByCartID(int cartID) {
+		return cartItemDao.findCartItemByCartID(cartID);
 	}
 
 	@Override
-	public void insert(CartItemModels model) {
-		cartItemDao.insert(model);
+	public void insertCartItem(CartItemModels model) {
+		cartItemDao.insertCartItem(model);
 	}
 
 	@Override
-	public void delete(int cartID, int productID) {
-		cartItemDao.delete(cartID, productID);
+	public void deleteCartItem(int cartID, int productID) {
+		cartItemDao.deleteCartItem(cartID, productID);
 	}
 
 	@Override
-	public void update(CartItemModels model) {
-		cartItemDao.update(model);
+	public void updateCartItem(CartItemModels model) {
+		cartItemDao.updateCartItem(model);
 	}
 
 

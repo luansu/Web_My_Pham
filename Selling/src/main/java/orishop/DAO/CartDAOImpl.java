@@ -14,14 +14,14 @@ public class CartDAOImpl implements ICartDAO {
 	ResultSet rs = null;
 	
 	@Override
-	public CartModels findCustomerId(int customerId) {
+	public CartModels findCartByCustomerID(int customerID) {
 
 		String sql = "select * from CART where customerId=?";
 		CartModels cart = new CartModels();
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, customerId);
+			ps.setInt(1, customerID);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				cart.setCartId(rs.getInt("cartId"));
@@ -37,14 +37,14 @@ public class CartDAOImpl implements ICartDAO {
 	}
 	
 	@Override
-	public CartModels findCartId(int cartId) {
+	public CartModels findCartByCartID(int cartID) {
 
 		String sql = "select * from CART where cartId=?";
 		CartModels cart = new CartModels();
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, cartId);
+			ps.setInt(1, cartID);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				cart.setCartId(rs.getInt("cartId"));
@@ -61,12 +61,7 @@ public class CartDAOImpl implements ICartDAO {
 
 	public static void main(String[] args) {
 		ICartDAO cartDAO = new CartDAOImpl();
-		CartModels list1 = cartDAO.findCustomerId(1);
-		//UserModel list1 = userDAO.findOne("b");
-		//boolean list1 = userDAO.checkExistUsername("b");
-		//boolean list1 = userDAO.checkExistEmail("a");
-		//UserModel model = new UserModel("a","abcde","a","a", 1 ,1,"123456");userDAO.updatestatus(model);
-		//userDAO.delete(10);
+		CartModels list1 = cartDAO.findCartByCustomerID(1);
 		System.out.println(list1.getCartId());
 	}
 }

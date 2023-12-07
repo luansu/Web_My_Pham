@@ -21,16 +21,16 @@ public class CartItemDAOImpl implements ICartItemDAO {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	public List<CartItemModels> findByCartID(int cartId) {
+	public List<CartItemModels> findCartItemByCartID(int cartID) {
 		List<CartItemModels> listCartItem = new ArrayList<CartItemModels>();
 		String sql = "Select * from CartItem where cartId = ?";
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, cartId);
+			ps.setInt(1, cartID);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				CartModels model = cartDAO.findCartId(rs.getInt("cartId"));
+				CartModels model = cartDAO.findCartByCartID(rs.getInt("cartId"));
 				//ProductModels product = product.findProductById(rs.getInt("productId"));
 				CartItemModels cartItem = new CartItemModels();
 				cartItem.setCartID(model.getCartId());
@@ -49,7 +49,7 @@ public class CartItemDAOImpl implements ICartItemDAO {
 	}
 
 	@Override
-	public void insert(CartItemModels model) {
+	public void insertCartItem(CartItemModels model) {
 		String sql = "Insert into CartItem(cartId, productId, quantity, totalPrice) values (?,?,?,?)";
 
 		try {
@@ -72,7 +72,7 @@ public class CartItemDAOImpl implements ICartItemDAO {
 	}
 
 	@Override
-	public void delete(int cartID, int productID) {
+	public void deleteCartItem(int cartID, int productID) {
 		String sql = "delete from CartItem where cartId = ? and productId = ?";
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
@@ -91,7 +91,7 @@ public class CartItemDAOImpl implements ICartItemDAO {
 	}
 
 	@Override
-	public void update(CartItemModels model) {
+	public void updateCartItem(CartItemModels model) {
 		String sql = "update CartItem set quantity = ?, totalPrice = ? where cartId =? and productId = ?";
 		try {
 
@@ -117,7 +117,7 @@ public class CartItemDAOImpl implements ICartItemDAO {
 	
 	public static void main(String[] args) {
 		ICartItemDAO cartItemDAO = new CartItemDAOImpl();
-		List<CartItemModels> list1 = cartItemDAO.findByCartID(1);
+		List<CartItemModels> list1 = cartItemDAO.findCartItemByCartID(1);
 		System.out.println(list1);
 		
 	}

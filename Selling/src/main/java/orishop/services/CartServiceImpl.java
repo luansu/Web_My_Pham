@@ -9,12 +9,12 @@ public class CartServiceImpl implements ICartService{
 	ICartDAO cartDAO = new CartDAOImpl();
 	
 	@Override
-	public CartModels findCartId(int cartId) {
-		return cartDAO.findCartId(cartId);
+	public CartModels findCartByCartID(int cartID) {
+		return cartDAO.findCartByCartID(cartID);
 	}
 
 	@Override
-	public CartModels findCustomerId(int customerId) {
-		return cartDAO.findCustomerId(customerId);
+	public CartModels findCartByCustomerID(int customerID) {
+		return cartDAO.findCartByCustomerID(customerID);
 	}
 }
