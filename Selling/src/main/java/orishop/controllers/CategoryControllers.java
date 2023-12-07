@@ -14,11 +14,8 @@ import orishop.models.CategoryModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.ICategoryService;
 
-<<<<<<< HEAD
-@WebServlet(urlPatterns = {"/admin/listCate", "/delete", "/update", "/addcate"})
-=======
 @WebServlet(urlPatterns = {"/admin/listCate", "/admin/delete", "/admin/update", "/admin/addcate"})
->>>>>>> 776c74cf9bc5447b27ade4abc47b78de09efaacc
+
 public class CategoryControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
 	
