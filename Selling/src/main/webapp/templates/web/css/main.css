@@ -101,3 +101,12 @@ footer a {
 h5{
 	background: black;
 }
+
+.edit-modal{
+	width: 60%;
+	margin: auto;
+	
+}
+.modal-body-edit{
+	width: 100%;
+}

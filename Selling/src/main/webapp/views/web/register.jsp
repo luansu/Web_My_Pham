@@ -120,33 +120,53 @@
 							</small></label>
 						</div>
 						<div class="input-group mb-4">
-								<button type="button" class="btn btn-primary w-100 fs-6"
-							data-bs-toggle="modal" data-bs-target="#exampleModal">
-							Register</button>
+							<button type="button" class="btn btn-primary w-100 fs-6"
+								data-bs-toggle="modal" data-bs-target="#exampleModal">
+								Register</button>
 						</div>
 
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
-								<div class="modal-content">
+								<div class="edit-modal modal-content">
 									<div class="modal-header">
-										<h1 class="modal-title fs-5" id="exampleModalLabel">Mã kích hoạt</h1>
+										<h1 class="modal-title fs-5" id="exampleModalLabel">Mã
+											kích hoạt</h1>
 										<button type="button" class="btn-close"
 											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
-									<div class="modal-body"><input type="text" id="validationDefault01" placeholder ="Nhập mã kích hoạt"></div>
+									<div class="modal-body">
+										<input type="text" id="validationDefault01" class = "modal-body-edit"
+											placeholder="Nhập mã kích hoạt">
+									</div>
+									<c:if test="${not empty error}">
+										<div class="alert alert-danger d-flex align-items-center"
+											role="alert">
+											<svg class="bi flex-shrink-0 me-2" role="img"
+												aria-label="Danger:">
+											<use xlink:href="#exclamation-triangle-fill" /></svg>
+											<div>${error}</div>
+										</div>
+									</c:if>
+									<c:if test="${not empty message}">
+										<div class="alert alert-success d-flex align-items-center"
+											role="alert">
+											<svg class="bi flex-shrink-0 me-2" role="img"
+												aria-label="Success:">
+												<use xlink:href="#check-circle-fill" /></svg>
+											<div>${message}</div>
+										</div>
+									</c:if>
+
 									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save
-											changes</button>
+										<button type="button" class="btn btn-danger"
+											data-bs-dismiss="modal">Thoát</button>
+										<button type="submit" class="btn btn-success">Kích hoạt</button>
 									</div>
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 				</div>
 
