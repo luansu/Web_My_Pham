@@ -19,8 +19,6 @@
 </head>
 <body>
 
-
-
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">
@@ -70,9 +68,9 @@
 							<li class="nav-item"><a class="nav-link" href="#">Đã trả</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Gửi
 									hàng</a></li>
-							<li class="nav-item"><a class="nav-link-action"" href="#">Hoàn
+							<li class="nav-item"><a class="nav-link"" href="#">Hoàn
 									thành</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Đã hủy</a></li>
+							<li class="nav-item"><a class="nav-link-action" href="#">Đã hủy</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Hoàn
 									lại tiền</a></li>
 						</ul>
@@ -121,8 +119,6 @@
 						</div>
 						<div class=" child ms-auto d-flex">
 							<button style="margin-right: 20px" type="button"
-								class="btn btn-success btn-sm">Đánh Giá</button>
-							<button style="margin-right: 20px" type="button"
 								class="btn btn-primary btn-sm">Trợ giúp</button>
 							<button type="button" class="btn btn-danger btn-sm">Mua
 								lại</button>
@@ -146,18 +142,12 @@
 						</div>
 						<div class=" child ms-auto d-flex">
 							<button style="margin-right: 20px" type="button"
-								class="btn btn-success btn-sm">Đánh Giá</button>
-							<button style="margin-right: 20px" type="button"
 								class="btn btn-primary btn-sm">Trợ giúp</button>
 							<button type="button" class="btn btn-danger btn-sm">Mua
 								lại</button>
 						</div>
 					</div>
 				</div>
-
-
-
-
 
 			</div>
 

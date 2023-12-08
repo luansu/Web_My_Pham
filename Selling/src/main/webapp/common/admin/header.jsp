@@ -30,7 +30,7 @@
 <!--HEADER-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secondary-subtle">
     <a class="navbar-brand d-flex align-items-center ps-2" href="#">
-        <img src="https://www.oriflame.vn" alt="logo" style="width: 50px;height: auto;">
+        <img src="../Web_My_Pham/img/Gelisay.png" alt="logo" style="width: 50px;height: auto;">
         <div class="mx-2 align-items-center mt-1" style="font-size: 16px">Trang chủ</div>
         <div class="mx-2 align-items-center mt-1" style="font-size: 16px">Khách Hàng</div>
         <div class="mx-2 align-items-center mt-1" style="font-size: 16px">Nhân Viên</div>

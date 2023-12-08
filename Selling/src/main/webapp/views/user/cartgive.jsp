@@ -19,8 +19,6 @@
 </head>
 <body>
 
-
-
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">
@@ -68,9 +66,9 @@
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="nav-link" href="#">Tất cả</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Đã trả</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Gửi
+							<li class="nav-item"><a class="nav-link-action" href="#">Gửi
 									hàng</a></li>
-							<li class="nav-item"><a class="nav-link-action"" href="#">Hoàn
+							<li class="nav-item"><a class="nav-link" href="#">Hoàn
 									thành</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Đã hủy</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Hoàn
@@ -154,10 +152,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
 
 			</div>
 

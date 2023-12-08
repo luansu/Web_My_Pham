@@ -7,25 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-
-		<table border="1" style="width: 100%">
-		<tr>
-			<td colspan="2">
-				<%@ include file="/common/admin/header.jsp" %>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>
-				<decorator:body></decorator:body>
-			</td>
-		<tr>
-			<td colspan="2">
-				<%@ include file="/common/admin/footer.jsp" %>
-			</td>
-		</tr>
-	</table>
-
+<body style="top: 0;bottom: 0;">
+	<%@ include file="/common/admin/header.jsp" %>
+	<div>
+		<decorator:body></decorator:body>	
+	</div>
+	<%@ include file="/common/admin/footer.jsp" %>
 </body>
 </html>
