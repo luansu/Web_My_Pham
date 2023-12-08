@@ -14,7 +14,7 @@ body{
 	font-size: 16px;
 }
 .bg__img{
-	background: url("templates/web/images/contentImage.jpg") no-repeat;
+	background: url("../images/contentImage.jpg") no-repeat;
 	background-size: cover;
 }
 .edit{
