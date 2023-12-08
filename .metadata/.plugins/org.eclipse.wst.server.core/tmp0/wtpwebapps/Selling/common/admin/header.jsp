@@ -23,14 +23,18 @@
     <!--MAIN CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
 <!--HEADER-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secondary-subtle">
     <a class="navbar-brand d-flex align-items-center ps-2" href="#">
-        <img src="./img/logo-removebg-preview.png" alt="logo" style="width: 50px;height: auto;">
-        <div class="mx-2 align-items-center mt-1" style="font-size: 16px">Trang chủ > Doanh Thu</div>
+        <img src="https://www.oriflame.vn" alt="logo" style="width: 50px;height: auto;">
+        <div class="mx-2 align-items-center mt-1" style="font-size: 16px">Trang chủ</div>
+        <div class="mx-2 align-items-center mt-1" style="font-size: 16px">Khách Hàng</div>
+        <div class="mx-2 align-items-center mt-1" style="font-size: 16px">Nhân Viên</div>
+        <div class="mx-2 align-items-center mt-1" style="font-size: 16px">Shipper</div>
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,5 +130,6 @@
         </ul>
     </div>
 </nav>
+
 </body>
 </html>

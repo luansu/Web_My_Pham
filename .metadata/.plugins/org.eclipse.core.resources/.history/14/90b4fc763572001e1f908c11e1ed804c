@@ -1,5 +1,0 @@
-package orishop.services1;
-
-public interface ICustomerService {
-
-}

@@ -1,0 +1,9 @@
+package orishop.services;
+
+import java.util.List;
+
+import orishop.models.CategoryModels;
+
+public interface IEmployeeService {
+	List<CategoryModels> findAll();
+}

@@ -86,3 +86,9 @@ a {
 	text-align: cennter;
 	margin-top: 20px ;
 }
+body {
+    margin: 0;
+    padding: 0;
+}
+
+

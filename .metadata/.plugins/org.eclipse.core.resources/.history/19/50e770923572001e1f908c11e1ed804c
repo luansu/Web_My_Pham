@@ -1,5 +1,0 @@
-package orishop.DAO.copy;
-
-public interface IAccountDAO {
-
-}
