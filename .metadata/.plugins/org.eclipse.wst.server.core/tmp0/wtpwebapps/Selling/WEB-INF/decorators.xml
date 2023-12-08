@@ -14,6 +14,10 @@
 		<pattern>/user*</pattern>
 	</decorator>
 	
+	<decorator name="web" page="web.jsp">
+		<pattern>/web*</pattern>
+	</decorator>
+	
 	<excludes>
 		<pattern>/api*</pattern>
 	</excludes>

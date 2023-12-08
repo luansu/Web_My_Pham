@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import orishop.models.AccountModels;
-import orishop.services.AccountServiceImpl;
+import orishop.services.AccountServiceImpl; 
 import orishop.services.IAccountService;
 import orishop.util.Constant;
 import orishop.util.Email;
-@WebServlet(urlPatterns = { "/home","/login","/register","/forgotpass","/waiting","/VerifyCode","/logout"})
+@WebServlet(urlPatterns = {"/web/login","/web/register","/web/forgotpass","/web/waiting","/web/VerifyCode","/web/logout"})
 
 public class WebHomeControllers extends HttpServlet  {
 private static final long serialVersionUID = 1L;
@@ -25,22 +25,19 @@ private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String url = req.getRequestURI().toString();
-		if (url.contains("register")) {
-			req.getRequestDispatcher("views/web/register.jsp").forward(req, resp);
-		} else if (url.contains("login")) {
+		if (url.contains("web/register")) {
+			req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
+		} else if (url.contains("web/login")) {
 			getLogin(req,resp);
-		} else if (url.contains("forgotpass")) {
+		} else if (url.contains("web/forgotpass")) {
 			req.getRequestDispatcher("/views/web/forgotpassword.jsp").forward(req, resp);
-		} else if (url.contains("waiting")) {
+		} else if (url.contains("web/waiting")) {
 			getWaiting(req, resp);
-		} else if (url.contains("VerifyCode")) {
+		} else if (url.contains("web/VerifyCode")) {
 			req.getRequestDispatcher("/views/web/verify.jsp").forward(req, resp);
-		} else if (url.contains("logout")) {
+		} else if (url.contains("web/logout")) {
 			getLogout(req,resp);
-		} else if (url.contains("home")) {
-			req.getRequestDispatcher("/views/web/home.jsp").forward(req, resp);
-			
-		}
+		} 
 		
 	}
 	private void getLogout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,20 +56,21 @@ private static final long serialVersionUID = 1L;
 			}
 		}
 		
-		resp.sendRedirect("./login");
+		resp.sendRedirect(req.getContextPath()+"/login");
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI().toString();
-		if (url.contains("register")) {
+		if (url.contains("web/register")) {
 			postRegister(req, resp);
-		} else if (url.contains("login")) {
+		} else if (url.contains("web/login")) {
 			postLogin(req, resp);
 		}
-		else if (url.contains("forgotpass")) {
+		else if (url.contains("web/forgotpass")) {
 			postForgotPassword(req, resp);
 		}
-		else if (url.contains("VerifyCode")) {
+		else if (url.contains("web/VerifyCode")) {
 			postVerifyCode(req, resp);
 		}
 	}
@@ -131,12 +129,12 @@ private static final long serialVersionUID = 1L;
 				}
 			} else {
 				req.setAttribute("error", "username hoặc email không tồn tại trong hệ thống!");
-				req.getRequestDispatcher("views/web/forgotpassword.jsp").forward(req, resp);
+				req.getRequestDispatcher("/views/web/forgotpassword.jsp").forward(req, resp);
 				return;
 			}
 		} else {
 			req.setAttribute("error", "username hoặc email không tồn tại trong hệ thống!");
-			req.getRequestDispatcher("views/web/forgotpassword.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/web/forgotpassword.jsp").forward(req, resp);
 		}
 	}
 	
@@ -160,8 +158,7 @@ private static final long serialVersionUID = 1L;
 				}
 			}
 		}
-		
-		req.getRequestDispatcher("views/web/login.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 	}
 	
 	
@@ -181,7 +178,7 @@ private static final long serialVersionUID = 1L;
 		if (username.isEmpty() || password.isEmpty()) {
 			alertMsg = "Tài khoản hoặc mật khẩu không đúng";
 			req.setAttribute("error", alertMsg);
-			req.getRequestDispatcher("views/web/login.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 			return;
 		}
 		
@@ -202,13 +199,13 @@ private static final long serialVersionUID = 1L;
 			 } else {
 				 alertMsg = "Tài khoản đã bị khóa, liên hệ  Admin nhé";
 				 req.setAttribute("error", alertMsg);
-				 req.getRequestDispatcher("views/web/login.jsp").forward(req, resp);
+				 req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 			 }
 			 
 		 } else {
 			 alertMsg = "Tài khoản hoặc mật khẩu không đúng";
 			 req.setAttribute("error", alertMsg);
-			 req.getRequestDispatcher("views/web/login.jsp").forward(req, resp);
+			 req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 			 
 		 }
 	}
