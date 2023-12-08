@@ -113,8 +113,8 @@
 											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
-										<input type="text" id="validationDefault01" class = "modal-body-edit"
-											placeholder="Nhập mã kích hoạt">
+										<input type="text" id="validationDefault01"
+											class="modal-body-edit" placeholder="Nhập mã kích hoạt">
 									</div>
 									<c:if test="${not empty error}">
 										<div class="alert alert-danger d-flex align-items-center"
@@ -134,14 +134,11 @@
 											<div>${message}</div>
 										</div>
 									</c:if>
-
-										<input type="text" id="validationDefault01"
-											placeholder="Nhập mã kích hoạt">
-									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-danger"
 											data-bs-dismiss="modal">Thoát</button>
-										<button type="submit" class="btn btn-success">Kích hoạt</button>
+										<button type="submit" class="btn btn-success">Kích
+											hoạt</button>
 									</div>
 								</div>
 							</div>

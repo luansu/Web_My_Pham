@@ -3,8 +3,7 @@
 <%@include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
 <html lang="fr">
-<body>
-	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 	<!-- Google fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 		rel="stylesheet" type="text/css" />
@@ -41,6 +40,8 @@
 		href="fonts/material-icon/css/material-design-iconic-font.min.css">
 	<link rel="stylesheet"
 		href="${pageContext.request.contextPath}/templates/web/css/main.css">
+<body>
+
 
 	<div class="bg__img">
 		<div class="container d-flex justify-content-center w-200 min-vh-100"
@@ -102,8 +103,7 @@
 						</button>
 					</div>
 					<div class="row text-center ">
-						<small>Don't have account? <a href="register">Sign
-								Up</a></small>
+						<small>Don't have account? <a href="register">Sign Up</a></small>
 
 					</div>
 				</div>
