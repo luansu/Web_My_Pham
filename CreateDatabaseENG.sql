@@ -11,14 +11,12 @@ GO
 --DROP TABLE ACCOUNT
 CREATE TABLE ACCOUNT (
 	accountId int Identity primary key,
-	username nvarchar(30) not null unique,
-	[password] nvarchar(30) not null,
-	fullname nvarchar(30),
+	username nvarchar(30),
+	[password] nvarchar(30),
 	mail varchar(30),
-	roleID int,
+	roleId int,
 	[status] int,
-	code nvarchar(30),
-	verifyCode bit
+	code nvarchar(30)
 )
 GO
 
@@ -26,32 +24,35 @@ CREATE Or Alter TRIGGER TG_TaoTaiKhoanSQL
 ON Account
 AFTER INSERT
 AS
-DECLARE @username nvarchar(30), @password nvarchar(30), @accountID int, @roleID int, @mail varchar(30), @fullname nvarchar(30)
-SELECT @username=i.username, @password=i.password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail, @fullname=Fullname
+DECLARE @username nvarchar(30), @password nvarchar(30), @accountID int, @roleID int, @mail varchar(30)
+SELECT @username=i.Username, @password=i.Password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail
 FROM inserted i
 BEGIN
 	DECLARE @sqlString nvarchar(2000)
 	if (@roleID = 1)
-	SET @sqlString = 'Insert into Customer (Mail, CustomerName, AccountID) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+')';
+	BEGIN
+	SET @sqlString = 'Insert into Customer (Mail, AccountID) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+')';
+	END
 	--else if (@roleID = 2)
-	--SET @sqlString = 'Insert into EMPLOYEE (Mail, EmployeeName, AccountID, Job) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+',''admin'')';
+	--SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''admin'')';
 	--else if (@roleID = 3)
-	--SET @sqlString = 'Insert into EMPLOYEE (Mail, EmployeeName, AccountID, Job) values ('''+@mail+''','''+@fullname+''','+ CAST(@accountID AS nvarchar)+',''seller'')';
+	--SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''seller'')';
 	EXEC (@sqlString)
 END
 GO
+		
 -- DROP TABLE CUSTOMER
 create table CUSTOMER (
 	customerId int Identity PRIMARY KEY,
-	customerName nvarchar(100) NOT NULL,
+	customerName nvarchar(100),
 	birthday date,
 	gender nvarchar(10),
 	[address] nvarchar(100),
-	phone numeric unique check (len(Phone)=10),
-	mail varchar(30) unique,
+	phone numeric,
+	mail varchar(30),
 	[rank] nvarchar(50),
 	reputation int,
-	rewardPoints int NOT NULL CHECK (rewardPoints >=0),
+	rewardPoints int,
 	accountId int CONSTRAINT FK_ACCOUNT_CUSTOMER FOREIGN KEY REFERENCES ACCOUNT(accountId),
 )
 Go
@@ -65,10 +66,19 @@ create table CART (
 )
 Go
 
+CREATE TABLE CART_ITEM (
+	cartId int FOREIGN KEY REFERENCES CART(cartId),
+    	productId int FOREIGN KEY REFERENCES PRODUCT(productId),
+	quantity int,
+    	totalPrice float
+    	PRIMARY KEY(productId, cartId)
+)
+GO
+
 --DROP TABLE CATEGORY
 CREATE TABLE CATEGORY (
 	categoryId int Identity,
-	categoryName nvarchar(100) NOT NULL,
+	categoryName nvarchar(100),
 	imageURL nvarchar(2000)
 	primary key (categoryId)
 )
@@ -77,7 +87,7 @@ GO
 --DROP TABLE SUPPLIER
 CREATE TABLE SUPPLIER (
 	supplierId int Identity,
-	supplierName  nvarchar(100) NOT NULL
+	supplierName  nvarchar(100)
 	primary key (supplierId)
 )
 GO
@@ -87,13 +97,13 @@ GO
 --DROP TABLE EMPLOYEE 
 CREATE TABLE EMPLOYEE (
     employeeId int Identity PRIMARY KEY,
-    employeeName nvarchar(100) NOT NULL,
+    employeeName nvarchar(100),
     birthdate date,
     gender nvarchar(10),
     [address] nvarchar(100),
-    phone varchar(10) NOT NULL check (len(Phone)=10),
+    phone varchar(10),
 	mail varchar(30),
-    job nvarchar(100), -- 
+    job nvarchar(100),
     accountId int,
     activityArea nvarchar(100),
 	imageURL nvarchar(2000)
@@ -104,7 +114,7 @@ GO
 CREATE TABLE ORDERS (
     orderId int Identity PRIMARY KEY,
     orderValue float,
-    orderDate DATETIME NOT NULL,
+    orderDate DATETIME,
     cartId int FOREIGN KEY REFERENCES CART(cartId),
     customerId int FOREIGN KEY REFERENCES CUSTOMER(customerId),
 	--Status include: Save, 'Chưa giao cho shipper','Đã giao cho shipper' , paid, unpaid,  "Đã giao khách hàng"
@@ -119,11 +129,11 @@ GO
 -- DROP TABLE PRODUCT
 CREATE TABLE PRODUCT (
     productId int Identity PRIMARY KEY,
-    productName nvarchar(100) NOT NULL,
-    [description] nvarchar(2000) NOT NULL,
-    stock int NOT NULL,
-    amount int NOT NULL,
-    price float NOT NULL,
+    productName nvarchar(100),
+    [description] nvarchar(2000),
+    stock int,
+    amount int,
+    price float,
     categoryId int FOREIGN KEY REFERENCES CATEGORY(categoryId),
     imageURL nvarchar(2000)
 )
@@ -133,7 +143,7 @@ GO
 CREATE TABLE ORDER_ITEM (
     productId int FOREIGN KEY REFERENCES PRODUCT(productId),
     orderId int FOREIGN KEY REFERENCES ORDERS(orderId),
-	quantity int NOT NULL,
+	quantity int,
     totalPrice float
     PRIMARY KEY(productId, orderId)
 )
@@ -143,9 +153,9 @@ GO
 CREATE TABLE IMPORTING_GOODS (
     productId int FOREIGN KEY REFERENCES PRODUCT(productId),
 	supplierId int FOREIGN KEY REFERENCES SUPPLIER(supplierId),
-    quantity int NOT NULL,
+    quantity int,
 	importingDate Date,
-    cost float
+   	 cost float
     PRIMARY KEY(productId, supplierId)
 )
 GO
