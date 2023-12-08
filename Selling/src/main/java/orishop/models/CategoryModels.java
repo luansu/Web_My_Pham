@@ -4,51 +4,52 @@ import java.io.Serializable;
 public class CategoryModels implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	private int cateID;
-	private String cateName;
-	private String images;
+	private int categoryId;
+	private String categoryName;
+	private String imageURL;
 	
-	// tạo các constructor
-	
+
 	public CategoryModels() {
 		super();
 	}
-	
-	public CategoryModels(int cateID, String cateName, String images) {
+
+
+	public CategoryModels(int categoryId, String categoryName, String imageURL) {
 		super();
-		this.cateID = cateID;
-		this.cateName = cateName;
-		this.images = images;
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+		this.imageURL = imageURL;
+	}
+
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 	
-	// tạo các setter và getter
-
-	public int getCateID() {
-		return cateID;
-	}
-
-	public void setCateID(int cateID) {
-		this.cateID = cateID;
-	}
-
-	public String getCateName() {
-		return cateName;
-	}
-
-	public void setCateName(String cateName) {
-		this.cateName = cateName;
-	}
-
-	public String getImages() {
-		return images;
-	}
-
-	public void setImages(String images) {
-		this.images = images;
-	}
-
-	@Override
-	public String toString() {
-		return "CategoryModels [cateID=" + cateID + ", cateName=" + cateName + ", images=" + images + "]";
-	}
+	
 }

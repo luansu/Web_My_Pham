@@ -14,25 +14,53 @@ public class CategoryDAOImp implements ICategoryDAO{
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
-	public List<CategoryModels> findAll() {
+	@Override
+	public List<CategoryModels> findAllCategory() {
 		List<CategoryModels> listCate = new ArrayList<CategoryModels>();
-		String sql = "SELECT * FROM Category";
+		String query = "select * from CATEGORY";
+
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
-			ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
-			while(rs.next()) {
+
+			while (rs.next()) {
 				CategoryModels cate = new CategoryModels();
-				cate.setCateID(rs.getInt("categoryID"));
-				cate.setCateName(rs.getString("categoryName"));
-				cate.setImages(rs.getString("image"));
+				cate.setCategoryId(rs.getInt(1));
+				cate.setCategoryName(rs.getString(2));
+				cate.setImageURL(rs.getString(3));
 				listCate.add(cate);
 			}
-		}
-		catch (Exception e){
+			conn.close();
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return listCate;
+	}
+
+	@Override
+	public CategoryModels findOne(int cateID) {
+		CategoryModels cate = new CategoryModels();
+		String query = "select * from CATEGORY where categoryId = ?";
+
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, cateID);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				cate.setCategoryId(rs.getInt(1));
+				cate.setCategoryName(rs.getString(2));
+				cate.setImageURL(rs.getString(3));
+			}
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cate;
 	}
 
 }

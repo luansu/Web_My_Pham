@@ -3,76 +3,115 @@ import java.io.Serializable;
 public class ProductModels implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String productID;
+	private int productId;
 	private String productName;
 	private String description;
 	private int stock;
 	private int amount;
-	private Float unitPrice;
-	private String categoryID;
+	private float price;
+	private int categoryId;
 	private String imageURL;
+	
+	private CategoryModels category;
+
+	
 	public ProductModels() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public ProductModels(String productID, String productName, String description, int stock, int amount,
-			Float unitPrice, String categoryID, String imageURL) {
+
+	public ProductModels(int productId, String productName, String description, int stock, int amount, float price,
+			int categoryId, String imageURL, CategoryModels category) {
 		super();
-		this.productID = productID;
+		this.productId = productId;
 		this.productName = productName;
 		this.description = description;
 		this.stock = stock;
 		this.amount = amount;
-		this.unitPrice = unitPrice;
-		this.categoryID = categoryID;
+		this.price = price;
+		this.categoryId = categoryId;
 		this.imageURL = imageURL;
+		this.category = category;
 	}
-	public String getProductID() {
-		return productID;
+
+	public int getProductId() {
+		return productId;
 	}
-	public void setProductID(String productID) {
-		this.productID = productID;
+
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
+
 	public String getProductName() {
 		return productName;
 	}
+
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public int getStock() {
 		return stock;
 	}
+
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
 	public int getAmount() {
 		return amount;
 	}
+
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	public Float getUnitPrice() {
-		return unitPrice;
+
+	public float getPrice() {
+		return price;
 	}
-	public void setUnitPrice(Float unitPrice) {
-		this.unitPrice = unitPrice;
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
-	public String getCategoryID() {
-		return categoryID;
+
+	public int getCategoryId() {
+		return categoryId;
 	}
-	public void setCategoryID(String categoryID) {
-		this.categoryID = categoryID;
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
+
 	public String getImageURL() {
 		return imageURL;
 	}
+
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
+
+	public CategoryModels getCategory() {
+		return category;
+	}
+
+	public void setCategory(CategoryModels category) {
+		this.category = category;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductModels [productId=" + productId + ", productName=" + productName + ", description=" + description
+				+ ", stock=" + stock + ", amount=" + amount + ", price=" + price + ", categoryId=" + categoryId
+				+ ", imageURL=" + imageURL + ", category=" + category + "]";
+	}
+
+	
+	
 }
