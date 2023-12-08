@@ -56,7 +56,7 @@ private static final long serialVersionUID = 1L;
 			}
 		}
 		
-		resp.sendRedirect(req.getContextPath()+"/login");
+		resp.sendRedirect(req.getContextPath()+"/web/login");
 	}
 	
 	@Override
@@ -142,22 +142,10 @@ private static final long serialVersionUID = 1L;
 		// check session
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("account") != null) {
-			resp.sendRedirect(req.getContextPath()+"/waiting");
+			resp.sendRedirect(req.getContextPath() + "/web/waiting");
 			return;
 		}
-		
-		// check cookie
-		Cookie[] cookies = req.getCookies();
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("username")) {
-					session = req.getSession(true);
-					session.setAttribute("username", cookie.getValue());
-					resp.sendRedirect(req.getContextPath()+ "/waiting");
-					return;
-				}
-			}
-		}
+
 		req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 	}
 	
@@ -194,7 +182,7 @@ private static final long serialVersionUID = 1L;
 					 saveRememberMe(resp, username);
 				 }
 				 
-				 resp.sendRedirect(req.getContextPath()+"/waiting");
+				 resp.sendRedirect(req.getContextPath()+"/web/waiting");
 			
 			 } else {
 				 alertMsg = "Tài khoản đã bị khóa, liên hệ  Admin nhé";
@@ -242,7 +230,7 @@ private static final long serialVersionUID = 1L;
 				if (isSuccess)
 				{
 					
-					resp.sendRedirect(req.getContextPath()+"/VerifyCode");
+					resp.sendRedirect(req.getContextPath()+"/web/VerifyCode");
 				
 				} else {
 					alertMsg = "Lỗi hệ thống!";
@@ -264,14 +252,14 @@ private static final long serialVersionUID = 1L;
 			AccountModels u = (AccountModels) session.getAttribute("account");
 			req.setAttribute("username", u.getUsername());
 			if (u.getRoleID() == 1) {
-				resp.sendRedirect(req.getContextPath()+"/home");
-			} else if (u.getRoleID() ==2) {
-				resp.sendRedirect(req.getContextPath()+"/admin/home");
-			} else {
-				resp.sendRedirect(req.getContextPath()+"/home");
+				resp.sendRedirect(req.getContextPath() + "/user/home");
+			} else if (u.getRoleID() == 2) {
+				resp.sendRedirect(req.getContextPath() + "/admin/home");
+			} else if (u.getRoleID() == 3) {
+				resp.sendRedirect(req.getContextPath() + "/seller/home");
+			} else if (u.getRoleID() == 4) {
+				resp.sendRedirect(req.getContextPath() + "/shipper/home");
 			}
-		} else {
-			resp.sendRedirect(req.getContextPath()+"/login");
 		}
 	}
 
