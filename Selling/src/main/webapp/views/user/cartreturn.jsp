@@ -19,8 +19,6 @@
 </head>
 <body>
 
-
-
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">
@@ -70,10 +68,10 @@
 							<li class="nav-item"><a class="nav-link" href="#">Đã trả</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Gửi
 									hàng</a></li>
-							<li class="nav-item"><a class="nav-link-action"" href="#">Hoàn
+							<li class="nav-item"><a class="nav-link"" href="#">Hoàn
 									thành</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Đã hủy</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Hoàn
+							<li class="nav-item"><a class="nav-link-action" href="#">Hoàn
 									lại tiền</a></li>
 						</ul>
 					</div>
@@ -121,43 +119,12 @@
 						</div>
 						<div class=" child ms-auto d-flex">
 							<button style="margin-right: 20px" type="button"
-								class="btn btn-success btn-sm">Đánh Giá</button>
-							<button style="margin-right: 20px" type="button"
 								class="btn btn-primary btn-sm">Trợ giúp</button>
 							<button type="button" class="btn btn-danger btn-sm">Mua
 								lại</button>
 						</div>
 					</div>
 				</div>
-				<div style="margin-top: 10px" class="parent list-iteam">
-					<div class="d-flex align-items-center mb-5">
-						<div class="flex-shrink-0">
-							<img
-								src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F40788%2F40788.png%3Fversion%3D1643101200&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
-								class="img-fluid" style="width: 150px;"
-								alt="Generic placeholder image">
-						</div>
-						<div class="flex-grow-1 ms-3">
-							<h5 class="text-primary">Nuit Eau de Parfum for her</h5>
-							<h6 style="color: #9e9e9e;">Số lượng: 1</h6>
-							<div class="d-flex align-items-center">
-								<p class="fw-bold mb-0 me-5 pe-3">Tổng: 69$</p>
-							</div>
-						</div>
-						<div class=" child ms-auto d-flex">
-							<button style="margin-right: 20px" type="button"
-								class="btn btn-success btn-sm">Đánh Giá</button>
-							<button style="margin-right: 20px" type="button"
-								class="btn btn-primary btn-sm">Trợ giúp</button>
-							<button type="button" class="btn btn-danger btn-sm">Mua
-								lại</button>
-						</div>
-					</div>
-				</div>
-
-
-
-
 
 			</div>
 

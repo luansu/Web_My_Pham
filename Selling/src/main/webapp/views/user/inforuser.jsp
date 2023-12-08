@@ -14,8 +14,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/templates/user/css/style.css">
+<%-- <link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/templates/user/css/style.css"> --%>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">
-			<div class="user__id">
+			<div class="mb-3 user__id">
 				<img
 					src="https://down-vn.img.susercontent.com/file/a9455e3e363b43ff11f546fd2332bd39_tn"
 					alt="ảnh hồ sơ">
@@ -50,6 +50,9 @@
 				<li
 					class="list-group-item list-group-item-action list-group-item-success"><i
 					class="fas fa-bell"></i> Thông báo</li>
+				<li
+					class="list-group-item list-group-item-action list-group-item-primary"><i
+					class="fas fa-gift"></i>Giỏ hàng</li>
 				<li
 					class="list-group-item list-group-item-action list-group-item-danger"><i
 					class="fas fa-gift"></i>Kho Voucher</li>
