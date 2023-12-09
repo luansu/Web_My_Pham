@@ -114,51 +114,7 @@
 							</div>
 						</form>
 
-						<!-- Modal -->
-						<form action="VerifyCode" method="post">
-							<div class="modal fade" id="exampleModal" tabindex="-1"
-								aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="edit-modal modal-content">
-										<div class="modal-header">
-											<h1 class="modal-title fs-5" id="exampleModalLabel">Mã
-												kích hoạt</h1>
-											<button type="button" class="btn-close"
-												data-bs-dismiss="modal" aria-label="Close"></button>
-										</div>
-										<div class="modal-body">
-											<input type="text" id="validationDefault01"
-												class="modal-body-edit" placeholder="Nhập mã kích hoạt"
-												name="authcode">
-										</div>
-										<c:if test="${not empty error}">
-											<div class="alert alert-danger d-flex align-items-center"
-												role="alert">
-												<svg class="bi flex-shrink-0 me-2" role="img"
-													aria-label="Danger:">
-											<use xlink:href="#exclamation-triangle-fill" /></svg>
-												<div>${error}</div>
-											</div>
-										</c:if>
-										<c:if test="${not empty message}">
-											<div class="alert alert-success d-flex align-items-center"
-												role="alert">
-												<svg class="bi flex-shrink-0 me-2" role="img"
-													aria-label="Success:">
-												<use xlink:href="#check-circle-fill" /></svg>
-												<div>${message}</div>
-											</div>
-										</c:if>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-danger"
-												data-bs-dismiss="modal">Thoát</button>
-											<button type="submit" class="btn btn-success">Kích
-												hoạt</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
+						
 					</div>
 				</div>
 

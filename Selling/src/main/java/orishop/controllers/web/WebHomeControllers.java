@@ -27,6 +27,8 @@ private static final long serialVersionUID = 1L;
 		String url = req.getRequestURI().toString();
 		if (url.contains("web/register")) {
 			req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
+		} else if (url.contains("web/VerifyCode")) {
+			req.getRequestDispatcher("/views/web/verify.jsp").forward(req, resp);
 		} else if (url.contains("web/login")) {
 			getLogin(req,resp);
 		} else if (url.contains("web/forgotpass")) {
@@ -90,7 +92,7 @@ private static final long serialVersionUID = 1L;
 				req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 			} else {
 				req.setAttribute("error", "Sai mã kích hoạt, vui lòng kiểm tra lại!!!");
-				req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
+				req.getRequestDispatcher("/views/web/verify.jsp").forward(req, resp);
 			}
 		} catch (Exception e) {
 			e.getStackTrace();
@@ -141,6 +143,18 @@ private static final long serialVersionUID = 1L;
 		if (session != null && session.getAttribute("account") != null) {
 			resp.sendRedirect(req.getContextPath() + "/web/waiting");
 			return;
+		}
+		// check cookie
+		Cookie[] cookies = req.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("username")) {
+					session = req.getSession(true);
+					session.setAttribute("username", cookie.getValue());
+					resp.sendRedirect(req.getContextPath() + "/waiting");
+					return;
+				}
+			}
 		}
 
 		req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
@@ -226,20 +240,18 @@ private static final long serialVersionUID = 1L;
 				
 				if (isSuccess)
 				{
-					try {
-				        Thread.sleep(50000);
-				    } catch (InterruptedException e) {
-				        e.printStackTrace();
-				    }
+					resp.sendRedirect(req.getContextPath()+"/web/VerifyCode");
 				
 				} else {
 					alertMsg = "Lỗi hệ thống!";
 					req.setAttribute("error",alertMsg);
-					resp.sendRedirect(req.getContextPath()+"/web/register");
+					req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
 				}
 			} else {
-				PrintWriter out = resp.getWriter();
-				out.println("Lỗi khi gửi mail!!!!!!!!!!!!!!");
+				alertMsg = "Lỗi khi gửi mail!!!!!!!!!!!!!!";
+				req.setAttribute("error",alertMsg);
+				req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
+				
 			}
 		}
 			
