@@ -36,12 +36,7 @@
 						class="list-group-item list-group-item-action list-group-item-primary"
 						data-bs-toggle="dropdown" aria-expanded="false"><i
 						class="fas fa-user"></i>Tài khoản của tôi</li>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item list-group-item-success" href="#"><i
-								class="fas fa-user"></i>Hồ sơ</a></li>
-						<li><a class="dropdown-item list-group-item-secondary"
-							href="#"><i class="fas fa-address-book"></i>Địa chỉ</a></li>
-					</ul>
+
 				</div>
 
 				<li
