@@ -70,17 +70,12 @@
 						<div class="header-text mb-4 text-center">
 							<h1 style="font-size: 2rem;">SIGN-IN</h1>
 						</div>
-						<div class="row">
-							<div class="col">
-								<c:if test="${not empty message}">
+						<c:if test="${not empty message}">
 									<div class="alert alert-success">${message}</div>
-								</c:if>
-
-								<c:if test="${not empty error}">
+						</c:if>
+						<c:if test="${not empty error}">
 									<div class="alert alert-danger">${error}</div>
-								</c:if>
-							</div>
-						</div>
+						</c:if>
 						<form action="login" method="post">
 
 							<div class="input-group mb-3">

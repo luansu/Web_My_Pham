@@ -110,3 +110,11 @@ h5{
 .modal-body-edit{
 	width: 100%;
 }
+.alert-danger{
+	width: 95%;
+    left: 10px;
+}
+.alert-success{
+	 width: 95%;
+    left: 10px;
+}
