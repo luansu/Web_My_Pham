@@ -35,7 +35,7 @@
 </head>
 
 <body>
-	<nav class="navbar fixed-bottom bg-body-tertiary">
+	<nav class="navbar bg-body-tertiary">
 		<div class="container mt-5 justify-content-center">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-3">

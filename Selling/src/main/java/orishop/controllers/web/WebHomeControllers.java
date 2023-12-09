@@ -33,8 +33,6 @@ private static final long serialVersionUID = 1L;
 			req.getRequestDispatcher("/views/web/forgotpassword.jsp").forward(req, resp);
 		} else if (url.contains("web/waiting")) {
 			getWaiting(req, resp);
-		} else if (url.contains("web/VerifyCode")) {
-			req.getRequestDispatcher("/views/web/verify.jsp").forward(req, resp);
 		} else if (url.contains("web/logout")) {
 			getLogout(req,resp);
 		} 
@@ -51,12 +49,11 @@ private static final long serialVersionUID = 1L;
 				if (Constant.COOKIE_REMEBER.equals(cookie.getName())){
 					cookie.setMaxAge(0);
 					resp.addCookie(cookie);
-					break;
 				}
 			}
 		}
 		
-		resp.sendRedirect(req.getContextPath()+"/login");
+		resp.sendRedirect(req.getContextPath()+"/web/login");
 	}
 	
 	@Override
@@ -93,7 +90,7 @@ private static final long serialVersionUID = 1L;
 				req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 			} else {
 				req.setAttribute("error", "Sai mã kích hoạt, vui lòng kiểm tra lại!!!");
-				req.getRequestDispatcher("/views/web/verify.jsp").forward(req, resp);
+				req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
 			}
 		} catch (Exception e) {
 			e.getStackTrace();
@@ -102,7 +99,7 @@ private static final long serialVersionUID = 1L;
 	
 	private void saveRememberMe(HttpServletResponse resp, String username) {
 		Cookie cookie = new Cookie(Constant.COOKIE_REMEBER, username);
-		cookie.setMaxAge(30*60*60);
+		cookie.setMaxAge(30*60);
 		resp.addCookie(cookie);
 	}
 	
@@ -142,22 +139,10 @@ private static final long serialVersionUID = 1L;
 		// check session
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("account") != null) {
-			resp.sendRedirect(req.getContextPath()+"/waiting");
+			resp.sendRedirect(req.getContextPath() + "/web/waiting");
 			return;
 		}
-		
-		// check cookie
-		Cookie[] cookies = req.getCookies();
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("username")) {
-					session = req.getSession(true);
-					session.setAttribute("username", cookie.getValue());
-					resp.sendRedirect(req.getContextPath()+ "/waiting");
-					return;
-				}
-			}
-		}
+
 		req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 	}
 	
@@ -194,7 +179,7 @@ private static final long serialVersionUID = 1L;
 					 saveRememberMe(resp, username);
 				 }
 				 
-				 resp.sendRedirect(req.getContextPath()+"/waiting");
+				 resp.sendRedirect(req.getContextPath()+"/web/waiting");
 			
 			 } else {
 				 alertMsg = "Tài khoản đã bị khóa, liên hệ  Admin nhé";
@@ -241,13 +226,16 @@ private static final long serialVersionUID = 1L;
 				
 				if (isSuccess)
 				{
-					
-					resp.sendRedirect(req.getContextPath()+"/VerifyCode");
+					try {
+				        Thread.sleep(50000);
+				    } catch (InterruptedException e) {
+				        e.printStackTrace();
+				    }
 				
 				} else {
 					alertMsg = "Lỗi hệ thống!";
 					req.setAttribute("error",alertMsg);
-					req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
+					resp.sendRedirect(req.getContextPath()+"/web/register");
 				}
 			} else {
 				PrintWriter out = resp.getWriter();
@@ -264,14 +252,16 @@ private static final long serialVersionUID = 1L;
 			AccountModels u = (AccountModels) session.getAttribute("account");
 			req.setAttribute("username", u.getUsername());
 			if (u.getRoleID() == 1) {
-				resp.sendRedirect(req.getContextPath()+"/home");
-			} else if (u.getRoleID() ==2) {
-				resp.sendRedirect(req.getContextPath()+"/admin/home");
-			} else {
-				resp.sendRedirect(req.getContextPath()+"/home");
+				resp.sendRedirect(req.getContextPath() + "/user/home");
+			} else if (u.getRoleID() == 2) {
+				resp.sendRedirect(req.getContextPath() + "/admin/home");
+			} else if (u.getRoleID() == 3) {
+				resp.sendRedirect(req.getContextPath() + "/seller/home");
+			} else if (u.getRoleID() == 4) {
+				resp.sendRedirect(req.getContextPath() + "/shipper/home");
 			}
 		} else {
-			resp.sendRedirect(req.getContextPath()+"/login");
+			resp.sendRedirect(req.getContextPath() + "/web/login");
 		}
 	}
 

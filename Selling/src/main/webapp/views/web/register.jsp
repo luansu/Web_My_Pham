@@ -67,82 +67,98 @@
 						<div class="header-text mb-4 text-center">
 							<h1 style="font-size: 2rem;">SIGN-UP</h1>
 						</div>
-						<div class="input-group mb-4">
-							<input type="text"
-								class="form-control form-control-lg bg-light fs-6"
-								placeholder="Your Name">
+						<div class="row">
+							<div class="col">
+								<c:if test="${not empty message}">
+									<div class="alert alert-success">${message}</div>
+								</c:if>
+
+								<c:if test="${not empty error}">
+									<div class="alert alert-danger">${error}</div>
+								</c:if>
+							</div>
 						</div>
-						<div class="input-group mb-4">
-							<input type="password"
-								class="form-control form-control-lg bg-light fs-6"
-								placeholder="Email or Phone Address">
-						</div>
-						<div class="input-group mb-4">
-							<input type="password"
-								class="form-control form-control-lg bg-light fs-6"
-								placeholder="Enter Password">
-						</div>
-						<div class="input-group mb-4">
-							<input type="password"
-								class="form-control form-control-lg bg-light fs-6"
-								placeholder="Re-Enter Your Password">
-						</div>
-						<div class="form-check"
-							style="margin-left: 12px; margin-bottom: 20px;">
-							<input type="checkbox" class="form-check-input" id="formCheck">
-							<label for="formCheck" class="form-check-label text-secondary"><small>I
-									agree all statements in <a href="#" class="term-service">Terms
-										of service</a>
-							</small></label>
-						</div>
-						<div class="input-group mb-4">
-							<button type="button" class="btn btn-primary w-100 fs-6"
-								data-bs-toggle="modal" data-bs-target="#exampleModal">
-								Register</button>
-						</div>
+						<form action="register" method="post">
+							<div class="input-group mb-4">
+								<input type="text"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Username" name="username">
+							</div>
+							<div class="input-group mb-4">
+								<input type="text"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Email Address" name="email">
+							</div>
+							<div class="input-group mb-4">
+								<input type="password"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Enter Password" name="password">
+							</div>
+							<div class="input-group mb-4">
+								<input type="password"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Re-Enter Your Password" name="passwordConfirm">
+							</div>
+							<div class="form-check"
+								style="margin-left: 12px; margin-bottom: 20px;">
+								<input type="checkbox" class="form-check-input" id="formCheck">
+								<label for="formCheck" class="form-check-label text-secondary"><small>I
+										agree all statements in <a href="#" class="term-service">Terms
+											of service</a>
+								</small></label>
+							</div>
+							<div class="input-group mb-4">
+								<button type="submit" class="btn btn-primary w-100 fs-6"
+									data-bs-toggle="modal" data-bs-target="#exampleModal">
+									Register</button>
+							</div>
+						</form>
 
 						<!-- Modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="edit-modal modal-content">
-									<div class="modal-header">
-										<h1 class="modal-title fs-5" id="exampleModalLabel">Mã
-											kích hoạt</h1>
-										<button type="button" class="btn-close"
-											data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<input type="text" id="validationDefault01"
-											class="modal-body-edit" placeholder="Nhập mã kích hoạt">
-									</div>
-									<c:if test="${not empty error}">
-										<div class="alert alert-danger d-flex align-items-center"
-											role="alert">
-											<svg class="bi flex-shrink-0 me-2" role="img"
-												aria-label="Danger:">
+						<form action="VerifyCode" method="post">
+							<div class="modal fade" id="exampleModal" tabindex="-1"
+								aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="edit-modal modal-content">
+										<div class="modal-header">
+											<h1 class="modal-title fs-5" id="exampleModalLabel">Mã
+												kích hoạt</h1>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<input type="text" id="validationDefault01"
+												class="modal-body-edit" placeholder="Nhập mã kích hoạt"
+												name="authcode">
+										</div>
+										<c:if test="${not empty error}">
+											<div class="alert alert-danger d-flex align-items-center"
+												role="alert">
+												<svg class="bi flex-shrink-0 me-2" role="img"
+													aria-label="Danger:">
 											<use xlink:href="#exclamation-triangle-fill" /></svg>
-											<div>${error}</div>
-										</div>
-									</c:if>
-									<c:if test="${not empty message}">
-										<div class="alert alert-success d-flex align-items-center"
-											role="alert">
-											<svg class="bi flex-shrink-0 me-2" role="img"
-												aria-label="Success:">
+												<div>${error}</div>
+											</div>
+										</c:if>
+										<c:if test="${not empty message}">
+											<div class="alert alert-success d-flex align-items-center"
+												role="alert">
+												<svg class="bi flex-shrink-0 me-2" role="img"
+													aria-label="Success:">
 												<use xlink:href="#check-circle-fill" /></svg>
-											<div>${message}</div>
+												<div>${message}</div>
+											</div>
+										</c:if>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger"
+												data-bs-dismiss="modal">Thoát</button>
+											<button type="submit" class="btn btn-success">Kích
+												hoạt</button>
 										</div>
-									</c:if>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger"
-											data-bs-dismiss="modal">Thoát</button>
-										<button type="submit" class="btn btn-success">Kích
-											hoạt</button>
 									</div>
 								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 

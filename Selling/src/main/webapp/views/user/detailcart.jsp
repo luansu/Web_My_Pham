@@ -18,8 +18,47 @@
 	href="${pageContext.request.contextPath}/templates/user/css/styledetailcart.css">
 </head>
 <body>
+
+
+	<!-- content -->
+	<div class="container">
+		<div class="user__list">
+			<div class="mb-3 user__id">
+				<img
+					src="https://down-vn.img.susercontent.com/file/a9455e3e363b43ff11f546fd2332bd39_tn"
+					alt="ảnh hồ sơ">
+				<p>lananh113388</p>
+			</div>
+			<ul class="list-group">
+				<!-- Default dropend button -->
+				<div class="btn-group dropend">
+					<li type="button"
+						class="list-group-item list-group-item-action list-group-item-primary"
+						data-bs-toggle="dropdown" aria-expanded="false"><i
+						class="fas fa-user"></i>Tài khoản của tôi</li>
+
+				</div>
+
+				<li
+					class="list-group-item list-group-item-action list-group-item-secondary"><i
+					class="fas fa-shopping-cart"></i>Đơn mua</li>
+				<li
+					class="list-group-item list-group-item-action list-group-item-success"><i
+					class="fas fa-bell"></i> Thông báo</li>
+				<li
+					class="list-group-item list-group-item-action list-group-item-primary"><i
+					class="fas fa-gift"></i>Giỏ hàng</li>
+				<li
+					class="list-group-item list-group-item-action list-group-item-danger"><i
+					class="fas fa-gift"></i>Kho Voucher</li>
+			</ul>
+
+		</div>
+		
+			<div class="user-details">
+			<div class="user-details-content">
 	<section class="h-100 h-custom" style="background-color: #eee;">
-		<div class="container h-100 py-5">
+		<div style="background-color:#fff;" class="container h-100 py-1">
 			<div
 				class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col">
@@ -137,7 +176,7 @@
 
 									<div class="mb-5 pt-2 text-center">
 										<a href='https://me-qr.com' border='0'
-											style='cursor: pointer; display: block'><img
+											style='cursor: pointer; display: block'><img style="width: 400px; height: 400px;"
 											src='https://cdn2.me-qr.com/qr/82712719.png?v=1700018426'
 											alt='Create qr code for free'></a><a
 											href='https://me-qr.com' border='0'
@@ -175,5 +214,9 @@
 			</div>
 		</div>
 	</section>
+			</div>
+
+		</div>
+
 </body>
 </html>

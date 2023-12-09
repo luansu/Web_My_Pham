@@ -15,7 +15,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/templates/user/css/style.css">
+	href="${pageContext.request.contextPath}/templates/user/css/style.css"> 
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">
-			<div class="user__id">
+			<div class="mb-3 user__id">
 				<img
 					src="https://down-vn.img.susercontent.com/file/a9455e3e363b43ff11f546fd2332bd39_tn"
 					alt="ảnh hồ sơ">
@@ -36,12 +36,6 @@
 						class="list-group-item list-group-item-action list-group-item-primary"
 						data-bs-toggle="dropdown" aria-expanded="false"><i
 						class="fas fa-user"></i>Tài khoản của tôi</li>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item list-group-item-success" href="#"><i
-								class="fas fa-user"></i>Hồ sơ</a></li>
-						<li><a class="dropdown-item list-group-item-secondary"
-							href="#"><i class="fas fa-address-book"></i>Địa chỉ</a></li>
-					</ul>
 				</div>
 
 				<li
@@ -50,6 +44,9 @@
 				<li
 					class="list-group-item list-group-item-action list-group-item-success"><i
 					class="fas fa-bell"></i> Thông báo</li>
+				<li
+					class="list-group-item list-group-item-action list-group-item-primary"><i
+					class="fas fa-gift"></i>Giỏ hàng</li>
 				<li
 					class="list-group-item list-group-item-action list-group-item-danger"><i
 					class="fas fa-gift"></i>Kho Voucher</li>
@@ -75,6 +72,15 @@
 								<input type="email" class="form-control" id="inputEmail3">
 							</div>
 						</div>
+						<div class="row mb-3">
+							<label for="inputAddress" class="col-sm-2 col-form-label">Địa
+								chỉ</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputAddress"
+									name="address">
+							</div>
+						</div>
+
 						<div class="row mb-3">
 							<label for="inputPassword3" class="col-sm-2 col-form-label">Số
 								điện thoại</label>
@@ -117,7 +123,7 @@
 				<div class="user-details-right">
 					<div class="user-details-right-img">
 						<img
-							src="https://scontent-hkt1-1.xx.fbcdn.net/v/t39.30808-6/357053034_814960390037893_4922475779121350488_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF5HXwEGNMOPAGrytHpFsrR_aLOXQRBb7r9os5dBEFvuq1yibYhcbMKiV2CqFcBHaVpuYriGC2v8DMoF6Nbu4wB&_nc_ohc=jCEKHVpsQ_0AX-PwGuq&_nc_oc=AQnSFA8uOAiwwoWhfGgpqS3MDN__6FubX6LbMwnJ2NvB_OGUqcoCdYWhpM34VpOrIIM&_nc_ht=scontent-hkt1-1.xx&oh=00_AfC9veirXXYcML6hM0M03QfGFPUxtaQQQyChW6SXYTfjTw&oe=6544F221"
+							src="https://scontent.fhan4-2.fna.fbcdn.net/v/t39.30808-6/357053034_814960390037893_4922475779121350488_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF5HXwEGNMOPAGrytHpFsrR_aLOXQRBb7r9os5dBEFvuq1yibYhcbMKiV2CqFcBHaVpuYriGC2v8DMoF6Nbu4wB&_nc_ohc=nQQswkJ9QnYAX8rNzM2&_nc_oc=AQmwig5FsMJzP71mC90d9mGjD0v7XXNwZQur0KX0aaFa9KnEpBhpyq7I1eCX29xIeRE&_nc_ht=scontent.fhan4-2.fna&oh=00_AfATxjorb1wCIGfq9pXhXWss2hlrUv0AkdZsgZDFiD4ORw&oe=65785CA1"
 							alt="ảnh hồ sơ">
 						<button type="button" class="btn btn-outline-primary">Chọn
 							ảnh</button>

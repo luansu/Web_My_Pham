@@ -12,3 +12,12 @@
 .amount {
     color: #007bff; /* Đặt màu xanh cho số tiền */
 }
+
+.user-details-content {
+	display: flex;
+}
+.user-details {
+	width: 80%;
+	padding: 20px;
+}
+
