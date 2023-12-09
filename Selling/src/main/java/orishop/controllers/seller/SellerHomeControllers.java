@@ -35,6 +35,8 @@ public class SellerHomeControllers extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI();
 		if(url.contains("seller/home")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/views/seller/revenue.jsp");
+			rd.forward(req, resp);
 		}
 	}
 	@Override
