@@ -51,13 +51,13 @@
 						<input type="text" name="authcode"
 							class="form-control form-control-lg bg-light fs-6"
 							placeholder="Nhập mã kích hoạt">
-						<c:if test="${not empty message}">
-							<div class="alert alert-success">${message}</div>
-						</c:if>
-						<c:if test="${not empty error}">
-							<div class="alert alert-danger">${error}</div>
-						</c:if>
 					</div>
+					<c:if test="${not empty message}">
+						<div class="alert alert-success">${message}</div>
+					</c:if>
+					<c:if test="${not empty error}">
+						<div class="alert alert-danger">${error}</div>
+					</c:if>
 					<button type="submit" class="btn btn-primary w-50 mx-auto">Kích
 						hoạt</button>
 				</div>
