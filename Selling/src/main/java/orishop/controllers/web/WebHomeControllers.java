@@ -33,8 +33,6 @@ private static final long serialVersionUID = 1L;
 			req.getRequestDispatcher("/views/web/forgotpassword.jsp").forward(req, resp);
 		} else if (url.contains("web/waiting")) {
 			getWaiting(req, resp);
-		} else if (url.contains("web/VerifyCode")) {
-			req.getRequestDispatcher("/views/web/verify.jsp").forward(req, resp);
 		} else if (url.contains("web/logout")) {
 			getLogout(req,resp);
 		} 
@@ -51,7 +49,6 @@ private static final long serialVersionUID = 1L;
 				if (Constant.COOKIE_REMEBER.equals(cookie.getName())){
 					cookie.setMaxAge(0);
 					resp.addCookie(cookie);
-					break;
 				}
 			}
 		}
@@ -93,7 +90,7 @@ private static final long serialVersionUID = 1L;
 				req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 			} else {
 				req.setAttribute("error", "Sai mã kích hoạt, vui lòng kiểm tra lại!!!");
-				req.getRequestDispatcher("/views/web/verify.jsp").forward(req, resp);
+				req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
 			}
 		} catch (Exception e) {
 			e.getStackTrace();
@@ -102,7 +99,7 @@ private static final long serialVersionUID = 1L;
 	
 	private void saveRememberMe(HttpServletResponse resp, String username) {
 		Cookie cookie = new Cookie(Constant.COOKIE_REMEBER, username);
-		cookie.setMaxAge(30*60*60);
+		cookie.setMaxAge(30*60);
 		resp.addCookie(cookie);
 	}
 	
@@ -229,13 +226,16 @@ private static final long serialVersionUID = 1L;
 				
 				if (isSuccess)
 				{
-					
-					resp.sendRedirect(req.getContextPath()+"/web/VerifyCode");
+					try {
+				        Thread.sleep(50000);
+				    } catch (InterruptedException e) {
+				        e.printStackTrace();
+				    }
 				
 				} else {
 					alertMsg = "Lỗi hệ thống!";
 					req.setAttribute("error",alertMsg);
-					req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
+					resp.sendRedirect(req.getContextPath()+"/web/register");
 				}
 			} else {
 				PrintWriter out = resp.getWriter();
@@ -260,6 +260,8 @@ private static final long serialVersionUID = 1L;
 			} else if (u.getRoleID() == 4) {
 				resp.sendRedirect(req.getContextPath() + "/shipper/home");
 			}
+		} else {
+			resp.sendRedirect(req.getContextPath() + "/web/login");
 		}
 	}
 
