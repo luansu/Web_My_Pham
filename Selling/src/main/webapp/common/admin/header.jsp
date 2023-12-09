@@ -1,44 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
- <%@ include file="/common/taglist.jsp"%>
+<%@ include file="/common/taglist.jsp"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <title>Doanh Thu</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>header</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--FONTAWESOME-->
-    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet"
-          type="text/css" />
+<!--FONTAWESOME-->
+<link
+	href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css"
+	rel="stylesheet" type="text/css" />
 
-    <!--FONT GOOGLE-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap"
-          rel="stylesheet">
+<!--FONT GOOGLE-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap"
+	rel="stylesheet">
 
-    <!--MAIN CSS-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--MAIN CSS-->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+	integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-<!--HEADER-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secondary-subtle">
-    <a class="navbar-brand d-flex align-items-center ps-2" style="font-size: 16px; " href="#">
-       <img src="${pageContext.request.contextPath}/templates/web/images/Gelisay.png" alt="logo" style="width: 50px; height: auto;">
-        <div class="mx-2 align-items-center mt-1 ml-2" >Trang chủ</div>
-        <div class="mx-2 align-items-center mt-1 ml-2" >Khách Hàng</div>
-        <div class="mx-2 align-items-center mt-1 ml-2" >Seller</div>
-        <div class="mx-2 align-items-center mt-1 ml-2">Shipper</div>
-       
-    </a>
- <div class="align-items-center " style="margin-left: auto; margin-right: 20px;">Đăng xuất</div>
-</nav>
+	<!--HEADER-->
+	<nav
+		class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secondary-subtle">
+		<a class="navbar-brand d-flex align-items-center ps-2"
+			style="font-size: 16px;" href="#"> <img
+			src="${pageContext.request.contextPath}/templates/web/images/Logo_Project.png"
+			alt="Logo" style="width: 50px; height: auto;">
+			<div class="mx-4 align-items-center mt-1 ml-2">Trang chủ</div>
+			<div class="mx-2 align-items-center mt-1 ml-2">Khách Hàng</div>
+			<div class="mx-2 align-items-center mt-1 ml-2">Seller</div>
+			<div class="mx-2 align-items-center mt-1 ml-2">Shipper</div>
+		</a>
+		<div class="ms-auto me-4">
+			<div class="align-items-center">Đăng xuất</div>
+		</div>
+	</nav>
 
 </body>
 </html>
