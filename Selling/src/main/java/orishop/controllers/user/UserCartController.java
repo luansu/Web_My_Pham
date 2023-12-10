@@ -47,6 +47,11 @@ private static final long serialVersionUID = 1L;
 
 			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(Integer.parseInt(cartID));
 			req.setAttribute("listCartItem", listCartItem);
+			
+			HttpSession session = req.getSession();
+			float totalPriceCart = cartService.totalPriceCart((int)session.getAttribute("cartID"));
+			session.setAttribute("totalPriceCart", totalPriceCart);
+			req.setAttribute("totalPriceCart", (float)session.getAttribute("totalPriceCart"));
 
 			req.getRequestDispatcher("/views/user/cart.jsp").forward(req, resp);
 		}
@@ -55,13 +60,27 @@ private static final long serialVersionUID = 1L;
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
 
-			int cartId = Integer.parseInt(req.getParameter("cartId"));
-			int productId = Integer.parseInt(req.getParameter("productId"));
+			int cartId = Integer.parseInt(req.getParameter("cartID"));
+			int productId = Integer.parseInt(req.getParameter("productID"));
 
 			cartItemService.deleteCartItem(cartId, productId);
 
 			req.setAttribute("message", "Đã xóa thành công");
-
+		
+			HttpSession session = req.getSession();
+			
+			CartModels cart = cartService.findCartByCartID(cartId);
+			req.setAttribute("cart", cart);
+			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cartId);
+			req.setAttribute("listCartItem", listCartItem);
+			int countCartItem = cartItemService.countCartItem(cartId);
+			session.setAttribute("countCartItem", countCartItem);
+			req.setAttribute("countCartItem", (int)session.getAttribute("countCartItem"));
+			
+			
+			float totalPriceCart = cartService.totalPriceCart((int)session.getAttribute("cartID"));
+			session.setAttribute("totalPriceCart", totalPriceCart);
+			req.setAttribute("totalPriceCart", (float)session.getAttribute("totalPriceCart"));
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/cart.jsp");
 			rd.forward(req, resp);
 		}

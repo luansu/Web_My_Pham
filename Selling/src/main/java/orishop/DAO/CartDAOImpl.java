@@ -3,6 +3,9 @@ package orishop.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import javax.swing.border.EmptyBorder;
+
 import orishop.DAO.DBConnectionSQLServer;
 import orishop.DAO.ICartDAO;
 import orishop.models.CartItemModels;
@@ -72,7 +75,6 @@ public class CartDAOImpl implements ICartDAO {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, cartID);
 			rs = ps.executeQuery();
-			
 			while (rs.next()) {
 				model.setTotalPrice(rs.getFloat("totalPrice"));
 			}
@@ -83,11 +85,14 @@ public class CartDAOImpl implements ICartDAO {
 		Exception e) {
 			e.printStackTrace();
 		}
-		return model.getTotalPrice();
+		if (model.getTotalPrice()==null) 
+			return 0;
+		else
+			return model.getTotalPrice();
 	}
 	
 	public static void main(String[] args) {
 		CartModels list1 = cartDAO.findCartByCustomerID(1);
-		System.out.println(cartDAO.totalPriceCart(8));
+		System.out.println(cartDAO.totalPriceCart(10));
 	}
 }
