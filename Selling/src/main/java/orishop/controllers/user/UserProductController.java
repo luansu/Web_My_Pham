@@ -70,9 +70,11 @@ public class UserProductController extends HttpServlet {
 		}
 	}
 	
-	private void getDetailProduct(HttpServletRequest req, HttpServletResponse resp) {
-		
-		
+	private void getDetailProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int pid = Integer.parseInt(req.getParameter("pid"));
+		ProductModels pro = productService.findOne(pid);
+		req.setAttribute("p", pro);
+		req.getRequestDispatcher("/views/user/product/detailProduct.jsp").forward(req, resp);
 	}
 	
 

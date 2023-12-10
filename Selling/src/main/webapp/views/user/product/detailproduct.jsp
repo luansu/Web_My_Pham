@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Detail
-    Created on : Dec 29, 2020, 5:43:04 PM
-    Author     : trinh
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -152,7 +146,7 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="listProduct">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Products</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Purfume</li>
                 </ol>
@@ -161,15 +155,15 @@
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F44379%2F44379_2.png"
+                            <img src="${p.imageURL}"
                                 class="d-block w-100" alt="Hình ảnh 1">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F44379%2F44379_2.png"
+                            <img src="${p.imageURL}"
                                 class="d-block w-100" alt="Hình ảnh 2">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F44379%2F44379_2.png"
+                            <img src="${p.imageURL}"
                                 class="d-block w-100" alt="Hình ảnh 3">
                         </div>
                     </div>
@@ -187,7 +181,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="accordion" id="productDetailsAccordion">
-                    <h2>For him Anti-perspirant Roll-On Deodorant</h2>
+                    <h2>${p.productName}</h2>
                     <div>
                         <p class="review-count" style="margin-bottom: 0px;">12</p>
                         <div class="product_detail_ratings d-flex justify-content-start align-items-start">
@@ -200,7 +194,7 @@
                             </div>
                             <p style="margin-left: 4px;">Xem tất cả bình luận</p>
                         </div>
-                        <h3 style="padding: 20px 0 20px 0;">155.000đ VNĐ</h3>
+                        <h3 style="padding: 20px 0 20px 0;">${p.price}</h3>
                         <div class="cart-item align-items-between">
                             <div class="quantity">
                                 <button class="decrease-quantity">-</button>
