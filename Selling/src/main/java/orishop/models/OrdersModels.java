@@ -1,33 +1,44 @@
 package orishop.models;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+
 public class OrdersModels implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private String orderID;
+	private int orderID;
 	private Float orderValue;
 	private Date orderDate;
-	private Date orderTime;
-	private String cartID;
-	private String customerID;
+	private int cartID;
+	private int customerID;
+	private String paymentStatus;
+	private String orderStatus;
+	private String paymentMethod;
+	private String deliveryMethod;
+	private int employeeId;
+	private CartModels cart;
+
 	public OrdersModels() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrdersModels(String orderID, Float orderValue, Date orderDate, Date orderTime, String cartID,
-			String customerID) {
+	public OrdersModels(int orderID, Float orderValue, Date orderDate, int cartID, int customerID, String paymentStatus,
+			String orderStatus, String paymentMethod, String deliveryMethod, int employeeId) {
 		super();
 		this.orderID = orderID;
 		this.orderValue = orderValue;
 		this.orderDate = orderDate;
-		this.orderTime = orderTime;
 		this.cartID = cartID;
 		this.customerID = customerID;
+		this.paymentStatus = paymentStatus;
+		this.orderStatus = orderStatus;
+		this.paymentMethod = paymentMethod;
+		this.deliveryMethod = deliveryMethod;
+		this.employeeId = employeeId;
 	}
-	public String getOrderID() {
+	public int getOrderID() {
 		return orderID;
 	}
-	public void setOrderID(String orderID) {
+	public void setOrderID(int orderID) {
 		this.orderID = orderID;
 	}
 	public Float getOrderValue() {
@@ -42,22 +53,52 @@ public class OrdersModels implements Serializable{
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public Date getOrderTime() {
-		return orderTime;
-	}
-	public void setOrderTime(Date orderTime) {
-		this.orderTime = orderTime;
-	}
-	public String getCartID() {
+	public int getCartID() {
 		return cartID;
 	}
-	public void setCartID(String cartID) {
+	public void setCartID(int cartID) {
 		this.cartID = cartID;
 	}
-	public String getCustomerID() {
+	public int getCustomerID() {
 		return customerID;
 	}
-	public void setCustomerID(String customerID) {
+	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
+	}
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+	public String getDeliveryMethod() {
+		return deliveryMethod;
+	}
+	public void setDeliveryMethod(String deliveryMethod) {
+		this.deliveryMethod = deliveryMethod;
+	}
+	public int getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+	public CartModels getCart() {
+		return cart;
+	}
+	public void setCart(CartModels cart) {
+		this.cart = cart;
 	}
 }
