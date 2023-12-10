@@ -38,9 +38,9 @@ private static final long serialVersionUID = 1L;
 		
 		HttpSession session = req.getSession();
 		AccountModels user = (AccountModels) session.getAttribute("account");
-		
-		CustomerModels cus = CustomerSerivce.findCustomerByAccountID(1);
-		
+		CustomerModels cus = CustomerSerivce.findCustomerByAccountID(user.getAccountID());
+		CartModels cart1 = cartService.findCartByCustomerID(cus.getCustomerId());
+		req.setAttribute("cartID", cart1.getCartId());
 		
 		if (url.contains("user/findCartbyCardID")) {
 			req.setCharacterEncoding("UTF-8");

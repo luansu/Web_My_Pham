@@ -40,15 +40,21 @@ public class UserHomeControllers extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		AccountModels user = (AccountModels) session.getAttribute("account");
-		CustomerModels cus = cusService.findCustomerByAccountID(user.getAccountID());
-		CartModels cart1 = cartService.findCartByCustomerID(cus.getCustomerId());
-		req.setAttribute("cartID", cart1.getCartId());
-		
 		
 		String url = req.getRequestURI();
 		if(url.contains("user/home")) {
+			HttpSession session = req.getSession();
+			AccountModels user = (AccountModels) session.getAttribute("account");
+			CustomerModels cus = cusService.findCustomerByAccountID(user.getAccountID());
+			CartModels cart1 = cartService.findCartByCustomerID(cus.getCustomerId());
+			
+			req.setAttribute("username", user.getUsername());
+			req.setAttribute("accountID", user.getAccountID());
+			req.setAttribute("customerID", cus.getCustomerId());
+			req.setAttribute("cartID", cart1.getCartId());
+			
+			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
+		
 		}
 	}
 	@Override
