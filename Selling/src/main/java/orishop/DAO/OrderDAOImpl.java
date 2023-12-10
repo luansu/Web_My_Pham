@@ -11,22 +11,25 @@ import orishop.models.OrdersModels;
 
 public class OrderDAOImpl implements IOrderDAO{
 
+	
+	Connection conn = null;
+	PreparedStatement ps = null;
+	ResultSet rs = null;
 	@Override
 	public List<OrdersModels> findAllOrders() {
 		List<OrdersModels> listOrder = new ArrayList<OrdersModels>();
 		String sql = "SELECT * FROM ORDERS";
 		try {
-			new DBConnectionSQLServer();
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				OrdersModels orders = new OrdersModels();
-				orders.setOrderId(rs.getInt("orderId"));
+				orders.setOrderID(rs.getInt("orderId"));
 				orders.setOrderValue(rs.getFloat("orderValue"));
 				orders.setOrderDate(rs.getDate("orderDate"));
-				orders.setCartId(rs.getInt("cartId"));
-				orders.setCustomerId(rs.getInt("customerId"));
+				orders.setCartID(rs.getInt("cartId"));
+				orders.setCustomerID(rs.getInt("customerId"));
 				orders.setPaymentStatus(rs.getString("paymentStatus"));
 				orders.setOrderStatus(rs.getString("orderStatus"));
 				orders.setPaymentMethod(rs.getString("paymentMethod"));
