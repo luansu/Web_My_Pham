@@ -231,7 +231,29 @@ public class ProductDAOImp implements IProductDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	/* Thiên Thanh
+	@Override
+	public void addProduct(ProductModels model) {
+		String sql = "INSERT INTO PRODUCT (productName, description, stock, amount, price, categoryId, imageURL) VALUES (?,?,?,?,?,?,?)";
+		try {
+			new DBConnectionSQLServer();
+			conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, model.getProductName());
+			ps.setString(2, model.getDescription());
+			ps.setInt(3, model.getStock());
+			ps.setInt(4, model.getAmount());
+			ps.setFloat(5, model.getPrice());
+			ps.setInt(6, model.getCategoryId());
+			ps.setString(7, model.getImageURL());
+			
+			ps.executeUpdate();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	*/
 	@Override
 	public ProductModels findOne(int productId) {
 		

@@ -44,7 +44,12 @@ public class ProductServiceImp implements IProductService {
 		proDAO.insertProduct(product);
 		
 	}
-
+/*	Thiên Thanh
+	@Override
+	public void addProduct(ProductModels model) {
+		proDao.addProduct(model);
+	}
+*/
 	@Override
 	public ProductModels findOne(int productId) {
 		return proDAO.findOne(productId);

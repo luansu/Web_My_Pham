@@ -18,6 +18,7 @@ List<ProductModels> findAllProduct();
 	List<ProductModels> findTopProduct(int amount);
 	
 	void insertProduct(ProductModels product);
+	//void addProduct(ProductModels model);
 	
 	ProductModels findOne(int productId);
 	

@@ -25,7 +25,12 @@ public class CustomerServiceImp implements ICustomerService{
 	public CustomerModels findOne(int id) {
 		return cusDAO.findOne(id);
 	}
-
+	/*	Thiên Thanh
+	@Override
+	public CustomerModels findCustomerByCustomerID (int id){
+		return cusDAO.findCustomerByCustomerID(id);
+	}
+	*/
 	@Override
 	public CustomerModels findCustomerByAccountID(int accountId) {
 		return cusDAO.findCustomerByAccountID(accountId);

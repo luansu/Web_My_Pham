@@ -9,6 +9,12 @@ public class OrderServiceImpl implements IOrderService{
 	IOrderService orderDAO = new OrderServiceImpl();
 
 	@Override
+	public List<OrdersModels> findAllOrders() {
+		
+		return orderDAO.findAllOrders();
+	}
+	
+	@Override
 	public void createOrder(OrdersModels model, int customerId, double totalPrice, List<CartItemModels> cartItems) {
 		
 		orderDAO.createOrder(model, customerId, totalPrice, cartItems);
