@@ -32,7 +32,20 @@ public class CartItemServiceImpl implements ICartItemService{
 
 	@Override
 	public void updateCartItem(CartItemModels model) {
-		cartItemDao.updateCartItem(model);
+		CartItemModels newCartItem = cartItemDao.findCartItemByProductID(model.getCartID(), model.getProductID());
+		newCartItem.setCartID(model.getCartID());
+		newCartItem.setProductID(model.getProductID());
+		newCartItem.setCount(model.getCount());
+		newCartItem.setQuantity(model.getQuantity());
+		newCartItem.setProduct(model.getProduct());
+		newCartItem.setTotalPrice(model.getTotalPrice());
+
+		cartItemDao.updateCartItem(newCartItem);
+	}
+
+	@Override
+	public int countCartItem(int cartID) {
+		return cartItemDao.countCartItem(cartID);
 	}
 
 

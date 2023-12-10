@@ -5,10 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import orishop.DAO.DBConnectionSQLServer;
 import orishop.DAO.ICartDAO;
+import orishop.models.CartItemModels;
 import orishop.models.CartModels;
 
 public class CartDAOImpl implements ICartDAO {
 
+	static ICartDAO cartDAO = new CartDAOImpl();
+	ICustomerDAO customerDAO= new CustomerDAOImp();
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
@@ -27,6 +30,7 @@ public class CartDAOImpl implements ICartDAO {
 				cart.setCartId(rs.getInt("cartId"));
 				cart.setTotalPrice(rs.getFloat("cartId"));
 				cart.setCustomerId(rs.getInt("customerId"));
+				cart.setCustomer(customerDAO.findOne(customerID));
 
 			}
 			conn.close();
@@ -50,7 +54,7 @@ public class CartDAOImpl implements ICartDAO {
 				cart.setCartId(rs.getInt("cartId"));
 				cart.setTotalPrice(rs.getFloat("cartId"));
 				cart.setCustomerId(rs.getInt("customerId"));
-
+				cart.setCustomer(customerDAO.findOne(rs.getInt("customerId")));
 			}
 			conn.close();
 		} catch (Exception e) {
@@ -59,9 +63,31 @@ public class CartDAOImpl implements ICartDAO {
 		return cart;
 	}
 
+	@Override
+	public float totalPriceCart(int cartID) {
+		CartModels model = cartDAO.findCartByCartID(cartID);
+		String sql = "select cartId, sum(totalPrice) as totalPrice from Cart_Item group by cartId having cartId = ?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, cartID);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				model.setTotalPrice(rs.getFloat("totalPrice"));
+			}
+			conn.close();
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+		}
+		return model.getTotalPrice();
+	}
+	
 	public static void main(String[] args) {
-		ICartDAO cartDAO = new CartDAOImpl();
 		CartModels list1 = cartDAO.findCartByCustomerID(1);
-		System.out.println(list1.getCartId());
+		System.out.println(cartDAO.totalPriceCart(8));
 	}
 }

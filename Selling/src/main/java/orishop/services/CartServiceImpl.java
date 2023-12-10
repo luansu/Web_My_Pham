@@ -17,4 +17,9 @@ public class CartServiceImpl implements ICartService{
 	public CartModels findCartByCustomerID(int customerID) {
 		return cartDAO.findCartByCustomerID(customerID);
 	}
+
+	@Override
+	public float totalPriceCart(int cartID) {
+		return cartDAO.totalPriceCart(cartID);
+	}
 }

@@ -10,13 +10,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import orishop.models.AccountModels;
 import orishop.models.CartItemModels;
 import orishop.models.CartModels;
+import orishop.models.CustomerModels;
 import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;
+import orishop.services.CustomerServiceImp;
 import orishop.services.ICartItemService;
 import orishop.services.ICartService;
+import orishop.services.ICustomerService;
 @WebServlet(urlPatterns = { "/user/findCartbyCartId", "/user/findCartItem", "/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem"})
 
 public class UserCartController extends HttpServlet  {
@@ -24,10 +29,19 @@ private static final long serialVersionUID = 1L;
 	
 	ICartService cartService = new CartServiceImpl();
 	ICartItemService cartItemService = new CartItemServiceImpl();
+	ICustomerService CustomerSerivce = new CustomerServiceImp();
+	
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String url = req.getRequestURI().toString();
+		
+		HttpSession session = req.getSession();
+		AccountModels user = (AccountModels) session.getAttribute("account");
+		
+		CustomerModels cus = CustomerSerivce.findCustomerByAccountID(1);
+		
+		
 		if (url.contains("user/findCartbyCardID")) {
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");

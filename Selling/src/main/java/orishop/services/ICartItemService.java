@@ -10,4 +10,6 @@ public interface ICartItemService {
 	void insertCartItem(CartItemModels model);
 	void deleteCartItem(int cartID, int productID);
 	void updateCartItem(CartItemModels model);
+	public int countCartItem(int cartID);
+	
 }

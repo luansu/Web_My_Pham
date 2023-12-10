@@ -8,4 +8,6 @@ public interface ICustomerDAO {
 	List<CustomerModels> findAll();
 	
 	CustomerModels findOne(int id);
+	
+	public CustomerModels findCustomerByAccountID(int accountId);
 }

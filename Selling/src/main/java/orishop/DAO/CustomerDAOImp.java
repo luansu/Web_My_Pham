@@ -69,4 +69,30 @@ public class CustomerDAOImp implements ICustomerDAO{
 		}
 		return customer;
 	}
+	
+	public CustomerModels findCustomerByAccountID(int accountId) {
+		CustomerModels customer = new CustomerModels();
+		String sql = "SELECT * FROM Customer where accountId=?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, accountId);
+			rs = ps.executeQuery();
+			rs.next();
+	        customer.setCustomerId(rs.getInt("customerId"));
+	        customer.setCustomerName(rs.getString("customerName"));
+	        customer.setBirthday(rs.getDate("birthday"));
+	        customer.setGender(rs.getString("gender"));
+	        customer.setAddress(rs.getString("address"));
+	        customer.setPhone(rs.getLong("phone"));
+	        customer.setMail(rs.getString("mail"));
+	        customer.setRank(rs.getString("rank"));
+	        customer.setReputation(rs.getInt("reputation"));
+	        customer.setRewardPoints(rs.getInt("rewardPoints"));
+            customer.setAccountId(rs.getInt("accountId"));
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return customer;
+	}
 }
