@@ -124,4 +124,33 @@ public class CustomerDAOImp implements ICustomerDAO{
 		}
 		return customer;
 	}
+	
+	
+	@Override
+	public void editInfor(CustomerModels model) {
+			String sql = "update CUSTOMER set CustomerName = ?, Birthday = ?, Gender = ?, Address = ?, Phone = ?,"
+					+ " Mail = ?, Rank = ?, Reputation = ?, RewardPoints = ?, AccountID = ? where CustomerID = ?";
+			try {
+				new DBConnectionSQLServer();
+				conn = DBConnectionSQLServer.getConnectionW();
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setString(1, model.getCustomerName());
+				ps.setDate(2, model.getBirthday());
+				ps.setString(3, model.getGender());
+				ps.setString(4, model.getAddress());
+				ps.setLong(5, model.getPhone());
+				ps.setString(6, model.getMail());
+				ps.setString(7, model.getRank());
+				ps.setInt(8, model.getReputation());
+				ps.setInt(9, model.getRewardPoints());
+				ps.setInt(10, model.getAccountId());
+				ps.setInt(11, model.getCustomerId());
+
+				ps.executeUpdate();
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 }
