@@ -138,5 +138,23 @@ public class OrderDAOImpl implements IOrderDAO{
 		}
 		return listorder;
 	}
+	
+	@Override
+	public List<OrdersModels> countOrderByShipperId(int employeeID) {
+		String sql = "select employeeId, count(*) as count from ORDERS group by employeeId";
+		List<OrdersModels> list = new ArrayList<OrdersModels>();
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(new OrdersModels(rs.getInt(1), rs.getInt(2)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }

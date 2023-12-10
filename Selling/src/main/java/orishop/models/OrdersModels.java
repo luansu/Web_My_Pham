@@ -16,10 +16,17 @@ public class OrdersModels implements Serializable{
 	private String deliveryMethod;
 	private int employeeId;
 	private CartModels cart;
+	private int countOrderByShipperId;
+
 
 	public OrdersModels() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public OrdersModels(int employeeId, int countOrderByShipperId) {
+		super();
+		this.employeeId = employeeId;
+		this.countOrderByShipperId = countOrderByShipperId;
 	}
 	public OrdersModels(int orderID, Float orderValue, Date orderDate, int cartID, int customerID, String paymentStatus,
 			String orderStatus, String paymentMethod, String deliveryMethod, int employeeId) {
@@ -35,6 +42,15 @@ public class OrdersModels implements Serializable{
 		this.deliveryMethod = deliveryMethod;
 		this.employeeId = employeeId;
 	}
+	
+	public int getCountOrderByShipperId() {
+		return countOrderByShipperId;
+	}
+	public void setCountOrderByShipperId(int countOrderByShipperId) {
+		this.countOrderByShipperId = countOrderByShipperId;
+	}
+	
+	
 	public int getOrderID() {
 		return orderID;
 	}

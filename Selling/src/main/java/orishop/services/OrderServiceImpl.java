@@ -2,11 +2,13 @@ package orishop.services;
 
 import java.util.List;
 
+import orishop.DAO.IOrderDAO;
+import orishop.DAO.OrderDAOImpl;
 import orishop.models.CartItemModels;
 import orishop.models.OrdersModels;
 
 public class OrderServiceImpl implements IOrderService{
-	IOrderService orderDAO = new OrderServiceImpl();
+	IOrderDAO orderDAO = new OrderDAOImpl();
 
 	@Override
 	public List<OrdersModels> findAllOrders() {
@@ -31,6 +33,12 @@ public class OrderServiceImpl implements IOrderService{
 		
 		return orderDAO.findOrderByShipperIdAndDistributed(id);
 	}
+
+	@Override
+	public List<OrdersModels> countOrderByShipperId(int employeeID) {
+		return orderDAO.countOrderByShipperId(employeeID);
+	}
+	
 
 
 }

@@ -12,4 +12,6 @@ public interface IOrderDAO {
 	List<OrdersModels> findOrderByShipperId(int id);
 	
 	List<OrdersModels> findOrderByShipperIdAndDistributed(int id);
+	
+	List<OrdersModels> countOrderByShipperId(int employeeID);
 }
