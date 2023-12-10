@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>Giỏ hàng</title>
 
@@ -16,7 +15,6 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/templates/user/css/stylecart.css">
-</head>
 <body>
 
 	<!-- content -->

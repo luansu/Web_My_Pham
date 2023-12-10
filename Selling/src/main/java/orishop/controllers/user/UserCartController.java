@@ -22,7 +22,7 @@ import orishop.services.CustomerServiceImp;
 import orishop.services.ICartItemService;
 import orishop.services.ICartService;
 import orishop.services.ICustomerService;
-@WebServlet(urlPatterns = { "/user/findCartbyCartId", "/user/findCartItem", "/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem"})
+@WebServlet(urlPatterns = { "/user/findCartByCartID", "/user/findCartItem", "/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem"})
 
 public class UserCartController extends HttpServlet  {
 private static final long serialVersionUID = 1L;
@@ -36,26 +36,20 @@ private static final long serialVersionUID = 1L;
 
 		String url = req.getRequestURI().toString();
 		
-		HttpSession session = req.getSession();
-		AccountModels user = (AccountModels) session.getAttribute("account");
-		CustomerModels cus = CustomerSerivce.findCustomerByAccountID(user.getAccountID());
-		CartModels cart1 = cartService.findCartByCustomerID(cus.getCustomerId());
-		req.setAttribute("cartID", cart1.getCartId());
-		
-		if (url.contains("user/findCartbyCardID")) {
+		if (url.contains("user/findCartByCartID")) {
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
 
-			String cartId = req.getParameter("cartId");
+			String cartID = req.getParameter("cartID");
 
-			CartModels cart = cartService.findCartByCartID(Integer.parseInt(cartId));
+			CartModels cart = cartService.findCartByCartID(Integer.parseInt(cartID));
 			req.setAttribute("cart", cart);
 
-			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(Integer.parseInt(cartId));
+			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(Integer.parseInt(cartID));
 			req.setAttribute("listCartItem", listCartItem);
 
 			req.getRequestDispatcher("/views/user/cart.jsp").forward(req, resp);
-		} 
+		}
 		
 		else if (url.contains("user/deleteCartItem")) {
 			req.setCharacterEncoding("UTF-8");
@@ -70,7 +64,7 @@ private static final long serialVersionUID = 1L;
 
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/cart.jsp");
 			rd.forward(req, resp);
-		} 
+		}
 		
 	}
 	
