@@ -15,7 +15,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/templates/user/css/style.css"> 
+	href="${pageContext.request.contextPath}/templates/user/css/style.css">
 </head>
 <body>
 
@@ -63,13 +63,15 @@
 						<div class="row mb-3">
 							<label for="inputPassword3" class="col-sm-2 col-form-label">Tên</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputtext3">
+								<input type="text" class="form-control" id="inputtext3"
+									name="customerName" value="${customer.customerName}">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
 							<div class="col-sm-10">
-								<input type="email" class="form-control" id="inputEmail3">
+								<input type="email" class="form-control" id="inputEmail3"
+									name="mail" value="${customer.mail}">
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -77,7 +79,7 @@
 								chỉ</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="inputAddress"
-									name="address">
+									name="address" value="${customer.address}">
 							</div>
 						</div>
 
@@ -85,7 +87,8 @@
 							<label for="inputPassword3" class="col-sm-2 col-form-label">Số
 								điện thoại</label>
 							<div class="col-sm-10">
-								<input type="number" class="form-control" id="inputphone3">
+								<input type="number" class="form-control" id="inputphone3"
+									name="phone" value="${customer.phone}">
 							</div>
 						</div>
 
@@ -94,7 +97,7 @@
 								tháng năm sinh</label>
 							<div class="col-sm-10">
 								<input type="date" class="form-control" id="inputBirthdate"
-									name="birthdate">
+									name="birthday" value="${customer.birthday}">
 							</div>
 						</div>
 
@@ -115,7 +118,7 @@
 							</div>
 						</fieldset>
 						<div class="col-sm-10">
-							<button type="button" class="btn btn-outline-primary">Submit</button>
+							<a href="listcustomer" class="btn btn-outline-primary">Submit</a>
 						</div>
 
 					</form>
