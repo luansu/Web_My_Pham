@@ -1,7 +1,6 @@
 package orishop.controllers.user;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,14 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import orishop.DAO.CustomerDAOImp;
-import orishop.DAO.ICartItemDAO;
-import orishop.DAO.IEmployeeDAO;
+import org.apache.commons.beanutils.BeanUtils;
 import orishop.models.AccountModels;
 import orishop.models.CartModels;
-import orishop.models.CategoryModels;
 import orishop.models.CustomerModels;
-import orishop.models.EmployeeModels;
 import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;
 import orishop.services.CategoryServiceImp;
@@ -31,7 +26,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/user/home"})
+@WebServlet(urlPatterns = {"/user/home", "/editInfor"})
 
 public class UserHomeControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -66,11 +61,48 @@ public class UserHomeControllers extends HttpServlet {
 			}
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 		}
+		
+		else if (url.contains("editInfor")) {
+			List<CustomerModels> listcustomer = cusService.findAll();
+			req.setAttribute("listcustomer", listcustomer);
+			CustomerModels customer = cusService.findOne(req.getParameter("id"));
+			req.setAttribute("customer", customer);
+
+			RequestDispatcher rd = req.getRequestDispatcher("/views/customer/inforuser.jsp");
+			rd.forward(req, resp);
+		}
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		
+		String url = req.getRequestURI().toString();
+		if (url.contains("editInfor")) {
+			editInfor(req, resp);
+		}
 	}
-	
+	private void editInfor(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		
+		CustomerModels model = new CustomerModels();
+		try {
+			// lay du lieu tu jsp bang beanutils
+			BeanUtils.populate(model, req.getParameterMap());
+
+			//model.setCategory(catService.findOne(model.getCategoryID())); 
+			cusService.editInfor(model);
+			//thông báo kết quả
+			req.setAttribute("customer", model);
+			req.setAttribute("message","Edit successful");
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("error","Edit fails");
+		}
+		
+		resp.sendRedirect(req.getContextPath() + "/listcustomer");	
+	}
+		
 }
 	

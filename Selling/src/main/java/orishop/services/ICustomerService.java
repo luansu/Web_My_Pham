@@ -11,4 +11,8 @@ public interface ICustomerService {
 	public CustomerModels findCustomerByAccountID(int accountId);
 	List<CustomerModels> getListCustomerByPage(List<CustomerModels> listCus, int start, int end);
 	
+	CustomerModels editInfor(String customerID);
+
+	void editInfor(CustomerModels model);
+	CustomerModels findOne(String parameter);
 }

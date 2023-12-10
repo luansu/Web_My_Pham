@@ -10,4 +10,6 @@ public interface ICustomerDAO {
 	CustomerModels findOne(int id);
 	// CustomerModels findCustomerByCustomerID(int id);
 	public CustomerModels findCustomerByAccountID(int accountId);
+
+	void editInfor(CustomerModels model);
 }

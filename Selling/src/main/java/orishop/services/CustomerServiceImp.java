@@ -35,4 +35,33 @@ public class CustomerServiceImp implements ICustomerService{
 	public CustomerModels findCustomerByAccountID(int accountId) {
 		return cusDAO.findCustomerByAccountID(accountId);
 	}
+
+	@Override
+	public void editInfor(CustomerModels model) {
+		CustomerModels customer = cusDAO.findOne(model.getCustomerId());
+		customer.setCustomerName(model.getCustomerName());
+		customer.setBirthday(model.getBirthday());
+		customer.setGender(model.getGender());
+		customer.setAddress(model.getAddress());
+		customer.setPhone(model.getPhone());
+		customer.setMail(model.getMail());
+		customer.setRank(model.getRank());
+		customer.setReputation(model.getReputation());
+		customer.setRewardPoints(model.getRewardPoints());
+		customer.setAccountId(model.getAccountId());
+
+		cusDAO.editInfor(customer);
+	}
+
+	@Override
+	public CustomerModels editInfor(String customerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerModels findOne(String parameter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
