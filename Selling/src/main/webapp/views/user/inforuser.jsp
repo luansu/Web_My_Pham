@@ -19,7 +19,7 @@
 </head>
 <body>
 
-
+    <link href='<c:url value="/templates/user/css/style.css"/>' rel="stylesheet" type="text/css">
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">

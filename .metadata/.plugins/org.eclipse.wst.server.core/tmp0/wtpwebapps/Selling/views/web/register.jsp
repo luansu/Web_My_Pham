@@ -67,64 +67,49 @@
 						<div class="header-text mb-4 text-center">
 							<h1 style="font-size: 2rem;">SIGN-UP</h1>
 						</div>
-						<div class="input-group mb-4">
-							<input type="text"
-								class="form-control form-control-lg bg-light fs-6"
-								placeholder="Your Name">
-						</div>
-						<div class="input-group mb-4">
-							<input type="password"
-								class="form-control form-control-lg bg-light fs-6"
-								placeholder="Email or Phone Address">
-						</div>
-						<div class="input-group mb-4">
-							<input type="password"
-								class="form-control form-control-lg bg-light fs-6"
-								placeholder="Enter Password">
-						</div>
-						<div class="input-group mb-4">
-							<input type="password"
-								class="form-control form-control-lg bg-light fs-6"
-								placeholder="Re-Enter Your Password">
-						</div>
-						<div class="form-check"
-							style="margin-left: 12px; margin-bottom: 20px;">
-							<input type="checkbox" class="form-check-input" id="formCheck">
-							<label for="formCheck" class="form-check-label text-secondary"><small>I
-									agree all statements in <a href="#" class="term-service">Terms
-										of service</a>
-							</small></label>
-						</div>
-						<div class="input-group mb-4">
-							<button type="button" class="btn btn-primary w-100 fs-6"
-								data-bs-toggle="modal" data-bs-target="#exampleModal">
-								Register</button>
-						</div>
+						<c:if test="${not empty message}">
+							<div class="alert alert-success">${message}</div>
+						</c:if>
 
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h1 class="modal-title fs-5" id="exampleModalLabel">Mã
-											kích hoạt</h1>
-										<button type="button" class="btn-close"
-											data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<input type="text" id="validationDefault01"
-											placeholder="Nhập mã kích hoạt">
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save
-											changes</button>
-									</div>
-								</div>
+						<c:if test="${not empty error}">
+							<div class="alert alert-danger">${error}</div>
+						</c:if>
+
+						<form action="register" method="post">
+							<div class="input-group mb-4">
+								<input type="text"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Username" name="username">
 							</div>
-						</div>
+							<div class="input-group mb-4">
+								<input type="text"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Email Address" name="email">
+							</div>
+							<div class="input-group mb-4">
+								<input type="password"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Enter Password" name="password">
+							</div>
+							<div class="input-group mb-4">
+								<input type="password"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Re-Enter Your Password" name="passwordConfirm">
+							</div>
+							<div class="form-check"
+								style="margin-left: 12px; margin-bottom: 20px;">
+								<input type="checkbox" class="form-check-input" id="formCheck">
+								<label for="formCheck" class="form-check-label text-secondary"><small>I
+										agree all statements in <a href="#" class="term-service">Terms
+											of service</a>
+								</small></label>
+							</div>
+							<div class="input-group mb-4">
+								<button type="submit" class="btn btn-primary w-100 fs-6"
+									data-bs-toggle="modal" data-bs-target="#exampleModal">
+									Register</button>
+							</div>
+						</form>
 
 
 					</div>

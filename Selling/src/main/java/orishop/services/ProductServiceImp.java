@@ -1,9 +1,11 @@
 package orishop.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import orishop.DAO.IProductDAO;
 import orishop.DAO.ProductDAOImp;
+import orishop.models.EmployeeModels;
 import orishop.models.ProductModels;
 
 public class ProductServiceImp implements IProductService {
@@ -38,7 +40,16 @@ public class ProductServiceImp implements IProductService {
 	public List<ProductModels> findTopProduct(int amount) {
 		return proDAO.findTopProduct(amount);
 	}
-
+		
+	public List<ProductModels> getListProductByPage(List<ProductModels> listPro, int start, int end) {
+		List<ProductModels> listProPage = new ArrayList<>();
+		
+		for (int i = start; i < end; i++) {
+			listProPage.add(listPro.get(i));
+		}
+		return listProPage;
+	}
+	
 	@Override
 	public void insertProduct(ProductModels product) {
 		proDAO.insertProduct(product);

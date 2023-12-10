@@ -2,6 +2,7 @@ package orishop.services;
 
 import java.util.List;
 
+import orishop.models.EmployeeModels;
 import orishop.models.ProductModels;
 
 public interface IProductService {
@@ -16,6 +17,8 @@ List<ProductModels> findAllProduct();
 	List<ProductModels> filterProductAscByPrice();
 	
 	List<ProductModels> findTopProduct(int amount);
+	
+	List<ProductModels> getListProductByPage(List<ProductModels> listPro, int start, int end);
 	
 	void insertProduct(ProductModels product);
 	//void addProduct(ProductModels model);

@@ -26,7 +26,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/user/home", "/editInfor"})
+@WebServlet(urlPatterns = {"/user/home", "/user/editInfor"})
 
 public class UserHomeControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -62,13 +62,13 @@ public class UserHomeControllers extends HttpServlet {
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 		}
 		
-		else if (url.contains("editInfor")) {
+		else if (url.contains("user/editInfor")) {
 			List<CustomerModels> listcustomer = cusService.findAll();
 			req.setAttribute("listcustomer", listcustomer);
 			CustomerModels customer = cusService.findOne(req.getParameter("id"));
 			req.setAttribute("customer", customer);
 
-			RequestDispatcher rd = req.getRequestDispatcher("/views/customer/inforuser.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser.jsp");
 			rd.forward(req, resp);
 		}
 	}

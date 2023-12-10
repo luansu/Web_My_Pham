@@ -22,4 +22,5 @@
     <fullyQualifiedTypeName name="orishop.services.CustomerServiceImp"/>
     <fullyQualifiedTypeName name="orishop.models.CustomerModels"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="orishop.models.ProductModels"/>
 </qualifiedTypeNameHistroy>
