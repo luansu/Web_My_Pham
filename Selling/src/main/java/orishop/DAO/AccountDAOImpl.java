@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import orishop.DAO.DBConnectionSQLServer;
-import orishop.DAO.IAccountDAO;
+
 import orishop.models.AccountModels;
 
 public class AccountDAOImpl implements IAccountDAO {

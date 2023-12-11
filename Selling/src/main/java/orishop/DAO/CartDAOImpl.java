@@ -4,11 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import javax.swing.border.EmptyBorder;
-
-import orishop.DAO.DBConnectionSQLServer;
-import orishop.DAO.ICartDAO;
-import orishop.models.CartItemModels;
 import orishop.models.CartModels;
 
 public class CartDAOImpl implements ICartDAO {
@@ -92,7 +87,7 @@ public class CartDAOImpl implements ICartDAO {
 	}
 	
 	public static void main(String[] args) {
-		CartModels list1 = cartDAO.findCartByCustomerID(1);
+		//CartModels list1 = cartDAO.findCartByCustomerID(1);
 		System.out.println(cartDAO.totalPriceCart(10));
 	}
 }

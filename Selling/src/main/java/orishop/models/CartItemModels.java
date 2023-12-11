@@ -19,6 +19,15 @@ public class CartItemModels implements Serializable{
 		this.count = count;
 	}
 	
+
+	
+	public CartItemModels(int cartID, int productID, int quantity, Float totalPrice) {
+		super();
+		this.cartID = cartID;
+		this.productID = productID;
+		this.quantity = quantity;
+		this.totalPrice = totalPrice;
+	}
 	public CartItemModels(int cartID, int productID, int quantity, Float totalPrice, ProductModels product) {
 		super();
 		this.cartID = cartID;
