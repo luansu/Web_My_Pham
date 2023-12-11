@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglist.jsp"%>
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +36,31 @@
 			href="listseller" class="btn btn-outline-primary">Nhân viên</a> <a
 			href="listuser" class="btn btn-outline-primary">Shipper</a>
 	</div>
+	<div class="search">
+		<div class="row justify-content-center">
+			<div class="col-30 col-md-30 col-lg-15">
+				<form class="card card-sm">
+					<div class="card-body row no-gutters align-items-center">
+						<div class="col-auto">
+							<i class="fas fa-search h4 text-body"></i>
+						</div>
+						<!--end of col-->
+						<div class="col-md">
+							<input class="form-control" type="search" name="search_info"
+								placeholder="Nhập shipper cần tìm">
+						</div>
+						<!--end of col-->
+						<div class="col-auto">
+							<button class="btn btn-success" type="submit">Tìm kiếm</button>
+						</div>
+						<!--end of col-->
+					</div>
+				</form>
+			</div>
+			<!--end of col-->
+		</div>
+	</div>
+
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-md-6">
@@ -62,7 +87,6 @@
 										</div>
 									</th>
 									<th scope="col">Tài khoản</th>
-									<th scope="col">Số Lượng đơn mua</th>
 									<th scope="col">Email</th>
 									<th scope="col">Số điện thoại</th>
 									<th scope="col" style="width: 200px;">Lựa chọn</th>
@@ -80,9 +104,8 @@
 										</th>
 										<td><img
 											src="https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-6/357053034_814960390037893_4922475779121350488_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF5HXwEGNMOPAGrytHpFsrR_aLOXQRBb7r9os5dBEFvuq1yibYhcbMKiV2CqFcBHaVpuYriGC2v8DMoF6Nbu4wB&_nc_ohc=-yKX52Urdn0AX8U0a-v&_nc_oc=AQlI2Ns9XLRTfcBwWgD0RHgOWIUMetQvlk_-r_YQaQQu_hub_sENbxLo6HLTTSsB0Ug&_nc_ht=scontent.fsgn3-1.fna&oh=00_AfAkwmC6el-T5G0ksuVne_5NYx6l7Dvg2p6XioTa2XhQgQ&oe=6556BE61"
-											alt="" class="avatar-sm rounded-circle me-2" /><a href="userdetail?id=${i.customerId }"
-											class="text-body">${i.customerName}</a></td>
-										<td><span class="badge badge-soft-success mb-0">20</span></td>
+											alt="" class="avatar-sm rounded-circle me-2" /><a
+											href="userdetail?id=${i.customerId }" class="text-body">${i.customerName}</a></td>
 										<td>${i.mail}</td>
 										<td>${i.phone}</td>
 										<td>
@@ -127,8 +150,8 @@
 						</c:if>
 						<c:forEach var="i" begin="1" end="${num }">
 							<c:if test="${i==page }">
-								<li class="page-item active"><a
-									href="listuser?page=${i}" class="page-link">${i }</a></li>
+								<li class="page-item active"><a href="listuser?page=${i}"
+									class="page-link">${i }</a></li>
 							</c:if>
 							<c:if test="${i!=page }">
 								<li class="page-item"><a href="listuser?page=${i}"
