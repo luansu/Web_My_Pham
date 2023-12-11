@@ -80,7 +80,7 @@ public class AdminShipperControllers2 extends HttpServlet {
 		req.setAttribute("page", page);
 		req.setAttribute("num", num);
 		req.setAttribute("count", listEmp.size());
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listshipper.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_shipper/listshipper.jsp");
 		rd.forward(req, resp);
 	}
 	//endregion

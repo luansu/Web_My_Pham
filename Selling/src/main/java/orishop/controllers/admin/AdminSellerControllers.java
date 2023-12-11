@@ -67,7 +67,7 @@ public class AdminSellerControllers extends HttpServlet {
 		req.setAttribute("page", page);
 		req.setAttribute("num", num);
 		req.setAttribute("count", listEmp.size());
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listseller.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_seller/listseller.jsp");
 		rd.forward(req, resp);
 	}
 	//endregion

@@ -54,7 +54,7 @@ public class AdminUserControllers extends HttpServlet {
 		List<CustomerModels> listcustomer = cusService.findCustomerByCustomerName(usename);
 		
 		req.setAttribute("list", listcustomer);
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listuser.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/listuser.jsp");
 		rd.forward(req, resp);
 		
 		
@@ -112,7 +112,7 @@ public class AdminUserControllers extends HttpServlet {
 		
 		req.setAttribute("customer", customer);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/detailinforuser.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/detailinforuser.jsp");
 		rd.forward(req, resp);
 	}
 	
