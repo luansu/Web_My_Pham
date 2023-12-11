@@ -63,12 +63,13 @@ public class CustomerDAOImp implements ICustomerDAO{
 	        customer.setRank(rs.getString("rank"));
 	        customer.setReputation(rs.getInt("reputation"));
 	        customer.setRewardPoints(rs.getInt("rewardPoints"));
-                customer.setAccountId(rs.getInt("accountId"));
+            customer.setAccountId(rs.getInt("accountId"));
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 		return customer;
 	}
+	
 	/* Thiên Thanh
 	@Override
 	public CustomerModels findCustomerByCustomerID(int id) {
@@ -86,12 +87,12 @@ public class CustomerDAOImp implements ICustomerDAO{
 				customer.setBirthday(rs.getDate("birthday"));
 				customer.setGender(rs.getString("gender"));
 				customer.setAddress(rs.getString("address"));
-				customer.setPhone(rs.getString("phone"));
+				customer.setPhone(rs.getLong("phone"));
 				customer.setMail(rs.getString("mail"));
 				customer.setRank(rs.getString("rank"));
 				customer.setReputation(rs.getInt("reputation"));
 				customer.setRewardPoints(rs.getInt("rewardPoints"));
-				customer.setAccountId(rs.getInt("accountID"));
+				customer.setAccountId(rs.getInt("accountId"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
