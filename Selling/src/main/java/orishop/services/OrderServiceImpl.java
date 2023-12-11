@@ -1,5 +1,6 @@
 package orishop.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import orishop.DAO.IOrderDAO;
@@ -38,7 +39,28 @@ public class OrderServiceImpl implements IOrderService{
 	public List<OrdersModels> countOrderByShipperId(int employeeID) {
 		return orderDAO.countOrderByShipperId(employeeID);
 	}
+
+	@Override
+	public List<OrdersModels> getOrderByOrderStatus(String orderStatus) {
+		List<OrdersModels> listOrder = orderDAO.findAllOrders();
+		List<OrdersModels> result = new ArrayList<OrdersModels>();
+		for (OrdersModels order: listOrder) {
+			if(order.getOrderStatus() == orderStatus) {
+				result.add(order);
+			}
+		}
+		return result;
+	}
 	
-
-
+	@Override
+	public List<OrdersModels> getOrderByPaymentStatus(String paymentStatus) {
+		List<OrdersModels> listOrder = orderDAO.findAllOrders();
+		List<OrdersModels> result = new ArrayList<OrdersModels>();
+		for (OrdersModels order: listOrder) {
+			if(order.getOrderStatus() == paymentStatus) {
+				result.add(order);
+			}
+		}
+		return result;
+	}
 }

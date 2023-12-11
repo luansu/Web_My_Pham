@@ -75,6 +75,7 @@
                                         aria-controls="pills-contact" aria-selected="false">Đang giao</button>
                                 </li>
                             </ul>
+                            <!-- TẤT CẢ ĐƠN -->
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                     aria-labelledby="pills-home-tab" tabindex="0">
@@ -109,71 +110,75 @@
                                     </div>
                                     </c:forEach>
                                 </div>
+                                <!-- ĐÃ GIAO HÀNG START-->
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                                     aria-labelledby="pills-profile-tab" tabindex="0">
-                                     <div class="product">
+                                     <c:forEach var="i" items="${listorderdelivered }">
+                                    	<div class="product">
                                         <div class="product-detail rounded d-flex">
                                             <div class="content-info ml-2">
-                                                <div class="product-id" href="">#123</div>
-                                                <div class="product-category">Ngày đặt hàng: 21/11/2003</div>
+                                                <div class="product-id" href="">${i.orderID }</div>
+                                                <div class="product-category">Ngày đặt hàng: ${i.orderDate}</div>
                                             </div>
                                             <div class="product-money text-center">
                                                 <p>Thành tiền</p>
-                                                <p style="color: rgb(36, 214, 158);">90.000đ</p>
+                                                <p style="color: rgb(36, 214, 158);">${i.orderValue}đ</p>
                                             </div>
                                         </div>
                                         <div class="product-address d-flex">
                                             <div class="content-info ml-2 mb-2 justify-content-between">
-                                                <div class="address">Địa chỉ: 484A, Lê Văn Việt, Tăng Nhơn Phú A, Quận
-                                                    9,
-                                                    TPHCM
+                                                <div class="address">Địa chỉ: ${i.customer.address }
                                                 </div>
-                                                <div class="phone">Số điện thoại: 0355626541</div>
-                                                <div class="name">Họ và tên: Đặng Gia Thuận</div>
+                                                <div class="phone">Số điện thoại: ${i.customer.phone }</div>
+                                                <div class="name">Họ và tên: ${i.customer.customerName }</div>
                                             </div>
                                             <div class="product-status text-center">
                                                 <p>Trạng thái</p>
-                                                <p style=" color: rgb(19, 220, 39);">HOÀN THÀNH</p>
+                                                <p style=" color: rgb(19, 220, 39);">${i.paymentStatus }</p>
                                             </div>
                                         </div>
                                         <div class="product-button d-flex">
                                             <button type="button" class="btn btn-success d-flex" style="margin-left: 900px;
-									margin-bottom: 20px;" disabled>Đã giao hàng</button>
+									margin-bottom: 20px;" disabled>${i.orderStatus }</button>
                                         </div>
                                     </div>
+                                    </c:forEach>
                                 </div>
+                                <!-- ĐÃ GIAO HÀNG END-->
+                                
+                                 <!-- ĐANG GIAO HÀNG END-->
                                 <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                                     aria-labelledby="pills-contact-tab" tabindex="0">
-                                     <div class="product">
+                                     <c:forEach var="i" items="${listorderdelivering }">
+                                    	<div class="product">
                                         <div class="product-detail rounded d-flex">
                                             <div class="content-info ml-2">
-                                                <div class="product-id" href="">#123</div>
-                                                <div class="product-category">Ngày đặt hàng: 21/11/2003</div>
+                                                <div class="product-id" href="">${i.orderID }</div>
+                                                <div class="product-category">Ngày đặt hàng: ${i.orderDate}</div>
                                             </div>
                                             <div class="product-money text-center">
                                                 <p>Thành tiền</p>
-                                                <p style="color: rgb(36, 214, 158);">90.000đ</p>
+                                                <p style="color: rgb(36, 214, 158);">${i.orderValue}đ</p>
                                             </div>
                                         </div>
                                         <div class="product-address d-flex">
                                             <div class="content-info ml-2 mb-2 justify-content-between">
-                                                <div class="address">Địa chỉ: 484A, Lê Văn Việt, Tăng Nhơn Phú A, Quận
-                                                    9,
-                                                    TPHCM
+                                                <div class="address">Địa chỉ: ${i.customer.address }
                                                 </div>
-                                                <div class="phone">Số điện thoại: 0355626541</div>
-                                                <div class="name">Họ và tên: Đặng Gia Thuận</div>
+                                                <div class="phone">Số điện thoại: ${i.customer.phone }</div>
+                                                <div class="name">Họ và tên: ${i.customer.customerName }</div>
                                             </div>
                                             <div class="product-status text-center">
                                                 <p>Trạng thái</p>
-                                                <p style=" color: rgb(19, 220, 39);">HOÀN THÀNH</p>
+                                                <p style=" color: rgb(19, 220, 39);">${i.paymentStatus }</p>
                                             </div>
                                         </div>
                                         <div class="product-button d-flex">
                                             <button type="button" class="btn btn-success d-flex" style="margin-left: 900px;
-									margin-bottom: 20px;" disabled>Đã giao hàng</button>
+									margin-bottom: 20px;" disabled>${i.orderStatus }</button>
                                         </div>
                                     </div>
+                                    </c:forEach>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +193,7 @@
                             <div class="col-lg-6 px-xl-10">
                                 <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded"
                                     style="margin-top: 20px; margin-left: 140px;">
-                                    <h3 class="h2 text-white text-center mb-0">Đặng Gia Thuận</h3>
+                                    <h3 class="h2 text-white text-center mb-0">${shipper.employeeName }</h3>
                                 </div>
                                 <ul class="list-unstyled mb-1-9">
                                     <li class="mb-2 mb-xl-3 d-flex align-items-center "> 
@@ -204,15 +209,15 @@
                                     </li>
                                     <li class="mb-2 mb-xl-3 d-flex align-items-center">
                                         <label for="username" class="display-26 text-secondary me-2 font-weight-600">Địa chỉ:</label>
-                                        <input type="text" id="username" class="form-control" value="danggiathuanhl">
+                                        <input type="text" id="username" class="form-control" value="${shipper.address }">
                                     </li>
                                     <li class="mb-2 mb-xl-3 d-flex align-items-center">
                                         <label for="username" class="display-26 text-secondary me-2 font-weight-600">Số điện thoại:</label>
-                                        <input type="text" id="username" class="form-control" value="danggiathuanhl">
+                                        <input type="text" id="username" class="form-control" value=${shipper.phone }>
                                     </li>
                                     <li class="mb-2 mb-xl-3 d-flex align-items-center">
                                         <label for="username" class="display-26 text-secondary me-2 font-weight-600">Ngày sinh:</label>
-                                        <input type="text" id="username" class="form-control" value="danggiathuanhl">
+                                        <input type="text" id="username" class="form-control" value="${shipper.birthdate }">
                                     </li>
                                 </ul>
                             </div>

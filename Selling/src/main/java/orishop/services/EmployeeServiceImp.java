@@ -36,6 +36,14 @@ public class EmployeeServiceImp implements IEmployeeService{
 	public EmployeeModels findShipper(String name) {
 		return empDAO.findShipper(name);
 	}
+	@Override
+	public EmployeeModels findShipperByAccountID(int id) {
+		return empDAO.findShipperByAccountID(id);
+	}
+	@Override
+	public EmployeeModels findSeller(int id) {
+		return empDAO.findSeller(id);
+	}
 	
 	
 }
