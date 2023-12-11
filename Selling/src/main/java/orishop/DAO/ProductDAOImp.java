@@ -244,7 +244,7 @@ public class ProductDAOImp implements IProductDAO {
 			ps.setInt(3, model.getStock());
 			ps.setInt(4, model.getAmount());
 			ps.setFloat(5, model.getPrice());
-			ps.setInt(6, model.getCategoryId());
+			ps.setInt(6, model.getCategory().getCategoryId());
 			ps.setString(7, model.getImageURL());
 			
 			ps.executeUpdate();
