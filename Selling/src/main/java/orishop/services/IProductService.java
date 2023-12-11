@@ -22,12 +22,15 @@ List<ProductModels> findAllProduct();
 	
 	void insertProduct(ProductModels product);
 	//void addProduct(ProductModels model);
-	
-	ProductModels findOne(int productId);
-	
+		
 	ProductModels findLast();
 	
 	void updateProduct(ProductModels product);
 	
 	void deleteProduct(ProductModels product);
+
+	ProductModels findOne(String parameter);
+
+	ProductModels findOne(int productId);
+
 }

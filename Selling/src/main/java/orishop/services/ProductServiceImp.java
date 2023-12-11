@@ -5,7 +5,6 @@ import java.util.List;
 
 import orishop.DAO.IProductDAO;
 import orishop.DAO.ProductDAOImp;
-import orishop.models.EmployeeModels;
 import orishop.models.ProductModels;
 
 public class ProductServiceImp implements IProductService {
@@ -89,6 +88,12 @@ public class ProductServiceImp implements IProductService {
 	public void deleteProduct(ProductModels product) {
 		proDAO.deleteProduct(product);
 		
+	}
+
+	@Override
+	public ProductModels findOne(String parameter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
