@@ -23,7 +23,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listuser" , "/admin/userdetail"})
+@WebServlet(urlPatterns = {"/admin/listuser" , "/admin/userdetail","/admin/searchUser","/admin/searchShipper","/admin/searchSeller"})
 
 public class AdminUserControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -39,10 +39,40 @@ public class AdminUserControllers extends HttpServlet {
 		} else if(url.contains("admin/userdetail")) {
 			getUserDetail(req, resp);
 		}
+		else if(url.contains("admin/searchUser")) {
+			getSearchUser(req, resp);
+		}
+		else if(url.contains("admin/searchSeller")) {
+			getSearchSeller(req, resp);
+		}
+		else if(url.contains("admin/searchShipper")) {
+			getSearchShipper(req, resp);
+		}
+	}
+	private void getSearchUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String usename = req.getParameter("search_info");
+		List<CustomerModels> listcustomer = cusService.findCustomerByCustomerName(usename);
+		
+		req.setAttribute("list", listcustomer);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/listuser.jsp");
+		rd.forward(req, resp);
+		
+		
+	}
+	private void getSearchSeller(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		
+	}
+	private void getSearchShipper(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		
+		String url = req.getRequestURI();
+		if(url.contains("admin/searchUser")) {
+			getSearchUser(req, resp);
+		}
 	}
 	//region User
 	private void findAllUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -68,7 +98,7 @@ public class AdminUserControllers extends HttpServlet {
 		req.setAttribute("page", page);
 		req.setAttribute("num", num);
 		req.setAttribute("count", listUser.size());
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listuser.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/listuser.jsp");
 		rd.forward(req, resp);
 	}
 	
@@ -82,7 +112,7 @@ public class AdminUserControllers extends HttpServlet {
 		
 		req.setAttribute("customer", customer);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/detailinforuser.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/detailinforuser.jsp");
 		rd.forward(req, resp);
 	}
 	

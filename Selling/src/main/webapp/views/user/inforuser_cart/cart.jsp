@@ -134,7 +134,8 @@
 							<c:if test="${empty listCartItem}">
 								Không có sản phẩm
 								<br>
-								<br><br><br>
+								<br>
+								<br>
 							</c:if>
 
 							<div class="row g-0 align-items-center pb-4">

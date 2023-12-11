@@ -115,21 +115,18 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			if(rs.next()) {
-				employee.setEmployeeId(rs.getInt("employeeId"));
-	            employee.setEmployeeName(rs.getString("employeeName"));
-	            employee.setBirthdate(rs.getDate("birthdate"));
-	            employee.setGender(rs.getString("gender"));
-	            employee.setAddress(rs.getString("address"));
-	            employee.setPhone(rs.getString("phone"));
-	            employee.setMail(rs.getString("mail"));
-	            employee.setJob(rs.getString("job"));
-	            employee.setAccountId(rs.getInt("accountId"));
-	            employee.setActivityArea(rs.getString("activityArea"));
-	            employee.setImageURL(rs.getString("imageURL"));
-			} else {
-				return null;
-			}
+			rs.next();
+            employee.setEmployeeId(rs.getInt("employeeId"));
+            employee.setEmployeeName(rs.getString("employeeName"));
+            employee.setBirthdate(rs.getDate("birthdate"));
+            employee.setGender(rs.getString("gender"));
+            employee.setAddress(rs.getString("address"));
+            employee.setPhone(rs.getString("phone"));
+            employee.setMail(rs.getString("mail"));
+            employee.setJob(rs.getString("job"));
+            employee.setAccountId(rs.getInt("accountId"));
+            employee.setActivityArea(rs.getString("activityArea"));
+            employee.setImageURL(rs.getString("imageURL"));
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -139,107 +136,61 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 	@Override
 	public EmployeeModels findShipper(String name) {
 		String sql = "SELECT * FROM Employee where job='Shipper' and employeeName=?";
-        EmployeeModels employee = new EmployeeModels();  
+        EmployeeModels employee = new EmployeeModels();
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, name);
 			rs = ps.executeQuery();
-			if(rs.next()) {
-				employee.setEmployeeId(rs.getInt("employeeId"));
-	            employee.setEmployeeName(rs.getString("employeeName"));
-	            employee.setBirthdate(rs.getDate("birthdate"));
-	            employee.setGender(rs.getString("gender"));
-	            employee.setAddress(rs.getString("address"));
-	            employee.setPhone(rs.getString("phone"));
-	            employee.setMail(rs.getString("mail"));
-	            employee.setJob(rs.getString("job"));
-	            employee.setAccountId(rs.getInt("accountId"));
-	            employee.setActivityArea(rs.getString("activityArea"));
-	            employee.setImageURL(rs.getString("imageURL"));
-			} else {
-				return null;
-			}
-            
+			rs.next();
+            employee.setEmployeeId(rs.getInt("employeeId"));
+            employee.setEmployeeName(rs.getString("employeeName"));
+            employee.setBirthdate(rs.getDate("birthdate"));
+            employee.setGender(rs.getString("gender"));
+            employee.setAddress(rs.getString("address"));
+            employee.setPhone(rs.getString("phone"));
+            employee.setMail(rs.getString("mail"));
+            employee.setJob(rs.getString("job"));
+            employee.setAccountId(rs.getInt("accountId"));
+            employee.setActivityArea(rs.getString("activityArea"));
+            employee.setImageURL(rs.getString("imageURL"));
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 		return employee;
 	}
 	
-	public EmployeeModels findShipperByAccountID(int id) {
-		String sql = "SELECT * FROM Employee where job='Shipper' and accountId=?";
-        EmployeeModels employee = new EmployeeModels();
-		try {
-			conn = DBConnectionSQLServer.getConnectionW();
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, id);
-			rs = ps.executeQuery();
-			if(rs.next()) {
-				employee.setEmployeeId(rs.getInt("employeeId"));
-	            employee.setEmployeeName(rs.getString("employeeName"));
-	            employee.setBirthdate(rs.getDate("birthdate"));
-	            employee.setGender(rs.getString("gender"));
-	            employee.setAddress(rs.getString("address"));
-	            employee.setPhone(rs.getString("phone"));
-	            employee.setMail(rs.getString("mail"));
-	            employee.setJob(rs.getString("job"));
-	            employee.setAccountId(rs.getInt("accountId"));
-	            employee.setActivityArea(rs.getString("activityArea"));
-	            employee.setImageURL(rs.getString("imageURL"));
-			} else {
-				return null;
-			}
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-		return employee;
-	}
 	
-	public static void main(String[] args) {
-		try {
-			IEmployeeDAO emp = new EmployeeDAOImp();
-			/*
-			 * List<EmployeeModels> listEmp = emp.findAllSeller(); for(EmployeeModels e :
-			 * listEmp) { System.out.println(e.getPhone()); }
-			 */
-			
-			EmployeeModels empl = emp.findShipper("Employee17");
-			System.out.println(empl.getPhone());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	@Override
-	public EmployeeModels findSeller(int id) {
-		String sql = "SELECT * FROM Employee where job='Seller' and employeeId=?";
-        EmployeeModels employee = new EmployeeModels();
+	public List<EmployeeModels> findSellerBySellerName(String sellerName){
+		String sql = "SELECT * FROM EMPLOYEE WHERE job = 'Seller' AND employeeName LIKE '%" + sellerName + "'";
+		List<EmployeeModels> listemployee = new ArrayList<EmployeeModels>();
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			if(rs.next()) {
-	            employee.setEmployeeId(rs.getInt("employeeId"));
-	            employee.setEmployeeName(rs.getString("employeeName"));
-	            employee.setBirthdate(rs.getDate("birthdate"));
-	            employee.setGender(rs.getString("gender"));
-	            employee.setAddress(rs.getString("address"));
-	            employee.setPhone(rs.getString("phone"));
-	            employee.setMail(rs.getString("mail"));
-	            employee.setJob(rs.getString("job"));
-	            employee.setAccountId(rs.getInt("accountId"));
-	            employee.setActivityArea(rs.getString("activityArea"));
-	            employee.setImageURL(rs.getString("imageURL"));
-            } else {
-            	return null;
-            }
+			while(rs.next()) {
+			EmployeeModels employee = new EmployeeModels();
+            employee.setEmployeeId(rs.getInt("employeeId"));
+            employee.setEmployeeName(rs.getString("employeeName"));
+            employee.setBirthdate(rs.getDate("birthdate"));
+            employee.setGender(rs.getString("gender"));
+            employee.setAddress(rs.getString("address"));
+            employee.setPhone(rs.getString("phone"));
+            employee.setMail(rs.getString("mail"));
+            employee.setJob(rs.getString("job"));
+            employee.setAccountId(rs.getInt("accountId"));
+            employee.setActivityArea(rs.getString("activityArea"));
+            employee.setImageURL(rs.getString("imageURL"));
+            
+            listemployee.add(employee);
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		return employee;
+		return listemployee;
 	}
+<<<<<<< HEAD
 	@Override
 	public void updateEmployee(EmployeeModels employee) {
 		String query = "update Employee set employeeName = ?, birthdate = ?, gender = ?, "
@@ -262,5 +213,9 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 			e.printStackTrace();
 		}
 	}
+=======
+	
+	
+>>>>>>> e1a1afb88f3ad3cff8c9aec80065e1ff65f8fe0f
 
 }
