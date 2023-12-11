@@ -356,6 +356,43 @@ VALUES
 (7, 8, 40, '2023-11-10', 120000),
 (8, 1, 30, '2023-11-09', 90000);
 
+CREATE Or Alter TRIGGER TG_TaoTaiKhoanSQL
+ON Account
+AFTER INSERT
+AS
+DECLARE @username nvarchar(30), @password nvarchar(30), @accountID int, @roleID int, @mail varchar(30)
+SELECT @username=i.Username, @password=i.Password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail
+FROM inserted i
+BEGIN
+	DECLARE @sqlString nvarchar(2000)
+	if (@roleID = 1)
+	BEGIN
+	SET @sqlString = 'Insert into Customer (Mail, AccountID) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+')';
+	END
+	else if (@roleID = 2)
+	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''admin'')';
+	else if (@roleID = 3)
+	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''seller'')';
+	else if (@roleID = 4)
+	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''shipper'')';
+	EXEC (@sqlString)
+END
+GO	
+
+CREATE Or Alter TRIGGER TG_TaoCART
+ON CUSTOMER
+AFTER INSERT
+AS
+DECLARE @customerId INT
+SELECT @customerId=i.customerId
+FROM inserted i
+BEGIN
+	DECLARE @sqlString nvarchar(2000)
+	SET @sqlString = 'Insert into CART (customerId) values ('+ CAST(@customerId AS nvarchar)+')';
+	EXEC (@sqlString)
+END
+GO
+
 --select * from ACCOUNT
 --select * from CUSTOMER
 --select * from CART
