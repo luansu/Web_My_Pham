@@ -8,13 +8,18 @@ import java.util.List;
 
 import orishop.models.CartItemModels;
 import orishop.models.OrdersModels;
+import orishop.services.*;
 
 public class OrderDAOImpl implements IOrderDAO{
 
-	
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
+	
+	ICustomerService cusService = new CustomerServiceImp();
+	ICartService cartService = new CartServiceImpl();
+	IEmployeeService empService = new EmployeeServiceImp();
+	
 	@Override
 	public List<OrdersModels> findAllOrders() {
 		List<OrdersModels> listOrder = new ArrayList<OrdersModels>();
@@ -35,6 +40,9 @@ public class OrderDAOImpl implements IOrderDAO{
 				orders.setPaymentMethod(rs.getString("paymentMethod"));
 				orders.setDeliveryMethod(rs.getString("deliveryMethod"));
 				orders.setEmployeeId(rs.getInt("employeeId"));
+				orders.setCustomer(cusService.findOne(orders.getCustomerID()));
+				orders.setCart(cartService.findCartByCartID(orders.getCartID()));
+				orders.setShipper(empService.findShipper(orders.getEmployeeId()));
 				listOrder.add(orders);
 			}
 			conn.close();
@@ -101,6 +109,9 @@ public class OrderDAOImpl implements IOrderDAO{
 				model.setPaymentMethod(rs.getString("PaymentMethod"));
 				model.setDeliveryMethod(rs.getString("DeliveryMethod"));
 				model.setEmployeeId(rs.getInt("EmployeeID"));
+				model.setCustomer(cusService.findOne(model.getCustomerID()));
+				model.setCart(cartService.findCartByCartID(model.getCartID()));
+				model.setShipper(empService.findShipper(model.getEmployeeId()));
 				listorder.add(model);
 			}
 		} catch (Exception e) {
@@ -131,6 +142,9 @@ public class OrderDAOImpl implements IOrderDAO{
 				model.setPaymentMethod(rs.getString("PaymentMethod"));
 				model.setDeliveryMethod(rs.getString("DeliveryMethod"));
 				model.setEmployeeId(rs.getInt("EmployeeID"));
+				model.setCustomer(cusService.findOne(model.getCustomerID()));
+				model.setCart(cartService.findCartByCartID(model.getCartID()));
+				model.setShipper(empService.findShipper(model.getEmployeeId()));
 				listorder.add(model);
 			}
 		} catch (Exception e) {

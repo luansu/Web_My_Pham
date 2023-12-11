@@ -15,9 +15,11 @@ public class OrdersModels implements Serializable{
 	private String paymentMethod;
 	private String deliveryMethod;
 	private int employeeId;
-	private CartModels cart;
 	private int countOrderByShipperId;
-
+	
+	private CustomerModels customer;
+	private CartModels cart;
+	private EmployeeModels shipper;
 
 	public OrdersModels() {
 		super();
@@ -28,8 +30,12 @@ public class OrdersModels implements Serializable{
 		this.employeeId = employeeId;
 		this.countOrderByShipperId = countOrderByShipperId;
 	}
+	
+	
+	
 	public OrdersModels(int orderID, Float orderValue, Date orderDate, int cartID, int customerID, String paymentStatus,
-			String orderStatus, String paymentMethod, String deliveryMethod, int employeeId) {
+			String orderStatus, String paymentMethod, String deliveryMethod, int employeeId, int countOrderByShipperId,
+			CustomerModels customer, CartModels cart, EmployeeModels shipper) {
 		super();
 		this.orderID = orderID;
 		this.orderValue = orderValue;
@@ -41,8 +47,11 @@ public class OrdersModels implements Serializable{
 		this.paymentMethod = paymentMethod;
 		this.deliveryMethod = deliveryMethod;
 		this.employeeId = employeeId;
+		this.countOrderByShipperId = countOrderByShipperId;
+		this.customer = customer;
+		this.cart = cart;
+		this.shipper = shipper;
 	}
-	
 	public int getCountOrderByShipperId() {
 		return countOrderByShipperId;
 	}
@@ -116,5 +125,17 @@ public class OrdersModels implements Serializable{
 	}
 	public void setCart(CartModels cart) {
 		this.cart = cart;
+	}
+	public CustomerModels getCustomer() {
+		return customer;
+	}
+	public void setCustomer(CustomerModels customer) {
+		this.customer = customer;
+	}
+	public EmployeeModels getShipper() {
+		return shipper;
+	}
+	public void setShipper(EmployeeModels shipper) {
+		this.shipper = shipper;
 	}
 }
