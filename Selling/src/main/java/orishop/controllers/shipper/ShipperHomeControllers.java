@@ -63,9 +63,9 @@ public class ShipperHomeControllers extends HttpServlet {
 		if(shipper != null) {
 			List<OrdersModels> listOrders = orderService.findOrderByShipperId(shipper.getEmployeeId());
 			
-			List<OrdersModels> listOrderDelivered = orderService.getOrderByOrderStatus("Đã giao");
+			List<OrdersModels> listOrderDelivered = orderService.getOrderByOrderStatus("Đã giao khách hàng");
 			
-			List<OrdersModels> listOrderDelivering = orderService.getOrderByOrderStatus("Đang giao");
+			List<OrdersModels> listOrderDelivering = orderService.getOrderByOrderStatus("Đã giao cho shipper");
 			
 			req.setAttribute("shipper", shipper);
 			req.setAttribute("listorder", listOrders);
