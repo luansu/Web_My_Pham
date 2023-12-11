@@ -56,7 +56,7 @@ public class AdminHomeControllers extends HttpServlet {
 			try {
 				emp = empService.findShipper(Integer.valueOf(search));
 			} catch (Exception e){
-				emp = empService.findShipper(search);
+				emp = empService.findShipper(search).get(0);
 			}
 			listEmp = new ArrayList<EmployeeModels>();
 			listEmp.add(emp);

@@ -12,7 +12,7 @@ public interface IEmployeeService {
 	List<EmployeeModels> getListEmpByPage(List<EmployeeModels> listEmp, int start, int end);
 	
 	EmployeeModels findShipper(int id);
-	EmployeeModels findShipper(String name);
+	List<EmployeeModels> findShipper(String name);
 	EmployeeModels findShipperByAccountID(int id);
 	
 	EmployeeModels findSeller(int id);

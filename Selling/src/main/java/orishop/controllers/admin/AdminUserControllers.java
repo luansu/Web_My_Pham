@@ -42,10 +42,6 @@ public class AdminUserControllers extends HttpServlet {
 		else if(url.contains("admin/searchUser")) {
 			getSearchUser(req, resp);
 		}
-
-		else if(url.contains("admin/searchShipper")) {
-			getSearchShipper(req, resp);
-		}
 	}
 	private void getSearchUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -55,14 +51,7 @@ public class AdminUserControllers extends HttpServlet {
 		
 		req.setAttribute("list", listcustomer);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/listuser.jsp");
-		rd.forward(req, resp);
-		
-		
-	}
-
-	private void getSearchShipper(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
+		rd.forward(req, resp);	
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{

@@ -41,13 +41,16 @@
 								src="https://scontent.fhan4-1.fna.fbcdn.net/v/t39.30808-6/339908861_207526681891832_1233331276264573363_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9c7eae&_nc_eui2=AeFJ4anPj9NtC_ZXyKQgLXW8YbiVsfA75rBhuJWx8DvmsBnd5OhM8q4r_k68Qy8JcoAD3jsoMp5iaPTcmvmLo366&_nc_ohc=X_NqlIZxBAQAX9lGWSj&_nc_ht=scontent.fhan4-1.fna&oh=00_AfCH2dwqPlm-gRAt-5_iDz7hztkGSsatp6sakGwYAHo-Zg&oe=65794A90"
 								alt="avatar" class="rounded-circle img-fluid"
 								style="width: 150px;">
-							<h5 class="my-3">${customer.customerName}</h5>
+							<h5 class="my-3">${seller.employeeName}</h5>
 							<p class="text-muted mb-4">
 								ID: <span style="color: Blue">1123</span>
 							</p>
-							<div class="d-flex justify-content-center mb-2">
-								<button type="button" class="btn btn-primary">Quay lại</button>
-							</div>
+							<form action="listseller" method="get">
+								<div class="d-flex justify-content-center mb-2">
+									<button type="submit" class="btn btn-primary">Quay lại</button>
+								</div>
+							</form>
+							
 						</div>
 					</div>
 					<div class="card mb-4 mb-lg-0">
@@ -80,7 +83,7 @@
 									<p class="mb-0">Họ tên</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.customerName}</p>
+									<p class="text-muted mb-0">${seller.employeeName}</p>
 								</div>
 							</div>
 							<hr>
@@ -89,7 +92,7 @@
 									<p class="mb-0">Email</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.mail}</p>
+									<p class="text-muted mb-0">${seller.mail}</p>
 								</div>
 							</div>
 							<hr>
@@ -98,7 +101,7 @@
 									<p class="mb-0">Số điện thoại</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.phone}</p>
+									<p class="text-muted mb-0">${seller.phone}</p>
 								</div>
 							</div>
 							<hr>
@@ -107,7 +110,7 @@
 									<p class="mb-0">Ngày sinh</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.birthday}</p>
+									<p class="text-muted mb-0">${seller.birthdate}</p>
 								</div>
 							</div>
 							<hr>
@@ -116,7 +119,7 @@
 									<p class="mb-0">Giới tính</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.gender}</p>
+									<p class="text-muted mb-0">${seller.gender}</p>
 								</div>
 							</div>
 							<hr>
@@ -125,7 +128,7 @@
 									<p class="mb-0">Địa chỉ</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.address}</p>
+									<p class="text-muted mb-0">${seller.address}</p>
 								</div>
 							</div>
 						</div>

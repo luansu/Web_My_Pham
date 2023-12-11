@@ -23,9 +23,9 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listshipper"})
+@WebServlet(urlPatterns = {"/admin/listshipper", "/admin/shipperdetail", "/admin/searchshipper"})
 
-public class AdminShipperControllers2 extends HttpServlet {
+public class AdminShipperControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
 	IEmployeeService empService = new EmployeeServiceImp();
 	ICustomerService cusService = new CustomerServiceImp();
@@ -36,6 +36,10 @@ public class AdminShipperControllers2 extends HttpServlet {
 		String url = req.getRequestURI();
 		if(url.contains("admin/listshipper")) {
 			findAllShipper(req, resp);
+		} else if(url.contains("admin/shipperdetail")) {
+			getShipperDetail(req, resp);
+		} else if(url.contains("admin/searchshipper")) {
+			getSearchShipper(req, resp);
 		}
 	}
 	@Override
@@ -55,7 +59,7 @@ public class AdminShipperControllers2 extends HttpServlet {
 			try {
 				emp = empService.findShipper(Integer.valueOf(search));
 			} catch (Exception e){
-				emp = empService.findShipper(search);
+				emp = empService.findShipper(search).get(0);
 			}
 			listEmp = new ArrayList<EmployeeModels>();
 			listEmp.add(emp);
@@ -82,6 +86,31 @@ public class AdminShipperControllers2 extends HttpServlet {
 		req.setAttribute("count", listEmp.size());
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_shipper/listshipper.jsp");
 		rd.forward(req, resp);
+	}
+	
+	private void getShipperDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		int id = Integer.valueOf(req.getParameter("id"));
+		
+		EmployeeModels shipper = empService.findShipper(id);
+		
+		req.setAttribute("shipper", shipper);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_shipper/detailinforshipper.jsp");
+		rd.forward(req, resp);
+	}
+	
+	private void getSearchShipper(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		String usename = req.getParameter("search_info");
+		List<EmployeeModels> listShipper = empService.findShipper(usename);
+		
+		req.setAttribute("list", listShipper);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_shipper/listshipper.jsp");
+		rd.forward(req, resp);	
 	}
 	//endregion
 }

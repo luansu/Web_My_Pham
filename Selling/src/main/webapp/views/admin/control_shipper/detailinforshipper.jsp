@@ -41,13 +41,15 @@
 								src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/364269272_1040493870497595_2004242429204819009_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGXolj8gbC_GkbOi1si_POvhoS_MmbbyyqGhL8yZtvLKmEJaYJkrM_yMJt8UeIOZzfDBJ4D9b0tSXzMSdrUumNi&_nc_ohc=gJc_idXNrdMAX8TT_UI&_nc_oc=AQmw8O98c_T5jCNnfa9hnHkg_D_hr3Xs5-Q90pPlUkbkdKLtiOUDXr7n2bIEQ14w48Y&_nc_ht=scontent.fsgn8-4.fna&oh=00_AfDbGyrUnVM519FCoIg5rVU-k1_EsBLxwz6SjDli7WXZzg&oe=6579D0E6"
 								alt="avatar" class="rounded-circle img-fluid"
 								style="width: 150px;">
-							<h5 class="my-3">${customer.customerName}</h5>
+							<h5 class="my-3">${shipper.employeeName}</h5>
 							<p class="text-muted mb-4">
 								ID: <span style="color: Blue">1123</span>
 							</p>
-							<div class="d-flex justify-content-center mb-2">
-								<button type="button" class="btn btn-primary">Quay lại</button>
-							</div>
+							<form action="listshipper" method="get">
+								<div class="d-flex justify-content-center mb-2">
+									<button type="submit" class="btn btn-primary">Quay lại</button>
+								</div>
+							</form>
 						</div>
 					</div>
 					<div class="card mb-4 mb-lg-0">
@@ -80,7 +82,7 @@
 									<p class="mb-0">Họ tên</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.customerName}</p>
+									<p class="text-muted mb-0">${shipper.employeeName}</p>
 								</div>
 							</div>
 							<hr>
@@ -89,7 +91,7 @@
 									<p class="mb-0">Email</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.mail}</p>
+									<p class="text-muted mb-0">${shipper.mail}</p>
 								</div>
 							</div>
 							<hr>
@@ -98,7 +100,7 @@
 									<p class="mb-0">Số điện thoại</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.phone}</p>
+									<p class="text-muted mb-0">${shipper.phone}</p>
 								</div>
 							</div>
 							<hr>
@@ -107,7 +109,7 @@
 									<p class="mb-0">Ngày sinh</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.birthday}</p>
+									<p class="text-muted mb-0">${shipper.birthdate}</p>
 								</div>
 							</div>
 							<hr>
@@ -116,7 +118,7 @@
 									<p class="mb-0">Giới tính</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.gender}</p>
+									<p class="text-muted mb-0">${shipper.gender}</p>
 								</div>
 							</div>
 							<hr>
@@ -125,7 +127,7 @@
 									<p class="mb-0">Địa chỉ</p>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${customer.address}</p>
+									<p class="text-muted mb-0">${shipper.address}</p>
 								</div>
 							</div>
 						</div>

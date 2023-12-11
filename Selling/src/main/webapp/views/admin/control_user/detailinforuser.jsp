@@ -45,9 +45,11 @@
 							<p class="text-muted mb-4">
 								ID: <span style="color: Blue">113388</span>
 							</p>
-							<div class="d-flex justify-content-center mb-2">
-								<button type="button" class="btn btn-primary">Quay lại</button>
-							</div>
+							<form action="listuser" method="get">
+								<div class="d-flex justify-content-center mb-2">
+									<button type="submit" class="btn btn-primary">Quay lại</button>
+								</div>
+							</form>
 						</div>
 					</div>
 

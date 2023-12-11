@@ -23,7 +23,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listseller","/admin/searchSeller"})
+@WebServlet(urlPatterns = {"/admin/listseller","/admin/searchSeller", "/admin/sellerdetail"})
 
 public class AdminSellerControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -39,8 +39,9 @@ public class AdminSellerControllers extends HttpServlet {
 		}
 		else if(url.contains("admin/searchSeller")) {
 			getSearchSeller(req, resp);
+		} else if (url.contains("admin/sellerdetail")) {
+			getSellerDetail(req, resp);
 		}
-		
 	}
 	private void getSearchSeller(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -89,5 +90,20 @@ public class AdminSellerControllers extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_seller/listseller.jsp");
 		rd.forward(req, resp);
 	}
+	
+	private void getSellerDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		int id = Integer.valueOf(req.getParameter("id"));
+		
+		EmployeeModels seller = empService.findSeller(id);
+		
+		req.setAttribute("seller", seller);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_seller/detailinforseller.jsp");
+		rd.forward(req, resp);
+	}
+	
 	//endregion
 }

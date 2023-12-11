@@ -134,15 +134,16 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 	}
 
 	@Override
-	public EmployeeModels findShipper(String name) {
+	public List<EmployeeModels> findShipper(String name) {
 		String sql = "SELECT * FROM Employee where job='Shipper' and employeeName=?";
-        EmployeeModels employee = new EmployeeModels();
+		List<EmployeeModels> listEmp = new ArrayList<EmployeeModels>();
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, name);
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
+				EmployeeModels employee = new EmployeeModels();
 				employee.setEmployeeId(rs.getInt("employeeId"));
 	            employee.setEmployeeName(rs.getString("employeeName"));
 	            employee.setBirthdate(rs.getDate("birthdate"));
@@ -154,13 +155,12 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 	            employee.setAccountId(rs.getInt("accountId"));
 	            employee.setActivityArea(rs.getString("activityArea"));
 	            employee.setImageURL(rs.getString("imageURL"));
-			} else {
-				return null;
+	            listEmp.add(employee);
 			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		return employee;
+		return listEmp;
 	}
 	
 	
