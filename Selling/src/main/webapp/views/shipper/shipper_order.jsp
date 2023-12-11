@@ -37,7 +37,7 @@
                 <div class="info p-2 rounded ">
                     <img class="image-info" href="/assets/tải xuống (1).jpg xuống (1).jpg">
                     <div class="content-info">
-                        <div class="account">danggiathuan</div>
+                        <div class="account">${shipper.employeeName}</div>
                         <a class="change-account" href="">Sửa hồ sơ</a>
                     </div>
                 </div>
@@ -78,36 +78,36 @@
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                     aria-labelledby="pills-home-tab" tabindex="0">
-                                    <div class="product">
+                                    <c:forEach var="i" items="${listorder }">
+                                    	<div class="product">
                                         <div class="product-detail rounded d-flex">
                                             <div class="content-info ml-2">
-                                                <div class="product-id" href="">#123</div>
-                                                <div class="product-category">Ngày đặt hàng: 21/11/2003</div>
+                                                <div class="product-id" href="">${i.orderID }</div>
+                                                <div class="product-category">Ngày đặt hàng: ${i.orderDate}</div>
                                             </div>
                                             <div class="product-money text-center">
                                                 <p>Thành tiền</p>
-                                                <p style="color: rgb(36, 214, 158);">90.000đ</p>
+                                                <p style="color: rgb(36, 214, 158);">${i.orderValue}đ</p>
                                             </div>
                                         </div>
                                         <div class="product-address d-flex">
                                             <div class="content-info ml-2 mb-2 justify-content-between">
-                                                <div class="address">Địa chỉ: 484A, Lê Văn Việt, Tăng Nhơn Phú A, Quận
-                                                    9,
-                                                    TPHCM
+                                                <div class="address">Địa chỉ: ${i.customer.address }
                                                 </div>
-                                                <div class="phone">Số điện thoại: 0355626541</div>
-                                                <div class="name">Họ và tên: Đặng Gia Thuận</div>
+                                                <div class="phone">Số điện thoại: ${i.customer.phone }</div>
+                                                <div class="name">Họ và tên: ${i.customer.customerName }</div>
                                             </div>
                                             <div class="product-status text-center">
                                                 <p>Trạng thái</p>
-                                                <p style=" color: rgb(19, 220, 39);">HOÀN THÀNH</p>
+                                                <p style=" color: rgb(19, 220, 39);">${i.paymentStatus }</p>
                                             </div>
                                         </div>
                                         <div class="product-button d-flex">
                                             <button type="button" class="btn btn-success d-flex" style="margin-left: 900px;
-									margin-bottom: 20px;" disabled>Đã giao hàng</button>
+									margin-bottom: 20px;" disabled>${i.orderStatus }</button>
                                         </div>
                                     </div>
+                                    </c:forEach>
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                                     aria-labelledby="pills-profile-tab" tabindex="0">
