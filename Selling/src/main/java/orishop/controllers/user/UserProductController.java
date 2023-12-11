@@ -21,7 +21,7 @@ import orishop.services.ProductServiceImp;
 
 @WebServlet(urlPatterns = { "/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
 		"/user/product/manager", "/user/product/insert", "/user/product/update",
-		"/user/product/delete", "/user/product/filterDesc" })
+		"/user/product/delete", "/user/product/filterDesc", "/user/product/filterAsc", "/user/product/topProduct" })
 public class UserProductController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -54,7 +54,35 @@ public class UserProductController extends HttpServlet {
 		} else if (url.contains("filterDesc")) {
 			getFilterDesc(req, resp);
 
+		} else if (url.contains("filterAsc")) {
+			getFilterAsc(req, resp);
+
+		} else if (url.contains("topProduct")) {
+			getTopProduct(req, resp);
+
 		}
+	}
+
+	private void getTopProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<ProductModels> listProduct = productService.findTopProduct(10);
+		List<CategoryModels> listCate = categoryService.findAllCategory();
+		
+		req.setAttribute("listC", listCate);
+		req.setAttribute("list", listProduct);
+		
+		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
+		
+	}
+
+	private void getFilterAsc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<ProductModels> listProduct = productService.filterProductAscByPrice();
+		List<CategoryModels> listCate = categoryService.findAllCategory();
+		
+		req.setAttribute("listC", listCate);
+		req.setAttribute("list", listProduct);
+		
+		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
+		
 	}
 
 	@Override
@@ -175,11 +203,9 @@ public class UserProductController extends HttpServlet {
 			throws ServletException, IOException {
 		List<ProductModels> listProduct = productService.findAllProduct();
 		List<CategoryModels> listCate = categoryService.findAllCategory();
-		ProductModels pro = productService.findLast();
 		
 		req.setAttribute("list", listProduct);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("P", pro);
 
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 	}

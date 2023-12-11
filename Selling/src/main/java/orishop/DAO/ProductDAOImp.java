@@ -182,10 +182,9 @@ public class ProductDAOImp implements IProductDAO {
 
 		try {
 
-			String query = "select top ? * from PRODUCT";
+			String query = "select top " + amount + " * from PRODUCT";
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(query);
-			ps.setInt(1, amount);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -231,29 +230,7 @@ public class ProductDAOImp implements IProductDAO {
 			e.printStackTrace();
 		}
 	}
-	/* Thiên Thanh
-	@Override
-	public void addProduct(ProductModels model) {
-		String sql = "INSERT INTO PRODUCT (productName, description, stock, amount, price, categoryId, imageURL) VALUES (?,?,?,?,?,?,?)";
-		try {
-			new DBConnectionSQLServer();
-			conn = DBConnectionSQLServer.getConnectionW();
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, model.getProductName());
-			ps.setString(2, model.getDescription());
-			ps.setInt(3, model.getStock());
-			ps.setInt(4, model.getAmount());
-			ps.setFloat(5, model.getPrice());
-			ps.setInt(6, model.getCategory().getCategoryId());
-			ps.setString(7, model.getImageURL());
-			
-			ps.executeUpdate();
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	*/
+	
 	@Override
 	public ProductModels findOne(int productId) {
 		
@@ -358,5 +335,14 @@ public class ProductDAOImp implements IProductDAO {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static void main(String[] args) {
+		ProductDAOImp dao = new ProductDAOImp();
+		int a = 10;
+		List<ProductModels> l = dao.findTopProduct(a);
+		for(ProductModels o : l) {
+			System.out.println(o);
+		}
 	}
 }
