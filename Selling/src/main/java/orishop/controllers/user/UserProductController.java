@@ -8,10 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import orishop.models.AccountModels;
+import orishop.models.CartModels;
 import orishop.models.CategoryModels;
+import orishop.models.CustomerModels;
 import orishop.models.ProductModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.ICategoryService;
@@ -19,7 +23,7 @@ import orishop.services.IProductService;
 import orishop.services.ProductServiceImp;
 
 
-@WebServlet(urlPatterns = { "/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
+@WebServlet(urlPatterns = {"/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
 		"/user/product/manager", "/user/product/insert", "/user/product/update",
 		"/user/product/delete", "/user/product/filterDesc", "/user/product/filterAsc", 
 		"/user/product/topProduct", "/user/product/searchProduct"})
@@ -118,6 +122,10 @@ public class UserProductController extends HttpServlet {
 		int pid = Integer.parseInt(req.getParameter("pid"));
 		ProductModels pro = productService.findOne(pid);
 		req.setAttribute("p", pro);
+		
+		HttpSession session = req.getSession();
+		session = req.getSession(true);
+		session.setAttribute("productID", pro.getProductId());
 		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
 	}
 	
