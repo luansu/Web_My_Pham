@@ -4,10 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-</head>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
@@ -59,6 +55,8 @@ img {
 	height: 120px;
 }
 </style>
+</head>
+
 <body>
 
 	<nav class="navbar navbar-expand-xxl bg-body-tertiary">
@@ -135,15 +133,13 @@ img {
 							<td class="change-content">${i.amount}</td>
 							<td class="change-content">${i.price}</td>
 							<td class="change-content">${i.categoryID}</td>
-							<td class="change-content">
-								<c:if test="${i.imageURL.substring(4) != 'http' }">
-									<img src='<c:url value="/image?fname=products/${i.imageURL}"/>' alt="image1">
-								</c:if> 
-								<br> 
-								<c:if test="${i.imageURL.substring(4) == 'http' }"> 
+							<td class="change-content"><c:if
+									test="${i.imageURL.substring(4) != 'http' }">
+									<img src='<c:url value="/image?fname=products/${i.imageURL}"/>'
+										alt="image1">
+								</c:if> <br> <c:if test="${i.imageURL.substring(4) == 'http' }">
 									<img src="${i.imageURL}" alt="image">
-								</c:if>
-							</td>
+								</c:if></td>
 							<td class="change-content">${i.category.categoryName}</td>
 
 

@@ -4,22 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>chi tiết seller</title>
-
-<%-- <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/templates/admin/css/style.css"> --%>
-</head>
-
-<body>
-
-	<link
+<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 		rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 		crossorigin="anonymous">
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+
+	
 
 	<section style="background-color: #eee;">
 		<div class="container py-5">
@@ -50,7 +46,7 @@
 									<button type="submit" class="btn btn-primary">Quay lại</button>
 								</div>
 							</form>
-							
+
 						</div>
 					</div>
 					<div class="card mb-4 mb-lg-0">
@@ -141,11 +137,16 @@
 										<span class="text-primary font-italic me-1"
 											style="font-weight: bold">Tình Trạng Đơn Hàng</span>
 									</p>
-									<p class="mb-1" style="font-size: .77rem;  font-size: 16px;">Tổng đơn đã bán: <span style="color: #007bff;"> 230</span> </p>
-		
-									<p class="mt-4 mb-1" style="font-size: .77rem;  font-size: 16px;">Tổng đơn hủy: <span style="color: #007bff;"> 12</span></p>
+									<p class="mb-1" style="font-size: .77rem; font-size: 16px;">
+										Tổng đơn đã bán: <span style="color: #007bff;"> 230</span>
+									</p>
 
-									
+									<p class="mt-4 mb-1"
+										style="font-size: .77rem; font-size: 16px;">
+										Tổng đơn hủy: <span style="color: #007bff;"> 12</span>
+									</p>
+
+
 								</div>
 							</div>
 						</div>

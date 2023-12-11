@@ -5,10 +5,6 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-</head>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
@@ -42,6 +38,8 @@
 	href="fonts/material-icon/css/material-design-iconic-font.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/templates/shipper/css/main.css">
+</head>
+
 
 <body>
 	<main>
@@ -130,11 +128,13 @@
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã giao</button>
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
+														giao</button>
 												</c:if>
 												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
 													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang giao</button>
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
+														giao</button>
 												</c:if>
 											</div>
 										</div>
@@ -172,11 +172,13 @@
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã giao</button>
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
+														giao</button>
 												</c:if>
 												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
 													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang giao</button>
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
+														giao</button>
 												</c:if>
 											</div>
 										</div>
@@ -216,11 +218,13 @@
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã giao</button>
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
+														giao</button>
 												</c:if>
 												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
 													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang giao</button>
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
+														giao</button>
 												</c:if>
 											</div>
 										</div>

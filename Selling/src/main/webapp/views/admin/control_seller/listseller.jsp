@@ -4,8 +4,8 @@
 
 <!DOCTYPE html>
 <html>
-<body>
-	<link
+<head>
+<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 		rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
@@ -23,6 +23,9 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
 		integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc="
 		crossorigin="anonymous" />
+</head>
+<body>
+	
 
 
 	<div class="list d-flex justify-content-center align-items-center">
@@ -35,7 +38,7 @@
 	<div class="search">
 		<div class="row justify-content-center">
 			<div class="col-30 col-md-30 col-lg-15">
-				<form class="card card-sm" method="post" action ="searchSeller">
+				<form class="card card-sm" method="post" action="searchSeller">
 					<div class="card-body row no-gutters align-items-center">
 						<div class="col-auto">
 							<i class="fas fa-search h4 text-body"></i>
@@ -79,7 +82,8 @@
 									</th>
 									<th scope="col">Tài khoản</th>
 									<th scope="col">Email</th>
-									<th scope="col">Số điện thoại</th>									<th scope="col" style="width: 200px;">Lựa chọn</th>
+									<th scope="col">Số điện thoại</th>
+									<th scope="col" style="width: 200px;">Lựa chọn</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -94,8 +98,8 @@
 										</th>
 										<td><img
 											src="https://scontent.fsgn7-1.fna.fbcdn.net/v/t39.30808-6/357053034_814960390037893_4922475779121350488_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF5HXwEGNMOPAGrytHpFsrR_aLOXQRBb7r9os5dBEFvuq1yibYhcbMKiV2CqFcBHaVpuYriGC2v8DMoF6Nbu4wB&_nc_ohc=Ze3ZaC8Fg1MAX9TG622&_nc_oc=AQmDWUE6_UmimeSiZ2jirGF78bMaWn8SsKj91n1Ww_KGUbXwiKAj3EL5_Xtj4yiHMKSNdJC5OZuK6Owbhrs6JfIF&_nc_ht=scontent.fsgn7-1.fna&oh=00_AfDd4v0R2q3tAdPWQOOKi9RUuY7XoWJkZjUWeP86-vEZ3A&oe=65746821"
-											alt="" class="avatar-sm rounded-circle me-2" /> <a href="sellerdetail?id=${i.employeeId }"
-											class="text-body">${i.employeeName}</a></td>
+											alt="" class="avatar-sm rounded-circle me-2" /> <a
+											href="sellerdetail?id=${i.employeeId }" class="text-body">${i.employeeName}</a></td>
 										<td>${i.mail}</td>
 										<td>${i.phone}</td>
 										<td>

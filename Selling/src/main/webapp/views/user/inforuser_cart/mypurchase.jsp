@@ -19,7 +19,8 @@
 </head>
 <body>
 
-    <link href='<c:url value="/templates/user/css/style.css"/>' rel="stylesheet" type="text/css">
+	<link href='<c:url value="/templates/user/css/style.css"/>'
+		rel="stylesheet" type="text/css">
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">
@@ -55,46 +56,47 @@
 		</div>
 		<div class="user-details">
 			<div class="user-details-title">
-					<ul class="nav nav-pills mb-3 bg-light" id="pills-tab" role="tablist">
-						<li class="nav-item" role="presentation">
-							<button class="nav-link active" id="pills-home-tab"
-								data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
-								role="tab" aria-controls="pills-home" aria-selected="true">Tất
-								cả</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="pills-paied-tab"
-								data-bs-toggle="pill" data-bs-target="#pills-paied"
-								type="button" role="tab" aria-controls="pills-paied"
-								aria-selected="false">Đã trả</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="pills-give-tab"
-								data-bs-toggle="pill" data-bs-target="#pills-give" type="button"
-								role="tab" aria-controls="pills-give" aria-selected="false">Gửi
-								hàng</button>
-						</li>
+				<ul class="nav nav-pills mb-3 bg-light" id="pills-tab"
+					role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="pills-home-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
+							role="tab" aria-controls="pills-home" aria-selected="true">Tất
+							cả</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-paied-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-paied" type="button"
+							role="tab" aria-controls="pills-paied" aria-selected="false">Đã
+							trả</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-give-tab" data-bs-toggle="pill"
+							data-bs-target="#pills-give" type="button" role="tab"
+							aria-controls="pills-give" aria-selected="false">Gửi
+							hàng</button>
+					</li>
 
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="pills-complete-tab"
-								data-bs-toggle="pill" data-bs-target="#pills-complete"
-								type="button" role="tab" aria-controls="pills-complete"
-								aria-selected="false">Hoàn thành</button>
-						</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-complete-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-complete"
+							type="button" role="tab" aria-controls="pills-complete"
+							aria-selected="false">Hoàn thành</button>
+					</li>
 
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="pills-disabled-tab"
-								data-bs-toggle="pill" data-bs-target="#pills-disabled"
-								type="button" role="tab" aria-controls="pills-disabled"
-								aria-selected="false">Đã Hủy</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="pills-return-tab"
-								data-bs-toggle="pill" data-bs-target="#pills-return"
-								type="button" role="tab" aria-controls="pills-return"
-								aria-selected="false">Hoàn lại tiền</button>
-						</li>
-					</ul>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-disabled-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-disabled"
+							type="button" role="tab" aria-controls="pills-disabled"
+							aria-selected="false">Đã Hủy</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-return-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-return"
+							type="button" role="tab" aria-controls="pills-return"
+							aria-selected="false">Hoàn lại tiền</button>
+					</li>
+				</ul>
 
 
 				<div class="tab-content" id="pills-tabContent">

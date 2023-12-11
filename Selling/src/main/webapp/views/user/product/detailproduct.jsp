@@ -174,8 +174,8 @@
 									</button>
 
 
-									<input id="form1" min="0" name="quantity" type="number" value="1"
-										class="form-control text-center" />
+									<input id="form1" min="0" name="quantity" type="number"
+										value="1" class="form-control text-center" />
 
 
 									<button class="btn btn-link px-2"

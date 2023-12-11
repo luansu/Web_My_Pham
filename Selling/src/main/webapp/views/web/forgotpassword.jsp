@@ -3,11 +3,8 @@
 <%@include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
 <html lang="fr">
-<!-- Site meta -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Forgot Password</title>
+
+<head>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
@@ -36,6 +33,7 @@
 	href="fonts/material-icon/css/material-design-iconic-font.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/templates/web/css/main.css">
+</head>
 <body>
 
 	<div class="bg__img">

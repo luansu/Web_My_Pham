@@ -16,11 +16,12 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/templates/user/css/style.css">
-	
+
 </head>
 <body>
 
-    <link href='<c:url value="/templates/user/css/style.css"/>' rel="stylesheet" type="text/css">
+	<link href='<c:url value="/templates/user/css/style.css"/>'
+		rel="stylesheet" type="text/css">
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">

@@ -3,6 +3,7 @@
 <%@include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
 <html lang="fr">
+<head>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
@@ -40,6 +41,7 @@
 	href="fonts/material-icon/css/material-design-iconic-font.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/templates/web/css/main.css">
+</head>
 <body>
 
 
@@ -71,10 +73,10 @@
 							<h1 style="font-size: 2rem;">SIGN-IN</h1>
 						</div>
 						<c:if test="${not empty message}">
-									<div class="alert alert-success">${message}</div>
+							<div class="alert alert-success">${message}</div>
 						</c:if>
 						<c:if test="${not empty error}">
-									<div class="alert alert-danger">${error}</div>
+							<div class="alert alert-danger">${error}</div>
 						</c:if>
 						<form action="login" method="post">
 
@@ -96,7 +98,9 @@
 											me</small></label>
 								</div>
 								<div class="forgot">
-									<small><a href="${pageContext.request.contextPath }/web/forgotpass">Forgot Password?</a></small>
+									<small><a
+										href="${pageContext.request.contextPath }/web/forgotpass">Forgot
+											Password?</a></small>
 								</div>
 							</div>
 							<div class="input-group mb-3">

@@ -19,7 +19,6 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/templates/user/css/stylecart.css">
-
 </head>
 <body>
 
@@ -162,8 +161,8 @@
 														href="findCartByCartID?page=${i}" class="page-link">${i }</a></li>
 												</c:if>
 												<c:if test="${i!=page }">
-													<li class="page-item"><a 
-													href="findCartByCartID?page=${i}" class="page-link">${i }</a></li>
+													<li class="page-item"><a
+														href="findCartByCartID?page=${i}" class="page-link">${i }</a></li>
 												</c:if>
 											</c:forEach>
 											<c:if test="${page<num}">
