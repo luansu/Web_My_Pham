@@ -40,7 +40,6 @@ public class EmployeeServiceImp implements IEmployeeService{
 	public List<EmployeeModels> findSellerBySellerName(String sellerName){
 		return empDAO.findSellerBySellerName(sellerName);
 	}
-<<<<<<< HEAD
 	@Override
 	public EmployeeModels findSeller(int id) {
 		return empDAO.findSeller(id);
@@ -49,8 +48,9 @@ public class EmployeeServiceImp implements IEmployeeService{
 	public void updateEmployee(EmployeeModels employee) {
 		empDAO.updateEmployee(employee);
 	}
-	
-=======
->>>>>>> e1a1afb88f3ad3cff8c9aec80065e1ff65f8fe0f
+	@Override
+	public EmployeeModels findShipperByAccountID(int id) {
+		return empDAO.findShipperByAccountID(id);
+	}
 	
 }

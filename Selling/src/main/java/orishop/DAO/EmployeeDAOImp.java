@@ -190,7 +190,6 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 		}
 		return listemployee;
 	}
-<<<<<<< HEAD
 	@Override
 	public void updateEmployee(EmployeeModels employee) {
 		String query = "update Employee set employeeName = ?, birthdate = ?, gender = ?, "
@@ -213,9 +212,59 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 			e.printStackTrace();
 		}
 	}
-=======
-	
-	
->>>>>>> e1a1afb88f3ad3cff8c9aec80065e1ff65f8fe0f
+
+	@Override
+	public EmployeeModels findShipperByAccountID(int id) {
+		String sql = "SELECT * FROM Employee where accountId=?";
+        EmployeeModels employee = new EmployeeModels();
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			rs.next();
+            employee.setEmployeeId(rs.getInt("employeeId"));
+            employee.setEmployeeName(rs.getString("employeeName"));
+            employee.setBirthdate(rs.getDate("birthdate"));
+            employee.setGender(rs.getString("gender"));
+            employee.setAddress(rs.getString("address"));
+            employee.setPhone(rs.getString("phone"));
+            employee.setMail(rs.getString("mail"));
+            employee.setJob(rs.getString("job"));
+            employee.setAccountId(rs.getInt("accountId"));
+            employee.setActivityArea(rs.getString("activityArea"));
+            employee.setImageURL(rs.getString("imageURL"));
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return employee;
+	}
+
+	@Override
+	public EmployeeModels findSeller(int id) {
+		String sql = "SELECT * FROM Employee where job='Seller' and employeeId=?";
+        EmployeeModels employee = new EmployeeModels();
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			rs.next();
+            employee.setEmployeeId(rs.getInt("employeeId"));
+            employee.setEmployeeName(rs.getString("employeeName"));
+            employee.setBirthdate(rs.getDate("birthdate"));
+            employee.setGender(rs.getString("gender"));
+            employee.setAddress(rs.getString("address"));
+            employee.setPhone(rs.getString("phone"));
+            employee.setMail(rs.getString("mail"));
+            employee.setJob(rs.getString("job"));
+            employee.setAccountId(rs.getInt("accountId"));
+            employee.setActivityArea(rs.getString("activityArea"));
+            employee.setImageURL(rs.getString("imageURL"));
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return employee;
+	}
 
 }
