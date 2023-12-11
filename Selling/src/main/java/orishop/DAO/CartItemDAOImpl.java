@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import orishop.DAO.DBConnectionSQLServer;
-import orishop.DAO.ICartDAO;
-import orishop.DAO.ICartItemDAO;
 import orishop.models.CartItemModels;
 import orishop.models.CartModels;
 import orishop.models.ProductModels;
@@ -84,10 +81,12 @@ public class CartItemDAOImpl implements ICartItemDAO {
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
+			ProductModels product = productDAO.findOne(model.getProductID());
+			
 			ps.setInt(1, model.getCartID());
 			ps.setInt(2, model.getProductID());
 			ps.setInt(3, model .getQuantity());
-			ps.setFloat(4, model.getTotalPrice());
+			ps.setFloat(4, model.getQuantity()*product.getPrice());
 
 			ps.executeUpdate();
 
@@ -126,9 +125,12 @@ public class CartItemDAOImpl implements ICartItemDAO {
 
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
+
+			ProductModels product = productDAO.findOne(model.getProductID());
+			
 			
 			ps.setInt(1, model.getQuantity());
-			ps.setFloat(2, model.getTotalPrice());
+			ps.setFloat(2, model.getQuantity()*product.getPrice());
 			ps.setInt(3, model.getCartID());
 			ps.setInt(4, model.getProductID());
 
@@ -172,8 +174,11 @@ public class CartItemDAOImpl implements ICartItemDAO {
 	
 	public static void main(String[] args) {
 		ICartItemDAO cartItemDAO = new CartItemDAOImpl();
-		List<CartItemModels> list1 = cartItemDAO.findCartItemByCartID(10);
-		System.out.println(cartItemDAO.countCartItem(99));
+		CartItemModels cart = new CartItemModels(29,11,6, null);
+		
+		cartItemDAO.updateCartItem(cart);
+		//List<CartItemModels> list1 = cartItemDAO.findCartItemByCartID(10);
+		System.out.println(cart.getTotalPrice());
 	}
 	
 }

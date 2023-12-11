@@ -83,6 +83,8 @@ private static final long serialVersionUID = 1L;
 			req.setAttribute("totalPriceCart", (float)session.getAttribute("totalPriceCart"));
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/cart.jsp");
 			rd.forward(req, resp);
+		} else if (url.contains("user/updateCartItem")) {
+			updateCartItem(req, resp);
 		}
 		
 	}
@@ -91,28 +93,41 @@ private static final long serialVersionUID = 1L;
 		String url = req.getRequestURI().toString();
 		if (url.contains("user/insertCartItem")) {
 			insertCartItem(req, resp);
-		} else if (url.contains("user/updateCartItem")) {
-			updateCartItem(req, resp);
-		}
+		} 
 	}
-	private void updateCartItem(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void updateCartItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
-		int cartId = Integer.parseInt(req.getParameter("cartId"));
-		int productId = Integer.parseInt(req.getParameter("productId"));
+		int cartId = Integer.parseInt(req.getParameter("cartID"));
+		int productId = Integer.parseInt(req.getParameter("productID"));
 		int quantity = Integer.parseInt(req.getParameter("quantity"));
 		float totalPrice = Float.parseFloat(req.getParameter("totalPrice"));
 
 		CartItemModels cartItem = new CartItemModels();
 		cartItem.setCartID(cartId);
-		cartItem.setProductID(productId);;
+		cartItem.setProductID(productId);
 		cartItem.setQuantity(quantity);
 		cartItem.setTotalPrice(totalPrice);
 
 		cartItemService.updateCartItem(cartItem);
-		resp.sendRedirect(req.getContextPath() + "/user/findCartItem");
 
+		HttpSession session = req.getSession();
+		
+		CartModels cart = cartService.findCartByCartID(cartId);
+		req.setAttribute("cart", cart);
+		List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cartId);
+		req.setAttribute("listCartItem", listCartItem);
+		int countCartItem = cartItemService.countCartItem(cartId);
+		session.setAttribute("countCartItem", countCartItem);
+		req.setAttribute("countCartItem", (int)session.getAttribute("countCartItem"));
+		
+		
+		float totalPriceCart = cartService.totalPriceCart((int)session.getAttribute("cartID"));
+		session.setAttribute("totalPriceCart", totalPriceCart);
+		req.setAttribute("totalPriceCart", (float)session.getAttribute("totalPriceCart"));
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/cart.jsp");
+		rd.forward(req, resp);
 	}
 
 	private void insertCartItem(HttpServletRequest req, HttpServletResponse resp) throws IOException {
