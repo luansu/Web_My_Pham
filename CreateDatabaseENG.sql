@@ -12,7 +12,7 @@ GO
 CREATE TABLE ACCOUNT (
 	accountId int Identity primary key,
 	username nvarchar(30),
-	[password] nvarchar(30),
+	[password] nvarchar(200),
 	mail varchar(30),
 	roleId int,
 	[status] int,
@@ -23,7 +23,7 @@ CREATE Or Alter TRIGGER TG_TaoTaiKhoanSQL
 ON Account
 AFTER INSERT
 AS
-DECLARE @username nvarchar(30), @password nvarchar(30), @accountID int, @roleID int, @mail varchar(30)
+DECLARE @username nvarchar(30), @password nvarchar(200), @accountID int, @roleID int, @mail varchar(30)
 SELECT @username=i.Username, @password=i.Password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail
 FROM inserted i
 BEGIN
