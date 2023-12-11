@@ -70,7 +70,7 @@ public class CustomerDAOImp implements ICustomerDAO{
 		return customer;
 	}
 	
-	/* Thiên Thanh
+	/*
 	@Override
 	public CustomerModels findCustomerByCustomerID(int id) {
 		String sql = "SELECT * FROM CUSTOMER WHERE customerId = ?";
@@ -100,6 +100,36 @@ public class CustomerDAOImp implements ICustomerDAO{
 		return customer;
 	}
 	*/
+	@Override
+	public List<CustomerModels> findCustomerByCustomerName(String customerName) {
+	    String sql = "SELECT * FROM CUSTOMER WHERE customerName LIKE '%" + customerName + "'";
+	    List<CustomerModels> listcustomer = new ArrayList<CustomerModels>();
+	    try {
+	        new DBConnectionSQLServer();
+	        Connection conn = DBConnectionSQLServer.getConnectionW();
+	        PreparedStatement ps = conn.prepareStatement(sql);
+	        ResultSet rs = ps.executeQuery();
+	        while (rs.next()) {
+	        	CustomerModels customer = new CustomerModels();
+	        	customer.setCustomerId(rs.getInt("customerId"));
+				customer.setCustomerName(rs.getString("customerName"));
+				customer.setBirthday(rs.getDate("birthday"));
+				customer.setGender(rs.getString("gender"));
+				customer.setAddress(rs.getString("address"));
+				customer.setPhone(rs.getLong("phone"));
+				customer.setMail(rs.getString("mail"));
+				customer.setRank(rs.getString("rank"));
+				customer.setReputation(rs.getInt("reputation"));
+				customer.setRewardPoints(rs.getInt("rewardPoints"));
+				customer.setAccountId(rs.getInt("accountId"));
+				listcustomer.add(customer);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return listcustomer;
+	}
+	
 	public CustomerModels findCustomerByAccountID(int accountId) {
 		CustomerModels customer = new CustomerModels();
 		String sql = "SELECT * FROM Customer where accountId=?";

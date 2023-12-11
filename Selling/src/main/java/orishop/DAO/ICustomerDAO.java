@@ -8,8 +8,11 @@ public interface ICustomerDAO {
 	List<CustomerModels> findAll();
 	
 	CustomerModels findOne(int id);
-	// CustomerModels findCustomerByCustomerID(int id);
 	public CustomerModels findCustomerByAccountID(int accountId);
 
 	void editInfor(CustomerModels model);
+
+	//CustomerModels findCustomerByCustomerID(int id);
+
+	List<CustomerModels> findCustomerByCustomerName(String customerName);
 }

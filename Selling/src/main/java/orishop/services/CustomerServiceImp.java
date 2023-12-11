@@ -64,4 +64,9 @@ public class CustomerServiceImp implements ICustomerService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<CustomerModels> findCustomerByCustomerName (String customerName){
+		return cusDAO.findCustomerByCustomerName(customerName);
+	}
 }

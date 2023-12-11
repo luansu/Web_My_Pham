@@ -15,4 +15,5 @@ public interface ICustomerService {
 
 	void editInfor(CustomerModels model);
 	CustomerModels findOne(String parameter);
+	List<CustomerModels> findCustomerByCustomerName(String customerName);
 }
