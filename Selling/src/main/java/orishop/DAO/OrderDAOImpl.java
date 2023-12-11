@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import orishop.models.CartItemModels;
-import orishop.models.OrdersModels;
+import orishop.models.OrdersItemModels;
+import orishop.models.*;
 import orishop.services.*;
 
 public class OrderDAOImpl implements IOrderDAO{
 	ICustomerService cusService = new CustomerServiceImp();
 	ICartService cartService = new CartServiceImpl();
 	IEmployeeService empService = new EmployeeServiceImp();
+	IProductService proService = new ProductServiceImp();
 	
 	Connection conn = null;
 	PreparedStatement ps = null;
@@ -41,6 +43,7 @@ public class OrderDAOImpl implements IOrderDAO{
 				orders.setCustomer(cusService.findOne(orders.getCustomerID()));
 				orders.setCart(cartService.findCartByCartID(orders.getCartID()));
 				orders.setShipper(empService.findShipper(orders.getEmployeeId()));
+				orders.setOrderItems(getOrderItems(orders.getOrderID()));
 				listOrder.add(orders);
 			}
 			conn.close();
@@ -110,6 +113,7 @@ public class OrderDAOImpl implements IOrderDAO{
 				model.setCustomer(cusService.findOne(model.getCustomerID()));
 				model.setCart(cartService.findCartByCartID(model.getCartID()));
 				model.setShipper(empService.findShipper(model.getEmployeeId()));
+				model.setOrderItems(getOrderItems(model.getOrderID()));
 				listorder.add(model);
 			}
 		} catch (Exception e) {
@@ -117,6 +121,7 @@ public class OrderDAOImpl implements IOrderDAO{
 		}
 		return listorder;
 	}
+	
 
 	@Override
 	public List<OrdersModels> findOrderByShipperIdAndDistributed(int id) {
@@ -143,6 +148,7 @@ public class OrderDAOImpl implements IOrderDAO{
 				model.setCustomer(cusService.findOne(model.getCustomerID()));
 				model.setCart(cartService.findCartByCartID(model.getCartID()));
 				model.setShipper(empService.findShipper(model.getEmployeeId()));
+				model.setOrderItems(getOrderItems(model.getOrderID()));
 				listorder.add(model);
 			}
 		} catch (Exception e) {
@@ -167,5 +173,47 @@ public class OrderDAOImpl implements IOrderDAO{
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public double totalPriceProductSell() {
+		String sql = "select sum(totalPrice) as erning from ORDER_ITEM";
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getDouble("erning");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0.0;
+	}
+
+	@Override
+	public List<OrdersItemModels> getOrderItems(int id) {
+		String sql = "select * from ORDER_ITEM where orderId=?";
+		List<OrdersItemModels> orderItems = new ArrayList<OrdersItemModels>();
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				OrdersItemModels model = new OrdersItemModels();
+				model.setOrderId(rs.getInt("orderId"));
+				model.setProductId(rs.getInt("productId"));
+				model.setQuantity(rs.getInt("quantity"));
+				model.setTotalPrice(rs.getFloat("totalPrice"));
+				model.setProduct(proService.findOne(model.getProductId()));
+				orderItems.add(model);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return orderItems;
 	}
 }

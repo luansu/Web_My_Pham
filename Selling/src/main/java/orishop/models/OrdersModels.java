@@ -1,6 +1,7 @@
 package orishop.models;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class OrdersModels implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -20,6 +21,7 @@ public class OrdersModels implements Serializable{
 	private CustomerModels customer;
 	private CartModels cart;
 	private EmployeeModels shipper;
+	private List<OrdersItemModels> orderItems;
 
 	public OrdersModels() {
 		super();
@@ -31,11 +33,9 @@ public class OrdersModels implements Serializable{
 		this.countOrderByShipperId = countOrderByShipperId;
 	}
 	
-	
-	
 	public OrdersModels(int orderID, Float orderValue, Date orderDate, int cartID, int customerID, String paymentStatus,
 			String orderStatus, String paymentMethod, String deliveryMethod, int employeeId, int countOrderByShipperId,
-			CustomerModels customer, CartModels cart, EmployeeModels shipper) {
+			CustomerModels customer, CartModels cart, EmployeeModels shipper, List<OrdersItemModels> orderItems) {
 		super();
 		this.orderID = orderID;
 		this.orderValue = orderValue;
@@ -51,6 +51,7 @@ public class OrdersModels implements Serializable{
 		this.customer = customer;
 		this.cart = cart;
 		this.shipper = shipper;
+		this.orderItems = orderItems;
 	}
 	public int getCountOrderByShipperId() {
 		return countOrderByShipperId;
@@ -137,5 +138,11 @@ public class OrdersModels implements Serializable{
 	}
 	public void setShipper(EmployeeModels shipper) {
 		this.shipper = shipper;
+	}
+	public List<OrdersItemModels> getOrderItems() {
+		return orderItems;
+	}
+	public void setOrderItems(List<OrdersItemModels> orderItems) {
+		this.orderItems = orderItems;
 	}
 }

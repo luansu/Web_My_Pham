@@ -126,13 +126,13 @@ img {
 									type="checkbox" id="checkbox1" name="options[]" value="1">
 									<label for="checkbox1"></label>
 							</span></td>
-							<td>${i.productID}</td>
+							<td>${i.productId}</td>
 							<td class="change-content">${i.productName}</td>
 							<td class="change-content">${i.description}</td>
 							<td class="change-content">${i.stock}</td>
 							<td class="change-content">${i.amount}</td>
 							<td class="change-content">${i.price}</td>
-							<td class="change-content">${i.categoryID}</td>
+							<td class="change-content">${i.categoryId}</td>
 							<td class="change-content"><c:if
 									test="${i.imageURL.substring(4) != 'http' }">
 									<img src='<c:url value="/image?fname=products/${i.imageURL}"/>'
@@ -215,7 +215,7 @@ img {
 							<label for='category'>Category</label> <select name="categoryID"
 								class="form-select" aria-label="Default select example">
 								<c:forEach var="item" items="${listcate}">
-									<option value="${item.categoryID}">${item.categoryName}</option>
+									<option value="${item.categoryId}">${item.categoryName}</option>
 								</c:forEach>
 							</select>
 						</div>

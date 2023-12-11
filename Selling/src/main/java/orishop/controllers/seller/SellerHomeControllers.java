@@ -19,10 +19,12 @@ import orishop.services.CategoryServiceImp;
 import orishop.services.CustomerServiceImp;
 import orishop.services.ProductServiceImp;
 import orishop.services.IProductService;
+import orishop.services.OrderServiceImpl;
 import orishop.services.EmployeeServiceImp;
 import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
+import orishop.services.IOrderService;
 
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, maxFileSize = 1024 * 1025 * 50, maxRequestSize = 1024 * 1024* 50)
@@ -33,12 +35,19 @@ public class SellerHomeControllers extends HttpServlet {
 	IEmployeeService empService = new EmployeeServiceImp();
 	ICustomerService cusService = new CustomerServiceImp();
 	IProductService proService = new ProductServiceImp();
+	IOrderService orderService = new OrderServiceImpl();
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI();
 		if(url.contains("seller/home")) {
+			double totalPrice = orderService.totalPriceProductSell();
+			int orderrequest = orderService.countOrderRequest();
+			
+			req.setAttribute("earningmonthly", totalPrice);
+			req.setAttribute("earningannual", totalPrice);
+			req.setAttribute("orderrequest", orderrequest);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/seller/revenue.jsp");
 			rd.forward(req, resp);
 		}
@@ -48,13 +57,13 @@ public class SellerHomeControllers extends HttpServlet {
 			req.setAttribute("listcate", listcate);
 			req.setAttribute("list", list);
 
-			RequestDispatcher rd = req.getRequestDispatcher("/views/product/listproduct.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/views/seller/listproduct.jsp");
 			rd.forward(req, resp);
 		}  else if (url.contains("insertpro")) {
 			List<CategoryModels> listcate = cateService.findAllCategory();
 			req.setAttribute("listcate", listcate);
 
-			RequestDispatcher rd = req.getRequestDispatcher("views/product/listproduct.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("views/seller/listproduct.jsp");
 			rd.forward(req, resp);
 		}
 		else if (url.contains("updatepro")) {
@@ -63,7 +72,7 @@ public class SellerHomeControllers extends HttpServlet {
 			ProductModels product = proService.findOne(req.getParameter("id"));
 			req.setAttribute("product", product);
 
-			RequestDispatcher rd = req.getRequestDispatcher("views/product/listproduct.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("views/seller/listproduct.jsp");
 			rd.forward(req, resp);
 		}
 		else if (url.contains("deletepro")) {
@@ -94,7 +103,7 @@ public class SellerHomeControllers extends HttpServlet {
 		rd.forward(req, resp);
 	}
 	
-private void addProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+	private void addProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
