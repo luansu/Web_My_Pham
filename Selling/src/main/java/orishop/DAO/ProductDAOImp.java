@@ -83,13 +83,12 @@ public class ProductDAOImp implements IProductDAO {
 	}
 	
 	@Override
-	public List<ProductModels> findProduct(String productName, String categoryName) {
+	public List<ProductModels> findProduct(String productName) {
 		List<ProductModels> listProduct = new ArrayList<ProductModels>();
 
 		try {
 
-			String query = "select * from PRODUCT where ProductName like '%" + productName + "%' and CategoryID like '%"
-					+ categoryName + "%'";
+			String query = "select * from PRODUCT where ProductName like N'%" + productName + "%'";
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();

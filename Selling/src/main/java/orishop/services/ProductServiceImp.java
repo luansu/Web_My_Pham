@@ -21,8 +21,8 @@ public class ProductServiceImp implements IProductService {
 	}
 
 	@Override
-	public List<ProductModels> findProduct(String productName, String categoryName) {
-		return proDAO.findProduct(productName, categoryName);
+	public List<ProductModels> findProduct(String productName) {
+		return proDAO.findProduct(productName);
 	}
 
 	@Override

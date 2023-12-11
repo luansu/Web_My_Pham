@@ -9,7 +9,7 @@ public interface IProductDAO {
 	
 	List<ProductModels> findByCategory(int cid);
 	
-	List<ProductModels> findProduct(String productName, String categoryName);
+	List<ProductModels> findProduct(String productName);
 	
 	List<ProductModels> filterProductDescByPrice();
 	

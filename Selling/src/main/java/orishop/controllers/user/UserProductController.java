@@ -21,7 +21,8 @@ import orishop.services.ProductServiceImp;
 
 @WebServlet(urlPatterns = { "/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
 		"/user/product/manager", "/user/product/insert", "/user/product/update",
-		"/user/product/delete", "/user/product/filterDesc", "/user/product/filterAsc", "/user/product/topProduct" })
+		"/user/product/delete", "/user/product/filterDesc", "/user/product/filterAsc", 
+		"/user/product/topProduct", "/user/product/searchProduct"})
 public class UserProductController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -62,6 +63,32 @@ public class UserProductController extends HttpServlet {
 
 		}
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+
+		String url = req.getRequestURI().toString();
+
+		if (url.contains("update")) {
+			doPost_Update(req, resp);
+		} else if (url.contains("insert")) {
+			doPost_Insert(req, resp);
+		} else if (url.contains("searchProduct")) {
+			postSearchProduct(req, resp);
+		}
+	}
+
+	private void postSearchProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String proName = req.getParameter("searchProduct");
+		List<ProductModels> listP = productService.findProduct(proName);
+		List<CategoryModels> listCate = categoryService.findAllCategory();
+		
+		req.setAttribute("listC", listCate);
+		req.setAttribute("list", listP);
+		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
+	}
 
 	private void getTopProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<ProductModels> listProduct = productService.findTopProduct(10);
@@ -85,25 +112,13 @@ public class UserProductController extends HttpServlet {
 		
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
-
-		String url = req.getRequestURI().toString();
-
-		if (url.contains("update")) {
-			doPost_Update(req, resp);
-		} else if (url.contains("insert")) {
-			doPost_Insert(req, resp);
-		}
-	}
+	
 	
 	private void getDetailProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int pid = Integer.parseInt(req.getParameter("pid"));
 		ProductModels pro = productService.findOne(pid);
 		req.setAttribute("p", pro);
-		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/user/product/detailProduct.jsp").forward(req, resp);
 	}
 	
 
