@@ -3,7 +3,6 @@ package orishop.controllers.user;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import orishop.models.CategoryModels;
-import orishop.models.EmployeeModels;
 import orishop.models.ProductModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.ICategoryService;
@@ -21,7 +19,8 @@ import orishop.services.IProductService;
 import orishop.services.ProductServiceImp;
 
 
-@WebServlet(urlPatterns = { "/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", "/user/product/manager", "/user/product/insert", "/user/product/update",
+@WebServlet(urlPatterns = { "/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
+		"/user/product/manager", "/user/product/insert", "/user/product/update",
 		"/user/product/delete", "/user/product/filterDesc" })
 public class UserProductController extends HttpServlet {
 
@@ -36,8 +35,10 @@ public class UserProductController extends HttpServlet {
 
 		if (url.contains("listProduct")) {
 			getListProduct(req, resp);
+			
 		} else if (url.contains("productByCategory")) {
 			getProductByCategory(req, resp);
+			
 		}else if (url.contains("detailProduct")) {
 			getDetailProduct(req, resp);
 			
@@ -46,11 +47,11 @@ public class UserProductController extends HttpServlet {
 //			doGet_Insert(req, resp);
 //		}
 
-		else if (url.contains("user/productupdate")) {
+		else if (url.contains("update")) {
 			getUpdate(req, resp);
-		} else if (url.contains("user/productdelete")) {
+		} else if (url.contains("delete")) {
 			getDelete(req, resp);
-		} else if (url.contains("user/product/filterDesc")) {
+		} else if (url.contains("filterDesc")) {
 			getFilterDesc(req, resp);
 
 		}
@@ -74,7 +75,7 @@ public class UserProductController extends HttpServlet {
 		int pid = Integer.parseInt(req.getParameter("pid"));
 		ProductModels pro = productService.findOne(pid);
 		req.setAttribute("p", pro);
-		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/user/product/detailProduct.jsp").forward(req, resp);
 	}
 	
 
@@ -82,11 +83,10 @@ public class UserProductController extends HttpServlet {
 		int id = Integer.parseInt(req.getParameter("cid"));
 		
 		List<ProductModels> listPro = productService.findByCategory(id);
-		List<ProductModels> list = pagingProduct(req, listPro);
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		ProductModels pro = productService.findLast();
 		
-		req.setAttribute("list", list);
+		req.setAttribute("list", listPro);
 		req.setAttribute("listC", listCate);
 		req.setAttribute("tag", id);
 		req.setAttribute("P", pro);
@@ -167,44 +167,21 @@ public class UserProductController extends HttpServlet {
 
 		req.setAttribute("P", product);
 		req.setAttribute("listC", listcate);
-		req.getRequestDispatcher("/views/Product/updateproduct.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/Product/updateProduct.jsp").forward(req, resp);
 
 	}
 
 	private void getListProduct(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		List<ProductModels> listPro = productService.findAllProduct();
-		
-		List<ProductModels> list = pagingProduct(req, listPro);
-		req.setAttribute("list", list);
-		req.setAttribute("count", listPro.size());
-		
+		List<ProductModels> listProduct = productService.findAllProduct();
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		ProductModels pro = productService.findLast();
+		
+		req.setAttribute("list", listProduct);
 		req.setAttribute("listC", listCate);
 		req.setAttribute("P", pro);
 
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
-	}
-	
-	private List<ProductModels> pagingProduct(HttpServletRequest req, List<ProductModels> listPro) {
-		int pagesize = 3;
-		int size = listPro.size();
-		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
-		int page, numberpage = pagesize;
-		String xpage = req.getParameter("page");
-		if (xpage == null) {
-			page = 1;
-		}
-		else {
-			page = Integer.parseInt(xpage);
-		}
-		int start,end;
-		start = (page - 1) * numberpage;
-		end = Math.min(page*numberpage, size);
-		req.setAttribute("page", page);
-		req.setAttribute("num", num);
-		return productService.getListProductByPage(listPro, start, end);
 	}
 
 }
