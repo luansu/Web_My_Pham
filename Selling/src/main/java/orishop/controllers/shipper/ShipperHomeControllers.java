@@ -16,25 +16,36 @@ import orishop.DAO.IEmployeeDAO;
 import orishop.models.CategoryModels;
 import orishop.models.CustomerModels;
 import orishop.models.EmployeeModels;
+import orishop.models.OrdersModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.CustomerServiceImp;
 import orishop.services.EmployeeServiceImp;
 import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
+import orishop.services.IOrderService;
+import orishop.services.OrderServiceImpl;
 
-@WebServlet(urlPatterns = {"/shipper/home"})
+@WebServlet(urlPatterns = {"/shipper/home", "/shipper/order"})
 
 public class ShipperHomeControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
 	IEmployeeService empService = new EmployeeServiceImp();
 	ICustomerService cusService = new CustomerServiceImp();
+	IOrderService orderService = new OrderServiceImpl();
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI();
 		if(url.contains("shipper/home")) {
+			List<OrdersModels> listOrders = orderService.findOrderByShipperId(2);
+			req.setAttribute("listorder", listOrders);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/shipper/shipper_order.jsp");
+			rd.forward(req, resp);
+		} else if(url.contains("shipper/order")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/views/shipper/shipper_order.jsp");
+			rd.forward(req, resp);
 		}
 	}
 	@Override
