@@ -91,16 +91,16 @@ public class OrderDAOImpl implements IOrderDAO{
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				OrdersModels model = new OrdersModels();
-				model.setOrderID(rs.getInt("OrderID"));
-				model.setOrderValue(rs.getFloat("OrderValue"));
-				model.setOrderDate(rs.getDate("OrderDate"));
-				model.setCartID(rs.getInt("CartID"));
-				model.setCustomerID(rs.getInt("CustomerID"));
-				model.setPaymentStatus(rs.getString("PaymentStatus"));
-				model.setOrderStatus(rs.getString("OrderStatus"));
-				model.setPaymentMethod(rs.getString("PaymentMethod"));
-				model.setDeliveryMethod(rs.getString("DeliveryMethod"));
-				model.setEmployeeId(rs.getInt("EmployeeID"));
+				model.setOrderID(rs.getInt("orderId"));
+				model.setOrderValue(rs.getFloat("orderValue"));
+				model.setOrderDate(rs.getDate("orderDate"));
+				model.setCartID(rs.getInt("cartId"));
+				model.setCustomerID(rs.getInt("customerId"));
+				model.setPaymentStatus(rs.getString("paymentStatus"));
+				model.setOrderStatus(rs.getString("orderStatus"));
+				model.setPaymentMethod(rs.getString("paymentMethod"));
+				model.setDeliveryMethod(rs.getString("deliveryMethod"));
+				model.setEmployeeId(rs.getInt("employeeId"));
 				listorder.add(model);
 			}
 		} catch (Exception e) {
@@ -111,7 +111,7 @@ public class OrderDAOImpl implements IOrderDAO{
 
 	@Override
 	public List<OrdersModels> findOrderByShipperIdAndDistributed(int id) {
-		String sql = "select * from orders where employeeId=? and orderStatus = 'distributed'";
+		String sql = "select * from orders where employeeId=? and orderStatus = 'Distributed'";
 		List<OrdersModels> listorder = new ArrayList<OrdersModels>();
 		try {
 			new DBConnectionSQLServer();
@@ -121,16 +121,16 @@ public class OrderDAOImpl implements IOrderDAO{
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				OrdersModels model = new OrdersModels();
-				model.setOrderID(rs.getInt("OrderID"));
-				model.setOrderValue(rs.getFloat("OrderValue"));
-				model.setOrderDate(rs.getDate("OrderDate"));
-				model.setCartID(rs.getInt("CartID"));
-				model.setCustomerID(rs.getInt("CustomerID"));
-				model.setPaymentStatus(rs.getString("PaymentStatus"));
-				model.setOrderStatus(rs.getString("OrderStatus"));
-				model.setPaymentMethod(rs.getString("PaymentMethod"));
-				model.setDeliveryMethod(rs.getString("DeliveryMethod"));
-				model.setEmployeeId(rs.getInt("EmployeeID"));
+				model.setOrderID(rs.getInt("orderId"));
+				model.setOrderValue(rs.getFloat("orderValue"));
+				model.setOrderDate(rs.getDate("orderDate"));
+				model.setCartID(rs.getInt("cartId"));
+				model.setCustomerID(rs.getInt("customerId"));
+				model.setPaymentStatus(rs.getString("paymentStatus"));
+				model.setOrderStatus(rs.getString("orderStatus"));
+				model.setPaymentMethod(rs.getString("paymentMethod"));
+				model.setDeliveryMethod(rs.getString("deliveryMethod"));
+				model.setEmployeeId(rs.getInt("employeeId"));
 				listorder.add(model);
 			}
 		} catch (Exception e) {
@@ -156,5 +156,4 @@ public class OrderDAOImpl implements IOrderDAO{
 		}
 		return list;
 	}
-
 }
