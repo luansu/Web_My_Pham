@@ -85,8 +85,8 @@
 											<div
 												class="row d-flex justify-content-between align-items-center">
 												<div class="col-md-2 col-lg-2 col-xl-2">
-													<img
-														src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F30608%2F30608.png%3Fversion%3D1594225801&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+													
+														<img src="${i.product.imageURL}" class="d-block w-100" alt="Hình ảnh 1"
 														class="img-fluid rounded-3" alt="Cotton T-shirt">
 												</div>
 												<div class="col-md-3 col-lg-3 col-xl-3">

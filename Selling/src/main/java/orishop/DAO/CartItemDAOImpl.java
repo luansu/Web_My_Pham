@@ -177,8 +177,8 @@ public class CartItemDAOImpl implements ICartItemDAO {
 		CartItemModels cart = new CartItemModels(29,11,6, null);
 		
 		cartItemDAO.updateCartItem(cart);
-		//List<CartItemModels> list1 = cartItemDAO.findCartItemByCartID(10);
-		System.out.println(cart.getTotalPrice());
+		CartItemModels list1 = cartItemDAO.findCartItemByProductID(29,20);
+		System.out.println(list1.getCartID());
 	}
 	
 }

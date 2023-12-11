@@ -162,18 +162,24 @@ private static final long serialVersionUID = 1L;
 
 		HttpSession session = req.getSession();
 		int cartId = ((int)session.getAttribute("cartID"));
-		int productId = 13;
+		int productId = ((int)session.getAttribute("productID"));
 		int quantity = Integer.parseInt(req.getParameter("quantity"));
 
 		
 		CartItemModels model = cartItemService.findCartItemByProductID(cartId, productId);
-		
-		CartItemModels cartItem = new CartItemModels();
-		cartItem.setCartID(cartId);
-		cartItem.setProductID(productId);
-		cartItem.setQuantity(quantity);
-		cartItemService.insertCartItem(cartItem);
-		
+		if (model.getCartID() != cartId) {
+			CartItemModels cartItem = new CartItemModels();
+			cartItem.setCartID(cartId);
+			cartItem.setProductID(productId);
+			cartItem.setQuantity(quantity);
+			cartItemService.insertCartItem(cartItem);
+		} else {
+			CartItemModels cartItem = new CartItemModels();
+			cartItem.setCartID(cartId);
+			cartItem.setProductID(productId);
+			cartItem.setQuantity(quantity + model.getQuantity());
+			cartItemService.updateCartItem(cartItem);
+		}
 		resp.sendRedirect(req.getContextPath() + "/user/findCartByCartID");
 	}
 }
