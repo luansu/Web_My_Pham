@@ -79,44 +79,43 @@
 								<div class="alert alert-danger">${error}</div>
 							</c:if>
 							<c:if test="${not empty listCartItem}">
-								<c:forEach var="i" items="${listCartItem}">
+								<c:forEach var="i" items="${list}">
 									<div class="card rounded-3 mb-4">
 										<div class="card-body p-4">
 											<div
 												class="row d-flex justify-content-between align-items-center">
 												<div class="col-md-2 col-lg-2 col-xl-2">
-													
-														<img src="${i.product.imageURL}" class="d-block w-100" alt="Hình ảnh 1"
-														class="img-fluid rounded-3" alt="Cotton T-shirt">
+
+													<img src="${i.product.imageURL}" class="d-block w-100"
+														alt="Hình ảnh 1" class="img-fluid rounded-3"
+														alt="Cotton T-shirt">
 												</div>
 												<div class="col-md-3 col-lg-3 col-xl-3">
 													<p class="lead fw-normal mb-2">${i.product.productName}</p>
-													
+
 												</div>
 												<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-													<a href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}
+													<a
+														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}
 														&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
 														<button class="btn btn-link px-2"
 															onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
 															<i class="fas fa-minus"></i>
 														</button>
-													</a> 
-													
-													<input id="form1" min="0" name="quantity"
-														value="${i.quantity}" 
-														class="form-control text-center" readonly ="readonly"/> 
-														
-													<a href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}
+													</a> <input id="form1" min="0" name="quantity"
+														value="${i.quantity}" class="form-control text-center"
+														readonly="readonly" /> <a
+														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}
 													&quantity=${i.quantity+1}&totalPrice=${i.totalPrice}'/>">
 														<button class="btn btn-link px-2"
 															onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
 															<i class="fas fa-plus"></i>
 														</button>
 													</a>
-													
+
 												</div>
 												<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-													<h5 class="mb-0">${i.totalPrice} đ</h5>
+													<h5 class="mb-0">${i.totalPrice}đ</h5>
 												</div>
 												<div class="col-md-1 col-lg-1 col-xl-1 text-end">
 													<a
@@ -147,16 +146,36 @@
 								<div class="col-sm-6">
 									<div class="float-sm-end">
 										<ul class="pagination mb-sm-0">
-											<li class="page-item disabled"><a href="#"
-												class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
-											<li class="page-item active"><a href="#"
-												class="page-link">1</a></li>
-											<li class="page-item"><a href="#" class="page-link">2</a></li>
-											<li class="page-item"><a href="#" class="page-link">3</a></li>
-											<li class="page-item"><a href="#" class="page-link">4</a></li>
-											<li class="page-item"><a href="#" class="page-link">5</a></li>
-											<li class="page-item"><a href="#" class="page-link"><i
-													class="mdi mdi-chevron-right"></i></a></li>
+											<c:if test="${page<=1 }">
+												<li class="page-item disabled"><a
+													href="findCartByCartID?page=${page - 1}" class="page-link"><i
+														class="mdi mdi-chevron-left"></i></a></li>
+											</c:if>
+											<c:if test="${page>1 }">
+												<li class="page-item"><a
+													href="findCartByCartID?page=${page - 1}" class="page-link"><i
+														class="mdi mdi-chevron-left"></i></a></li>
+											</c:if>
+											<c:forEach var="i" begin="1" end="${num }">
+												<c:if test="${i==page }">
+													<li class="page-item active"><a
+														href="findCartByCartID?page=${i}" class="page-link">${i }</a></li>
+												</c:if>
+												<c:if test="${i!=page }">
+													<li class="page-item"><a 
+													href="findCartByCartID?page=${i}" class="page-link">${i }</a></li>
+												</c:if>
+											</c:forEach>
+											<c:if test="${page<num}">
+												<li class="page-item"><a
+													href="findCartByCartID?page=${page + 1}" class="page-link"><i
+														class="mdi mdi-chevron-right"></i></a></li>
+											</c:if>
+											<c:if test="${page>=num}">
+												<li class="page-item disabled"><a
+													href="findCartByCartID?page=${page + 1}" class="page-link"><i
+														class="mdi mdi-chevron-right"></i></a></li>
+											</c:if>
 										</ul>
 									</div>
 								</div>
@@ -170,7 +189,8 @@
 											<!-- Thêm thẻ div cho tổng tiền thanh toán -->
 											<div class="total-payment-container">
 												<div class="total-payment">
-													Tổng tiền thanh toán: <span class="amount">${totalPriceCart} đ</span>
+													Tổng tiền thanh toán: <span class="amount">${totalPriceCart}
+														đ</span>
 												</div>
 												<button type="button"
 													class="btn btn-outline-primary btn-block btn-lg">Thanh

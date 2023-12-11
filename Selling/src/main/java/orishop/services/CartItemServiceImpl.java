@@ -1,10 +1,12 @@
 package orishop.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import orishop.DAO.ICartItemDAO;
 import orishop.DAO.CartItemDAOImpl;
 import orishop.models.CartItemModels;
+import orishop.models.CustomerModels;
 
 public class CartItemServiceImpl implements ICartItemService{
 
@@ -19,6 +21,17 @@ public class CartItemServiceImpl implements ICartItemService{
 	public List<CartItemModels> findCartItemByCartID(int cartID) {
 		return cartItemDao.findCartItemByCartID(cartID);
 	}
+	
+	@Override
+	public List<CartItemModels> getCartItemByPage(List<CartItemModels> listCartItem, int start, int end){
+		List<CartItemModels> listCartItemPage = new ArrayList<>();
+		
+		for (int i = start; i < end; i++) {
+			listCartItemPage.add(listCartItem.get(i));
+		}
+		return listCartItemPage;
+	}
+	
 
 	@Override
 	public void insertCartItem(CartItemModels model) {
