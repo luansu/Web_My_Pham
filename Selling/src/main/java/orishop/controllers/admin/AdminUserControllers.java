@@ -98,7 +98,7 @@ public class AdminUserControllers extends HttpServlet {
 		req.setAttribute("page", page);
 		req.setAttribute("num", num);
 		req.setAttribute("count", listUser.size());
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listuser.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/listuser.jsp");
 		rd.forward(req, resp);
 	}
 	
