@@ -19,14 +19,19 @@ CREATE TABLE ACCOUNT (
 	code nvarchar(30)
 )
 GO
+-- RoleID
+--1: user
+--2: admin
+--3: seller
+--4: shipper
 INSERT INTO ACCOUNT (username, password, mail, roleId, status, code)
 VALUES
-('admin', 'password', 'admin@example.com', 1, 1, '123456'),
-('user1', 'password1', 'user1@example.com', 2, 1, '789012'),
-('user2', 'password2', 'user2@example.com', 2, 0, '345678'),
-('user3', 'password3', 'user3@example.com', 3, 1, '901234'),
-('user4', 'password4', 'user4@example.com', 3, 0, '567890'),
-('user5', 'password5', 'user5@example.com', 2, 1, '123456');
+('user', '1', 'admin@example.com', 1, 1, '123456'),
+('admin', '1', 'user1@example.com', 2, 1, '789012'),
+('seller', '1', 'user2@example.com', 3, 0, '345678'),
+('shipper', '1', 'user3@example.com', 4, 1, '901234'),
+('admin2', '1', 'user4@example.com', 2, 0, '567890'),
+('seller2', '1', 'user5@example.com', 3, 1, '123456');
 
 		
 -- DROP TABLE CUSTOMER
@@ -48,24 +53,24 @@ INSERT INTO CUSTOMER (customerName, birthday, gender, address, phone, mail, rank
 VALUES
 (N'Nguyễn Văn An', '1990-01-01', N'Nam', N'Số 10, đường Nguyễn Trãi, thành phố Mỹ Tho, tỉnh Tiền Giang', '0987654321', 'nguyenvanan@gmail.com', N'Khách hàng mới', 0, 0, 1),
 (N'Trần Thị My', '1991-02-02', N'Nữ', N'Số 20, đường Lê Lợi, quận 7, TP.HCM', '0998765432', 'tranthimy@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
-(N'Lê Quang Chung', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, quận Bình Tân, thành phố Hồ Chí Minh', '0909765432', 'lequangchung@gmail.com', N'Khách hàng VIP', 10, 200, 3),
-(N'Đỗ Thị Diệu', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, thành phố Bến Tre, tỉnh Bến Tre', '0911765432', 'dothidieu@gmail.com', N'Khách hàng mới', 0, 0, 4),
-(N'Huỳnh Văn Én', '1994-05-05', N'Nam', N'Số 50, đường Nguyễn Huệ, thành phố Mỹ Tho, tỉnh Tiền Giang', '0922765432', 'huynhvanen@gmail.com', N'Khách hàng thân thiết', 5, 100, 5),
-(N'Phan Thị Trúc', '1995-06-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, quận Ninh Kiều, thành phố Cần Thơ', '0933765432', 'phanthitruc@gmail.com', N'Khách hàng VIP', 10, 200, 1),
+(N'Lê Quang Chung', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, quận Bình Tân, thành phố Hồ Chí Minh', '0909765432', 'lequangchung@gmail.com', N'Khách hàng VIP', 10, 200, 2),
+(N'Đỗ Thị Diệu', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, thành phố Bến Tre, tỉnh Bến Tre', '0911765432', 'dothidieu@gmail.com', N'Khách hàng mới', 0, 0, 2),
+(N'Huỳnh Văn Én', '1994-05-05', N'Nam', N'Số 50, đường Nguyễn Huệ, thành phố Mỹ Tho, tỉnh Tiền Giang', '0922765432', 'huynhvanen@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
+(N'Phan Thị Trúc', '1995-06-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, quận Ninh Kiều, thành phố Cần Thơ', '0933765432', 'phanthitruc@gmail.com', N'Khách hàng VIP', 10, 200, 2),
 (N'Nguyễn Thị Ngân', '1996-07-07', N'Nữ', N'Số 70, đường Lê Văn Duyệt, thành phố Mỹ Tho, tỉnh Tiền Giang', '0944765432', 'nguyenthingan@gmail.com', N'Khách hàng mới', 0, 0, 2),
-(N'Trương Văn Hải', '1997-08-08', N'Nam', N'Số 80, đường Lý Thường Kiệt, huyện Cao Lãnh, tỉnh Đồng Tháp', '0955765432', 'truongvanhai@gmail.com', N'Khách hàng thân thiết', 5, 100, 3),
-(N'Lý Thị Ngọc', '1998-09-09', N'Nữ', N'Số 90, đường Nguyễn Văn Trỗi, huyện Phụng Hiệp, tỉnh Hậu Giang', '0966765432', 'lythingoc@gmail.com', N'Khách hàng VIP', 10, 200, 1),
-(N'Trần Văn Bình', '1999-10-10', N'Nam', N'Số 100, đường Quang Trung, quận 10, TP.HCM', '0977765432', 'tranvanbinh@gmail.com', N'Khách hàng mới', 0, 0, 1),
+(N'Trương Văn Hải', '1997-08-08', N'Nam', N'Số 80, đường Lý Thường Kiệt, huyện Cao Lãnh, tỉnh Đồng Tháp', '0955765432', 'truongvanhai@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
+(N'Lý Thị Ngọc', '1998-09-09', N'Nữ', N'Số 90, đường Nguyễn Văn Trỗi, huyện Phụng Hiệp, tỉnh Hậu Giang', '0966765432', 'lythingoc@gmail.com', N'Khách hàng VIP', 10, 200, 2),
+(N'Trần Văn Bình', '1999-10-10', N'Nam', N'Số 100, đường Quang Trung, quận 10, TP.HCM', '0977765432', 'tranvanbinh@gmail.com', N'Khách hàng mới', 0, 0, 2),
 (N'Nguyễn Thị Thu', '2000-11-11', N'Nữ', N'Số 110, đường Cách Mạng Tháng Tám, quận 1, TP.HCM', '0988765432', 'nguyenthithu@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
 (N'Lê Văn Tâm', '2001-12-12', N'Nam', N'Số 120, đường Lê Duẩn, thành phố Nha Trang, tỉnh Khánh Hòa', '0999765432', 'levantam@gmail.com', N'Khách hàng VIP', 10, 200,2 ),
-(N'Phạm Thị Hương', '2002-01-01', N'Nữ', N'Số 130, đường Ngô Gia Tự, thành phố Hồ Chí Minh', '0901765432', 'phamthihuong@gmail.com', N'Khách hàng mới', 0, 0, 1),
-(N'Hoàng Văn Hòa', '2003-02-02', N'Nam', N'Số 140, đường Lê Thánh Tông, quận Cẩm Lệ, thành phố Đà Nẵng', '0912765432', 'hoangvanhoa@gmail.com', N'Khách hàng thân thiết', 5, 100, 3),
+(N'Phạm Thị Hương', '2002-01-01', N'Nữ', N'Số 130, đường Ngô Gia Tự, thành phố Hồ Chí Minh', '0901765432', 'phamthihuong@gmail.com', N'Khách hàng mới', 0, 0, 2),
+(N'Hoàng Văn Hòa', '2003-02-02', N'Nam', N'Số 140, đường Lê Thánh Tông, quận Cẩm Lệ, thành phố Đà Nẵng', '0912765432', 'hoangvanhoa@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
 (N'Mai Thị Quỳnh', '2004-03-03', N'Nữ', N'Số 150, đường Nguyễn Chí Thanh, quận Bắc Từ Liêm, Hà Nội', '0923765432', 'maithiquynh@gmail.com', N'Khách hàng VIP', 10, 200, 2),
 (N'Ngô Văn Hiển', '2005-04-04', N'Nam', N'Số 160, đường Trần Hưng Đạo, thành phố Vinh, tỉnh Nghệ An', '0934765432', 'ngovanhien@gmail.com', N'Khách hàng mới', 0, 0, 2),
-(N'Dương Thị Hoài', '2006-05-05', N'Nữ', N'Số 170, đường Nguyễn Trãi, quận Thanh Xuân, Hà Nội', '0945765432', 'duongthihoai@gmail.com', N'Khách hàng thân thiết', 5, 100, 4),
-(N'Võ Văn Tài', '2007-06-06', N'Nam', N'Số 180, đường Lý Tự Trọng, thành phố Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu', '0956765432', 'vovantai@gmail.com', N'Khách hàng VIP', 10, 200, 1),
-(N'Hồ Thị Thảo', '2008-07-07', N'Nữ', N'Số 190, đường Nguyễn Đình Chính, quận Gò Vấp, TP.HCM', '0967765432', 'hothithao@gmail.com', N'Khách hàng mới', 0, 0,1),
-(N'Đoàn Văn Lâm', '2009-08-08', N'Nam', N'Số 200, đường Đống Đa, thành phố Huế, tỉnh Thừa Thiên Huế', '0978765432', 'doanvanlam@gmail.com', N'Khách hàng thân thiết', 5, 100, 3);
+(N'Dương Thị Hoài', '2006-05-05', N'Nữ', N'Số 170, đường Nguyễn Trãi, quận Thanh Xuân, Hà Nội', '0945765432', 'duongthihoai@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
+(N'Võ Văn Tài', '2007-06-06', N'Nam', N'Số 180, đường Lý Tự Trọng, thành phố Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu', '0956765432', 'vovantai@gmail.com', N'Khách hàng VIP', 10, 200, 2),
+(N'Hồ Thị Thảo', '2008-07-07', N'Nữ', N'Số 190, đường Nguyễn Đình Chính, quận Gò Vấp, TP.HCM', '0967765432', 'hothithao@gmail.com', N'Khách hàng mới', 0, 0,2),
+(N'Đoàn Văn Lâm', '2009-08-08', N'Nam', N'Số 200, đường Đống Đa, thành phố Huế, tỉnh Thừa Thiên Huế', '0978765432', 'doanvanlam@gmail.com', N'Khách hàng thân thiết', 5, 100, 2);
 
 
 --DROP TABLE CART
@@ -157,15 +162,13 @@ GO
 
 INSERT INTO EMPLOYEE (employeeName, birthdate, gender, address, phone, mail, job, accountId, activityArea, imageURL)
 VALUES
-(N'Nguyễn Văn A', '1990-01-01', N'Nam', N'Số 10, đường Nguyễn Trãi, quận Tân Bình, thành phố Hồ Chí Minh', '0987654321', 'nguyenvana@gmail.com', N'Quản lý cửa hàng', 5, N'Sales', 'https://example.com/images/employees/nguyenvanan.jpg'),
-(N'Phạm Thị B', '1991-08-02', N'Nữ', N'Số 20, đường Lê Lợi, huyện Mỏ Cày Nam, tỉnh Bến Tre', '0998765234', 'phamthib@gmail.com', N'Nhân viên bán hàng', 2, N'Sales', 'https://example.com/images/employees/tranthibu.jpg'),
-(N'Trần Quang C', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, huyện Mỹ Xuyên, tỉnh Sóc Trăng', '0909765124', 'tranquangc@gmail.com', N'Nhân viên kho', 3, N'Logistics', 'https://example.com/images/employees/lequangc.jpg'),
-(N'Đỗ Thị D', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, huyện Tân Châu, tỉnh An Giang', '0911765453', 'dothid@gmail.com',N'Nhân viên marketing', 4, N'Marketing', 'https://example.com/images/employees/dothidu.jpg'),
-(N'Lý Văn E', '1994-12-05', N'Nam', N'Số 50, đường Nguyễn Huệ, huyện Kiên Lương, tỉnh Kiên Giang', '0922765725', 'lyvane@gmail.com', N'Nhân viên văn phòng', 1, N'Administration', 'https://example.com/images/employees/huynhvane.jpg'),
-(N'Phan Thị F', '1995-04-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, huyện Hồng Ngự, tỉnh Đồng Tháp', '0933765824', 'phanthif@gmail.com', N'Kế toán', 6, N'Finance', 'https://example.com/images/employees/phanthi.jpg'),
-(N'Nguyễn Thị G', '1996-07-07', N'Nữ', N'Số 70, đường Lê Văn Duyệt, huyện Hồng Dân, tỉnh Bạc Liêu', '0944765920', 'nguyenthig@gmail.com', N'Chăm sóc khách hàng', 7, N'Customer Service', 'https://example.com/images/employees/nguyenthig.jpg'),
-(N'Hoàng Văn H', '1997-08-08', N'Nam', N'Số 80, đường Lý Thường Kiệt, huyện U Minh, tỉnh Cà Mau', '0955765682', 'hoangvanh@gmail.com', N'Bảo vệ', 8, N'Security', 'https://example.com/images/employees/truongvanh.jpg'),
-(N'Lê Thị I', '1998-11-09', N'Nữ', N'Số 90, đường Nguyễn Văn Trỗi, thành phố Mỹ Tho, tỉnh Tiền Giang', '0966765927', 'lethii@gmail.com', N'Dọn dẹp', 9, N'Cleaning', 'https://example.com/images/employees/lythi.jpg')
+(N'Nguyễn Văn A', '1990-01-01', N'Nam', N'Số 10, đường Nguyễn Trãi, quận Tân Bình, thành phố Hồ Chí Minh', '0987654321', 'nguyenvana@gmail.com', N'Seller', 3, N'Sales', 'https://example.com/images/employees/nguyenvanan.jpg'),
+(N'Phạm Thị B', '1991-08-02', N'Nữ', N'Số 20, đường Lê Lợi, huyện Mỏ Cày Nam, tỉnh Bến Tre', '0998765234', 'phamthib@gmail.com', N'Seller', 3, N'Sales', 'https://example.com/images/employees/tranthibu.jpg'),
+(N'Trần Quang C', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, huyện Mỹ Xuyên, tỉnh Sóc Trăng', '0909765124', 'tranquangc@gmail.com', N'Seller', 3, N'Logistics', 'https://example.com/images/employees/lequangc.jpg'),
+(N'Đỗ Thị D', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, huyện Tân Châu, tỉnh An Giang', '0911765453', 'dothid@gmail.com',N'Seller', 3, N'Marketing', 'https://example.com/images/employees/dothidu.jpg'),
+(N'Lý Văn E', '1994-12-05', N'Nam', N'Số 50, đường Nguyễn Huệ, huyện Kiên Lương, tỉnh Kiên Giang', '0922765725', 'lyvane@gmail.com', N'Shipper', 4, N'Administration', 'https://example.com/images/employees/huynhvane.jpg'),
+(N'Phan Thị F', '1995-04-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, huyện Hồng Ngự, tỉnh Đồng Tháp', '0933765824', 'phanthif@gmail.com', N'Shipper', 4, N'Finance', 'https://example.com/images/employees/phanthi.jpg');
+
 
 -- DROP TABLE ORDERS
 CREATE TABLE ORDERS (
@@ -182,28 +185,30 @@ CREATE TABLE ORDERS (
 	employeeId int REFERENCES EMPLOYEE(employeeId),
 )
 GO
+-- Nếu trạng thái là SAVE thì không có employeeID
+-- 
 INSERT INTO ORDERS (orderValue, orderDate, cartId, customerId, paymentStatus, orderStatus, paymentMethod, deliveryMethod, employeeId)
 VALUES
-(5500000, '2023-11-29 09:10:00', 10, 10, 'Paid', N'Chưa giao cho shipper', 'Credit card', N'Giao hàng tận nơi', 7),
-(6000000, '2023-11-28 13:45:00', 11, 11, 'Unpaid', 'Save', 'Cash on Delivery', N'Giao hàng tận nơi', 8),
-(6500000, '2023-11-27 18:20:00', 12, 12, 'Paid', N'Đã giao cho shipper', 'MoMo', N'Giao hàng tận nơi', 9),
-(7000000, '2023-11-26 21:30:00', 13, 13, 'Unpaid', 'Save', 'Bank transfer', N'Giao hàng tận nơi', 1),
-(7500000, '2023-11-25 14:05:00', 14, 14, 'Paid', N'Đã giao khách hàng', 'Credit card', N'Giao hàng tận nơi', 2),
-(8000000, '2023-11-24 10:50:00', 15, 15, 'Unpaid', 'Save', 'Cash on Delivery', N'Giao hàng tận nơi', 3),
-(8500000, '2023-11-23 07:15:00', 16, 16, 'Unpaid', 'Save', 'Momo', N'Giao hàng tận nơi', 4),
+(5500000, '2023-11-29 09:10:00', 10, 10, 'Paid', N'Chưa giao cho shipper', 'Credit card', N'Giao hàng tận nơi', 5),
+(6000000, '2023-11-28 13:45:00', 11, 11, 'Unpaid', 'Save', 'Cash on Delivery', N'Giao hàng tận nơi', null),
+(6500000, '2023-11-27 18:20:00', 12, 12, 'Paid', N'Đã giao cho shipper', 'MoMo', N'Giao hàng tận nơi', 6),
+(7000000, '2023-11-26 21:30:00', 13, 13, 'Unpaid', 'Đã giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 5),
+(7500000, '2023-11-25 14:05:00', 14, 14, 'Paid', N'Đã giao khách hàng', 'Credit card', N'Giao hàng tận nơi', 6),
+(8000000, '2023-11-24 10:50:00', 15, 15, 'Unpaid', 'Đã giao cho shipper', 'Cash on Delivery', N'Giao hàng tận nơi', 6),
+(8500000, '2023-11-23 07:15:00', 16, 16, 'Unpaid', 'Save', 'Momo', N'Giao hàng tận nơi', null),
 (9000000, '2023-11-22 23:40:00', 17, 17, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 5),
-(9500000, '2023-11-21 17:25:00', 18, 18, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 6),
-(10000000, '2023-11-20 20:35:00', 19, 19, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 7),
-(10500000, '2023-11-19 15:00:00', 20, 20, 'Unpaid', 'Save', 'MoMo', N'Giao hàng tận nơi', 8),
-(11000000, '2023-11-18 11:45:00', 1, 1, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 9),
-(11500000, '2023-11-17 08:10:00', 2, 2, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 1),
-(12000000, '2023-11-16 02:35:00', 3, 3, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 2),
-(12500000, '2023-11-15 19:50:00', 4, 4, 'Unpaid', 'Save', 'Momo', N'Giao hàng tận nơi', 3),
-(13000000, '2023-11-14 16:15:00', 5, 5, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 4),
-(13500000, '2023-11-13 12:00:00', 6, 6, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 5),
+(9500000, '2023-11-21 17:25:00', 18, 18, 'Unpaid', 'Đã giao cho shipper', 'Credit card', N'Giao hàng tận nơi', 6),
+(10000000, '2023-11-20 20:35:00', 19, 19, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 5),
+(10500000, '2023-11-19 15:00:00', 20, 1, 'Unpaid', 'Save', 'MoMo', N'Giao hàng tận nơi', null),
+(11000000, '2023-11-18 11:45:00', 1, 1, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 5),
+(11500000, '2023-11-17 08:10:00', 2, 2, 'Unpaid', 'Đã giao khách hàng', 'Credit card', N'Giao hàng tận nơi', 6),
+(12000000, '2023-11-16 02:35:00', 3, 3, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 5),
+(12500000, '2023-11-15 19:50:00', 4, 4, 'Unpaid', 'Đã giao cho shipper', 'Momo', N'Giao hàng tận nơi', 5),
+(13000000, '2023-11-14 16:15:00', 5, 5, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 5),
+(13500000, '2023-11-13 12:00:00', 6, 6, 'Unpaid', 'Đã giao cho shipper', 'Credit card', N'Giao hàng tận nơi', 5),
 (14000000, '2023-11-12 09:25:00', 7, 7, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 6),
-(14500000, '2023-11-11 05:50:00', 8, 8, 'Unpaid', 'Save', 'MoMo', N'Giao hàng tận nơi', 7),
-(15000000, '2023-11-10 22:15:00', 9, 9, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 8);
+(14500000, '2023-11-11 05:50:00', 8, 8, 'Unpaid', 'Save', 'MoMo', N'Giao hàng tận nơi', null),
+(15000000, '2023-11-10 22:15:00', 9, 9, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 6);
 
 -- DROP TABLE PRODUCT
 CREATE TABLE PRODUCT (
@@ -220,9 +225,9 @@ GO
 INSERT INTO PRODUCT (productName, description, stock, amount, price, categoryId, imageURL)
 VALUES
 (N'Kem nền Maybelline Superstay 24H', N'Kem nền dạng lỏng, độ che phủ cao, lâu trôi trong 24h', 100, 1000, 250000, 1, 'https://image.hsv-tech.io/1387x0/bbx/maybelline_superstay_24h_full_coverage_foundation_112_c835b7d5a58c413db58a9dca04c2d682.png'),
-(N'Son lì MAC Retro Matte Lipstick', N'Son lì dạng thỏi, lâu trôi, lên màu chuẩn', 50, 500, 300000, 1, 'https://product.hstatic.net/200000066044/product/mac02.707-son-thoi-li-mac-retro-matte-lipstick-3g_a9dfe87e75be459d943472718ded3982.jpg'),
-(N'Mặt nạ giấy Innisfree It is Real Squeeze Mask', N'Mặt nạ giấy dạng miếng, cấp ẩm, làm sáng da', 200, 2000, 150000, 2, 'https://cf.shopee.vn/file/2f620f00bdc91053d85819205dde739b'),
-(N'Sữa rửa mặt Cetaphil Gentle Skin Cleanser', N'Sữa rửa mặt dịu nhẹ, không gây kích ứng da', 1000, 10000, 200000, 2, 'https://product.hstatic.net/1000360941/product/sua-rua-mat-da-nhay-cam-centaphil_446a407e24c141faa68bb6b63a883980_master.jpg'),
+(N'Son lì MAC Retro Matte Lipstick', N'Son lì dạng thỏi, lâu trôi, lên màu chuẩn', 50, 500, 300000, 2, 'https://product.hstatic.net/200000066044/product/mac02.707-son-thoi-li-mac-retro-matte-lipstick-3g_a9dfe87e75be459d943472718ded3982.jpg'),
+(N'Mặt nạ giấy Innisfree It is Real Squeeze Mask', N'Mặt nạ giấy dạng miếng, cấp ẩm, làm sáng da', 200, 2000, 150000, 1, 'https://cf.shopee.vn/file/2f620f00bdc91053d85819205dde739b'),
+(N'Sữa rửa mặt Cetaphil Gentle Skin Cleanser', N'Sữa rửa mặt dịu nhẹ, không gây kích ứng da', 1000, 10000, 200000, 1, 'https://product.hstatic.net/1000360941/product/sua-rua-mat-da-nhay-cam-centaphil_446a407e24c141faa68bb6b63a883980_master.jpg'),
 (N'Dầu gội đầu Dove Deeply Nourishing Shampoo', N'Dầu gội đầu dưỡng ẩm, giúp tóc mềm mượt', 500, 5000, 250000, 3, 'https://cdn-images.kiotviet.vn/shopthaovy/047e62d35c1c4bfca5a29b75e6713126.jpeg'),
 (N'Sữa tắm The Body Shop Shea Butter Body Wash', N'Sữa tắm dưỡng ẩm, giúp da mềm mượt', 1000, 10000, 300000, 4, 'https://www.thebodyshop.com.vn/img/resize/565?url=%2Fpub/media%2Fcatalog%2Fproduct%2Fc%2Fo%2Fcondition-shea-250ml-1.jpg'),
 (N'Kem chống nắng La Roche-Posay Anthelios Shaka Fluid SPF50+', N'Kem chống nắng dạng lỏng, chống thấm nước, bảo vệ da khỏi tia UV', 200, 2000, 500000, 1, 'https://nhathuoc365.vn/images/products/2020/03/27/original/kem-chong-nang-anthelios-shaka-fluid-spf50-la-roche-posay-50-ml-1585308214.jpg'),
@@ -249,9 +254,6 @@ VALUES
 (N'Kem chống nám Hada Labo Shirojyun Premium Whitening Essence', N'Kem dưỡng trắng chống nám, tái tạo làn da từ bên trong', 180, 1800, 300000, 4, 'https://bizweb.dktcdn.net/100/257/549/products/kem-duong-trang-da-cao-cap-hada-labo-shirojyun-premium-medicated-deep-whitening-cream-nhat-ban-04.jpg?v=1587727888477'),
 (N'Nước hoa nam Calvin Klein Eternity for Men', N'Nước hoa nam, hương thơm tinh tế, nam tính', 80, 800, 700000, 5, 'https://hangtieudungmy.com.vn/image/cache/catalog/nuoc-hoa-nam-ck-eternity-for-men-800x800.jpg'),
 (N'Sữa rửa mặt La Roche-Posay Effaclar Purifying Foaming Gel', N'Sữa rửa mặt chứa nước khoáng, làm sạch sâu cho da dầu mụn', 120, 1200, 250000, 2, 'https://data-service.pharmacity.io/pmc-upload-media/production/pmc-ecm-core/products/P09671_1_l.webp');
-
-
-
 
 CREATE TABLE CART_ITEM (
 	cartId int FOREIGN KEY REFERENCES CART(cartId),
@@ -355,43 +357,6 @@ VALUES
 (6, 4, 50, '2023-11-11', 180000),
 (7, 8, 40, '2023-11-10', 120000),
 (8, 1, 30, '2023-11-09', 90000);
-
-CREATE Or Alter TRIGGER TG_TaoTaiKhoanSQL
-ON Account
-AFTER INSERT
-AS
-DECLARE @username nvarchar(30), @password nvarchar(30), @accountID int, @roleID int, @mail varchar(30)
-SELECT @username=i.Username, @password=i.Password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail
-FROM inserted i
-BEGIN
-	DECLARE @sqlString nvarchar(2000)
-	if (@roleID = 1)
-	BEGIN
-	SET @sqlString = 'Insert into Customer (Mail, AccountID) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+')';
-	END
-	else if (@roleID = 2)
-	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''admin'')';
-	else if (@roleID = 3)
-	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''seller'')';
-	else if (@roleID = 4)
-	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''shipper'')';
-	EXEC (@sqlString)
-END
-GO	
-
-CREATE Or Alter TRIGGER TG_TaoCART
-ON CUSTOMER
-AFTER INSERT
-AS
-DECLARE @customerId INT
-SELECT @customerId=i.customerId
-FROM inserted i
-BEGIN
-	DECLARE @sqlString nvarchar(2000)
-	SET @sqlString = 'Insert into CART (customerId) values ('+ CAST(@customerId AS nvarchar)+')';
-	EXEC (@sqlString)
-END
-GO
 
 --select * from ACCOUNT
 --select * from CUSTOMER
