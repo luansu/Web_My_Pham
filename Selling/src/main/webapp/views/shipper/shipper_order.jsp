@@ -132,7 +132,7 @@
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã giao</button>
 												</c:if>
-												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
+												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang giao</button>
 												</c:if>
@@ -187,7 +187,7 @@
 								<!-- ĐANG GIAO HÀNG END-->
 								<div class="tab-pane fade" id="pills-contact" role="tabpanel"
 									aria-labelledby="pills-contact-tab" tabindex="0">
-									<c:forEach var="i" items="${listorderdelivering }">
+									<c:forEach var="i" items="${listorderdelivering}">
 										<div class="product">
 											<div class="product-detail rounded d-flex">
 												<div class="content-info ml-2">
@@ -197,7 +197,7 @@
 												</div>
 												<div class="product-money text-center">
 													<p>Thành tiền</p>
-													<p style="color: rgb(36, 214, 158);">${i.orderValue}đ</p>
+													<p style="color: rgb(36, 214, 158);">${i.orderValue}</p>
 												</div>
 											</div>
 											<div class="product-address d-flex">
@@ -218,7 +218,7 @@
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã giao</button>
 												</c:if>
-												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
+												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang giao</button>
 												</c:if>
