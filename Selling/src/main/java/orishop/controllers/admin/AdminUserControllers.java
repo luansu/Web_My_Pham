@@ -23,7 +23,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listuser" , "/admin/userdetail","/admin/searchUser","/admin/searchShipper","/admin/searchSeller"})
+@WebServlet(urlPatterns = {"/admin/listuser" , "/admin/userdetail","/admin/searchUser"})
 
 public class AdminUserControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -42,14 +42,14 @@ public class AdminUserControllers extends HttpServlet {
 		else if(url.contains("admin/searchUser")) {
 			getSearchUser(req, resp);
 		}
-		else if(url.contains("admin/searchSeller")) {
-			getSearchSeller(req, resp);
-		}
+
 		else if(url.contains("admin/searchShipper")) {
 			getSearchShipper(req, resp);
 		}
 	}
 	private void getSearchUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
 		String usename = req.getParameter("search_info");
 		List<CustomerModels> listcustomer = cusService.findCustomerByCustomerName(usename);
 		
@@ -59,10 +59,7 @@ public class AdminUserControllers extends HttpServlet {
 		
 		
 	}
-	private void getSearchSeller(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	private void getSearchShipper(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
 		
