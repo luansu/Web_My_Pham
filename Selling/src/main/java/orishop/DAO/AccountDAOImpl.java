@@ -8,6 +8,8 @@ import java.util.List;
 
 
 import orishop.models.AccountModels;
+import orishop.util.Constant;
+import orishop.util.PasswordEncryption;
 
 public class AccountDAOImpl implements IAccountDAO {
 	
@@ -107,8 +109,8 @@ public class AccountDAOImpl implements IAccountDAO {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, model.getMail());
 			ps.setString(2, model.getUsername());
-
-			ps.setString(3, model.getPassword());
+			String password = PasswordEncryption.encrypt(model.getPassword(), Constant.SECRETKEY, Constant.SALT);
+			ps.setString(3, password);
 			ps.setInt(4, model.getStatus());
 			ps.setInt(5, model.getRoleID());
 			ps.setString(6, model.getCode());

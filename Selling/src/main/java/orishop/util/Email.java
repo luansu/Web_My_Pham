@@ -74,8 +74,8 @@ public class Email {
 		mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 			
 		mess.setSubject("Yours Password");
-		
-		mess.setText("Password: "+ user.getPassword());
+		String passwordDecryption = PasswordEncryption.decrypt(user.getPassword(), Constant.SECRETKEY, Constant.SALT);
+		mess.setText("Password: "+ passwordDecryption);
 		
 		Transport.send(mess);
 		

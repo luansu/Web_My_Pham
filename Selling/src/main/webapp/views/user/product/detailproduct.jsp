@@ -164,8 +164,8 @@
 							<p style="margin-left: 4px;">Xem tất cả bình luận</p>
 						</div>
 						<h3 style="padding: 20px 0 20px 0;">${p.price}</h3>
-						<div class="cart-item align-items-between row">
-							<form action="insertCartItem" method="post">
+						<form action="insertCartItem" method="post">
+							<div class="cart-item align-items-between row">
 								<div class="quantity col">
 
 									<button class="btn btn-link px-2"
@@ -174,8 +174,8 @@
 									</button>
 
 
-									<input id="form1" min="0" name="quantity"
-										value="1" class="form-control text-center" />
+									<input id="form1" min="0" name="quantity" type="number" value="1"
+										class="form-control text-center" />
 
 
 									<button class="btn btn-link px-2"
@@ -188,8 +188,9 @@
 								<button type="submit" class="add-to-cart col ms-3">
 									Thêm vào giỏ hàng</button>
 
-							</form>
-						</div>
+
+							</div>
+						</form>
 					</div>
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="headingOne">

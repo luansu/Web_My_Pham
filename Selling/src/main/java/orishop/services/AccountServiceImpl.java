@@ -6,6 +6,8 @@ import java.util.List;
 import orishop.DAO.IAccountDAO;
 import orishop.DAO.AccountDAOImpl;
 import orishop.models.AccountModels;
+import orishop.util.Constant;
+import orishop.util.PasswordEncryption;
 
 public class AccountServiceImpl implements IAccountService{
 	IAccountDAO userDAO = new AccountDAOImpl();
@@ -67,7 +69,8 @@ public class AccountServiceImpl implements IAccountService{
 	@Override
 	public AccountModels login(String username, String password) {
 		AccountModels user = this.findOne(username);
-		if (user!=null && password.equals(user.getPassword())) {
+		String passwordDecryption = PasswordEncryption.decrypt(user.getPassword(), Constant.SECRETKEY, Constant.SALT);
+		if (user!=null && (password.equals(passwordDecryption) || password.equals(user.getPassword()))) {
 			return user;
 		}
 		return null;

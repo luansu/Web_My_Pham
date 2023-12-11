@@ -103,7 +103,7 @@
 													</a> 
 													
 													<input id="form1" min="0" name="quantity"
-														value="${i.quantity}" type="number"
+														value="${i.quantity}" 
 														class="form-control text-center" readonly ="readonly"/> 
 														
 													<a href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}
