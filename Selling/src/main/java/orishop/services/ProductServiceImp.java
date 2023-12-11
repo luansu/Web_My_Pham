@@ -73,12 +73,14 @@ public class ProductServiceImp implements IProductService {
 
 	@Override
 	public void updateProduct(ProductModels product) {
-		ProductModels newProduct = proDAO.findOne(product.getCategoryId());
-		
-		newProduct.setProductName(product.getProductName());
-		newProduct.setDescription(product.getDescription());
-		newProduct.setStock(product.getStock());
-		
+		ProductModels newproduct = proDAO.findOne(product.getProductId());
+		newproduct.setProductName(product.getProductName());
+		newproduct.setDescription(product.getDescription());
+		newproduct.setStock(product.getStock());
+		newproduct.setAmount(product.getAmount());
+		newproduct.setPrice(product.getPrice());
+		newproduct.setCategoryId(product.getCategoryId());
+		newproduct.setImageURL(product.getImageURL());
 		proDAO.updateProduct(product);
 		
 	}
