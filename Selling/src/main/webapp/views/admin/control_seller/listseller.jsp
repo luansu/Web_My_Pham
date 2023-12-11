@@ -26,13 +26,36 @@
 
 
 	<div class="list d-flex justify-content-center align-items-center">
-		<a href="listuser" class="btn btn-outline-primary">Khách hàng</a>
-		<a href="listseller" class="btn btn-outline-primary">Nhân viên</a>
-		<a href="listshipper" class="btn btn-outline-primary">Shipper</a>
+		<a href="listuser" class="btn btn-outline-primary">Khách hàng</a> <a
+			href="listseller" class="btn btn-outline-primary">Nhân viên</a> <a
+			href="listshipper" class="btn btn-outline-primary">Shipper</a>
 
 	</div>
 
-
+	<div class="search">
+		<div class="row justify-content-center">
+			<div class="col-30 col-md-30 col-lg-15">
+				<form class="card card-sm" method="post" action ="searchSeller">
+					<div class="card-body row no-gutters align-items-center">
+						<div class="col-auto">
+							<i class="fas fa-search h4 text-body"></i>
+						</div>
+						<!--end of col-->
+						<div class="col-md">
+							<input class="form-control" type="search" name="search_info"
+								placeholder="Nhập seller cần tìm">
+						</div>
+						<!--end of col-->
+						<div class="col-auto">
+							<button class="btn btn-success" type="submit">Tìm kiếm</button>
+						</div>
+						<!--end of col-->
+					</div>
+				</form>
+			</div>
+			<!--end of col-->
+		</div>
+	</div>
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-md-6">
@@ -55,9 +78,8 @@
 										<!-- <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div> -->
 									</th>
 									<th scope="col">Tài khoản</th>
-									<th scope="col">Vị trí</th>
-									<th scope="col">Số điện thoại</th>
-									<th scope="col" style="width: 200px;">Lựa chọn</th>
+									<th scope="col">Email</th>
+									<th scope="col">Số điện thoại</th>									<th scope="col" style="width: 200px;">Lựa chọn</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -74,7 +96,7 @@
 											src="https://scontent.fsgn7-1.fna.fbcdn.net/v/t39.30808-6/357053034_814960390037893_4922475779121350488_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF5HXwEGNMOPAGrytHpFsrR_aLOXQRBb7r9os5dBEFvuq1yibYhcbMKiV2CqFcBHaVpuYriGC2v8DMoF6Nbu4wB&_nc_ohc=Ze3ZaC8Fg1MAX9TG622&_nc_oc=AQmDWUE6_UmimeSiZ2jirGF78bMaWn8SsKj91n1Ww_KGUbXwiKAj3EL5_Xtj4yiHMKSNdJC5OZuK6Owbhrs6JfIF&_nc_ht=scontent.fsgn7-1.fna&oh=00_AfDd4v0R2q3tAdPWQOOKi9RUuY7XoWJkZjUWeP86-vEZ3A&oe=65746821"
 											alt="" class="avatar-sm rounded-circle me-2" /> <a href="#"
 											class="text-body">${i.employeeName}</a></td>
-										<td><span class="badge badge-soft-success mb-0">${i.activityArea }</span></td>
+										<td>${i.mail}</td>
 										<td>${i.phone}</td>
 										<td>
 											<ul class="list-inline mb-0">
