@@ -70,7 +70,7 @@ public class ShipperHomeControllers extends HttpServlet {
 			
 			List<OrdersModels> listOrderDelivered = orderService.getOrderByOrderStatus(shipper.getEmployeeId(), "Đã giao khách hàng");
 			
-			List<OrdersModels> listOrderDelivering = orderService.getOrderByOrderStatus(shipper.getEmployeeId(), "Đã giao cho shipper");
+			List<OrdersModels> listOrderDelivering = orderService.getOrderByOrderStatus(shipper.getEmployeeId(), "Ðã giao cho shipper");
 			
 			req.setAttribute("shipper", shipper);
 			req.setAttribute("username", account.getUsername());

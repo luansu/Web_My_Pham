@@ -18,6 +18,7 @@ CREATE TABLE ACCOUNT (
 	[status] int,
 	code nvarchar(30)
 )
+
 GO
 -- RoleID
 --1: user
@@ -357,6 +358,8 @@ VALUES
 (6, 4, 50, '2023-11-11', 180000),
 (7, 8, 40, '2023-11-10', 120000),
 (8, 1, 30, '2023-11-09', 90000);
+
+
 
 --select * from ACCOUNT
 --select * from CUSTOMER
