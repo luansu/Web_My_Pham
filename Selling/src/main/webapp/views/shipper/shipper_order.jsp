@@ -128,8 +128,14 @@
 												</div>
 											</div>
 											<div class="product-button d-flex">
-												<button type="button" class="btn btn-success d-flex"
-													style="margin-left: 900px; margin-bottom: 20px;" disabled>${i.orderStatus }</button>
+												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
+													<button type="button" class="btn btn-success d-flex"
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã giao</button>
+												</c:if>
+												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
+													<button type="button" class="btn btn-success d-flex"
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang giao</button>
+												</c:if>
 											</div>
 										</div>
 									</c:forEach>
@@ -164,8 +170,14 @@
 												</div>
 											</div>
 											<div class="product-button d-flex">
-												<button type="button" class="btn btn-success d-flex"
-													style="margin-left: 900px; margin-bottom: 20px;" disabled>${i.orderStatus }</button>
+												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
+													<button type="button" class="btn btn-success d-flex"
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã giao</button>
+												</c:if>
+												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
+													<button type="button" class="btn btn-success d-flex"
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang giao</button>
+												</c:if>
 											</div>
 										</div>
 									</c:forEach>
@@ -202,8 +214,14 @@
 												</div>
 											</div>
 											<div class="product-button d-flex">
-												<button type="button" class="btn btn-success d-flex"
-													style="margin-left: 900px; margin-bottom: 20px;" disabled>${i.orderStatus }</button>
+												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
+													<button type="button" class="btn btn-success d-flex"
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã giao</button>
+												</c:if>
+												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
+													<button type="button" class="btn btn-success d-flex"
+														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang giao</button>
+												</c:if>
 											</div>
 										</div>
 									</c:forEach>
@@ -236,8 +254,8 @@
 											for="username"
 											class="display-26 text-secondary me-2 font-weight-600">Mã
 												nhân viên:</label> <input type="text" name="employeeId"
-											class="form-control" readonly="readonly" value="${shipper.employeeId }">
-										</li>
+											class="form-control" readonly="readonly"
+											value="${shipper.employeeId }"></li>
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
 											for="username"
 											class="display-26 text-secondary me-2 font-weight-600">Họ
