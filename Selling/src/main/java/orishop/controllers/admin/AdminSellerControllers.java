@@ -23,7 +23,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listseller"})
+@WebServlet(urlPatterns = {"/admin/listseller","/admin/searchSeller"})
 
 public class AdminSellerControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -37,10 +37,29 @@ public class AdminSellerControllers extends HttpServlet {
 		if(url.contains("admin/listseller")) {
 			findAllSeller(req, resp);
 		}
+		else if(url.contains("admin/searchSeller")) {
+			getSearchSeller(req, resp);
+		}
+		
+	}
+	private void getSearchSeller(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		String usename = req.getParameter("search_info");
+		List<EmployeeModels> listseller = empService.findSellerBySellerName(usename);
+		
+		req.setAttribute("list", listseller);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_seller/listseller.jsp");
+		rd.forward(req, resp);
+		
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		
+		String url = req.getRequestURI();
+		if(url.contains("admin/searchSeller")) {
+			getSearchSeller(req, resp);
+		}
 	}
 	
 	//region seller
