@@ -19,7 +19,7 @@ import orishop.services.IProductService;
 import orishop.services.ProductServiceImp;
 
 
-@WebServlet(urlPatterns = { "/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
+@WebServlet(urlPatterns = {"/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
 		"/user/product/manager", "/user/product/insert", "/user/product/update",
 		"/user/product/delete", "/user/product/filterDesc", "/user/product/filterAsc", 
 		"/user/product/topProduct", "/user/product/searchProduct"})

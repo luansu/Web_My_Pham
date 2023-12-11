@@ -18,11 +18,17 @@ import orishop.models.CartModels;
 import orishop.models.CustomerModels;
 import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;
+import orishop.services.CategoryServiceImp;
 import orishop.services.CustomerServiceImp;
+import orishop.services.EmployeeServiceImp;
 import orishop.services.ICartItemService;
 import orishop.services.ICartService;
+import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
-@WebServlet(urlPatterns = { "/user/findCartByCartID", "/user/findCartItem", "/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem"})
+import orishop.services.IEmployeeService;
+import orishop.services.IProductService;
+import orishop.services.ProductServiceImp;
+@WebServlet(urlPatterns = {"/user/product/insertCartItem","/user/findCartByCartID", "/user/findCartItem", "/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem"})
 
 public class UserCartController extends HttpServlet  {
 private static final long serialVersionUID = 1L;
@@ -30,7 +36,10 @@ private static final long serialVersionUID = 1L;
 	ICartService cartService = new CartServiceImpl();
 	ICartItemService cartItemService = new CartItemServiceImpl();
 	ICustomerService CustomerSerivce = new CustomerServiceImp();
+	IEmployeeService empService = new EmployeeServiceImp();
 	
+	IProductService productService = new ProductServiceImp();
+	ICategoryService categoryService = new CategoryServiceImp();
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -40,15 +49,32 @@ private static final long serialVersionUID = 1L;
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
 
-			String cartID = req.getParameter("cartID");
-
-			CartModels cart = cartService.findCartByCartID(Integer.parseInt(cartID));
-			req.setAttribute("cart", cart);
-
-			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(Integer.parseInt(cartID));
-			req.setAttribute("listCartItem", listCartItem);
 			
 			HttpSession session = req.getSession();
+			AccountModels user = (AccountModels) session.getAttribute("account");
+			if (user != null) {
+				CustomerModels cus = CustomerSerivce.findCustomerByAccountID(user.getAccountID());
+				CartModels cart1 = cartService.findCartByCustomerID(cus.getCustomerId());
+
+				req.setAttribute("username", user.getUsername());
+				req.setAttribute("accountID", user.getAccountID());
+				req.setAttribute("customerID", cus.getCustomerId());
+
+				session = req.getSession(true);
+				session.setAttribute("cartID", cart1.getCartId());
+				req.setAttribute("cartID", (int)session.getAttribute("cartID"));
+
+				int countCartItem = cartItemService.countCartItem((int)session.getAttribute("cartID"));
+				session.setAttribute("countCartItem", countCartItem);
+				req.setAttribute("countCartItem", (int)session.getAttribute("countCartItem"));
+			}
+
+			CartModels cart = cartService.findCartByCartID((int)session.getAttribute("cartID"));
+			req.setAttribute("cart", cart);
+
+			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cart.getCartId());
+			req.setAttribute("listCartItem", listCartItem);
+			
 			float totalPriceCart = cartService.totalPriceCart((int)session.getAttribute("cartID"));
 			session.setAttribute("totalPriceCart", totalPriceCart);
 			req.setAttribute("totalPriceCart", (float)session.getAttribute("totalPriceCart"));
@@ -91,9 +117,9 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI().toString();
-		if (url.contains("user/insertCartItem")) {
+		if (url.contains("insertCartItem")) {
 			insertCartItem(req, resp);
-		} 
+		}
 	}
 	private void updateCartItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -130,31 +156,25 @@ private static final long serialVersionUID = 1L;
 		rd.forward(req, resp);
 	}
 
-	private void insertCartItem(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void insertCartItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
-		int cartId = Integer.parseInt(req.getParameter("cartId"));
-		int productId = Integer.parseInt(req.getParameter("productId"));
+		HttpSession session = req.getSession();
+		int cartId = ((int)session.getAttribute("cartID"));
+		int productId = 13;
 		int quantity = Integer.parseInt(req.getParameter("quantity"));
-		float totalPrice = Float.parseFloat(req.getParameter("totalPrice"));
+
 		
 		CartItemModels model = cartItemService.findCartItemByProductID(cartId, productId);
-		if (model == null) {
-			CartItemModels cartItem = new CartItemModels();
-			cartItem.setCartID(cartId);
-			cartItem.setProductID(productId);;
-			cartItem.setQuantity(quantity);
-			cartItem.setTotalPrice(totalPrice);
-			cartItemService.insertCartItem(cartItem);
-		} else {
-			CartItemModels cartItem = new CartItemModels();
-			cartItem.setCartID(cartId);
-			cartItem.setProductID(productId);;
-			cartItem.setQuantity(quantity + model.getQuantity());
-			cartItem.setTotalPrice(totalPrice);
-			cartItemService.updateCartItem(cartItem);
-		}
+		
+		CartItemModels cartItem = new CartItemModels();
+		cartItem.setCartID(cartId);
+		cartItem.setProductID(productId);
+		cartItem.setQuantity(quantity);
+		cartItemService.insertCartItem(cartItem);
+		
+		resp.sendRedirect(req.getContextPath() + "/user/findCartByCartID");
 	}
 }
 
