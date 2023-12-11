@@ -240,5 +240,27 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 		}
 		return employee;
 	}
+	@Override
+	public void updateEmployee(EmployeeModels employee) {
+		String query = "update Employee set employeeName = ?, birthdate = ?, gender = ?, "
+				+ "address = ?, phone = ?, mail = ? where employeeId = ?";
+		
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, employee.getEmployeeName());
+			ps.setDate(2, employee.getBirthdate());
+			ps.setString(3, employee.getGender());
+			ps.setString(4, employee.getAddress());
+			ps.setString(5, employee.getPhone());
+			ps.setString(6, employee.getMail());
+			ps.setInt(7, employee.getEmployeeId());
+			ps.executeUpdate();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

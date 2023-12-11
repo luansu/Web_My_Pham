@@ -37,23 +37,42 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+	<style>
+.rounded-image {
+	display: flex;
+	align-items: center;
+}
 
-	<!--HEADER-->
+.rounded-image img {
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin-right: 5px; /* Adjust the margin as needed */
+}
+</style>
+
+	<!-- HEADER -->
 	<nav
 		class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-secondary-subtle">
 		<a class="navbar-brand d-flex align-items-center ps-2"
 			style="font-size: 16px;" href="#"> <img
 			src="${pageContext.request.contextPath}/templates/web/images/Logo_Project.png"
 			alt="Logo" style="width: 50px; height: auto;">
-			<div class="mx-4 align-items-center mt-1 ml-2">Trang chủ</div>
-			<div class="mx-2 align-items-center mt-1 ml-2">Khách Hàng</div>
-			<div class="mx-2 align-items-center mt-1 ml-2">Seller</div>
-			<div class="mx-2 align-items-center mt-1 ml-2">Shipper</div>
 		</a>
-		<div class="ms-auto me-4">
-			<div class="align-items-center">Đăng xuất</div>
+
+		<div class="ms-auto"
+			style="margin-right: 50px; display: flex; align-items: center;">
+			<div class="rounded-image">
+				<img
+					src="https://scontent.fhan4-2.fna.fbcdn.net/v/t39.30808-6/357053034_814960390037893_4922475779121350488_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF5HXwEGNMOPAGrytHpFsrR_aLOXQRBb7r9os5dBEFvuq1yibYhcbMKiV2CqFcBHaVpuYriGC2v8DMoF6Nbu4wB&_nc_ohc=stdyV6Zw6N0AX8H0sEu&_nc_oc=AQnCyngbl5CMeACfInXfkj2inNDRJG4drkLpVvd-5frReEBAZB3AxYcj3hm4BbrxPpo&_nc_ht=scontent.fhan4-2.fna&oh=00_AfCUdzhjAT_iSS8Y5sbvEM8AgNOoBZGbJssYMAQ7zIkTHA&oe=657C5121"
+					width="30" height="30" class="d-inline-block align-top" alt="">
+				Admin
+			</div>
+			<div class="ms-3">Đăng xuất</div>
 		</div>
 	</nav>
+
 
 </body>
 </html>

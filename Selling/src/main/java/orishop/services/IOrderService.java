@@ -15,6 +15,6 @@ public interface IOrderService {
 	
 	List<OrdersModels> countOrderByShipperId(int employeeID);
 	
-	List<OrdersModels> getOrderByOrderStatus(String orderStatus);
-	List<OrdersModels> getOrderByPaymentStatus(String paymentStatus);
+	List<OrdersModels> getOrderByOrderStatus(int shipperId, String orderStatus);
+	List<OrdersModels> getOrderByPaymentStatus(int shipperId, String paymentStatus);
 }

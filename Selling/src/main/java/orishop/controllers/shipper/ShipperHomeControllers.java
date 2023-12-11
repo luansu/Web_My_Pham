@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import orishop.DAO.CustomerDAOImp;
 import orishop.DAO.IEmployeeDAO;
 import orishop.models.AccountModels;
@@ -28,7 +30,7 @@ import orishop.services.IEmployeeService;
 import orishop.services.IOrderService;
 import orishop.services.OrderServiceImpl;
 
-@WebServlet(urlPatterns = {"/shipper/home", "/shipper/order"})
+@WebServlet(urlPatterns = {"/shipper/home", "/shipper/order", "/shipper/updateinfor"})
 
 public class ShipperHomeControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -50,24 +52,28 @@ public class ShipperHomeControllers extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		String url = req.getRequestURI();
 		
+		if(url.contains("shipper/updateinfor")) {
+			postUpdateInfo(req, resp);
+		}
 	}
 	
 	protected void getOrderByShipper(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 
 		HttpSession session = req.getSession();
-//		AccountModels account = (AccountModels) session.getAttribute("account");
-//		
-//		EmployeeModels shipper = empService.findShipperByAccountID(account.getAccountID());
-		EmployeeModels shipper = empService.findShipperByAccountID(2);
+		AccountModels account = (AccountModels) session.getAttribute("account");
+		
+		EmployeeModels shipper = empService.findShipperByAccountID(account.getAccountID());
 		if(shipper != null) {
 			List<OrdersModels> listOrders = orderService.findOrderByShipperId(shipper.getEmployeeId());
 			
-			List<OrdersModels> listOrderDelivered = orderService.getOrderByOrderStatus("Đã giao khách hàng");
+			List<OrdersModels> listOrderDelivered = orderService.getOrderByOrderStatus(shipper.getEmployeeId(), "Đã giao khách hàng");
 			
-			List<OrdersModels> listOrderDelivering = orderService.getOrderByOrderStatus("Đã giao cho shipper");
+			List<OrdersModels> listOrderDelivering = orderService.getOrderByOrderStatus(shipper.getEmployeeId(), "Đã giao cho shipper");
 			
 			req.setAttribute("shipper", shipper);
+			req.setAttribute("username", account.getUsername());
 			req.setAttribute("listorder", listOrders);
 			req.setAttribute("listorderdelivered", listOrderDelivered);
 			req.setAttribute("listorderdelivering", listOrderDelivering);
@@ -78,5 +84,25 @@ public class ShipperHomeControllers extends HttpServlet {
 		}
 			
 	}
-
+	
+	protected void postUpdateInfo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		EmployeeModels shipper = new EmployeeModels();
+		
+		try {
+			// lay du lieu tu jsp bang beanutils
+			BeanUtils.populate(shipper, req.getParameterMap());
+			empService.updateEmployee(shipper);
+			//thông báo kết quả
+			req.setAttribute("shipper", shipper);
+			req.setAttribute("message","Add successful");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("error","Add fails");
+		}
+		resp.sendRedirect(req.getContextPath() + "/shipper/home");
+	}	
 }

@@ -14,4 +14,5 @@ public interface IEmployeeDAO {
 	EmployeeModels findShipperByAccountID(int id);
 	
 	EmployeeModels findSeller(int id);
+	void updateEmployee(EmployeeModels employee);
 }

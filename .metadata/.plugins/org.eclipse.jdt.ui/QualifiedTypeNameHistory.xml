@@ -11,8 +11,6 @@
     <fullyQualifiedTypeName name="orishop.DAO.IEmployeeDAO"/>
     <fullyQualifiedTypeName name="orishop.DAO.EmployeeDAOImp"/>
     <fullyQualifiedTypeName name="java.lang.Enum"/>
-    <fullyQualifiedTypeName name="orishop.models.EmployeeModels"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -21,6 +19,11 @@
     <fullyQualifiedTypeName name="orishop.services.ICustomerService"/>
     <fullyQualifiedTypeName name="orishop.services.CustomerServiceImp"/>
     <fullyQualifiedTypeName name="orishop.models.CustomerModels"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="orishop.models.ProductModels"/>
+    <fullyQualifiedTypeName name="orishop.models.OrdersModels"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="orishop.models.EmployeeModels"/>
+    <fullyQualifiedTypeName name="org.apache.commons.beanutils.BeanUtils"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

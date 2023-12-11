@@ -87,7 +87,7 @@ public class OrderDAOImpl implements IOrderDAO{
 
 	@Override
 	public List<OrdersModels> findOrderByShipperId(int id) {
-		String sql = "select * from orders where employeeId=?";
+		String sql = "select * from orders where employeeId=? and orderStatus <> N'Chưa giao cho shipper'";
 		List<OrdersModels> listorder = new ArrayList<OrdersModels>();
 		try {
 			new DBConnectionSQLServer();

@@ -44,6 +44,10 @@ public class EmployeeServiceImp implements IEmployeeService{
 	public EmployeeModels findSeller(int id) {
 		return empDAO.findSeller(id);
 	}
+	@Override
+	public void updateEmployee(EmployeeModels employee) {
+		empDAO.updateEmployee(employee);
+	}
 	
 	
 }

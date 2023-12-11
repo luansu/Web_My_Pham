@@ -41,11 +41,11 @@ public class OrderServiceImpl implements IOrderService{
 	}
 
 	@Override
-	public List<OrdersModels> getOrderByOrderStatus(String orderStatus) {
+	public List<OrdersModels> getOrderByOrderStatus(int shipperId, String orderStatus) {
 		List<OrdersModels> listOrder = orderDAO.findAllOrders();
 		List<OrdersModels> result = new ArrayList<OrdersModels>();
 		for (OrdersModels order: listOrder) {
-			if(order.getOrderStatus() == orderStatus) {
+			if(order.getOrderStatus().contains(orderStatus) & order.getEmployeeId() == shipperId) {
 				result.add(order);
 			}
 		}
@@ -53,11 +53,11 @@ public class OrderServiceImpl implements IOrderService{
 	}
 	
 	@Override
-	public List<OrdersModels> getOrderByPaymentStatus(String paymentStatus) {
+	public List<OrdersModels> getOrderByPaymentStatus(int shipperId, String paymentStatus) {
 		List<OrdersModels> listOrder = orderDAO.findAllOrders();
 		List<OrdersModels> result = new ArrayList<OrdersModels>();
 		for (OrdersModels order: listOrder) {
-			if(order.getOrderStatus() == paymentStatus) {
+			if(order.getPaymentStatus().contains(paymentStatus) & order.getEmployeeId() == shipperId) {
 				result.add(order);
 			}
 		}

@@ -103,7 +103,7 @@ public class UserProductController extends HttpServlet {
 		int pid = Integer.parseInt(req.getParameter("pid"));
 		ProductModels pro = productService.findOne(pid);
 		req.setAttribute("p", pro);
-		req.getRequestDispatcher("/views/user/product/detailProduct.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
 	}
 	
 
@@ -145,7 +145,7 @@ public class UserProductController extends HttpServlet {
 		int id = Integer.parseInt(req.getParameter("pid"));
 		ProductModels product = productService.findOne(id);
 		productService.deleteProduct(product);
-		resp.sendRedirect(req.getContextPath() + "/product/listProduct");
+		resp.sendRedirect(req.getContextPath() + "/product/listproduct");
 
 	}
 
@@ -195,7 +195,7 @@ public class UserProductController extends HttpServlet {
 
 		req.setAttribute("P", product);
 		req.setAttribute("listC", listcate);
-		req.getRequestDispatcher("/views/Product/updateProduct.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/Product/updateproduct.jsp").forward(req, resp);
 
 	}
 

@@ -16,4 +16,5 @@ public interface IEmployeeService {
 	EmployeeModels findShipperByAccountID(int id);
 	
 	EmployeeModels findSeller(int id);
+	void updateEmployee(EmployeeModels employee);
 }

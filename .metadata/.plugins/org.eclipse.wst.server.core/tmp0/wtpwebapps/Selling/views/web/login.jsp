@@ -58,7 +58,7 @@
 					style="background: #908d8d">
 					<div class="featured-image md-3">
 						<img
-							src="${pageContext.request.contextPath}/templates/web/images/Oriflame_logo.jpg"
+							src="${pageContext.request.contextPath}/templates/web/images/Logo_Project.png"
 							class="img-fluid" style="width: 250px;">
 					</div>
 					<p class="text-white fs-2 style="font-family: "Poppins"></p>
