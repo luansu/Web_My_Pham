@@ -68,7 +68,7 @@ public class UserHomeControllers extends HttpServlet {
 			CustomerModels customer = cusService.findOne(req.getParameter("id"));
 			req.setAttribute("customer", customer);
 
-			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/inforuser.jsp");
 			rd.forward(req, resp);
 		}
 	}

@@ -53,7 +53,7 @@ private static final long serialVersionUID = 1L;
 			session.setAttribute("totalPriceCart", totalPriceCart);
 			req.setAttribute("totalPriceCart", (float)session.getAttribute("totalPriceCart"));
 
-			req.getRequestDispatcher("/views/user/cart.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/user/inforuser_cart/cart.jsp").forward(req, resp);
 		}
 		
 		else if (url.contains("user/deleteCartItem")) {
@@ -81,7 +81,7 @@ private static final long serialVersionUID = 1L;
 			float totalPriceCart = cartService.totalPriceCart((int)session.getAttribute("cartID"));
 			session.setAttribute("totalPriceCart", totalPriceCart);
 			req.setAttribute("totalPriceCart", (float)session.getAttribute("totalPriceCart"));
-			RequestDispatcher rd = req.getRequestDispatcher("/views/user/cart.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/cart.jsp");
 			rd.forward(req, resp);
 		}
 		
