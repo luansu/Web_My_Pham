@@ -103,7 +103,7 @@ public class UserProductController extends HttpServlet {
 		int pid = Integer.parseInt(req.getParameter("pid"));
 		ProductModels pro = productService.findOne(pid);
 		req.setAttribute("p", pro);
-		req.getRequestDispatcher("/views/user/product/detailProduct.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
 	}
 	
 

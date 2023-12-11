@@ -77,7 +77,7 @@ public class UserHomeControllers extends HttpServlet {
 			req.setAttribute("countCartItem", (int) session.getAttribute("countCartItem"));
 		}
 
-		req.getRequestDispatcher("/views/user/product/home.jsp").forward(req, resp);
+		resp.sendRedirect(req.getContextPath() + "/user/product/listProduct");
 
 	}
 
