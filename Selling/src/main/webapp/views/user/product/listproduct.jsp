@@ -67,7 +67,7 @@
             <div class="row justify-content-center">
                 <c:forEach  var="i" items="${list}">
       	<div class="card col-md-2" style="margin-left: 4.75rem;">
-      		<a href="detailproduct?pid=${i.productId}">
+      		<a href="detailProduct?pid=${i.productId}">
 	        <img
 	          src="${i.imageURL}"
 	          class="card-img-top" alt="..."></a>
