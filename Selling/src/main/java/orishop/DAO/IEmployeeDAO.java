@@ -11,7 +11,5 @@ public interface IEmployeeDAO {
 	
 	EmployeeModels findShipper(int id);
 	EmployeeModels findShipper(String name);
-	EmployeeModels findShipperByAccountID(int id);
-	
-	EmployeeModels findSeller(int id);
+	List<EmployeeModels> findSellerBySellerName(String sellerName);
 }

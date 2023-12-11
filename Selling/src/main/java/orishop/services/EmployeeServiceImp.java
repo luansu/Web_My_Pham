@@ -37,13 +37,8 @@ public class EmployeeServiceImp implements IEmployeeService{
 		return empDAO.findShipper(name);
 	}
 	@Override
-	public EmployeeModels findShipperByAccountID(int id) {
-		return empDAO.findShipperByAccountID(id);
+	public List<EmployeeModels> findSellerBySellerName(String sellerName){
+		return empDAO.findSellerBySellerName(sellerName);
 	}
-	@Override
-	public EmployeeModels findSeller(int id) {
-		return empDAO.findSeller(id);
-	}
-	
 	
 }
