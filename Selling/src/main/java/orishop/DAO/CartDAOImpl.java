@@ -9,6 +9,7 @@ import orishop.models.CartModels;
 public class CartDAOImpl implements ICartDAO {
 
 	static ICartDAO cartDAO = new CartDAOImpl();
+	static ICartItemDAO cartItemDAO = new CartItemDAOImpl();
 	ICustomerDAO customerDAO= new CustomerDAOImp();
 	Connection conn = null;
 	PreparedStatement ps = null;
@@ -63,7 +64,10 @@ public class CartDAOImpl implements ICartDAO {
 
 	@Override
 	public float totalPriceCart(int cartID) {
+		if (cartItemDAO.countCartItem(cartID)==0)
+			return 0;
 		CartModels model = cartDAO.findCartByCartID(cartID);
+	
 		String sql = "select cartId, sum(totalPrice) as totalPrice from Cart_Item group by cartId having cartId = ?";
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
@@ -88,6 +92,6 @@ public class CartDAOImpl implements ICartDAO {
 	
 	public static void main(String[] args) {
 		//CartModels list1 = cartDAO.findCartByCustomerID(1);
-		System.out.println(cartDAO.totalPriceCart(10));
+		System.out.println(cartDAO.totalPriceCart(29));
 	}
 }

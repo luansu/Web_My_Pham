@@ -104,7 +104,7 @@
 													
 													<input id="form1" min="0" name="quantity"
 														value="${i.quantity}" type="number"
-														class="form-control text-center"/> 
+														class="form-control text-center" readonly ="readonly"/> 
 														
 													<a href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}
 													&quantity=${i.quantity+1}&totalPrice=${i.totalPrice}'/>">
@@ -133,6 +133,8 @@
 
 							<c:if test="${empty listCartItem}">
 								Không có sản phẩm
+								<br>
+								<br><br><br>
 							</c:if>
 
 							<div class="row g-0 align-items-center pb-4">

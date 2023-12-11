@@ -16,6 +16,7 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/templates/user/css/style.css">
+	
 </head>
 <body>
 
