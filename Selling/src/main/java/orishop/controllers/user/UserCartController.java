@@ -53,11 +53,6 @@ public class UserCartController extends HttpServlet {
 			insertOrder(req, resp);
 			deleteAllCartItem(req, resp);
 		}
-		
-		else if (url.contains("/user/insertorder")) {
-			insertOrder(req, resp);
-			deleteAllCartItem(req, resp);
-		}
 	}
 
 	private void updateCartItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
