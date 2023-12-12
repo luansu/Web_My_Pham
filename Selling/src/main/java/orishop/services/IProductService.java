@@ -1,5 +1,6 @@
 package orishop.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import orishop.models.EmployeeModels;
@@ -17,6 +18,8 @@ List<ProductModels> findAllProduct();
 	List<ProductModels> filterProductAscByPrice();
 	
 	List<ProductModels> findTopProduct(int amount);
+	
+	List<ProductModels> findTopSaleProduct(int amount);
 	
 	List<ProductModels> getListProductByPage(List<ProductModels> listPro, int start, int end);
 	
@@ -36,5 +39,7 @@ List<ProductModels> findAllProduct();
 	int countReview(int productId);
 	
 	float getRatingScore(int productId);
+	
+	public List<ProductModels> getListEmpByPage(List<ProductModels> listEmp, int start, int end);
 
 }

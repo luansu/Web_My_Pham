@@ -4,19 +4,18 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link
-	href="${pageContext.request.contextPath}/templates/user/css/product/style.css"
-	rel="stylesheet" type="text/css">
-</head>
 <body>
+	
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+		crossorigin="anonymous">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link
+		href="${pageContext.request.contextPath}/templates/user/css/product/style.css"
+		rel="stylesheet" type="text/css">
 	<!-- CAROUSEL BEGIN -->
 	<div id="carouselExampleIndicators" class="carousel slide">
 		<div class="carousel-indicators">
@@ -62,7 +61,7 @@
 	<ul class="nav justify-content-center">
 		<c:forEach var="i" items="${listC}">
 			<li class="nav-item"><a class="nav-link"
-				href="productByCategory?cid=${i.categoryId}"><c:out
+				href="product/productByCategory?cid=${i.categoryId}"><c:out
 						value="${i.categoryName}" /></a></li>
 		</c:forEach>
 	</ul>
@@ -83,109 +82,67 @@
 					<header class="session_header">CHƯA CÓ SẢN PHẨM THUỘC LOẠI
 						NÀY</header>
 				</c:if>
-				<div style="margin: 20px;">
-					<div class="row justify-content-center">
-						<c:forEach var="i" items="${list}">
-							<div class="card col-md-auto" style="margin: 10px">
-								<a href="detailProduct?pid=${i.productId}"> <img
-									src="${i.imageURL}" class="card-img-top" alt="..."></a>
-								<div class="card-body">
-									<div class="d-flex justify-content-between align-items-center">
-										<div class="ratings">
-											<c:forEach begin="1"
-												end="${ratingService.averageRating(i.productId) }">
-												<i class="fa fa-star rating-color"></i>
-											</c:forEach>
-											<c:forEach begin="1"
-												end="${5-ratingService.averageRating(i.productId) }">
-												<i class="fa fa-star"></i>
-											</c:forEach>
-										</div>
-										<h5 class="review-count">${i.listRating.size() } Reviews</h5>
-									</div>
-									<h5 class="card-title card__Name">${i.productName}</h5>
-									<p class="card-text">${i.description}</p>
-									<p class="price">${i.price}</p>
+				<c:forEach var="i" items="${list}">
+					<div class="card col-md-2" style="margin-left: 4.75rem;">
+						<a href="product/detailProduct?pid=${i.productId}"> <img
+							src="${i.imageURL}" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="ratings">
+									<c:forEach begin="1" end="${ratingService.averageRating(i.productId) }">
+									<i class="fa fa-star rating-color"></i>
+									</c:forEach>
+									<c:forEach begin="1" end="${5-ratingService.averageRating(i.productId) }">
+									<i class="fa fa-star"></i>
+									</c:forEach>
 								</div>
+								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()} Reviews</h5>
 							</div>
-						</c:forEach>
+							<h5 class="card-title">${i.productName}</h5>
+							<p class="card-text">${i.description}</p>
+							<p class="price">${i.price}</p>
+						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
-			<div class="row g-0 align-items-center pb-4">
-				<div class="col-sm-6">
-					<div>
-						<p class="mb-sm-0">Hiển thị 1 đến 10 trong 12 mục</p>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="float-sm-end">
-						<ul class="pagination mb-sm-0">
-							<c:if test="${page<=1 }">
-								<li class="page-item disabled"><a
-									href="listProduct?page=${page - 1}" class="page-link"><i
-										class="mdi mdi-chevron-left"></i></a></li>
-							</c:if>
-							<c:if test="${page>1 }">
-								<li class="page-item"><a
-									href="listProduct?page=${page - 1}" class="page-link"><i
-										class="mdi mdi-chevron-left"></i></a></li>
-							</c:if>
-							<c:forEach var="i" begin="1" end="${num }">
-								<c:if test="${i==page }">
-									<li class="page-item active"><a
-										href="listProduct?page=${i}" class="page-link">${i }</a></li>
-								</c:if>
-								<c:if test="${i!=page }">
-									<li class="page-item"><a href="listProduct?page=${i}"
-										class="page-link">${i }</a></li>
-								</c:if>
-							</c:forEach>
-							<c:if test="${page<num}">
-								<li class="page-item"><a
-									href="listProduct?page=${page + 1}" class="page-link"><i
-										class="mdi mdi-chevron-right"></i></a></li>
-							</c:if>
-							<c:if test="${page>=num}">
-								<li class="page-item disabled"><a
-									href="listProduct?page=${page + 1}" class="page-link"><i
-										class="mdi mdi-chevron-right"></i></a></li>
-							</c:if>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!-- MỚI RA MẮT END-->
+
+		
 
 		<!-- ƯU ĐÃI BEIGIN -->
 		<div class="container">
 			<button type="button" class="btn">Xem các ưu đãi</button>
 			<div class="row d-flex justify-content-center">
 				<header class="session_header">ƯU ĐÃI</header>
-				<c:forEach var="i" items="${listHightLightProduct }">
-					<div class="card" style="width: 14rem;">
-					<img
-						src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42867%2F42867.png"
-						class="card-img-top" alt="...">
-					<div class="card-body">
-						<div class="d-flex justify-content-between align-items-center">
-							<div class="ratings">
-								<c:forEach begin="1" end="${ratingService.averageRating(i.productId) }">
+				<div class="row" style="margin-top: 16px;">
+				<c:if test="${list.size() == 0 }">
+					<header class="session_header">CHƯA CÓ SẢN PHẨM THUỘC LOẠI
+						NÀY</header>
+				</c:if>
+				<c:forEach var="i" items="${listS}">
+					<div class="card col-md-2" style="margin-left: 4.75rem;">
+						<a href="product/detailProduct?pid=${i.productId}"> <img
+							src="${i.imageURL}" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="ratings">
+									<c:forEach begin="1" end="${ratingService.averageRating(i.productId) }">
 									<i class="fa fa-star rating-color"></i>
 									</c:forEach>
 									<c:forEach begin="1" end="${5-ratingService.averageRating(i.productId) }">
 									<i class="fa fa-star"></i>
 									</c:forEach>
+								</div>
+								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()} Reviews</h5>
 							</div>
-							<h5 class="review-count">${i.listRating.size() } Reviews</h5>
+							<h5 class="card-title">${i.productName}</h5>
+							<p class="card-text">${i.description}</p>
+							<p class="price">${i.price}</p>
 						</div>
-						<h5 class="card-title card__Name">${i.productName}</h5>
-									<p class="card-text">${i.description}</p>
-									<p class="price">${i.price}</p>
 					</div>
-				</div>
 				</c:forEach>
+			</div>
+				
 			</div>
 		</div>
 	</div>
@@ -385,7 +342,9 @@
 		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
 		crossorigin="anonymous"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

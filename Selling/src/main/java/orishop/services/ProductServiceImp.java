@@ -5,6 +5,7 @@ import java.util.List;
 
 import orishop.DAO.IProductDAO;
 import orishop.DAO.ProductDAOImp;
+import orishop.models.EmployeeModels;
 import orishop.models.ProductModels;
 
 public class ProductServiceImp implements IProductService {
@@ -106,4 +107,18 @@ public class ProductServiceImp implements IProductService {
 		return proDAO.getRatingScore(productId);
 	}
 
+	@Override
+	public List<ProductModels> getListEmpByPage(List<ProductModels> listEmp, int start, int end) {
+		List<ProductModels> listEmpPage = new ArrayList<>();
+		
+		for (int i = start; i < end; i++) {
+			listEmpPage.add(listEmp.get(i));
+		}
+		return listEmpPage;
+	}
+
+	@Override
+	public List<ProductModels> findTopSaleProduct(int amount) {
+		return proDAO.findTopSaleProduct(amount);
+	}
 }

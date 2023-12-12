@@ -75,21 +75,22 @@ public class UserHomeControllers extends HttpServlet {
 
 			req.setAttribute("username", user.getUsername());
 			req.setAttribute("accountID", user.getAccountID());
+			req.setAttribute("customerID", cus.getCustomerId());
 
 			session = req.getSession(true);
 			session.setAttribute("cartID", cart1.getCartId());
 			req.setAttribute("cartID", (int)session.getAttribute("cartID"));
-			req.setAttribute("customerID", cus.getCustomerId());
 
 			int countCartItem = cartItemService.countCartItem((int)session.getAttribute("cartID"));
 			session.setAttribute("countCartItem", countCartItem);
-			session.setAttribute("customerID", countCartItem);
 			req.setAttribute("countCartItem", (int)session.getAttribute("countCartItem"));
 		}
-		List<ProductModels> listProduct = productService.findAllProduct();
+		List<ProductModels> listProduct = productService.findTopProduct(12);
+		List<ProductModels> listProductSale = productService.findTopSaleProduct(4);
 		List<CategoryModels> listCate = categoryService.findAllCategory();
-		session.setAttribute("ratingService", ratingService);
+		
 		req.setAttribute("list", listProduct);
+		req.setAttribute("listS", listProductSale);
 		req.setAttribute("listC", listCate);
 
 		req.getRequestDispatcher("/views/user/product/home.jsp").forward(req, resp);

@@ -181,7 +181,38 @@ public class ProductDAOImp implements IProductDAO {
 
 		try {
 
-			String query = "select top " + amount + " * from PRODUCT";
+			String query = "select top " + amount +  " * from PRODUCT order by productId desc";
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				ProductModels product = new ProductModels();
+				product.setProductId(rs.getInt(1));
+				product.setProductName(rs.getString(2));
+				product.setDescription(rs.getString(3));
+				product.setStock(rs.getInt(4));
+				product.setAmount(rs.getInt(5));
+				product.setPrice(rs.getFloat(6));
+				product.setCategoryId(rs.getInt(7));
+				product.setImageURL(rs.getString(8));
+				listProduct.add(product);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return listProduct;
+	}
+	
+	@Override
+	public List<ProductModels> findTopSaleProduct(int amount) {
+		List<ProductModels> listProduct = new ArrayList<ProductModels>();
+
+		try {
+
+			String query = "select top " + amount + " * from PRODUCT order by price";
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
@@ -379,9 +410,10 @@ public class ProductDAOImp implements IProductDAO {
 	public static void main(String[] args) {
 		ProductDAOImp dao = new ProductDAOImp();
 		int a = 10;
-		List<ProductModels> l = dao.findAllProduct();
+		List<ProductModels> l = dao.findTopProduct(12);
 		for(ProductModels o : l) {
 			System.out.println(o);
 		}
 	}
+	
 }

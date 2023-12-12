@@ -17,6 +17,8 @@ public interface IProductDAO {
 	
 	List<ProductModels> findTopProduct(int amount);
 	
+	List<ProductModels> findTopSaleProduct(int amount);
+	
 	void insertProduct(ProductModels product);
 	//void addProduct(ProductModels model);
 	
