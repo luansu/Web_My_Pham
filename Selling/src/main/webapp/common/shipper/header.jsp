@@ -2,12 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/common/taglist.jsp"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <title>Shipper</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -38,19 +36,19 @@
 </head>
 <body>
 	<!-- HEADER -->
-	<nav class="navbar navbar-expand-xxl bg-body-tertiary">
-		<div
-			class="container-fluid d-flex justify-content-between align-items-center">
-			<a class="navbar-brand d-flex align-items-center ps-2"
-				style="font-size: 16px;" href="#"> <img
+	<nav class="navbar navbar-expand-xxl bg-body-tertiary justify-content-between">
+		<div class="container-fluid d-flex justify-content-between">
+			<a class="navbar-brand d-flex align-items-start ps-2"
+				style="font-size: 16px;" href="#"><img
 				src="${pageContext.request.contextPath}/templates/web/images/Logo_Project.png"
 				alt="Logo" style="width: 50px; height: auto;">
+				<p style="padding-left: 20px; padding-top: 15px;">Shipper</p>
 			</a>
-
-			<p style="margin-left: -1400px; padding-top: 20px;">Shipper</p>
-
-			<a href="/Selling/web/logout"
-				style="text-decoration: none; color: black; margin-right: 20px;">Đăng xuất</a>
+			<div class="d-flex flex-column align-items-end">
+				<div class="mt-auto">
+					<a href="/Selling/web/logout" style="text-decoration: none; color: black;">Đăng xuất</a>
+				</div>
+			</div>
 		</div>
 	</nav>
 </body>
