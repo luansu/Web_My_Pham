@@ -17,6 +17,9 @@ public interface IOrderService {
 	
 	List<OrdersModels> countOrderByShipperId(int employeeID);
 	
+	void update(OrdersModels model);
+	OrdersModels findOne(int orderId);
+	
 	List<OrdersModels> getOrderByOrderStatus(int shipperId, String orderStatus);
 	List<OrdersModels> getOrderByPaymentStatus(int shipperId, String paymentStatus);
 	
