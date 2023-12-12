@@ -61,7 +61,7 @@
 	<ul class="nav justify-content-center">
 		<c:forEach var="i" items="${listC}">
 			<li class="nav-item"><a class="nav-link"
-				href="productByCategory?cid=${i.categoryId}"><c:out
+				href="product/productByCategory?cid=${i.categoryId}"><c:out
 						value="${i.categoryName}" /></a></li>
 		</c:forEach>
 	</ul>
@@ -84,7 +84,7 @@
 				</c:if>
 				<c:forEach var="i" items="${list}">
 					<div class="card col-md-2" style="margin-left: 4.75rem;">
-						<a href="detailproduct?pid=${i.productId}"> <img
+						<a href="product/detailProduct?pid=${i.productId}"> <img
 							src="${i.imageURL}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<div class="d-flex justify-content-between align-items-center">
@@ -114,35 +114,35 @@
 						<ul class="pagination mb-sm-0">
 							<c:if test="${page<=1 }">
 								<li class="page-item disabled"><a
-									href="listProduct?page=${page - 1}" class="page-link"><i
+									href="product/listProduct?page=${page - 1}" class="page-link"><i
 										class="mdi mdi-chevron-left"></i></a></li>
 							</c:if>
 							<c:if test="${page>1 }">
 								<li class="page-item"><a
-									href="listProduct?page=${page - 1}" class="page-link"><i
+									href="product/listProduct?page=${page - 1}" class="page-link"><i
 										class="mdi mdi-chevron-left"></i></a></li>
 							</c:if>
 							<c:forEach var="i" begin="1" end="${num }">
 								<c:if test="${i==page }">
 									<li class="page-item active"><a
-										href="listProduct?page=${i}" class="page-link">${i }</a></li>
+										href="product/listProduct?page=${i}" class="page-link">${i }</a></li>
 								</c:if>
 								<c:if test="${i!=page }">
-									<li class="page-item"><a href="listProduct?page=${i}"
+									<li class="page-item"><a href="product/listProduct?page=${i}"
 										class="page-link">${i }</a></li>
 								</c:if>
 							</c:forEach>
 							<c:if test="${page<num}">
 								<li class="page-item"><a
-									href="listProduct?page=${page + 1}" class="page-link"><i
+									href="product/listProduct?page=${page + 1}" class="page-link"><i
 										class="mdi mdi-chevron-right"></i></a></li>
 							</c:if>
 							<c:if test="${page>=num}">
 								<li class="page-item disabled"><a
-									href="listProduct?page=${page + 1}" class="page-link"><i
+									href="product/listProduct?page=${page + 1}" class="page-link"><i
 										class="mdi mdi-chevron-right"></i></a></li>
 							</c:if>
-						</ul>
+						</ul>	
 					</div>
 				</div>
 			</div>

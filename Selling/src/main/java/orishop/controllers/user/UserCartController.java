@@ -114,7 +114,6 @@ public class UserCartController extends HttpServlet {
 
 				req.setAttribute("username", user.getUsername());
 				req.setAttribute("accountID", user.getAccountID());
-				req.setAttribute("customerID", cus.getCustomerId());
 
 				session = req.getSession(true);
 				session.setAttribute("cartID", cart1.getCartId());

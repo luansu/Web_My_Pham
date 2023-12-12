@@ -77,10 +77,10 @@ public class PaymentController extends HttpServlet {
 		String bankCode = "NCB";
 
 		HttpSession session = req.getSession();
-		int orderID = ((int) session.getAttribute("orderID"));
+		int orderID = 123;
 		
-		String order_id = Integer.toString(orderID);
-		float totalPriceOrder = ((int) session.getAttribute("orderID"));
+		String order_id = "asdfa";
+		float totalPriceOrder = 123123;
 		float amount = totalPriceOrder;
 		
 		String vnp_TxnRef = order_id;

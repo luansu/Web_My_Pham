@@ -72,8 +72,6 @@ private static final long serialVersionUID = 1L;
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/detailcart.jsp");
 			rd.forward(req, resp);
 		}
-		
-		
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

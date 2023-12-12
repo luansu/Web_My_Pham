@@ -44,7 +44,7 @@ public class UserProductController extends HttpServlet {
 		} else if (url.contains("productByCategory")) {
 			getProductByCategory(req, resp);
 			
-		}else if (url.contains("detailProduct")) {
+		}else if (url.contains("product/detailProduct")) {
 			getDetailProduct(req, resp);
 			
 		}
