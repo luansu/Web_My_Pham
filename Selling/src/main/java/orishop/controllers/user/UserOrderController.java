@@ -41,7 +41,7 @@ private static final long serialVersionUID = 1L;
 		String url = req.getRequestURI().toString();
 		float deliveryFee = 0;
 		int choose = 0;
-		if (url.contains("/user/payment")) {
+		if (url.contains("user/payment")) {
 			HttpSession session = req.getSession();
 			int cartID = (int) session.getAttribute("cartID");
 			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cartID);

@@ -35,7 +35,7 @@ import orishop.services.IProductService;
 import orishop.services.ProductServiceImp;
 import orishop.util.Config;
 
-@WebServlet(urlPatterns = { "/user/payVNPAY", "/user/pay/error","/user/pay/thanks"})
+@WebServlet(urlPatterns = { "/user/pay", "/user/pay/error","/user/pay/thanks"})
 
 public class PaymentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,7 +52,7 @@ public class PaymentController extends HttpServlet {
 
 		String url = req.getRequestURI().toString();
 
-		if (url.contains("payVNPAY")) {
+		if (url.contains("pay")) {
 			try {
 				String paymentUrl = getPay(req);
 				resp.sendRedirect(paymentUrl);

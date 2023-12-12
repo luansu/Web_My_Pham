@@ -76,7 +76,8 @@ public class UserHomeControllers extends HttpServlet {
 			req.setAttribute("username", user.getUsername());
 			req.setAttribute("accountID", user.getAccountID());
 			req.setAttribute("customerID", cus.getCustomerId());
-
+			
+			session.setAttribute("customerID", cus.getCustomerId());
 			session = req.getSession(true);
 			session.setAttribute("cartID", cart1.getCartId());
 			req.setAttribute("cartID", (int)session.getAttribute("cartID"));

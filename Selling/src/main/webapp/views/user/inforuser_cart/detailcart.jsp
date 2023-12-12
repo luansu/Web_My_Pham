@@ -77,7 +77,7 @@
 														<div class="d-flex align-items-center mb-5">
 															<div class="flex-shrink-0">
 																<img
-																	src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F38557%2F38557.png%3Fversion%3D1674645309&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+																	src="${i.product.imageURL}"
 																	class="img-fluid" style="width: 150px;"
 																	alt="Generic placeholder image">
 															</div>
