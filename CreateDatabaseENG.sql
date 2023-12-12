@@ -1,5 +1,5 @@
---DROP DATABASE CosmeticStore
---GO
+DROP DATABASE CosmeticStore
+GO
 
 CREATE DATABASE CosmeticStore
 GO
@@ -76,11 +76,11 @@ create table CUSTOMER (
 Go
 INSERT INTO CUSTOMER (customerName, birthday, gender, address, phone, mail, rank, reputation, rewardPoints, accountId)
 VALUES
-(N'Nguyễn Văn An', '1990-01-01', N'Nam', N'Số 10, đường Nguyễn Trãi, thành phố Mỹ Tho, tỉnh Tiền Giang', '0987654321', 'nguyenvanan@gmail.com', N'Khách hàng mới', 0, 0, 1),
-(N'Trần Thị My', '1991-02-02', N'Nữ', N'Số 20, đường Lê Lợi, quận 7, TP.HCM', '0998765432', 'tranthimy@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
-(N'Lê Quang Chung', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, quận Bình Tân, thành phố Hồ Chí Minh', '0909765432', 'lequangchung@gmail.com', N'Khách hàng VIP', 10, 200, 2),
-(N'Đỗ Thị Diệu', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, thành phố Bến Tre, tỉnh Bến Tre', '0911765432', 'dothidieu@gmail.com', N'Khách hàng mới', 0, 0, 2),
-(N'Huỳnh Văn Én', '1994-05-05', N'Nam', N'Số 50, đường Nguyễn Huệ, thành phố Mỹ Tho, tỉnh Tiền Giang', '0922765432', 'huynhvanen@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
+(N'Nguyễn Văn An', '1990-01-01', N'Nam', N'Số 10, đường Nguyễn Trãi, thành phố Mỹ Tho, tỉnh Tiền Giang', '0987654321', 'nguyenvanan@gmail.com', N'Khách hàng mới', 0, 0, 8),
+(N'Trần Thị My', '1991-02-02', N'Nữ', N'Số 20, đường Lê Lợi, quận 7, TP.HCM', '0998765432', 'tranthimy@gmail.com', N'Khách hàng thân thiết', 5, 100, 9),
+(N'Lê Quang Chung', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, quận Bình Tân, thành phố Hồ Chí Minh', '0909765432', 'lequangchung@gmail.com', N'Khách hàng VIP', 10, 200, 10),
+(N'Đỗ Thị Diệu', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, thành phố Bến Tre, tỉnh Bến Tre', '0911765432', 'dothidieu@gmail.com', N'Khách hàng mới', 0, 0, 4),
+(N'Huỳnh Văn Én', '1994-05-05', N'Nam', N'Số 50, đường Nguyễn Huệ, thành phố Mỹ Tho, tỉnh Tiền Giang', '0922765432', 'huynhvanen@gmail.com', N'Khách hàng thân thiết', 5, 100, 5),
 (N'Phan Thị Trúc', '1995-06-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, quận Ninh Kiều, thành phố Cần Thơ', '0933765432', 'phanthitruc@gmail.com', N'Khách hàng VIP', 10, 200, 2),
 (N'Nguyễn Thị Ngân', '1996-07-07', N'Nữ', N'Số 70, đường Lê Văn Duyệt, thành phố Mỹ Tho, tỉnh Tiền Giang', '0944765432', 'nguyenthingan@gmail.com', N'Khách hàng mới', 0, 0, 2),
 (N'Trương Văn Hải', '1997-08-08', N'Nam', N'Số 80, đường Lý Thường Kiệt, huyện Cao Lãnh, tỉnh Đồng Tháp', '0955765432', 'truongvanhai@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
