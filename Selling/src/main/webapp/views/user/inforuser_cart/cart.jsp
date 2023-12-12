@@ -24,8 +24,7 @@
 
 	<div class="container">
 		<div class="user__list">
-			<div class="mb-3 user__id">
-			</div>
+			<div class="mb-3 user__id"></div>
 			<ul class="list-group">
 				<a style="text-decoration: none;" href="editInfor">
 					<li
@@ -88,16 +87,17 @@
 												</div>
 												<div
 													class="col-md-3 col-lg-3 col-xl-3 d-flex align-items-center">
-													<a
-														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
 														<button class="btn btn-link px-2"
-															onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-															<i class="fas fa-minus"></i>
+															onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+															${i.quantity == 0 ? 'disabled' : ''}>
+															<a href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
+													<i class="fas fa-minus"></i></a> 
 														</button>
-													</a> <input id="form1" min="0" name="quantity"
+													
+													<input id="form1" min="0" name="quantity"
 														value="${i.quantity}" class="form-control text-center"
-														readonly="readonly" /> <a
-														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity+1}&totalPrice=${i.totalPrice}'/>">
+														readonly="readonly" /> 
+													<a href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity+1}&totalPrice=${i.totalPrice}'/>">
 														<button class="btn btn-link px-2"
 															onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
 															<i class="fas fa-plus"></i>
@@ -184,9 +184,9 @@
 														đ</span>
 												</div>
 												<c:if test="${not empty listCartItem}">
-												<a href="payment"><button type="button"
-													class="btn btn-outline-primary btn-block btn-lg">Thanh
-													toán</button></a>
+													<a href="payment"><button type="button"
+															class="btn btn-outline-primary btn-block btn-lg">Thanh
+															toán</button></a>
 												</c:if>
 
 											</div>

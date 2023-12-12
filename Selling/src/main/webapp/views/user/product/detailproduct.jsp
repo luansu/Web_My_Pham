@@ -165,22 +165,8 @@
 							<div class="cart-item align-items-between row">
 								<div class="quantity col">
 
-									<button class="btn btn-link px-2"
-										onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-										<i class="fas fa-minus"></i>
-									</button>
-
-
 									<input id="form1" min="0" name="quantity" type="number"
 										value="1" class="form-control text-center" />
-
-
-									<button class="btn btn-link px-2"
-										onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-										<i class="fas fa-plus"></i>
-									</button>
-
-
 								</div>
 								<button type="submit" class="add-to-cart col ms-3">
 									Thêm vào giỏ hàng</button>
