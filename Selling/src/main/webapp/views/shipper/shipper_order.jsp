@@ -5,6 +5,9 @@
 <html lang="en">
 
 <head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipper</title>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
@@ -284,10 +287,10 @@
 											class="form-control" readonly="readonly"
 											value="${shipper.employeeId }"></li>
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
-											for="username"
-											class="display-26 text-secondary me-2 font-weight-600">Họ
-												và tên:</label> <input type="text" name="employeeName"
-											class="form-control" value="${shipper.employeeName }">
+											for="username" for="validationDefault01"
+											class="display-26 text-secondary me-2 font-weight-600 form-label">Họ
+												và tên:</label> <input type="text" name="employeeName" id="validationDefault01"
+											class="form-control" value="${shipper.employeeName }" required>
 										</li>
 
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
