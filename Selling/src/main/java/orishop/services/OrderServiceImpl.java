@@ -82,4 +82,9 @@ public class OrderServiceImpl implements IOrderService{
 		listOrder.removeIf(order -> !"Save".equals(order.getOrderStatus()));
 		return listOrder.size();
 	}
+
+	@Override
+	public List<OrdersModels> canceledOrder(int id) {
+		return orderDAO.canceledOrder(id);
+	}
 }

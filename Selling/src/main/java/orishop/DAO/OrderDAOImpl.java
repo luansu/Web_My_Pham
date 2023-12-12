@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import orishop.models.CartItemModels;
-import orishop.models.OrdersItemModels;
 import orishop.models.*;
 import orishop.services.*;
 
@@ -216,4 +214,36 @@ public class OrderDAOImpl implements IOrderDAO{
 		}
 		return orderItems;
 	}
+
+	@Override
+	public List<OrdersModels> canceledOrder(int id) {
+		String sql = "select * from ORDERS where customerId = ? and orderStatus = N'Đã hủy'";
+		List<OrdersModels> listorder = new ArrayList<OrdersModels>();
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				OrdersModels model = new OrdersModels();
+				model.setOrderID(rs.getInt("orderId"));
+				model.setOrderValue(rs.getFloat("orderValue"));
+				model.setOrderDate(rs.getDate("orderDate"));
+				model.setCartID(rs.getInt("cartId"));
+				model.setCustomerID(rs.getInt("customerId"));
+				model.setPaymentStatus(rs.getString("paymentStatus"));
+				model.setOrderStatus(rs.getString("orderStatus"));
+				model.setPaymentMethod(rs.getString("paymentMethod"));
+				model.setDeliveryMethod(rs.getString("deliveryMethod"));
+				model.setEmployeeId(rs.getInt("employeeId"));
+				
+				listorder.add(model);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listorder;
+	}
+	
 }

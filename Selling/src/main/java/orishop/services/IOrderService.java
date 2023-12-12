@@ -19,6 +19,8 @@ public interface IOrderService {
 	List<OrdersModels> getOrderByOrderStatus(int shipperId, String orderStatus);
 	List<OrdersModels> getOrderByPaymentStatus(int shipperId, String paymentStatus);
 	
+	List<OrdersModels> canceledOrder(int id);
+
 	double totalPriceProductSell();
 	List<OrdersItemModels> getOrderItems(int id);
 	

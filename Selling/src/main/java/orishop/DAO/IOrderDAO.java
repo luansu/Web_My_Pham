@@ -18,5 +18,7 @@ public interface IOrderDAO {
 	
 	List<OrdersItemModels> getOrderItems(int id);
 	
+	List<OrdersModels> canceledOrder(int id);
+	
 	double totalPriceProductSell();
 }
