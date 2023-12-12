@@ -48,7 +48,7 @@
 				style="background-color: rgb(255, 255, 255); width: 180px; float: left;">
 				<div class="info p-2 rounded ">
 					<img class="image-info"
-						href="/assets/tải xuống (1).jpg xuống (1).jpg">
+						src="https://2sao.vietnamnetjsc.vn/images/2021/04/05/14/45/IU.jpg">
 					<div class="content-info">
 						<div class="account">${shipper.employeeName}</div>
 						<a class="change-account" href="">Sửa hồ sơ</a>
@@ -57,7 +57,7 @@
 				<div class="d-flex align-items-start"
 					style="padding-left: 40px; padding-top: 20px;">
 					<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
-						role="tablist" aria-orientation="vertical">
+						role="tablist" aria-orientation="vertical" style = "background-color: #fff;">
 						<button class="nav-link active" id="v-pills-order-tab"
 							data-bs-toggle="pill" data-bs-target="#v-pills-order"
 							type="button" role="tab" aria-controls="v-pills-order"
@@ -69,7 +69,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="ms-3 d-flex right-box">
 				<div class="tab-content" id="v-pills-tabContent">
 					<div class="tab-pane fade show active" id="v-pills-order"
 						role="tabpanel" aria-labelledby="v-pills-order-tab" tabindex="0">
@@ -103,7 +102,7 @@
 										<div class="product">
 											<div class="product-detail rounded d-flex">
 												<div class="content-info ml-2">
-													<div class="product-id" href="">${i.orderID }</div>
+													<div class="product-id" href="">Mã đơn hàng: ${i.orderID }</div>
 													<div class="product-category">Ngày đặt hàng:
 														${i.orderDate}</div>
 												</div>
@@ -128,6 +127,13 @@
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
+
+														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đã giao</button>
+												</c:if>
+												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
+													<button type="button" class="btn btn-warning d-flex"
+														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đang giao</button>
+
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
 														giao</button>
 												</c:if>
@@ -135,6 +141,7 @@
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
 														giao</button>
+
 												</c:if>
 											</div>
 										</div>
@@ -147,7 +154,7 @@
 										<div class="product">
 											<div class="product-detail rounded d-flex">
 												<div class="content-info ml-2">
-													<div class="product-id" href="">${i.orderID }</div>
+													<div class="product-id" href="">Mã đơn hàng: ${i.orderID }</div>
 													<div class="product-category">Ngày đặt hàng:
 														${i.orderDate}</div>
 												</div>
@@ -172,6 +179,13 @@
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
+
+														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đã giao</button>
+												</c:if>
+												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
+													<button type="button" class="btn btn-warning d-flex"
+														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đang giao</button>
+
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
 														giao</button>
 												</c:if>
@@ -179,6 +193,7 @@
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
 														giao</button>
+
 												</c:if>
 											</div>
 										</div>
@@ -193,7 +208,7 @@
 										<div class="product">
 											<div class="product-detail rounded d-flex">
 												<div class="content-info ml-2">
-													<div class="product-id" href="">${i.orderID }</div>
+													<div class="product-id" href="">Mã đơn hàng: ${i.orderID }</div>
 													<div class="product-category">Ngày đặt hàng:
 														${i.orderDate}</div>
 												</div>
@@ -218,6 +233,13 @@
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
+
+														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đã giao</button>
+												</c:if>
+												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
+													<button type="button" class="btn btn-warning d-flex"
+														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đang giao</button>
+
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
 														giao</button>
 												</c:if>
@@ -225,6 +247,7 @@
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
 														giao</button>
+
 												</c:if>
 											</div>
 										</div>
@@ -235,17 +258,17 @@
 					</div>
 					<div class="tab-pane fade" id="v-pills-information" role="tabpanel"
 						aria-labelledby="v-pills-profile-information" tabindex="0">
-						<div class="edit card-body d-flex align-items-center">
-							<div class="image-container col-lg-6 mb-4 mb-lg-0 ">
+						<div class="edit card-body d-flex align-items-center" style="width: 1150px;">
+							<div class="image-container mb-4 mb-lg-0 ">
 								<img
-									src="https://admin.vov.gov.vn/UploadFolder/KhoTin/Images/UploadFolder/VOVVN/Images/sites/default/files/styles/large/public/2023-07/362289979_838127327678045_2812585588687742762_n.jpg"
+									src="https://2sao.vietnamnetjsc.vn/images/2021/04/05/14/45/IU.jpg"
 									alt="..." class="object-fit-sm-contain">
 							</div>
 							<div class="col-lg-6 px-xl-10">
 								<form action="updateinfor" method="post">
 									<div
 										class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded"
-										style="margin-top: 20px; margin-left: 140px;">
+										style="margin-top: 20px; margin-left: 50px;">
 										<h3 class="h2 text-white text-center mb-0">${shipper.employeeName }</h3>
 									</div>
 									<ul class="list-unstyled mb-1-9">
@@ -266,6 +289,7 @@
 												và tên:</label> <input type="text" name="employeeName"
 											class="form-control" value="${shipper.employeeName }">
 										</li>
+
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
 											for="username"
 											class="display-26 text-secondary me-2 font-weight-600">Giới
@@ -293,9 +317,7 @@
 											lại</button>
 									</div>
 								</form>
-
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -309,6 +331,28 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
 		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
 		crossorigin="anonymous"></script>
+	<script>
+            // JavaScript để tăng cường màu sắc
+            document.addEventListener("DOMContentLoaded", function() {
+                var products = document.querySelectorAll('.product');
+                var currentColorIndex = 0;
+    
+                products.forEach(function(product) {
+                    var currentColor = getCurrentColor();
+                    product.querySelector('.product-detail').style.backgroundColor = currentColor;
+                    product.querySelector('.product-address').style.backgroundColor = currentColor;
+                    product.querySelector('.product-button').style.backgroundColor = currentColor;
+
+                });
+    
+                function getCurrentColor() {
+                    var colors = ["#fff", "#e6e6e6"];
+                    var color = colors[currentColorIndex];
+                    currentColorIndex = (currentColorIndex + 1) % colors.length;
+                    return color;
+                }
+            });
+    </script>
 </body>
 
 </html>
