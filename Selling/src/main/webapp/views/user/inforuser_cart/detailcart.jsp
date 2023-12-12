@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%@ include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -65,21 +65,18 @@
 								<div class="card shopping-cart" style="border-radius: 15px;">
 									<div class="card-body text-black">
 
-										<div class="row">
+										<div class=" d-flex ">
 											<div class="col-lg-6 px-5 py-4">
 
 												<h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Đơn
 													hàng của bạn</h3>
 
-
 												<c:if test="${not empty listCartItem}">
 													<c:forEach var="i" items="${listCartItem}">
 														<div class="d-flex align-items-center mb-5">
 															<div class="flex-shrink-0">
-																<img
-																	src="${i.product.imageURL}"
-																	class="img-fluid" style="width: 150px;"
-																	alt="Generic placeholder image">
+																<img src="${i.product.imageURL}" class="img-fluid"
+																	style="width: 150px;" alt="Generic placeholder image">
 															</div>
 															<div class="flex-grow-1 ms-3">
 																<h5 class="text-primary">${i.product.productName}</h5>
@@ -93,42 +90,39 @@
 														</div>
 													</c:forEach>
 												</c:if>
-												</div>
+											
 
-												<hr class="mb-4"
-													style="height: 2px; background-color: #1266f1; opacity: 1;">
-												<div class="cham">
-													<h4>Phương thức vận chuyển</h4>
-													<a href="payment?deliveryMethod=${1}"><button class="btn btn-outline-primary ">Vận
-														chuyển thường</button><br><br></a>
-													<a href="payment?deliveryMethod=${2}"><button class="btn btn-outline-primary">Vận
-														chuyển hỏa tốc</button></a>
-												</div>
-												
-
-
-												<hr class="mb-4"
-													style="height: 2px; background-color: #1266f1; opacity: 1;">
-
-												<div class="d-flex justify-content-between px-x">
-													<p class="fw-bold">Chi phí đơn hàng:</p>
-													<p class="fw-bold">${totalPriceCart}</p>
-												</div>
-												<div class="d-flex justify-content-between px-x">
-													<p class="fw-bold">Phí giao hàng:</p>
-													<p class="fw-bold">${deliveryFee}</p>
-												</div>
-												<div class="d-flex justify-content-between p-2 mb-2"
-													style="background-color: #e1f5fe;">
-													<h5 class="fw-bold mb-0">Tổng:</h5>
-													<h5 class="fw-bold mb-0">${totalPriceCart+deliveryFee}</h5>
-												</div>
-
-
-
-
+											<hr class="mb-4"
+												style="height: 2px; background-color: #1266f1; opacity: 1;">
+											<div class="cham">
+												<h4>Phương thức vận chuyển</h4>
+												<a href="payment?deliveryMethod=${1}"><button
+														class="btn btn-outline-primary ">Vận chuyển
+														thường</button>
+													<br>
+												<br></a> <a href="payment?deliveryMethod=${2}"><button
+														class="btn btn-outline-primary">Vận chuyển hỏa
+														tốc</button></a>
 											</div>
+											
 
+											<hr class="mb-4"
+												style="height: 2px; background-color: #1266f1; opacity: 1;">
+
+											<div class="d-flex justify-content-between px-x">
+												<p class="fw-bold">Chi phí đơn hàng:</p>
+												<p class="fw-bold">${totalPriceCart}</p>
+											</div>
+											<div class="d-flex justify-content-between px-x">
+												<p class="fw-bold">Phí giao hàng:</p>
+												<p class="fw-bold">${deliveryFee}</p>
+											</div>
+											<div class="d-flex justify-content-between p-2 mb-2"
+												style="background-color: #e1f5fe;">
+												<h5 class="fw-bold mb-0">Tổng:</h5>
+												<h5 class="fw-bold mb-0">${totalPriceCart+deliveryFee}</h5>
+											</div>
+											</div>
 
 											<div class="col-lg-6 px-5 py-4">
 
@@ -176,45 +170,27 @@
 
 												<div class="mb-5 pt-2 text-center">
 													<a href="${pageContext.request.contextPath}/user/pay"
-														class="text-danger" onclick="updateOrder();"><img alt="vnpay"
+														class="text-danger"><img alt="vnpay"
 														style="width: 200px; height: 200px;"
 														src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg"></a>
 												</div>
-												<script>
-												    function updateOrder() {
-												        // Use AJAX to send a request to server-side code
-												        var xhr = new XMLHttpRequest();
-												        xhr.open("POST", "${pageContext.request.contextPath}/user/updateorder", true);
-												        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-												        xhr.send();
-												
-												        // Handle the response if needed
-												        xhr.onreadystatechange = function () {
-												            if (xhr.readyState == 4 && xhr.status == 200) {
-												                console.log(xhr.responseText);
-												                // Optionally, redirect to the payment page after the update
-												                window.location.href = "${pageContext.request.contextPath}/user/pay";
-												            }
-												        };
-												    }
-												</script>
 												<h5 class="fw-bold mb-5"
 													style="position: absolute; bottom: 0;">
-													<a href="findCartByCartID?cartID=${cartID}"><i class="fas fa-angle-left me-2"></i>Quay
-														lại</a>
+													<a href="findCartByCartID?cartID=${cartID}"><i
+														class="fas fa-angle-left me-2"></i>Quay lại</a>
 												</h5>
 
 											</div>
 										</div>
-
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</section>
 			</div>
-
+			</section>
 		</div>
+
+	</div>
 </body>
 </html>
