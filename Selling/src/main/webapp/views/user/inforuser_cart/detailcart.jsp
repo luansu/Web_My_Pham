@@ -176,28 +176,10 @@
 
 												<div class="mb-5 pt-2 text-center">
 													<a href="${pageContext.request.contextPath}/user/pay"
-														class="text-danger" onclick="updateOrder();"><img alt="vnpay"
+														class="text-danger"><img alt="vnpay"
 														style="width: 200px; height: 200px;"
 														src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg"></a>
 												</div>
-												<script>
-												    function updateOrder() {
-												        // Use AJAX to send a request to server-side code
-												        var xhr = new XMLHttpRequest();
-												        xhr.open("POST", "${pageContext.request.contextPath}/user/updateorder", true);
-												        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-												        xhr.send();
-												
-												        // Handle the response if needed
-												        xhr.onreadystatechange = function () {
-												            if (xhr.readyState == 4 && xhr.status == 200) {
-												                console.log(xhr.responseText);
-												                // Optionally, redirect to the payment page after the update
-												                window.location.href = "${pageContext.request.contextPath}/user/pay";
-												            }
-												        };
-												    }
-												</script>
 												<h5 class="fw-bold mb-5"
 													style="position: absolute; bottom: 0;">
 													<a href="findCartByCartID?cartID=${cartID}"><i class="fas fa-angle-left me-2"></i>Quay

@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import orishop.models.CartItemModels;
 import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;
 import orishop.services.CategoryServiceImp;
@@ -37,7 +38,7 @@ import orishop.services.OrderServiceImpl;
 import orishop.services.ProductServiceImp;
 import orishop.util.Config;
 
-@WebServlet(urlPatterns = { "/user/pay", "/user/error","/user/thanks"})
+@WebServlet(urlPatterns = { "/user/pay","/paymentInfo", "/user/error","/user/thanks"})
 
 public class PaymentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -65,7 +66,7 @@ public class PaymentController extends HttpServlet {
 			}
 		} else if (url.contains("user/thanks")) {
 			req.getRequestDispatcher("/views/user/inforuser_cart/complete.jsp").forward(req, resp);
-		}
+		} 
 
 	}
 
@@ -78,7 +79,7 @@ public class PaymentController extends HttpServlet {
 		String vnp_Version = "2.1.0";
 		String vnp_Command = "pay";
 		String orderType = "other";
-		String bankCode = "NCB";
+		String bankCode = "";
 		
 		HttpSession session = req.getSession();
 		int orderID = orderService.findLatestOrderId();
