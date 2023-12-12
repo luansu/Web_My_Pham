@@ -11,25 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import orishop.models.AccountModels;
-import orishop.models.CartItemModels;
-import orishop.models.CartModels;
-import orishop.models.CustomerModels;
-import orishop.services.CartItemServiceImpl;
-import orishop.services.CartServiceImpl;
-import orishop.services.CategoryServiceImp;
-import orishop.services.CustomerServiceImp;
-import orishop.services.EmployeeServiceImp;
-import orishop.services.ICartItemService;
-import orishop.services.ICartService;
-import orishop.services.ICategoryService;
-import orishop.services.ICustomerService;
-import orishop.services.IEmployeeService;
-import orishop.services.IProductService;
-import orishop.services.ProductServiceImp;
+import orishop.models.*;
+import orishop.services.*;
 
 @WebServlet(urlPatterns = { "/user/product/insertCartItem", "/user/findCartByCartID", "/user/findCartItem",
-		"/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem" })
+		"/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem", "/user/insertorder"})
 
 public class UserCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,6 +24,7 @@ public class UserCartController extends HttpServlet {
 	ICartItemService cartItemService = new CartItemServiceImpl();
 	ICustomerService CustomerSerivce = new CustomerServiceImp();
 	IEmployeeService empService = new EmployeeServiceImp();
+	IOrderService orderService = new OrderServiceImpl();
 
 	IProductService productService = new ProductServiceImp();
 	ICategoryService categoryService = new CategoryServiceImp();
@@ -60,6 +47,8 @@ public class UserCartController extends HttpServlet {
 		String url = req.getRequestURI().toString();
 		if (url.contains("insertCartItem")) {
 			insertCartItem(req, resp);
+		} else if (url.contains("/user/insertorder")) {
+			insertOrder(req, resp);
 		}
 	}
 
@@ -181,5 +170,19 @@ public class UserCartController extends HttpServlet {
 		req.setAttribute("message", "Đã xóa thành công");
 
 		resp.sendRedirect(req.getContextPath() + "/user/findCartByCartID");
+	}
+	
+	private void insertOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+
+		HttpSession session = req.getSession();
+		OrdersModels model = new OrdersModels();
+		int customerId = (int) session.getAttribute("customerID");
+		float totalPriceOrder = (float) session.getAttribute("totalPriceCart");
+		int cartID = (int) session.getAttribute("cartID");
+		List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cartID);
+
+		orderService.createOrder(model, customerId, totalPriceOrder, listCartItem);
 	}
 }
