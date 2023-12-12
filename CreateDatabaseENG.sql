@@ -18,29 +18,8 @@ CREATE TABLE ACCOUNT (
 	[status] int,
 	code nvarchar(30)
 )
+go
 
-CREATE Or Alter TRIGGER TG_TaoTaiKhoanSQL
-ON Account
-AFTER INSERT
-AS
-DECLARE @username nvarchar(30), @password nvarchar(200), @accountID int, @roleID int, @mail varchar(30)
-SELECT @username=i.Username, @password=i.Password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail
-FROM inserted i
-BEGIN
-	DECLARE @sqlString nvarchar(2000)
-	if (@roleID = 1)
-	BEGIN
-	SET @sqlString = 'Insert into Customer (Mail, AccountID) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+')';
-	END
-	else if (@roleID = 2)
-	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''admin'')';
-	else if (@roleID = 3)
-	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''seller'')';
-	else if (@roleID = 4)
-	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''shipper'')';
-	EXEC (@sqlString)
-END
-GO	
 
 
 GO
@@ -53,12 +32,11 @@ INSERT INTO ACCOUNT (username, password, mail, roleId, status, code)
 VALUES
 ('user', '1', 'admin@example.com', 1, 1, '123456'),
 ('admin', '1', 'user1@example.com', 2, 1, '789012'),
-('seller', '1', 'user2@example.com', 3, 0, '345678'),
+('seller', '1', 'user2@example.com', 3, 1, '345678'),
 ('shipper', '1', 'user3@example.com', 4, 1, '901234'),
-('admin2', '1', 'user4@example.com', 2, 0, '567890'),
+('admin2', '1', 'user4@example.com', 2, 1, '567890'),
 ('seller2', '1', 'user5@example.com', 3, 1, '123456');
 
-		
 -- DROP TABLE CUSTOMER
 create table CUSTOMER (
 	customerId int Identity PRIMARY KEY,
@@ -106,19 +84,6 @@ create table CART (
 	primary key (cartId)
 )
 
-CREATE Or Alter TRIGGER TG_TaoCART
-ON CUSTOMER
-AFTER INSERT
-AS
-DECLARE @customerId INT
-SELECT @customerId=i.customerId
-FROM inserted i
-BEGIN
-	DECLARE @sqlString nvarchar(2000)
-	SET @sqlString = 'Insert into CART (customerId) values ('+ CAST(@customerId AS nvarchar)+')';
-	EXEC (@sqlString)
-END
-GO
 Go
 INSERT INTO CART (customerId, totalPrice)
 VALUES
@@ -409,7 +374,45 @@ VALUES
 --select * from PRODUCT
 --select * from ORDER_ITEM
 --select * from IMPORTING_GOODS
+go
 
+CREATE Or Alter TRIGGER TG_TaoCART
+ON CUSTOMER
+AFTER INSERT
+AS
+DECLARE @customerId INT
+SELECT @customerId=i.customerId
+FROM inserted i
+BEGIN
+	DECLARE @sqlString nvarchar(2000)
+	SET @sqlString = 'Insert into CART (customerId) values ('+ CAST(@customerId AS nvarchar)+')';
+	EXEC (@sqlString)
+END
+GO
+
+
+CREATE Or Alter TRIGGER TG_TaoTaiKhoanSQL
+ON Account
+AFTER INSERT
+AS
+DECLARE @username nvarchar(30), @password nvarchar(200), @accountID int, @roleID int, @mail varchar(30)
+SELECT @username=i.Username, @password=i.Password, @accountID=i.AccountID, @roleID = RoleID, @mail=Mail
+FROM inserted i
+BEGIN
+	DECLARE @sqlString nvarchar(2000)
+	if (@roleID = 1)
+	BEGIN
+	SET @sqlString = 'Insert into Customer (Mail, AccountID) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+')';
+	END
+	else if (@roleID = 2)
+	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''admin'')';
+	else if (@roleID = 3)
+	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''seller'')';
+	else if (@roleID = 4)
+	SET @sqlString = 'Insert into EMPLOYEE (Mail, AccountID, Job) values ('''+@mail+''','+ CAST(@accountID AS nvarchar)+',''shipper'')';
+	EXEC (@sqlString)
+END
+GO	
 
 CREATE Or Alter TRIGGER TG_TaoCART
 ON CUSTOMER

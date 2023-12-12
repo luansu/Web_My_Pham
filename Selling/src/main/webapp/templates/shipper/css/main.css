@@ -31,6 +31,18 @@ main {
 	width: 50px;
 	height: 50px;
 }
+.right-box{
+    position: relative;
+    display: block;
+    flex-grow: 1;
+    width: 980px;
+    box-sizing: border-box;
+    margin-left: 1.6875rem;
+    min-width: 0;
+    min-height: 100px;
+    background: #fff;
+    border-radius: 0.125rem;
+=======
 
 footer {
 	flex-shrink: 0;
@@ -43,6 +55,10 @@ footer {
 	padding-left: 15px;
 	overflow: hidden;
 }
+.nav-item{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
 
 .account {
 	overflow: hidden;
@@ -109,13 +125,12 @@ footer {
 	background: #e1e1e1;
 }
 
-.product-detail {
-	padding-left: 15px;
-	background-color: #fffcfc;
-	padding-top: 15px;
-	border-bottom: 1px solid #eeeded;
+.product-detail{
+    background-color: #ffffff;
+    padding-top: 15px;
+    border-bottom: 1px solid #eeeded; 
 }
-
+    
 .product-id {
 	font-size: 20px;
 	font-weight: 600;
@@ -131,10 +146,9 @@ footer {
 	height: 110px;
 }
 
-.product-address {
-	background-color: #fffcfc;
-	padding-top: 10px;
-}
+.product-address{
+    background-color: #ffffff;
+    padding-top: 10px;
 
 .address {
 	font-size: 20px;
@@ -154,6 +168,9 @@ footer {
 .border {
 	border: #fff;
 }
+.product-button{
+    background-color: #ffffff;
+
 
 .product-button {
 	background-color: #fffcfc;
@@ -164,9 +181,13 @@ footer {
 	margin-bottom: 30px;
 }
 
-.product {
-	border-bottom: 3px solid #333;
-}
+.product{
+    border-bottom: 3px solid #333;
+    background-color: #dee6e0;
+    width: 100%;
+    border: 1px solid rgba(101, 27, 27, 0.181);
+    margin-bottom: 10px;
+    
 
 .edit {
 	width: 780px;
@@ -183,16 +204,26 @@ footer {
 	display: inline-block;
 }
 
-.image-container {
-	width: 350px;
-	height: 300px;
-	text-align: center;
-	margin-top: 60px;
-}
+.image-container{
+    width: 350px; 
+    height: 300px; 
+    text-align: center;
+
 
 .image-container img {
 	max-width: 100%;
 	max-height: 100%;
+}
+.content-info{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.image-info{
+    width: 60px;
+    height: 60px;
+    
 }
 
 .content-info {
@@ -286,6 +317,12 @@ footer {
 
 .mb-1-9, .my-1-9 {
 	margin-bottom: 1.9rem;
+}
+.nav-pills{
+    background-color: #f8f9fa;
+}
+#pills-tabContent{
+    width: 100%;
 }
 
 @media ( min-width : 992px) {

@@ -39,7 +39,7 @@
 					<div class="collapse" id="collapseExample1">
 						<div class="card-body">
 							<div class="list-group">
-								<a href="#" class="list-group-item list-group-item-action">Tất
+								<a href="listproduct" class="list-group-item list-group-item-action">Tất
 									cả</a> <a href="#" class="list-group-item list-group-item-action">Đơn
 									hủy</a> <a href="#" class="list-group-item list-group-item-action">Hoàn
 									tiền</a>
@@ -53,7 +53,7 @@
 					<div class="collapse" id="collapseExample2">
 						<div class="card-body">
 							<div class="list-group">
-								<a href="#" class="list-group-item list-group-item-action">Tất
+								<a href="listproduct" class="list-group-item list-group-item-action">Tất
 									cả</a> <a href="#" class="list-group-item list-group-item-action">Thêm
 									sản phẩm</a> <a href="#"
 									class="list-group-item list-group-item-action">Sản phẩm và
@@ -87,7 +87,7 @@
 										<div
 											class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 											Earnings (Monthly)</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningmonthly} VNĐ</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -106,7 +106,7 @@
 										<div
 											class="text-xs font-weight-bold text-success text-uppercase mb-1">
 											Earnings (Annual)</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningannual} VNĐ</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -154,8 +154,8 @@
 									<div class="col mr-2">
 										<div
 											class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-											Pending Requests</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+											Pending Order</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${orderrequest}</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-comments fa-2x text-gray-300"></i>

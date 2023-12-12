@@ -30,14 +30,11 @@
 				<p>lananh113388</p>
 			</div>
 			<ul class="list-group">
-				<!-- Default dropend button -->
-				<div class="btn-group dropend">
-					<li type="button"
-						class="list-group-item list-group-item-action list-group-item-primary"
-						data-bs-toggle="dropdown" aria-expanded="false"><i
+				<a style="text-decoration: none;" href="editInfor">
+					<li
+					class="list-group-item list-group-item-action list-group-item-primary"><i
 						class="fas fa-user"></i>Tài khoản của tôi</li>
-
-				</div>
+				</a>
 
 				<li
 					class="list-group-item list-group-item-action list-group-item-secondary"><i
@@ -45,9 +42,10 @@
 				<li
 					class="list-group-item list-group-item-action list-group-item-success"><i
 					class="fas fa-bell"></i> Thông báo</li>
-				<li
+
+				<a style="text-decoration: none;" href="findCartByCartID"><li
 					class="list-group-item list-group-item-action list-group-item-primary"><i
-					class="fas fa-gift"></i>Giỏ hàng</li>
+						class="fas fa-gift"></i>Giỏ hàng</li> </a>
 				<li
 					class="list-group-item list-group-item-action list-group-item-danger"><i
 					class="fas fa-gift"></i>Kho Voucher</li>
@@ -178,15 +176,13 @@
 												<div class="mb-5 pt-2 text-center">
 													<a href='https://me-qr.com' border='0'
 														style='cursor: pointer; display: block'><img
-														style="width: 400px; height: 400px;"
+														style="width: 300px; height: 300px;"
 														src='https://cdn2.me-qr.com/qr/82712719.png?v=1700018426'
 														alt='Create qr code for free'></a><a
 														href='https://me-qr.com' border='0'
 														style='cursor: default; display: none'>Create qr code
 														for free</a>
 												</div>
-												<hr class="mb-4"
-													style="height: 2px; background-color: #1266f1; opacity: 1; margin-top: 100px;">
 												<div class="fw-bold mb-5 payment-instructions">
 													<span>Quét mã</span> <span style="color: #ae1973;">QR</span>
 													<span>để thanh toán</span>
@@ -203,11 +199,25 @@
 														</li>
 													</ol>
 												</div>
+												<hr class="mb-4"
+													style="height: 2px; background-color: #1266f1; opacity: 1; margin-top: 20px;">
+												<h3 class="mb-5 pt-2 text-center fw-bold text-uppercase"
+													style="letter-spacing: 0; margin: 0;">
+													<span style="margin: 0;">THANH TOÁN BẰNG</span> <span
+														style="color: #ed1c24; letter-spacing: 0; margin: 0;">VN</span>
+													<span style="color: #005baa;letter-spacing: 0;margin: -20p;margin: -10px;">PAY</span>
+												</h3>
+
+												<div class="mb-5 pt-2 text-center">
+													<img alt="vnpay" style="width: 200px; height: 200px;"
+														src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg">
+												</div>
 												<h5 class="fw-bold mb-5"
 													style="position: absolute; bottom: 0;">
 													<a href="#!"><i class="fas fa-angle-left me-2"></i>Quay
 														lại</a>
 												</h5>
+
 											</div>
 										</div>
 

@@ -19,10 +19,12 @@
 </head>
 <body>
 
+
 	<div class="list d-flex justify-content-center align-items-center">
 		<a href="listuser" class="btn btn-outline-primary">Khách hàng</a> <a
 			href="listseller" class="btn btn-outline-primary">Nhân viên</a> <a
-			href="listuser" class="btn btn-outline-primary">Shipper</a>
+			href="listshipper" class="btn btn-outline-primary">Shipper</a>
+
 	</div>
 	<div class="search">
 		<div class="row justify-content-center">
@@ -99,7 +101,7 @@
 										<td>
 											<ul class="list-inline mb-0">
 												<li class="list-inline-item"><a
-													href="javascript:void(0);" data-bs-toggle="tooltip"
+													href="userdetail?id=${i.customerId }" data-bs-toggle="tooltip"
 													data-bs-placement="top" title="Edit"
 													class="px-2 text-primary"><i
 														class="bx bx-pencil font-size-18"></i></a></li>

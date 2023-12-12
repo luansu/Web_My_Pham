@@ -5,12 +5,12 @@
 <html>
 <head>
 <link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-		crossorigin="anonymous">
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
@@ -40,7 +40,9 @@
 							</p>
 							<form action="listshipper" method="get">
 								<div class="d-flex justify-content-center mb-2">
-									<button type="submit" class="btn btn-primary">Quay lại</button>
+									<button type="button" class="btn btn-danger">Cập nhật</button>
+									<a href="listshipper"><button type="button"
+											class="btn btn-primary ms-1">Quay lại</button></a>
 								</div>
 							</form>
 						</div>
@@ -72,59 +74,66 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-3">
-									<p class="mb-0">Họ tên</p>
+									<label for="employeeName" class="mb-0">Họ tên</label>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${shipper.employeeName}</p>
+									<input type="text" id="employeeName" class="form-control"
+										value="${shipper.employeeName}">
 								</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
-									<p class="mb-0">Email</p>
+									<label for="email" class="mb-0">Email</label>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${shipper.mail}</p>
+									<input type="email" id="email" class="form-control"
+										value="${shipper.mail}">
 								</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
-									<p class="mb-0">Số điện thoại</p>
+									<label for="phone" class="mb-0">Số điện thoại</label>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${shipper.phone}</p>
+									<input type="tel" id="phone" class="form-control"
+										value="${shipper.phone}">
 								</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
-									<p class="mb-0">Ngày sinh</p>
+									<label for="birthdate" class="mb-0">Ngày sinh</label>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${shipper.birthdate}</p>
+									<input type="date" id="birthdate" class="form-control"
+										value="${shipper.birthdate}">
 								</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
-									<p class="mb-0">Giới tính</p>
+									<label for="gender" class="mb-0">Giới tính</label>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${shipper.gender}</p>
+									<input id="gender" class="form-control"
+										value="${shipper.gender}">
 								</div>
 							</div>
 							<hr>
 							<div class="row">
 								<div class="col-sm-3">
-									<p class="mb-0">Địa chỉ</p>
+									<label for="address" class="mb-0">Địa chỉ</label>
 								</div>
 								<div class="col-sm-9">
-									<p class="text-muted mb-0">${shipper.address}</p>
+									<input type="text" id="address" class="form-control"
+										value="${shipper.address}">
 								</div>
 							</div>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-md-20">
 							<div class="card mb-4 mb-md-0">

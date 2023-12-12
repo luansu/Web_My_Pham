@@ -3,6 +3,7 @@ package orishop.services;
 import java.util.List;
 
 import orishop.models.CartItemModels;
+import orishop.models.OrdersItemModels;
 import orishop.models.OrdersModels;
 
 public interface IOrderService {
@@ -17,4 +18,11 @@ public interface IOrderService {
 	
 	List<OrdersModels> getOrderByOrderStatus(int shipperId, String orderStatus);
 	List<OrdersModels> getOrderByPaymentStatus(int shipperId, String paymentStatus);
+	
+	List<OrdersModels> canceledOrder(int id);
+
+	double totalPriceProductSell();
+	List<OrdersItemModels> getOrderItems(int id);
+	
+	int countOrderRequest();
 }

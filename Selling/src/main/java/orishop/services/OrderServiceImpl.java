@@ -6,6 +6,7 @@ import java.util.List;
 import orishop.DAO.IOrderDAO;
 import orishop.DAO.OrderDAOImpl;
 import orishop.models.CartItemModels;
+import orishop.models.OrdersItemModels;
 import orishop.models.OrdersModels;
 
 public class OrderServiceImpl implements IOrderService{
@@ -62,5 +63,28 @@ public class OrderServiceImpl implements IOrderService{
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public double totalPriceProductSell() {
+		return orderDAO.totalPriceProductSell();
+	}
+
+	@Override
+	public List<OrdersItemModels> getOrderItems(int id) {
+		return orderDAO.getOrderItems(id);
+	}
+
+	@Override
+	public int countOrderRequest() {
+		List<OrdersModels> listOrder = orderDAO.findAllOrders();
+		
+		listOrder.removeIf(order -> !"Save".equals(order.getOrderStatus()));
+		return listOrder.size();
+	}
+
+	@Override
+	public List<OrdersModels> canceledOrder(int id) {
+		return orderDAO.canceledOrder(id);
 	}
 }

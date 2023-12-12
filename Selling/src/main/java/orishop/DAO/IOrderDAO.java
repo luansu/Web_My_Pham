@@ -3,6 +3,7 @@ package orishop.DAO;
 import java.util.List;
 
 import orishop.models.CartItemModels;
+import orishop.models.OrdersItemModels;
 import orishop.models.OrdersModels;
 
 public interface IOrderDAO {
@@ -14,4 +15,10 @@ public interface IOrderDAO {
 	List<OrdersModels> findOrderByShipperIdAndDistributed(int id);
 	
 	List<OrdersModels> countOrderByShipperId(int employeeID);
+	
+	List<OrdersItemModels> getOrderItems(int id);
+	
+	List<OrdersModels> canceledOrder(int id);
+	
+	double totalPriceProductSell();
 }
