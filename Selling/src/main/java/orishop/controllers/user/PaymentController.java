@@ -87,7 +87,7 @@ public class PaymentController extends HttpServlet {
 			orderService.updateOrderPaymentStatus(orderID, paymentStatus);
 			req.getRequestDispatcher("/views/user/inforuser_cart/complete.jsp").forward(req, resp);
 		} else {
-			req.getRequestDispatcher("/views/user/inforuser_cart/false.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/user/inforuser_cart/paymentFailure.jsp").forward(req, resp);
 		}
 		
 	}
