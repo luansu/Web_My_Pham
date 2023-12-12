@@ -77,34 +77,36 @@
 					src="https://media-asia.oriflame.com/contentImage?externalMediaId=3f1fabc6-7a5b-42d4-9061-ce342cdaaaa5&name=18547188_2&inputFormat=jpg"
 					alt="">
 			</div>
-			<div class="row" style="margin-top: 16px;">
+		<div class="container-fluid">
+						<div class="row justify-content-center" style="margin-top: 16px;">
 				<c:if test="${list.size() == 0 }">
 					<header class="session_header">CHƯA CÓ SẢN PHẨM THUỘC LOẠI
 						NÀY</header>
 				</c:if>
 				<c:forEach var="i" items="${list}">
-					<div class="card col-md-2" style="margin-left: 4.75rem;">
+					<div class="card col-md-3"">
 						<a href="product/detailProduct?pid=${i.productId}"> <img
 							src="${i.imageURL}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="ratings">
 									<c:forEach begin="1" end="${ratingService.averageRating(i.productId) }">
-									<i class="fa fa-star rating-color"></i>
+										<i class="fa fa-star rating-color"></i>
 									</c:forEach>
 									<c:forEach begin="1" end="${5-ratingService.averageRating(i.productId) }">
-									<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
 									</c:forEach>
 								</div>
 								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()} Reviews</h5>
 							</div>
-							<h5 class="card-title">${i.productName}</h5>
+							<h5 class="card-title card__Name">${i.productName}</h5>
 							<p class="card-text">${i.description}</p>
 							<p class="price">${i.price}</p>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
+		</div>
 		<!-- MỚI RA MẮT END-->
 
 		
@@ -114,13 +116,13 @@
 			<button type="button" class="btn">Xem các ưu đãi</button>
 			<div class="row d-flex justify-content-center">
 				<header class="session_header">ƯU ĐÃI</header>
-				<div class="row" style="margin-top: 16px;">
+				<div class="row justify-content-center" style="margin-top: 16px;">
 				<c:if test="${list.size() == 0 }">
 					<header class="session_header">CHƯA CÓ SẢN PHẨM THUỘC LOẠI
 						NÀY</header>
 				</c:if>
 				<c:forEach var="i" items="${listS}">
-					<div class="card col-md-2" style="margin-left: 4.75rem;">
+					<div class="card col-md-3"">
 						<a href="product/detailProduct?pid=${i.productId}"> <img
 							src="${i.imageURL}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
@@ -331,7 +333,6 @@
 	</div>
 
 	<!-- COMMITENT END -->
-
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
