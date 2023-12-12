@@ -32,7 +32,7 @@
 				<h1>Thank You !</h1>
 				<p>Đơn hàng đã được đặt thành công</p>
 			<a href="/Selling/user/home"><button class="btn btn-primary">Trang chủ</button></a>	
-			<a href="findCartByCartID"><button class="btn btn-danger">Đơn hàng</button></a>	
+			<a href="${pageContext.request.contextPath}/user/findCartByCartID?cartID=${cartID}"><button class="btn btn-danger">Đơn hàng</button></a>	
 			</div>
 		</div>
 </body>

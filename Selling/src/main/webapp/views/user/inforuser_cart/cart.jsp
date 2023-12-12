@@ -135,7 +135,7 @@
 							<div class="row g-0 align-items-center pb-4">
 								<div class="col-sm-6">
 									<div>
-										<p class="mb-sm-0">Hiển thị 1 đến 10 trong 57 mục</p>
+										<p class="mb-sm-0"></p>
 									</div>
 								</div>
 								<div class="col-sm-6">
