@@ -12,10 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import orishop.models.AccountModels;
 import orishop.models.CartItemModels;
-import orishop.models.CartModels;
-import orishop.models.CustomerModels;
 import orishop.models.OrdersModels;
 import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;

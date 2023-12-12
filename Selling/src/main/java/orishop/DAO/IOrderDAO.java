@@ -10,6 +10,7 @@ public interface IOrderDAO {
 	List<OrdersModels> findAllOrders();
 	void createOrder(OrdersModels model, int customerId, double totalPrice, List<CartItemModels> cartItems);
 	void updateOrder(double totalPriceOrder, String deliveryMethod, String paymentStatus);
+	void updateOrderPaymentStatus(int orderId, String paymentStatus) ;
 	void update(OrdersModels model);
 	OrdersModels findOne(int orderId);
 	List<OrdersModels> findOrderByShipperId(int id);

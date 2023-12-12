@@ -11,6 +11,8 @@ public interface IOrderService {
 	void createOrder(OrdersModels model, int customerId, double totalPrice, List<CartItemModels> cartItems);
 	void updateOrder(double totalPriceOrder, String deliveryMethod, String paymentStatus);
 	
+	void updateOrderPaymentStatus(int orderId, String paymentStatus);
+	
 	List<OrdersModels> findOrderByShipperId(int id);
 	
 	List<OrdersModels> findOrderByShipperIdAndDistributed(int id);
