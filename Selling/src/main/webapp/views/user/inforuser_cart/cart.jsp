@@ -88,13 +88,15 @@
 												</div>
 												<div
 													class="col-md-3 col-lg-3 col-xl-3 d-flex align-items-center">
-													<a
-														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
-														<button class="btn btn-link px-2"
+													<c:set var="decreaseDisabled" value="${i.quantity eq 1}" />
+														<button
+															class="btn btn-link px-2 ${decreaseDisabled ? 'disabled' : ''}"
+															${decreaseDisabled ? 'disabled' : ''}
 															onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-															<i class="fas fa-minus"></i>
+															<a	href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
+														<i class="fas fa-minus"></i></a>
 														</button>
-													</a> <input id="form1" min="0" name="quantity"
+													 <input id="form1" min="0" name="quantity"
 														value="${i.quantity}" class="form-control text-center"
 														readonly="readonly" /> <a
 														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity+1}&totalPrice=${i.totalPrice}'/>">
