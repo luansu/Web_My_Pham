@@ -337,4 +337,64 @@ public class OrderDAOImpl implements IOrderDAO{
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void update(OrdersModels model) {
+		String sql = "UPDATE ORDERS SET "
+                + "paymentStatus = ?, "
+                + "orderStatus = ?, "
+                + "paymentMethod = ?, "
+                + "deliveryMethod = ?, "
+                + "employeeId = ? "
+                + "WHERE orderId = ?";
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW(); //ket noi CSDL
+			PreparedStatement ps = conn.prepareStatement(sql); //ném câu lệnh sql
+			ps.setString(1, model.getPaymentStatus());
+			ps.setString(2, model.getOrderStatus());
+			ps.setString(3, model.getPaymentMethod());
+			ps.setString(4, model.getDeliveryMethod());
+			ps.setInt(5, model.getEmployeeId());
+			ps.setInt(6, model.getOrderID());
+			ps.executeUpdate();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public OrdersModels findOne(int orderId) {
+		String sql = "select * from orders where orderId=?";
+		OrdersModels model = new OrdersModels();
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, orderId);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				model.setOrderID(rs.getInt("orderId"));
+				model.setOrderValue(rs.getFloat("orderValue"));
+				model.setOrderDate(rs.getDate("orderDate"));
+				model.setCartID(rs.getInt("cartId"));
+				model.setCustomerID(rs.getInt("customerId"));
+				model.setPaymentStatus(rs.getString("paymentStatus"));
+				model.setOrderStatus(rs.getString("orderStatus"));
+				model.setPaymentMethod(rs.getString("paymentMethod"));
+				model.setDeliveryMethod(rs.getString("deliveryMethod"));
+				model.setEmployeeId(rs.getInt("employeeId"));
+				model.setCustomer(cusService.findOne(model.getCustomerID()));
+				model.setCart(cartService.findCartByCartID(model.getCartID()));
+				model.setShipper(empService.findShipper(model.getEmployeeId()));
+				model.setOrderItems(getOrderItems(model.getOrderID()));
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
 }

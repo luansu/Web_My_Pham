@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglist.jsp"%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,9 +131,9 @@
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 920px; margin-bottom: 20px;" disabled><i class="fa-solid fa-check" style="padding-top: 5px;"></i>Đã giao</button>
 												</c:if>
-												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
-													<button type="button" class="btn btn-warning d-flex"
-														style="margin-left: 900px; margin-bottom: 20px;" disabled><i class="fa-solid fa-truck-fast" style="padding-top: 5px;"></i>Đang giao</button>
+												<c:if test="${i.orderStatus == 'Đã giao cho shipper'}">
+													<a type="button" href="updateorder?orderid=${i.orderID }" class="btn btn-warning d-flex"
+														style="margin-left: 900px; margin-bottom: 20px;"><i class="fa-solid fa-truck-fast" style="padding-top: 5px;"></i>Đang giao</a>
 												</c:if>
 											</div>
 										</div>
@@ -175,9 +173,9 @@
 													<button type="button" class="btn btn-success d-flex"
 														style="margin-left: 920px; margin-bottom: 20px;" disabled><i class="fa-solid fa-check" style="padding-top: 5px;"></i>Đã giao</button>
 												</c:if>
-												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
-													<button type="button" class="btn btn-warning d-flex"
-														style="margin-left: 900px; margin-bottom: 20px;" disabled><i class="fa-solid fa-truck-fast" style="padding-top: 5px;"></i>Đang giao</button>
+												<c:if test="${i.orderStatus == 'Đã giao cho shipper'}">
+													<a type="button" href="updateorder?orderid=${i.orderID }" class="btn btn-warning d-flex"
+														style="margin-left: 900px; margin-bottom: 20px;"><i class="fa-solid fa-truck-fast" style="padding-top: 5px;"></i>Đang giao</a>
 												</c:if>
 											</div>
 										</div>
@@ -217,11 +215,11 @@
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 920px; margin-bottom: 20px;" disabled><i class="fa-solid fa-check" style="padding-top: 4px;"></i>Đã giao</button>
+														style="margin-left: 920px; margin-bottom: 20px;" disabled><i class="fa-solid fa-check" style="padding-top: 5px;"></i>Đã giao</button>
 												</c:if>
-												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
-													<button type="button" class="btn btn-warning d-flex"
-														style="margin-left: 900px; margin-bottom: 20px;" disabled><i class="fa-solid fa-truck-fast" style="padding-top: 4px;"></i>Đang giao</button>
+												<c:if test="${i.orderStatus == 'Đã giao cho shipper'}">
+													<a type="button" href="updateorder?orderid=${i.orderID }" class="btn btn-warning d-flex"
+														style="margin-left: 900px; margin-bottom: 20px;"><i class="fa-solid fa-truck-fast" style="padding-top: 5px;"></i>Đang giao</a>
 												</c:if>
 											</div>
 										</div>

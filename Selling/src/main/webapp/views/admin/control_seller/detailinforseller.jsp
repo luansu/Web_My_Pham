@@ -15,9 +15,43 @@
 
 <body>
 
+	<div class="d-flex mt-4" >
+		<div style="margin-left: 50px;margin-right: 50px;border-right: 1px solid #b7bbbf;" class="col-2">
+			<ul
+				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+				id="menu">
+				<li class="nav-item"><a href="home"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fal fa-house-night" style="color: #7097db; font-size: 30px"></i>
+						<span class="ms-1 d-none d-sm-inline">Trang chủ</span>
+				</a></li>
+
+				<li><a href="listuser"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fal fa-mail-bulk" style="color: #c77070; font-size: 30px"></i>
+						<span class="ms-1 d-none d-sm-inline">Khách hàng</span>
+				</a></li>
+
+				<li><a href="listseller"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="far fa-recycle fa-spin"
+						style="color: #178254; font-size: 30px;"></i> <span
+						class="ms-1 d-none d-sm-inline">Nhân Viên</span>
+				</a></li>
+
+				<li><a href="listshipper"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fas fa-user-md-chat"
+						style="color: #592731; font-size: 30px;"></i> <span
+						class="ms-1 d-none d-sm-inline">Shipper</span>
+				</a></li>
 
 
-	<section style="background-color: #eee;">
+			</ul>
+		</div>
+
+
+	<section class="col-9">
 		<div class="container py-5">
 			<div class="row">
 				<div class="col">
@@ -143,5 +177,6 @@
 			</div>
 		</div>
 	</section>
+	</div>
 </body>
 </html>
