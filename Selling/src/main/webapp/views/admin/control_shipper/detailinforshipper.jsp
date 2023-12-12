@@ -14,7 +14,43 @@
 </head>
 
 <body>
-	<section style="background-color: #eee;">
+<div class="d-flex mt-4">
+		<div
+			style="margin-left: 50px; margin-right: 50px; border-right: 1px solid #b7bbbf;"
+			class="col-2">
+			<ul
+				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+				id="menu">
+				<li class="nav-item"><a href="home"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fal fa-house-night" style="color: #7097db; font-size: 30px"></i>
+						<span class="ms-1 d-none d-sm-inline">Trang chủ</span>
+				</a></li>
+
+				<li><a href="listuser"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fal fa-mail-bulk" style="color: #c77070; font-size: 30px"></i>
+						<span class="ms-1 d-none d-sm-inline">Khách hàng</span>
+				</a></li>
+
+				<li><a href="listseller"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="far fa-recycle fa-spin"
+						style="color: #178254; font-size: 30px;"></i> <span
+						class="ms-1 d-none d-sm-inline">Nhân Viên</span>
+				</a></li>
+
+				<li><a href="listshipper"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fas fa-user-md-chat"
+						style="color: #592731; font-size: 30px;"></i> <span
+						class="ms-1 d-none d-sm-inline">Shipper</span>
+				</a></li>
+
+
+			</ul>
+		</div>
+	<section class="col-9">
 		<div class="container py-5">
 			<div class="row">
 				<div class="col">
@@ -47,27 +83,7 @@
 							</form>
 						</div>
 					</div>
-					<div class="card mb-4 mb-lg-0">
-						<div class="card-body p-0">
-							<ul class="list-group list-group-flush rounded-3">
-								<li
-									class="list-group-item d-flex justify-content-between align-items-center p-3">
-									<i class="fa-solid fa-repeat"></i>
-									<p class="mb-0">Phản hồi</p>
-								</li>
-								<li
-									class="list-group-item d-flex justify-content-between align-items-center p-3">
-									<i class="fa-regular fa-star" style="color: #333333;"></i>
-									<p class="mb-0">Đánh giá</p>
-								</li>
-								<li
-									class="list-group-item d-flex justify-content-between align-items-center p-3">
-									<i class="fa-solid fa-question" style="color: #333333;"></i>
-									<p class="mb-0">Trợ Giúp</p>
-								</li>
-							</ul>
-						</div>
-					</div>
+
 				</div>
 				<div class="col-lg-8">
 					<div class="card mb-4">
@@ -160,5 +176,6 @@
 			</div>
 		</div>
 	</section>
+	</div>
 </body>
 </html>
