@@ -188,6 +188,7 @@ public class CartItemDAOImpl implements ICartItemDAO {
 		}
 	}
 	
+	
 	public static void main(String[] args) {
 		ICartItemDAO cartItemDAO = new CartItemDAOImpl();
 		CartItemModels cart = new CartItemModels(29,11,6, null);

@@ -35,7 +35,7 @@ import orishop.services.IProductService;
 import orishop.services.ProductServiceImp;
 import orishop.util.Config;
 
-@WebServlet(urlPatterns = { "/user/pay", "/user/pay/error","/user/pay/thanks"})
+@WebServlet(urlPatterns = { "/user/pay", "/user/error","/user/thanks"})
 
 public class PaymentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -60,7 +60,7 @@ public class PaymentController extends HttpServlet {
 				e.printStackTrace();
 				resp.sendRedirect("/error");
 			}
-		} else if (url.contains("user/pay/thanks")) {
+		} else if (url.contains("user/thanks")) {
 			req.getRequestDispatcher("/views/user/inforuser_cart/complete.jsp").forward(req, resp);
 		}
 

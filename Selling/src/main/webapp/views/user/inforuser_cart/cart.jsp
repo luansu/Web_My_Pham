@@ -187,9 +187,12 @@
 													Tổng tiền thanh toán: <span class="amount">${totalPriceCart}
 														đ</span>
 												</div>
+												<c:if test="${not empty listCartItem}">
 												<a href="payment"><button type="button"
 													class="btn btn-outline-primary btn-block btn-lg">Thanh
 													toán</button></a>
+												</c:if>
+
 											</div>
 										</div>
 									</div>

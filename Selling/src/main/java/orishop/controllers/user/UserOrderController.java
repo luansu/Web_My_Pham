@@ -69,6 +69,7 @@ private static final long serialVersionUID = 1L;
 			String deliveryMethod = Integer.toString(choose);
 			model.setDeliveryMethod(deliveryMethod);
 			orderService.createOrder(model, customerId, totalPriceOrder, listCartItem);
+			cartItemService.deleteAllCartItem(cartID);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/detailcart.jsp");
 			rd.forward(req, resp);
 		}
