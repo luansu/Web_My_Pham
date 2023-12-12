@@ -51,6 +51,7 @@ public class UserCartController extends HttpServlet {
 			insertCartItem(req, resp);
 		} else if (url.contains("/user/insertorder")) {
 			insertOrder(req, resp);
+			deleteAllCartItem(req, resp);
 		}
 	}
 
@@ -185,6 +186,18 @@ public class UserCartController extends HttpServlet {
 		List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cartID);
 
 		orderService.createOrder(model, customerId, totalPriceOrder, listCartItem);
+	}
+	
+	private void deleteAllCartItem(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		HttpSession session = req.getSession();
+		int cartID = (int) session.getAttribute("cartID");
+
+		cartItemService.deleteAllCartItem(cartID);
+
+		resp.sendRedirect(req.getContextPath() + "/user/findCartByCartID");
 	}
 	
 	private void getMyPurchase(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {

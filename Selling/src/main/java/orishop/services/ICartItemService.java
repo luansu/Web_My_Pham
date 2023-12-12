@@ -12,5 +12,6 @@ public interface ICartItemService {
 	void deleteCartItem(int cartID, int productID);
 	void updateCartItem(CartItemModels model);
 	public int countCartItem(int cartID);
-	
+	public void deleteAllCartItem(int cartID);
+
 }

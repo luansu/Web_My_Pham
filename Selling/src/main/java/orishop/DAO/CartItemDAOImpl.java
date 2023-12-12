@@ -170,7 +170,23 @@ public class CartItemDAOImpl implements ICartItemDAO {
 		}
 		return cartItem.getCount();
 	}
-	
+	@Override
+	public void deleteAllCartItem(int cartID) {
+		String sql = "delete from Cart_Item where cartId = ?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, cartID);
+			ps.executeUpdate();
+
+			conn.close();
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public static void main(String[] args) {
 		ICartItemDAO cartItemDAO = new CartItemDAOImpl();

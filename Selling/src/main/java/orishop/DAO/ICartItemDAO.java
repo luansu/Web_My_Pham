@@ -10,5 +10,6 @@ public interface ICartItemDAO {
 	void deleteCartItem(int cartID, int productID);
 	void updateCartItem(CartItemModels model);
 	public int countCartItem(int cartID);
+	public void deleteAllCartItem(int cartID) ;
 	
 }

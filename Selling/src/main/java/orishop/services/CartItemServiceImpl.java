@@ -61,6 +61,9 @@ public class CartItemServiceImpl implements ICartItemService{
 		return cartItemDao.countCartItem(cartID);
 	}
 
-
+	@Override
+	public void deleteAllCartItem(int cartID) {
+		cartItemDao.deleteAllCartItem(cartID);
+	}
 
 }

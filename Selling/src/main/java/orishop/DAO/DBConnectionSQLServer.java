@@ -7,12 +7,12 @@ import orishop.DAO.DBConnectionSQLServer;
 
 public class DBConnectionSQLServer {
 	
-	private final static String serverName = "LAPTOP-GHTIJPNK";
+	private final static String serverName = "LAPTOP-QN5NUQQB";
 	private final static String dbName = "CosmeticStore";
 	private final static String portNumber = "1433";
 	private final static String instance = "";// MSSQLSERVER LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
-	private final static String userID = "admin12345";
-	private final static String password = "admin12345";
+	private final static String userID = "";
+	private final static String password = "";
 	
 	//Kết nối SQL Server với Windows Authentication
 	public static Connection getConnectionW() throws Exception {
