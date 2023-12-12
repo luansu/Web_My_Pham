@@ -31,12 +31,11 @@
 				<p>lananh113388</p>
 			</div>
 			<ul class="list-group">
-				<div class="btn-group dropend">
-					<li type="button"
-						class="list-group-item list-group-item-action list-group-item-primary"
-						data-bs-toggle="dropdown" aria-expanded="false"><i
+				<a style="text-decoration: none;" href="editInfor">
+					<li
+					class="list-group-item list-group-item-action list-group-item-primary"><i
 						class="fas fa-user"></i>Tài khoản của tôi</li>
-				</div>
+				</a>
 
 				<li
 					class="list-group-item list-group-item-action list-group-item-secondary"><i
@@ -44,9 +43,10 @@
 				<li
 					class="list-group-item list-group-item-action list-group-item-success"><i
 					class="fas fa-bell"></i> Thông báo</li>
-				<li
+
+				<a style="text-decoration: none;" href="findCartByCartID"><li
 					class="list-group-item list-group-item-action list-group-item-primary"><i
-					class="fas fa-gift"></i>Giỏ hàng</li>
+						class="fas fa-gift"></i>Giỏ hàng</li> </a>
 				<li
 					class="list-group-item list-group-item-action list-group-item-danger"><i
 					class="fas fa-gift"></i>Kho Voucher</li>
@@ -58,8 +58,7 @@
 		<div class="user-details-content">
 			<section class="h-100" style="background-color: #eee;">
 				<div style="background-color: #fff;" class="container h-100 py-1">
-					<div
-						class="row d-flex justify-content-center align-items-center h-100">
+					<div class="row justify-content-center align-items-center h-100">
 						<div class="col-10">
 
 							<div
@@ -84,19 +83,17 @@
 											<div
 												class="row d-flex justify-content-between align-items-center">
 												<div class="col-md-2 col-lg-2 col-xl-2">
-
 													<img src="${i.product.imageURL}" class="d-block w-100"
 														alt="Hình ảnh 1" class="img-fluid rounded-3"
 														alt="Cotton T-shirt">
 												</div>
 												<div class="col-md-3 col-lg-3 col-xl-3">
 													<p class="lead fw-normal mb-2">${i.product.productName}</p>
-
 												</div>
-												<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+												<div
+													class="col-md-3 col-lg-3 col-xl-3 d-flex align-items-center">
 													<a
-														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}
-														&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
+														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
 														<button class="btn btn-link px-2"
 															onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
 															<i class="fas fa-minus"></i>
@@ -104,14 +101,12 @@
 													</a> <input id="form1" min="0" name="quantity"
 														value="${i.quantity}" class="form-control text-center"
 														readonly="readonly" /> <a
-														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}
-													&quantity=${i.quantity+1}&totalPrice=${i.totalPrice}'/>">
+														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity+1}&totalPrice=${i.totalPrice}'/>">
 														<button class="btn btn-link px-2"
 															onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
 															<i class="fas fa-plus"></i>
 														</button>
 													</a>
-
 												</div>
 												<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
 													<h5 class="mb-0">${i.totalPrice}đ</h5>
@@ -119,12 +114,13 @@
 												<div class="col-md-1 col-lg-1 col-xl-1 text-end">
 													<a
 														href="<c:url value='/user/deleteCartItem?cartID=${cartID}&productID=${i.productID}'/>"
-														class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+														class="text-danger"> <i class="fas fa-trash fa-lg"></i>
+													</a>
 												</div>
 											</div>
 										</div>
-
 									</div>
+
 								</c:forEach>
 							</c:if>
 
