@@ -133,11 +133,11 @@ img {
 							<td class="change-content">${i.amount}</td>
 							<td class="change-content">${i.price}</td>
 							<td class="change-content">${i.categoryId}</td>
-							<td class="change-content"><c:if
-									test="${i.imageURL.substring(4) != 'http' }">
-									<img src='<c:url value="/image?fname=products/${i.imageURL}"/>'
+							<td class="change-content">
+							<c:if test="${i.imageURL.startsWith('http')==false}">
+									<img src='<c:url value="image/?fname=products/${i.imageURL}"/>'
 										alt="image1">
-								</c:if> <br> <c:if test="${i.imageURL.substring(4) == 'http' }">
+								</c:if> <br> <c:if test="${i.imageURL.startsWith('http')==true}">
 									<img src="${i.imageURL}" alt="image">
 								</c:if></td>
 							<td class="change-content">${i.category.categoryName}</td>
@@ -212,7 +212,7 @@ img {
 						</div>
 
 						<div class="form-group">
-							<label for='category'>Category</label> <select name="categoryID"
+							<label for='category'>Category</label> <select name="categoryId"
 								class="form-select" aria-label="Default select example">
 								<c:forEach var="item" items="${listcate}">
 									<option value="${item.categoryId}">${item.categoryName}</option>
