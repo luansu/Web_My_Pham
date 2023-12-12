@@ -11,6 +11,12 @@ public interface IEmployeeService {
 	
 	List<EmployeeModels> getListEmpByPage(List<EmployeeModels> listEmp, int start, int end);
 	
+	boolean updateShipper(EmployeeModels shipper);
+	boolean updateSeller(EmployeeModels seller);
+	
+	boolean deleteShipper(int id);
+	boolean deleteSeller(int id);
+	
 	EmployeeModels findShipper(int id);
 	List<EmployeeModels> findShipper(String name);
 	EmployeeModels findShipperByAccountID(int id);

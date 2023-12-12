@@ -52,5 +52,37 @@ public class EmployeeServiceImp implements IEmployeeService{
 	public EmployeeModels findShipperByAccountID(int id) {
 		return empDAO.findShipperByAccountID(id);
 	}
+	@Override
+	public boolean updateShipper(EmployeeModels shipper) {
+		if (shipper.getJob().contains("Shipper")) {
+			return empDAO.update(shipper);
+		} else {
+			return false;
+		}
+	}
+	@Override
+	public boolean updateSeller(EmployeeModels seller) {
+		if (seller.getJob().contains("Seller")) {
+			return empDAO.update(seller);
+		} else {
+			return false;
+		}
+	}
+	@Override
+	public boolean deleteShipper(int id) {
+		if (findShipper(id)!=null) {
+			return empDAO.delete(id);
+		} else {
+			return false;
+		}
+	}
+	@Override
+	public boolean deleteSeller(int id) {
+		if (findSeller(id)!=null) {
+			return empDAO.delete(id);
+		} else {
+			return false;
+		}
+	}
 	
 }
