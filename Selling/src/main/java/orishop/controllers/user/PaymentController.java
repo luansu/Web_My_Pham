@@ -35,7 +35,7 @@ import orishop.services.IProductService;
 import orishop.services.ProductServiceImp;
 import orishop.util.Config;
 
-@WebServlet(urlPatterns = { "/user/pay", "/user/pay/error","/user/pay/thanks"})
+@WebServlet(urlPatterns = { "/user/payVNPAY", "/user/pay/error","/user/pay/thanks"})
 
 public class PaymentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,7 +52,7 @@ public class PaymentController extends HttpServlet {
 
 		String url = req.getRequestURI().toString();
 
-		if (url.contains("user/pay")) {
+		if (url.contains("payVNPAY")) {
 			try {
 				String paymentUrl = getPay(req);
 				resp.sendRedirect(paymentUrl);
@@ -63,6 +63,7 @@ public class PaymentController extends HttpServlet {
 		} else if (url.contains("user/pay/thanks")) {
 			req.getRequestDispatcher("/views/user/inforuser_cart/complete.jsp").forward(req, resp);
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -75,16 +76,15 @@ public class PaymentController extends HttpServlet {
 		String vnp_Command = "pay";
 		String orderType = "other";
 		String bankCode = "NCB";
-
+		
 		HttpSession session = req.getSession();
 		int orderID = 123;
-		
-		String order_id = "asdfa";
-		float totalPriceOrder = 123123;
-		float amount = totalPriceOrder;
+		String order_id = "111111" + Config.getRandomNumber(8);
+		long amount = 99999 * 100; // Số tiền đơn hàng
 		
 		String vnp_TxnRef = order_id;
 		String vnp_IpAddr = "127.0.0.1";
+
 		String vnp_TmnCode = Config.vnp_TmnCode;
 
 		Map<String, String> vnp_Params = new HashMap<>();

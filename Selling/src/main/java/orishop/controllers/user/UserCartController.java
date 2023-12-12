@@ -196,8 +196,6 @@ public class UserCartController extends HttpServlet {
 		int cartID = (int) session.getAttribute("cartID");
 
 		cartItemService.deleteAllCartItem(cartID);
-
-		resp.sendRedirect(req.getContextPath() + "/user/findCartByCartID");
 	}
 	
 	private void getMyPurchase(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
