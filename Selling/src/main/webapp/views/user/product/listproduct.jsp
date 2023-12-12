@@ -57,18 +57,20 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 		<div style="margin: 20px;">
 			<div class="row justify-content-center">
 				<c:forEach var="i" items="${list}">
-					<div class="card col-md-2" style="margin: 10px">
-						<a href="detailProduct?pid=${i.productId}"> <img
+					<div class="card col-md-2" style="margin-left: 4.75rem;">
+						<a href="product/detailProduct?pid=${i.productId}"> <img
 							src="${i.imageURL}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="ratings">
-									<i class="fa fa-star rating-color"></i> <i
-										class="fa fa-star rating-color"></i> <i
-										class="fa fa-star rating-color"></i> <i
-										class="fa fa-star rating-color"></i> <i class="fa fa-star"></i>
+									<c:forEach begin="1" end="${ratingService.averageRating(i.productId) }">
+									<i class="fa fa-star rating-color"></i>
+									</c:forEach>
+									<c:forEach begin="1" end="${5-ratingService.averageRating(i.productId) }">
+									<i class="fa fa-star"></i>
+									</c:forEach>
 								</div>
-								<h5 class="review-count">12 Reviews</h5>
+								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()} Reviews</h5>
 							</div>
 							<h5 class="card-title">${i.productName}</h5>
 							<p class="card-text">${i.description}</p>

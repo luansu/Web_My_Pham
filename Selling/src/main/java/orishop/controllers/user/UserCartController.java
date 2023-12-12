@@ -15,7 +15,6 @@ import orishop.models.AccountModels;
 import orishop.models.CartItemModels;
 import orishop.models.CartModels;
 import orishop.models.CustomerModels;
-import orishop.models.OrdersModels;
 import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;
 import orishop.services.CategoryServiceImp;
@@ -26,13 +25,11 @@ import orishop.services.ICartService;
 import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
-import orishop.services.IOrderService;
 import orishop.services.IProductService;
-import orishop.services.OrderServiceImpl;
 import orishop.services.ProductServiceImp;
 
 @WebServlet(urlPatterns = { "/user/product/insertCartItem", "/user/findCartByCartID", "/user/findCartItem",
-		"/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem","/user/insertorder" })
+		"/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem" })
 
 public class UserCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,7 +38,6 @@ public class UserCartController extends HttpServlet {
 	ICartItemService cartItemService = new CartItemServiceImpl();
 	ICustomerService CustomerSerivce = new CustomerServiceImp();
 	IEmployeeService empService = new EmployeeServiceImp();
-	IOrderService orderService = new OrderServiceImpl();
 
 	IProductService productService = new ProductServiceImp();
 	ICategoryService categoryService = new CategoryServiceImp();
@@ -64,8 +60,6 @@ public class UserCartController extends HttpServlet {
 		String url = req.getRequestURI().toString();
 		if (url.contains("insertCartItem")) {
 			insertCartItem(req, resp);
-		} else if (url.contains("/user/insertorder")) {
-			insertOrder(req, resp);
 		}
 	}
 
@@ -73,13 +67,10 @@ public class UserCartController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
-		HttpSession session = req.getSession();
 		int cartId = Integer.parseInt(req.getParameter("cartID"));
-		session.setAttribute("cartID", cartId);
 		int productId = Integer.parseInt(req.getParameter("productID"));
 		int quantity = Integer.parseInt(req.getParameter("quantity"));
 		float totalPrice = Float.parseFloat(req.getParameter("totalPrice"));
-		
 
 		CartItemModels cartItem = new CartItemModels();
 		cartItem.setCartID(cartId);
@@ -177,9 +168,8 @@ public class UserCartController extends HttpServlet {
 			req.getRequestDispatcher("/views/user/inforuser_cart/cart.jsp").forward(req, resp);
 		}
 	}
-
-	private void deleteCartItemByPage(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	private void deleteCartItemByPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+	{
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
@@ -191,19 +181,5 @@ public class UserCartController extends HttpServlet {
 		req.setAttribute("message", "Đã xóa thành công");
 
 		resp.sendRedirect(req.getContextPath() + "/user/findCartByCartID");
-	}
-
-	private void insertOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
-
-		HttpSession session = req.getSession();
-		OrdersModels model = new OrdersModels();
-		int customerId = (int) session.getAttribute("customerID");
-		float totalPriceOrder = (float) session.getAttribute("totalPriceCart");
-		int cartID = (int) session.getAttribute("cartID");
-		List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cartID);
-
-		orderService.createOrder(model, customerId, totalPriceOrder, listCartItem);
 	}
 }

@@ -27,4 +27,8 @@ public interface IProductDAO {
 	void updateProduct(ProductModels product);
 	
 	void deleteProduct(ProductModels product);
+	
+	int countReview(int productId);
+	
+	float getRatingScore(int productId);
 }

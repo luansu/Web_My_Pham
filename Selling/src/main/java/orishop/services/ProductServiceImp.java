@@ -96,4 +96,14 @@ public class ProductServiceImp implements IProductService {
 		return null;
 	}
 
+	@Override
+	public int countReview(int productId) {
+		return proDAO.countReview(productId);
+	}
+
+	@Override
+	public float getRatingScore(int productId) {
+		return proDAO.getRatingScore(productId);
+	}
+
 }

@@ -115,8 +115,6 @@ public class UserProductController extends HttpServlet {
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 		
 	}
-
-	
 	
 	private void getDetailProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int pid = Integer.parseInt(req.getParameter("pid"));

@@ -32,5 +32,9 @@ List<ProductModels> findAllProduct();
 	ProductModels findOne(String parameter);
 
 	ProductModels findOne(int productId);
+	
+	int countReview(int productId);
+	
+	float getRatingScore(int productId);
 
 }

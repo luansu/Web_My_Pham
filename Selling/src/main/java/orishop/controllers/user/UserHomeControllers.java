@@ -32,7 +32,9 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 import orishop.services.IProductService;
+import orishop.services.IRatingService;
 import orishop.services.ProductServiceImp;
+import orishop.services.RatingServiceImpl;
 
 @WebServlet(urlPatterns = {"/user/home", "/user/editInfor"})
 
@@ -44,6 +46,7 @@ public class UserHomeControllers extends HttpServlet {
 	ICartItemService cartItemService = new CartItemServiceImpl();
 	IProductService productService = new ProductServiceImp();
 	ICategoryService categoryService = new CategoryServiceImp();
+	IRatingService ratingService = new RatingServiceImpl();
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -76,7 +79,6 @@ public class UserHomeControllers extends HttpServlet {
 
 			session = req.getSession(true);
 			session.setAttribute("cartID", cart1.getCartId());
-			session.setAttribute("customerID", cus.getCustomerId());
 			req.setAttribute("cartID", (int)session.getAttribute("cartID"));
 
 			int countCartItem = cartItemService.countCartItem((int)session.getAttribute("cartID"));
@@ -85,8 +87,7 @@ public class UserHomeControllers extends HttpServlet {
 		}
 		List<ProductModels> listProduct = productService.findAllProduct();
 		List<CategoryModels> listCate = categoryService.findAllCategory();
-		ProductModels pro = productService.findLast();
-		
+		session.setAttribute("ratingService", ratingService);
 		req.setAttribute("list", listProduct);
 		req.setAttribute("listC", listCate);
 

@@ -10,7 +10,7 @@ import orishop.models.*;
 
 
 public class ProductDAOImp implements IProductDAO {
-
+	
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
@@ -335,11 +335,51 @@ public class ProductDAOImp implements IProductDAO {
 		}
 		
 	}
+
+	@Override
+	public int countReview(int productId) {
+		String query = "select count(*) from RATING where productId = ?";
+		try {
+			
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, productId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int count = rs.getInt(1);
+				return count;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public float getRatingScore(int productId) {
+		String query = "select AVG(rating) from RATING where productId = ?";
+		try {
+			
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, productId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				float count = rs.getInt(1);
+				return count;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 	public static void main(String[] args) {
 		ProductDAOImp dao = new ProductDAOImp();
 		int a = 10;
-		List<ProductModels> l = dao.findTopProduct(a);
+		List<ProductModels> l = dao.findAllProduct();
 		for(ProductModels o : l) {
 			System.out.println(o);
 		}

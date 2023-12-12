@@ -19,7 +19,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;
@@ -52,39 +51,35 @@ public class PaymentController extends HttpServlet {
 
 		String url = req.getRequestURI().toString();
 
-		if (url.contains("user/pay")) {
+		if (url.contains("pay")) {
 			try {
-				String paymentUrl = getPay(req);
+				String paymentUrl = getPay();
 				resp.sendRedirect(paymentUrl);
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 				resp.sendRedirect("/error");
 			}
-		} else if (url.contains("user/pay/thanks")) {
-			req.getRequestDispatcher("/views/user/inforuser_cart/complete.jsp").forward(req, resp);
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	}
 
-	public String getPay(HttpServletRequest req) throws UnsupportedEncodingException {
+	public String getPay() throws UnsupportedEncodingException {
 
 		String vnp_Version = "2.1.0";
 		String vnp_Command = "pay";
 		String orderType = "other";
 		String bankCode = "NCB";
 
-		HttpSession session = req.getSession();
-		int orderID = ((int) session.getAttribute("orderID"));
-		
-		String order_id = Integer.toString(orderID);
-		float totalPriceOrder = ((int) session.getAttribute("orderID"));
-		float amount = totalPriceOrder;
+		String order_id = "111111" + Config.getRandomNumber(8);
+		long amount = 99999 * 100; // Số tiền đơn hàng
 		
 		String vnp_TxnRef = order_id;
 		String vnp_IpAddr = "127.0.0.1";
+
 		String vnp_TmnCode = Config.vnp_TmnCode;
 
 		Map<String, String> vnp_Params = new HashMap<>();

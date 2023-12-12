@@ -1,5 +1,6 @@
 package orishop.models;
 import java.io.Serializable;
+import java.util.List;
 public class ProductModels implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -13,11 +14,30 @@ public class ProductModels implements Serializable{
 	private String imageURL;
 	
 	private CategoryModels category;
-
+	private List<RatingModels> listRating;
 	
 	public ProductModels() {
 		super();
 	}
+
+	
+
+	public ProductModels(int productId, String productName, String description, int stock, int amount, float price,
+			int categoryId, String imageURL, CategoryModels category, List<RatingModels> listRating) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.description = description;
+		this.stock = stock;
+		this.amount = amount;
+		this.price = price;
+		this.categoryId = categoryId;
+		this.imageURL = imageURL;
+		this.category = category;
+		this.listRating = listRating;
+	}
+
+
 
 	public ProductModels(int productId, String productName, String description, int stock, int amount, float price,
 			int categoryId, String imageURL, CategoryModels category) {
@@ -105,13 +125,21 @@ public class ProductModels implements Serializable{
 		this.category = category;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductModels [productId=" + productId + ", productName=" + productName + ", description=" + description
-				+ ", stock=" + stock + ", amount=" + amount + ", price=" + price + ", categoryId=" + categoryId
-				+ ", imageURL=" + imageURL + ", category=" + category + "]";
+
+
+	public List<RatingModels> getListRating() {
+		return listRating;
 	}
 
+
+
+	public void setListRating(List<RatingModels> listRating) {
+		this.listRating = listRating;
+	}
+	
+	
+
+	
 	
 	
 }
