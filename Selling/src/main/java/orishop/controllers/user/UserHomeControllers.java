@@ -89,7 +89,7 @@ public class UserHomeControllers extends HttpServlet {
 		req.setAttribute("list", listProduct);
 		req.setAttribute("listC", listCate);
 
-		resp.sendRedirect(req.getContextPath() + "/user/product/listProduct");
+		req.getRequestDispatcher("/views/user/product/home.jsp").forward(req, resp);
 
 	}
 	@Override
