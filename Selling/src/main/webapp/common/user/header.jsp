@@ -15,10 +15,6 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link
-	href="${pageContext.request.contextPath}/templates/user/css/product/style.css"
-	rel="stylesheet" type="text/css">
-
 </head>
 
 <body>
