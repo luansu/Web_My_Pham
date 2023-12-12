@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglist.jsp"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,21 +55,21 @@
 						src="https://2sao.vietnamnetjsc.vn/images/2021/04/05/14/45/IU.jpg">
 					<div class="content-info">
 						<div class="account">${shipper.employeeName}</div>
-						<a class="change-account" href="">Sửa hồ sơ</a>
 					</div>
 				</div>
 				<div class="d-flex align-items-start"
-					style="padding-left: 40px; padding-top: 20px;">
+					style="padding-left: 25px; padding-top: 20px;">
 					<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
 						role="tablist" aria-orientation="vertical" style = "background-color: #fff;">
+						
 						<button class="nav-link active" id="v-pills-order-tab"
 							data-bs-toggle="pill" data-bs-target="#v-pills-order"
 							type="button" role="tab" aria-controls="v-pills-order"
-							aria-selected="true">Đơn hàng</button>
+							aria-selected="true"><i class="fa-solid fa-cart-shopping"></i> Đơn hàng</button>
 						<button class="nav-link" id="v-pills-information-tab"
 							data-bs-toggle="pill" data-bs-target="#v-pills-information"
 							type="button" role="tab" aria-controls="v-pills-information"
-							aria-selected="false">Thông tin</button>
+							aria-selected="false"><i class="fa-solid fa-user"></i> Thông tin</button>
 					</div>
 				</div>
 			</div>
@@ -105,46 +106,36 @@
 										<div class="product">
 											<div class="product-detail rounded d-flex">
 												<div class="content-info ml-2">
-													<div class="product-id" href="">Mã đơn hàng: ${i.orderID }</div>
-													<div class="product-category">Ngày đặt hàng:
+													<div class="product-id" href=""><i class="fa-solid fa-qrcode"></i>Mã đơn hàng: ${i.orderID }</div>
+													<div class="product-category"><i class="fa-solid fa-calendar-days"></i>Ngày đặt hàng:
 														${i.orderDate}</div>
 												</div>
 												<div class="product-money text-center">
-													<p>Thành tiền</p>
+													<p><i class="fa-solid fa-sack-dollar"></i>Thành tiền</p>
 													<p style="color: rgb(36, 214, 158);">${i.orderValue}đ</p>
 												</div>
 											</div>
 											<div class="product-address d-flex">
 												<div class="content-info ml-2 mb-2 justify-content-between">
-													<div class="address">Địa chỉ: ${i.customer.address }
+													<div class="address"><i class="fa-solid fa-location-dot"></i>Địa chỉ: ${i.customer.address }
 													</div>
-													<div class="phone">Số điện thoại: ${i.customer.phone }</div>
-													<div class="name">Họ và tên:
+													<div class="phone"><i class="fa-solid fa-phone"></i>Số điện thoại: ${i.customer.phone }</div>
+													<div class="name"><i class="fa-solid fa-file-signature"></i>Họ và tên:
 														${i.customer.customerName }</div>
 												</div>
 												<div class="product-status text-center">
-													<p>Trạng thái</p>
+													<p><i class="fa-solid fa-flag"></i>Trạng thái</p>
 													<p style="color: rgb(19, 220, 39);">${i.paymentStatus }</p>
 												</div>
 											</div>
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
-
-														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đã giao</button>
+														style="margin-left: 920px; margin-bottom: 20px;" disabled><i class="fa-solid fa-check" style="padding-top: 5px;"></i>Đã giao</button>
 												</c:if>
 												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
 													<button type="button" class="btn btn-warning d-flex"
-														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đang giao</button>
-
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
-														giao</button>
-												</c:if>
-												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
-													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
-														giao</button>
-
+														style="margin-left: 900px; margin-bottom: 20px;" disabled><i class="fa-solid fa-truck-fast" style="padding-top: 5px;"></i>Đang giao</button>
 												</c:if>
 											</div>
 										</div>
@@ -157,46 +148,36 @@
 										<div class="product">
 											<div class="product-detail rounded d-flex">
 												<div class="content-info ml-2">
-													<div class="product-id" href="">Mã đơn hàng: ${i.orderID }</div>
-													<div class="product-category">Ngày đặt hàng:
+													<div class="product-id" href=""><i class="fa-solid fa-qrcode"></i>Mã đơn hàng: ${i.orderID }</div>
+													<div class="product-category"><i class="fa-solid fa-calendar-days"></i>Ngày đặt hàng:
 														${i.orderDate}</div>
 												</div>
 												<div class="product-money text-center">
-													<p>Thành tiền</p>
+													<p><i class="fa-solid fa-sack-dollar"></i>Thành tiền</p>
 													<p style="color: rgb(36, 214, 158);">${i.orderValue}đ</p>
 												</div>
 											</div>
 											<div class="product-address d-flex">
 												<div class="content-info ml-2 mb-2 justify-content-between">
-													<div class="address">Địa chỉ: ${i.customer.address }
+													<div class="address"><i class="fa-solid fa-location-dot"></i>Địa chỉ: ${i.customer.address }
 													</div>
-													<div class="phone">Số điện thoại: ${i.customer.phone }</div>
+													<div class="phone"><i class="fa-solid fa-phone"></i>Số điện thoại: ${i.customer.phone }</div>
 													<div class="name">Họ và tên:
 														${i.customer.customerName }</div>
 												</div>
 												<div class="product-status text-center">
-													<p>Trạng thái</p>
+													<p><i class="fa-solid fa-flag"></i>Trạng thái</p>
 													<p style="color: rgb(19, 220, 39);">${i.paymentStatus }</p>
 												</div>
 											</div>
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
-
-														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đã giao</button>
+														style="margin-left: 920px; margin-bottom: 20px;" disabled><i class="fa-solid fa-check" style="padding-top: 5px;"></i>Đã giao</button>
 												</c:if>
-												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
+												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
 													<button type="button" class="btn btn-warning d-flex"
-														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đang giao</button>
-
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
-														giao</button>
-												</c:if>
-												<c:if test="${i.orderStatus == 'Đã giao cho shipper' }">
-													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
-														giao</button>
-
+														style="margin-left: 900px; margin-bottom: 20px;" disabled><i class="fa-solid fa-truck-fast" style="padding-top: 5px;"></i>Đang giao</button>
 												</c:if>
 											</div>
 										</div>
@@ -211,46 +192,36 @@
 										<div class="product">
 											<div class="product-detail rounded d-flex">
 												<div class="content-info ml-2">
-													<div class="product-id" href="">Mã đơn hàng: ${i.orderID }</div>
-													<div class="product-category">Ngày đặt hàng:
+													<div class="product-id" href=""><i class="fa-solid fa-qrcode"></i>Mã đơn hàng: ${i.orderID }</div>
+													<div class="product-category"><i class="fa-solid fa-calendar-days"></i>Ngày đặt hàng:
 														${i.orderDate}</div>
 												</div>
 												<div class="product-money text-center">
-													<p>Thành tiền</p>
+													<p><i class="fa-solid fa-sack-dollar"></i>Thành tiền</p>
 													<p style="color: rgb(36, 214, 158);">${i.orderValue}</p>
 												</div>
 											</div>
 											<div class="product-address d-flex">
 												<div class="content-info ml-2 mb-2 justify-content-between">
-													<div class="address">Địa chỉ: ${i.customer.address }
+													<div class="address"><i class="fa-solid fa-location-dot"></i>Địa chỉ: ${i.customer.address }
 													</div>
-													<div class="phone">Số điện thoại: ${i.customer.phone }</div>
+													<div class="phone"><i class="fa-solid fa-phone"></i>Số điện thoại: ${i.customer.phone }</div>
 													<div class="name">Họ và tên:
 														${i.customer.customerName }</div>
 												</div>
 												<div class="product-status text-center">
-													<p>Trạng thái</p>
+													<p><i class="fa-solid fa-flag"></i>Trạng thái</p>
 													<p style="color: rgb(19, 220, 39);">${i.paymentStatus }</p>
 												</div>
 											</div>
 											<div class="product-button d-flex">
 												<c:if test="${i.orderStatus == 'Đã giao khách hàng' }">
 													<button type="button" class="btn btn-success d-flex"
-
-														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đã giao</button>
+														style="margin-left: 920px; margin-bottom: 20px;" disabled><i class="fa-solid fa-check" style="padding-top: 4px;"></i>Đã giao</button>
 												</c:if>
 												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
 													<button type="button" class="btn btn-warning d-flex"
-														style="margin-left: 935px; margin-bottom: 20px;" disabled>Đang giao</button>
-
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đã
-														giao</button>
-												</c:if>
-												<c:if test="${i.orderStatus == 'Ðã giao cho shipper' }">
-													<button type="button" class="btn btn-success d-flex"
-														style="margin-left: 1000px; margin-bottom: 20px;" disabled>Đang
-														giao</button>
-
+														style="margin-left: 900px; margin-bottom: 20px;" disabled><i class="fa-solid fa-truck-fast" style="padding-top: 4px;"></i>Đang giao</button>
 												</c:if>
 											</div>
 										</div>
@@ -261,7 +232,7 @@
 					</div>
 					<div class="tab-pane fade" id="v-pills-information" role="tabpanel"
 						aria-labelledby="v-pills-profile-information" tabindex="0">
-						<div class="edit card-body d-flex align-items-center" style="width: 1150px;">
+						<div class="edit card-body d-flex align-items-center shadow p-3 mb-5 bg-white rounded" style="width: 1150px;">
 							<div class="image-container mb-4 mb-lg-0 ">
 								<img
 									src="https://2sao.vietnamnetjsc.vn/images/2021/04/05/14/45/IU.jpg"
@@ -280,39 +251,42 @@
 											class="display-26 text-secondary me-2 font-weight-600">Tên
 												đăng nhập:</label> <input type="text" name="username"
 											class="form-control" disabled value="${username }"></li>
-										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
+											
+										<li class="mb-2 mb-xl-3 d-flex align-items-center" style = "display: none;"><label
 											for="username"
 											class="display-26 text-secondary me-2 font-weight-600">Mã
 												nhân viên:</label> <input type="text" name="employeeId"
 											class="form-control" readonly="readonly"
 											value="${shipper.employeeId }"></li>
+											
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
-											for="username" for="validationDefault01"
+											for="validationDefault01"
 											class="display-26 text-secondary me-2 font-weight-600 form-label">Họ
-												và tên:</label> <input type="text" name="employeeName" id="validationDefault01"
-											class="form-control" value="${shipper.employeeName }" required>
+												và tên:</label> <input type="text" name="employeeName"
+											class="form-control" id="validationDefault01" value="${shipper.employeeName }" required>
 										</li>
-
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
-											for="username"
-											class="display-26 text-secondary me-2 font-weight-600">Giới
+											for="validationDefault02"
+											class="display-26 text-secondary me-2 font-weight-600 form-label">Giới
 												tính:</label> <input type="text" name="gender" class="form-control"
-											value="${shipper.gender}"></li>
+											value="${shipper.gender}" id="validationDefault02" required></li>
+											
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
-											for="username"
-											class="display-26 text-secondary me-2 font-weight-600">Ngày
+											for="validationDefault03"
+											class="display-26 text-secondary me-2 font-weight-600 form-label">Ngày
 												sinh:</label> <input type="text" name="birthdate"
-											class="form-control" value="${shipper.birthdate }"></li>
+											class="form-control" value="${shipper.birthdate }" id="validationDefault03" required></li>
+											
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
-											for="username"
-											class="display-26 text-secondary me-2 font-weight-600">Địa
+											for="validationDefault04"
+											class="display-26 text-secondary me-2 font-weight-600 form-label">Địa
 												chỉ:</label> <input type="text" name="address" class="form-control"
-											value="${shipper.address }"></li>
+											value="${shipper.address }" id="validationDefault04" required></li>
 										<li class="mb-2 mb-xl-3 d-flex align-items-center"><label
-											for="username"
+											for="validationDefault05"
 											class="display-26 text-secondary me-2 font-weight-600">Số
 												điện thoại:</label> <input type="text" name="phone"
-											class="form-control" value=${shipper.phone }></li>
+											class="form-control" value=${shipper.phone } id="validationDefault05" required></li>
 									</ul>
 									<div class="product-button d-flex">
 										<button type="submit" class="btn btn-success d-flex"
