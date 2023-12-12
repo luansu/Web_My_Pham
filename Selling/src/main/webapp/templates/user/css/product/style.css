@@ -244,13 +244,14 @@
 }
 
 .card {
-	height: 315px;
+	height: auto;
 	align-items: center;
-	padding: 0px;
+	margin-bottom: 25px;
 }
 
 .card-img-top {
-	width: 200px;
+  object-fit: cover;
+  height: 200px; /* Chiều cao cố định cho hình ảnh */
 }
 
 .card-body {
