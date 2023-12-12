@@ -108,7 +108,7 @@ public class OrderServiceImpl implements IOrderService {
 		List<OrdersModels> listOrder = findAllOrders();
 		List<OrdersModels> result = new ArrayList<OrdersModels>();
 		for (OrdersModels order: listOrder) {
-			if(order.getCustomerID() == customerId & order.getOrderStatus() == orderStatus) {
+			if(order.getCustomerID() == customerId & order.getOrderStatus().contains(orderStatus)) {
 				result.add(order);
 			}
 		}
@@ -130,5 +130,15 @@ public class OrderServiceImpl implements IOrderService {
 	public void updateOrder(double totalPriceOrder, String deliveryMethod) {
 		orderDAO.updateOrder(totalPriceOrder, deliveryMethod);
 		
+	}
+
+	@Override
+	public void update(OrdersModels model) {
+		orderDAO.update(model);
+	}
+
+	@Override
+	public OrdersModels findOne(int orderId) {
+		return orderDAO.findOne(orderId);
 	}
 }

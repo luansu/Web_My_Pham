@@ -115,18 +115,19 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			rs.next();
-            employee.setEmployeeId(rs.getInt("employeeId"));
-            employee.setEmployeeName(rs.getString("employeeName"));
-            employee.setBirthdate(rs.getDate("birthdate"));
-            employee.setGender(rs.getString("gender"));
-            employee.setAddress(rs.getString("address"));
-            employee.setPhone(rs.getString("phone"));
-            employee.setMail(rs.getString("mail"));
-            employee.setJob(rs.getString("job"));
-            employee.setAccountId(rs.getInt("accountId"));
-            employee.setActivityArea(rs.getString("activityArea"));
-            employee.setImageURL(rs.getString("imageURL"));
+			if(rs.next()) {
+	            employee.setEmployeeId(rs.getInt("employeeId"));
+	            employee.setEmployeeName(rs.getString("employeeName"));
+	            employee.setBirthdate(rs.getDate("birthdate"));
+	            employee.setGender(rs.getString("gender"));
+	            employee.setAddress(rs.getString("address"));
+	            employee.setPhone(rs.getString("phone"));
+	            employee.setMail(rs.getString("mail"));
+	            employee.setJob(rs.getString("job"));
+	            employee.setAccountId(rs.getInt("accountId"));
+	            employee.setActivityArea(rs.getString("activityArea"));
+	            employee.setImageURL(rs.getString("imageURL"));
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
