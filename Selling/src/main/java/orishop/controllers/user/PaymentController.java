@@ -56,7 +56,7 @@ public class PaymentController extends HttpServlet {
 
 		String url = req.getRequestURI().toString();
 
-		if (url.contains("pay")) {
+		if (url.contains("user/pay")) {
 			try {
 				String paymentUrl = getPay(req);
 				resp.sendRedirect(paymentUrl);
