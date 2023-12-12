@@ -75,7 +75,7 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 		<div style="margin: 20px;">
 			<div class="row justify-content-center">
 				<c:forEach var="i" items="${list}">
-					<div class="card col-md-2" style="margin-left: 4.75rem;">
+					<div class="card col-md-2" style="margin: 10px">
 						<a href="detailProduct?pid=${i.productId}"> <img
 							src="${i.imageURL}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
@@ -98,7 +98,7 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 		</div>
 	</ul>
 	<div class="button-container"
-		style="display: flex; justify-content: center; margin-top: 20px;">
+		style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px">
 		<button type="button" class="btn btn-primary">Xem thêm</button>
 	</div>
 	<!-- NAVIGATION BAR END -->
