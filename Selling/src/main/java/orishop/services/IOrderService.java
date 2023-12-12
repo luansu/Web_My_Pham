@@ -31,4 +31,6 @@ public interface IOrderService {
 	long totalRevenueByYear(int year);
 	
 	int findLatestOrderId();
+	List<OrdersModels> findAllOrderByUser(int customerId);
+	List<OrdersModels> findAllOrderByUserAndOrderStatus(int customerId, String orderStatus);
 }

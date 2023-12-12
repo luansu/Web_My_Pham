@@ -103,4 +103,27 @@ public class OrderServiceImpl implements IOrderService {
 
 		return orderDAO.findLatestOrderId();
 	}
+	@Override
+	public List<OrdersModels> findAllOrderByUserAndOrderStatus(int customerId, String orderStatus) {
+		List<OrdersModels> listOrder = findAllOrders();
+		List<OrdersModels> result = new ArrayList<OrdersModels>();
+		for (OrdersModels order: listOrder) {
+			if(order.getCustomerID() == customerId & order.getOrderStatus() == orderStatus) {
+				result.add(order);
+			}
+		}
+		return result;
+	}
+	
+	@Override
+	public List<OrdersModels> findAllOrderByUser(int customerId) {
+		List<OrdersModels> listOrder = orderDAO.findAllOrders();
+		List<OrdersModels> result = new ArrayList<OrdersModels>();
+		for (OrdersModels order: listOrder) {
+			if(order.getCustomerID() == customerId) {
+				result.add(order);
+			}
+		}
+		return result;
+	}
 }

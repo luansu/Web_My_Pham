@@ -15,14 +15,14 @@ import orishop.models.*;
 import orishop.services.*;
 
 @WebServlet(urlPatterns = { "/user/product/insertCartItem", "/user/findCartByCartID", "/user/findCartItem",
-		"/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem", "/user/insertorder"})
+		"/user/insertCartItem", "/user/updateCartItem", "/user/deleteCartItem", "/user/countCartItem", "/user/insertorder", "/user/mypurchase"})
 
 public class UserCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	ICartService cartService = new CartServiceImpl();
 	ICartItemService cartItemService = new CartItemServiceImpl();
-	ICustomerService CustomerSerivce = new CustomerServiceImp();
+	ICustomerService customerSerivce = new CustomerServiceImp();
 	IEmployeeService empService = new EmployeeServiceImp();
 	IOrderService orderService = new OrderServiceImpl();
 
@@ -39,6 +39,8 @@ public class UserCartController extends HttpServlet {
 			deleteCartItemByPage(req, resp);
 		} else if (url.contains("user/updateCartItem")) {
 			updateCartItem(req, resp);
+		} else if (url.contains("user/mypurchase")) {
+			getMyPurchase(req, resp);
 		}
 
 	}
@@ -109,7 +111,7 @@ public class UserCartController extends HttpServlet {
 			HttpSession session = req.getSession();
 			AccountModels user = (AccountModels) session.getAttribute("account");
 			if (user != null) {
-				CustomerModels cus = CustomerSerivce.findCustomerByAccountID(user.getAccountID());
+				CustomerModels cus = customerSerivce.findCustomerByAccountID(user.getAccountID());
 				CartModels cart1 = cartService.findCartByCustomerID(cus.getCustomerId());
 
 				req.setAttribute("username", user.getUsername());
@@ -183,5 +185,23 @@ public class UserCartController extends HttpServlet {
 		List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cartID);
 
 		orderService.createOrder(model, customerId, totalPriceOrder, listCartItem);
+	}
+	
+	private void getMyPurchase(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		HttpSession session = req.getSession();
+		AccountModels user = (AccountModels) session.getAttribute("account");
+		if (user != null) {
+			CustomerModels cus = customerSerivce.findCustomerByAccountID(user.getAccountID());
+			List<OrdersModels> listOrder = orderService.findAllOrderByUser(cus.getCustomerId());
+			List<OrdersModels> listOrdered = orderService.findAllOrderByUserAndOrderStatus(cus.getCustomerId(), "Save");
+			List<OrdersModels> listOrderDelivering = orderService.findAllOrderByUserAndOrderStatus(cus.getCustomerId(), "Đã giao cho shipper");
+			List<OrdersModels> listOrderComplete = orderService.findAllOrderByUserAndOrderStatus(cus.getCustomerId(), "Đã giao khách hàng");
+			req.setAttribute("listorder", listOrder);
+			req.setAttribute("listordered", listOrdered);
+			req.setAttribute("listdelivering", listOrderDelivering);
+			req.setAttribute("listcomplete", listOrderComplete);
+			
+			req.getRequestDispatcher("/views/user/inforuser_cart/mypurchase.jsp").forward(req, resp);
+		}
 	}
 }
