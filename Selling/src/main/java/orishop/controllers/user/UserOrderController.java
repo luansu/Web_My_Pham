@@ -41,11 +41,13 @@ private static final long serialVersionUID = 1L;
 		String url = req.getRequestURI().toString();
 		float deliveryFee = 0;
 		int choose = 0;
+		HttpSession session = req.getSession();
+		int cartID = (int) session.getAttribute("cartID");
+		List<CartItemModels> listCartItem = (List<CartItemModels>) session.getAttribute("listCartItem");
+		
+		
 		if (url.contains("user/payment")) {
-			HttpSession session = req.getSession();
-			int cartID = (int) session.getAttribute("cartID");
-			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cartID);
-			req.setAttribute("listCartItem", listCartItem);
+			
 			try {
 				choose = Integer.valueOf(req.getParameter("deliveryMethod"));
 				if(choose == 1) {
@@ -70,12 +72,15 @@ private static final long serialVersionUID = 1L;
 			
 			String deliveryMethod = Integer.toString(choose);
 			session.setAttribute("deliveryMethod", deliveryMethod);
-			
-			
+			int flag = (int) session.getAttribute("flag");
+			if(flag == 1) {
 			OrdersModels model = new OrdersModels();
 			model.setDeliveryMethod(deliveryMethod);
 			orderService.createOrder(model, customerId, totalPriceOrder, listCartItem);
 			cartItemService.deleteAllCartItem(cartID);
+			flag = 0;
+			session.setAttribute("flag", flag);
+			}
 			
 			
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/detailcart.jsp");

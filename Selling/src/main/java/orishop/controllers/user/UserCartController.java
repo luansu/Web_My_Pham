@@ -28,11 +28,13 @@ public class UserCartController extends HttpServlet {
 
 	IProductService productService = new ProductServiceImp();
 	ICategoryService categoryService = new CategoryServiceImp();
-
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String url = req.getRequestURI().toString();
-
+		int flag = 1;
+		HttpSession session = req.getSession();
+		session.setAttribute("flag", flag);
 		if (url.contains("user/findCartByCartID")) {
 			listCartItemByPage(req, resp);
 		} else if (url.contains("user/deleteCartItem")) {
@@ -130,7 +132,7 @@ public class UserCartController extends HttpServlet {
 			CartModels cart = cartService.findCartByCartID((int) session.getAttribute("cartID"));
 			req.setAttribute("cart", cart);
 			List<CartItemModels> listCartItem = cartItemService.findCartItemByCartID(cart.getCartId());
-			req.setAttribute("listCartItem", listCartItem);
+			session.setAttribute("listCartItem", listCartItem);
 
 			int pagesize = 4;
 			int size = listCartItem.size();
