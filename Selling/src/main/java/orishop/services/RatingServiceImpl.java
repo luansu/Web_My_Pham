@@ -59,4 +59,19 @@ public class RatingServiceImpl implements IRatingService{
 		System.out.println(rate.findAll());
 		
 	}
+
+	@Override
+	public RatingModels findOne(int cusId, int proId) {
+		return ratingDAO.findOne(cusId, proId);
+	}
+
+	@Override
+	public boolean insert(RatingModels model) {
+		// TODO Auto-generated method stub
+		if (model.getRating()>=1 & model.getRating() <=5 & !model.getReview().isEmpty()) {
+			return ratingDAO.insert(model);
+		} 
+		return false;
+		
+	}
 }

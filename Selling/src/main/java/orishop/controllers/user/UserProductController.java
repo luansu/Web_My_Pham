@@ -17,23 +17,26 @@ import orishop.models.CartModels;
 import orishop.models.CategoryModels;
 import orishop.models.CustomerModels;
 import orishop.models.ProductModels;
+import orishop.models.RatingModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.ICategoryService;
 import orishop.services.IProductService;
+import orishop.services.IRatingService;
 import orishop.services.ProductServiceImp;
+import orishop.services.RatingServiceImpl;
 
 
 @WebServlet(urlPatterns = {"/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
 		"/user/product/manager", "/user/product/insert", "/user/product/update",
 		"/user/product/delete", "/user/product/filterDesc", "/user/product/filterAsc", 
-		"/user/product/topProduct", "/user/product/searchProduct"})
+		"/user/product/topProduct", "/user/product/searchProduct", "/user/product/review"})
 public class UserProductController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	IProductService productService = new ProductServiceImp();
 	ICategoryService categoryService = new CategoryServiceImp();
-
+	IRatingService ratingService = new RatingServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI().toString();
@@ -65,6 +68,7 @@ public class UserProductController extends HttpServlet {
 		} else if (url.contains("topProduct")) {
 			getTopProduct(req, resp);
 
+		} else if (url.contains("review")) {
 		}
 	}
 	
@@ -81,6 +85,8 @@ public class UserProductController extends HttpServlet {
 			doPost_Insert(req, resp);
 		} else if (url.contains("searchProduct")) {
 			postSearchProduct(req, resp);
+		} else if (url.contains("review")) {
+			postReview(req, resp);
 		}
 	}
 
@@ -249,6 +255,37 @@ public class UserProductController extends HttpServlet {
 		req.setAttribute("listC", listCate);
 
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
+	}
+	
+	private void postReview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		HttpSession session = req.getSession();
+		
+		int id = (int) session.getAttribute("productID");
+		ProductModels product = productService.findOne(id);
+		CustomerModels customer = (CustomerModels) session.getAttribute("customer");
+		String test = req.getParameter("review");
+		String t = req.getParameter("rating");
+		System.out.println("Review: " + test);
+		System.out.println("Rating: " + t);
+		RatingModels rating = new RatingModels();
+		try {
+			BeanUtils.populate(rating, req.getParameterMap());
+			rating.setCustomerId(customer.getCustomerId());
+			rating.setProductId(product.getProductId());
+			ratingService.insert(rating);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		req.setAttribute("p", product);
+		
+		session = req.getSession(true);
+		session.setAttribute("productID", product.getProductId());
+		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
+
 	}
 
 }
