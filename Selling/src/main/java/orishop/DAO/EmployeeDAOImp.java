@@ -166,7 +166,7 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 	
 	@Override
 	public List<EmployeeModels> findSellerBySellerName(String sellerName){
-		String sql = "SELECT * FROM EMPLOYEE WHERE job = 'Seller' AND employeeName LIKE '%" + sellerName + "'";
+		String sql = "SELECT * FROM EMPLOYEE WHERE job = 'Seller' AND employeeName LIKE N'%" + sellerName + "'";
 		List<EmployeeModels> listemployee = new ArrayList<EmployeeModels>();
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();

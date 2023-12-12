@@ -102,7 +102,7 @@ public class CustomerDAOImp implements ICustomerDAO{
 	*/
 	@Override
 	public List<CustomerModels> findCustomerByCustomerName(String customerName) {
-	    String sql = "SELECT * FROM CUSTOMER WHERE customerName LIKE '%" + customerName + "'";
+	    String sql = "SELECT * FROM CUSTOMER WHERE customerName LIKE N'%" + customerName + "'";
 	    List<CustomerModels> listcustomer = new ArrayList<CustomerModels>();
 	    try {
 	        new DBConnectionSQLServer();
