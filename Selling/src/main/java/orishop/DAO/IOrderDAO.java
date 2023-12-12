@@ -21,4 +21,8 @@ public interface IOrderDAO {
 	List<OrdersModels> canceledOrder(int id);
 	
 	double totalPriceProductSell();
+	
+	long totalRevenueByMonth(int month);
+	
+	long totalRevenueByYear(int year);
 }

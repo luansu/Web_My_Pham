@@ -25,4 +25,8 @@ public interface IOrderService {
 	List<OrdersItemModels> getOrderItems(int id);
 	
 	int countOrderRequest();
+	
+	long totalRevenueByMonth(int month);
+	
+	long totalRevenueByYear(int year);
 }

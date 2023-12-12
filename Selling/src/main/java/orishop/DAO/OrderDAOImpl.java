@@ -245,5 +245,51 @@ public class OrderDAOImpl implements IOrderDAO{
 		}
 		return listorder;
 	}
+
+	@Override
+	public long totalRevenueByMonth(int month) {
+		String sql = "select sum(orderValue) from ORDERS where MONTH(orderDate) = ?";
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, month);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				long total = rs.getLong(1);
+				
+				return total;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
+
+	@Override
+	public long totalRevenueByYear(int year) {
+		String sql = "select sum(orderValue) from ORDERS where YEAR(orderDate) = ?";
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, year);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				long total = rs.getLong(1);
+				
+				return total;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public static void main(String[] args) {
+		OrderDAOImpl d = new OrderDAOImpl();
+		long s = d.totalRevenueByYear(2023);
+		System.out.println(s);
+	}
 }

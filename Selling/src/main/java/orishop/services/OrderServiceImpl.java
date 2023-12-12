@@ -87,4 +87,14 @@ public class OrderServiceImpl implements IOrderService{
 	public List<OrdersModels> canceledOrder(int id) {
 		return orderDAO.canceledOrder(id);
 	}
+
+	@Override
+	public long totalRevenueByMonth(int month) {
+		return orderDAO.totalRevenueByMonth(month);
+	}
+
+	@Override
+	public long totalRevenueByYear(int year) {
+		return orderDAO.totalRevenueByYear(year);
+	}
 }
