@@ -31,7 +31,9 @@ import orishop.services.ICartService;
 import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
+import orishop.services.IOrderService;
 import orishop.services.IProductService;
+import orishop.services.OrderServiceImpl;
 import orishop.services.ProductServiceImp;
 import orishop.util.Config;
 
@@ -44,7 +46,8 @@ public class PaymentController extends HttpServlet {
 	ICartItemService cartItemService = new CartItemServiceImpl();
 	ICustomerService CustomerSerivce = new CustomerServiceImp();
 	IEmployeeService empService = new EmployeeServiceImp();
-
+	IOrderService orderService = new OrderServiceImpl();
+	
 	IProductService productService = new ProductServiceImp();
 	ICategoryService categoryService = new CategoryServiceImp();
 
@@ -78,9 +81,13 @@ public class PaymentController extends HttpServlet {
 		String bankCode = "NCB";
 		
 		HttpSession session = req.getSession();
-		int orderID = 123;
-		String order_id = "111111" + Config.getRandomNumber(8);
-		long amount = 99999 * 100; // Số tiền đơn hàng
+		int orderID = orderService.findLatestOrderId();
+		
+		String order_id = Integer.toString(orderID);
+		float totalPriceOrder = (float)session.getAttribute("totalPriceOrder");
+		
+		
+		long amount = (long)totalPriceOrder*100; // Số tiền đơn hàng
 		
 		String vnp_TxnRef = order_id;
 		String vnp_IpAddr = "127.0.0.1";

@@ -66,6 +66,8 @@ private static final long serialVersionUID = 1L;
 			int customerId = (int)session.getAttribute("customerID");
 			float totalPriceCart = (float)session.getAttribute("totalPriceCart");
 			float totalPriceOrder = totalPriceCart + deliveryFee;
+			session.setAttribute("totalPriceOrder", totalPriceOrder);
+			
 			String deliveryMethod = Integer.toString(choose);
 			model.setDeliveryMethod(deliveryMethod);
 			orderService.createOrder(model, customerId, totalPriceOrder, listCartItem);
