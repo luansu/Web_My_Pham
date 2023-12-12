@@ -13,6 +13,9 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link
+	href="${pageContext.request.contextPath}/templates/user/css/product/style.css"
+	rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -142,19 +145,20 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<div class="accordion" id="productDetailsAccordion">
+				<div class="accordion">
 					<h2>${p.productName}</h2>
 					<div>
-						<p class="review-count" style="margin-bottom: 0px;">12</p>
-						<div
-							class="product_detail_ratings d-flex justify-content-start align-items-start">
-							<div>
-								<i class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i class="fa fa-star"></i>
-							</div>
-							<p style="margin-left: 4px;">Xem tất cả bình luận</p>
+						<p class="review-count" style="margin-bottom: 0px;">${ratingService.findByProduct(p.productId).size()}
+							Reviews</p>
+						<div class="ratings">
+							<c:forEach begin="1"
+								end="${ratingService.averageRating(p.productId) }">
+								<i class="fa fa-star rating-color"></i>
+							</c:forEach>
+							<c:forEach begin="1"
+								end="${5-ratingService.averageRating(p.productId) }">
+								<i class="fa fa-star"></i>
+							</c:forEach>
 						</div>
 						<h3 style="padding: 20px 0 20px 0;">${p.price}</h3>
 						<form action="insertCartItem" method="post">
