@@ -167,10 +167,7 @@
 
 									<input id="form1" min="0" name="quantity" type="number"
 										value="1" class="form-control text-center" />
-<<<<<<< HEAD
 
-=======
->>>>>>> b06b4e5e44a33aa95de88f308e8dd0e8ed2c0905
 								</div>
 								<button type="submit" class="add-to-cart col ms-3">
 									Thêm vào giỏ hàng</button>

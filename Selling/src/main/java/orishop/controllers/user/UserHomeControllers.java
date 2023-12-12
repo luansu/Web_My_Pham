@@ -36,7 +36,7 @@ import orishop.services.IRatingService;
 import orishop.services.ProductServiceImp;
 import orishop.services.RatingServiceImpl;
 
-@WebServlet(urlPatterns = {"/user/home", "/user/editInfor"})
+@WebServlet(urlPatterns = {"/user/home", "/user/editInfor", "/user/updateuser"})
 
 public class UserHomeControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -103,6 +103,8 @@ public class UserHomeControllers extends HttpServlet {
 		String url = req.getRequestURI().toString();
 		if (url.contains("editInfor")) {
 			editInfor(req, resp);
+		} else if (url.contains("user/updateuser")) {
+			postUpdateUser(req, resp);
 		}
 	}
 	private void editInfor(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -130,7 +132,26 @@ public class UserHomeControllers extends HttpServlet {
 		resp.sendRedirect(req.getContextPath() + "/listcustomer");	
 	}
 		
+	private void postUpdateUser(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
 
+		HttpSession session = req.getSession();
+		CustomerModels model = (CustomerModels) session.getAttribute("customer");
+		try {
+			// lay du lieu tu jsp bang beanutils
+			BeanUtils.populate(model, req.getParameterMap());
+
+			//model.setCategory(catService.findOne(model.getCategoryID())); 
+			cusService.editInfor(model);
+			//thông báo kết quả
+			session.setAttribute("customer", model);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		req.getRequestDispatcher("/views/user/inforuser_cart/inforuser.jsp").forward(req, resp);
+	}
 }
 	
 
