@@ -4,18 +4,19 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link
+	href="${pageContext.request.contextPath}/templates/user/css/product/style.css"
+	rel="stylesheet" type="text/css">
+</head>
 <body>
-
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-		crossorigin="anonymous">
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-	<link
-		href="${pageContext.request.contextPath}/templates/user/css/product/style.css"
-		rel="stylesheet" type="text/css">
 	<!-- CAROUSEL BEGIN -->
 	<div id="carouselExampleIndicators" class="carousel slide">
 		<div class="carousel-indicators">
@@ -61,7 +62,7 @@
 	<ul class="nav justify-content-center">
 		<c:forEach var="i" items="${listC}">
 			<li class="nav-item"><a class="nav-link"
-				href="product/productByCategory?cid=${i.categoryId}"><c:out
+				href="productByCategory?cid=${i.categoryId}"><c:out
 						value="${i.categoryName}" /></a></li>
 		</c:forEach>
 	</ul>
@@ -82,26 +83,34 @@
 					<header class="session_header">CHƯA CÓ SẢN PHẨM THUỘC LOẠI
 						NÀY</header>
 				</c:if>
-				<c:forEach var="i" items="${list}">
-					<div class="card col-md-2" style="margin-left: 4.75rem;">
-						<a href="detailProduct?pid=${i.productId}"> <img
-							src="${i.imageURL}" class="card-img-top" alt="..."></a>
-						<div class="card-body">
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="ratings">
-									<i class="fa fa-star rating-color"></i> <i
-										class="fa fa-star rating-color"></i> <i
-										class="fa fa-star rating-color"></i> <i
-										class="fa fa-star rating-color"></i> <i class="fa fa-star"></i>
+				<div style="margin: 20px;">
+					<div class="row justify-content-center">
+						<c:forEach var="i" items="${list}">
+							<div class="card col-md-auto" style="margin: 10px">
+								<a href="detailProduct?pid=${i.productId}"> <img
+									src="${i.imageURL}" class="card-img-top" alt="..."></a>
+								<div class="card-body">
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="ratings">
+											<c:forEach begin="1"
+												end="${ratingService.averageRating(i.productId) }">
+												<i class="fa fa-star rating-color"></i>
+											</c:forEach>
+											<c:forEach begin="1"
+												end="${5-ratingService.averageRating(i.productId) }">
+												<i class="fa fa-star"></i>
+											</c:forEach>
+										</div>
+										<h5 class="review-count">${i.listRating.size() } Reviews</h5>
+									</div>
+									<h5 class="card-title card__Name">${i.productName}</h5>
+									<p class="card-text">${i.description}</p>
+									<p class="price">${i.price}</p>
 								</div>
-								<h5 class="review-count">12 Reviews</h5>
 							</div>
-							<h5 class="card-title">${i.productName}</h5>
-							<p class="card-text">${i.description}</p>
-							<p class="price">${i.price}</p>
-						</div>
+						</c:forEach>
 					</div>
-				</c:forEach>
+				</div>
 			</div>
 			<div class="row g-0 align-items-center pb-4">
 				<div class="col-sm-6">
@@ -114,35 +123,35 @@
 						<ul class="pagination mb-sm-0">
 							<c:if test="${page<=1 }">
 								<li class="page-item disabled"><a
-									href="product/listProduct?page=${page - 1}" class="page-link"><i
+									href="listProduct?page=${page - 1}" class="page-link"><i
 										class="mdi mdi-chevron-left"></i></a></li>
 							</c:if>
 							<c:if test="${page>1 }">
 								<li class="page-item"><a
-									href="product/listProduct?page=${page - 1}" class="page-link"><i
+									href="listProduct?page=${page - 1}" class="page-link"><i
 										class="mdi mdi-chevron-left"></i></a></li>
 							</c:if>
 							<c:forEach var="i" begin="1" end="${num }">
 								<c:if test="${i==page }">
 									<li class="page-item active"><a
-										href="product/listProduct?page=${i}" class="page-link">${i }</a></li>
+										href="listProduct?page=${i}" class="page-link">${i }</a></li>
 								</c:if>
 								<c:if test="${i!=page }">
-									<li class="page-item"><a href="product/listProduct?page=${i}"
+									<li class="page-item"><a href="listProduct?page=${i}"
 										class="page-link">${i }</a></li>
 								</c:if>
 							</c:forEach>
 							<c:if test="${page<num}">
 								<li class="page-item"><a
-									href="product/listProduct?page=${page + 1}" class="page-link"><i
+									href="listProduct?page=${page + 1}" class="page-link"><i
 										class="mdi mdi-chevron-right"></i></a></li>
 							</c:if>
 							<c:if test="${page>=num}">
 								<li class="page-item disabled"><a
-									href="product/listProduct?page=${page + 1}" class="page-link"><i
+									href="listProduct?page=${page + 1}" class="page-link"><i
 										class="mdi mdi-chevron-right"></i></a></li>
 							</c:if>
-						</ul>	
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -154,63 +163,29 @@
 			<button type="button" class="btn">Xem các ưu đãi</button>
 			<div class="row d-flex justify-content-center">
 				<header class="session_header">ƯU ĐÃI</header>
-				<div class="card" style="width: 14rem;">
+				<c:forEach var="i" items="${listHightLightProduct }">
+					<div class="card" style="width: 14rem;">
 					<img
 						src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42867%2F42867.png"
 						class="card-img-top" alt="...">
 					<div class="card-body">
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="ratings">
-								<i class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i class="fa fa-star"></i>
+								<c:forEach begin="1" end="${ratingService.averageRating(i.productId) }">
+									<i class="fa fa-star rating-color"></i>
+									</c:forEach>
+									<c:forEach begin="1" end="${5-ratingService.averageRating(i.productId) }">
+									<i class="fa fa-star"></i>
+									</c:forEach>
 							</div>
-							<h5 class="review-count">12 Reviews</h5>
+							<h5 class="review-count">${i.listRating.size() } Reviews</h5>
 						</div>
-						<h5 class="card-title">Rose Nectar Hand & Body Wash</h5>
-						<p class="card-text">MILK & HONEY GOLD</p>
-						<p class="price">809.000đ</p>
+						<h5 class="card-title card__Name">${i.productName}</h5>
+									<p class="card-text">${i.description}</p>
+									<p class="price">${i.price}</p>
 					</div>
 				</div>
-				<div class="card" style="width: 14rem;">
-					<img
-						src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42867%2F42867.png"
-						class="card-img-top" alt="...">
-					<div class="card-body">
-						<div class="d-flex justify-content-between align-items-center">
-							<div class="ratings">
-								<i class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i class="fa fa-star"></i>
-							</div>
-							<h5 class="review-count">12 Reviews</h5>
-						</div>
-						<h5 class="card-title">Rose Nectar Hand & Body Wash</h5>
-						<p class="card-text">MILK & HONEY GOLD</p>
-						<p class="price">809.000đ</p>
-					</div>
-				</div>
-				<div class="card" style="width: 14rem;">
-					<img
-						src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42867%2F42867.png"
-						class="card-img-top" alt="...">
-					<div class="card-body">
-						<div class="d-flex justify-content-between align-items-center">
-							<div class="ratings">
-								<i class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i class="fa fa-star"></i>
-							</div>
-							<h5 class="review-count">12 Reviews</h5>
-						</div>
-						<h5 class="card-title">Rose Nectar Hand & Body Wash</h5>
-						<p class="card-text">MILK & HONEY GOLD</p>
-						<p class="price">809.000đ</p>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
@@ -219,10 +194,10 @@
 	<!-- NEWS -->
 	<div class="container">
 		<div class="row">
-			<img id="banner_news"
+			<img class="col-6" id=" col banner_news"
 				src="https://media-asia.oriflame.com/contentImage?externalMediaId=efae3a8b-502d-485f-ae4c-125558f433e3&name=18345001_3&inputFormat=jpg&w=1242&bc=%23f5f5f5&ib=%23f5f5f5&q=45"
 				alt="">
-			<div class="row_paragraph">
+			<div class="col-6 row_paragraph">
 				<h2>NGHIÊN CỨU BỞI KHOA HỌC TIÊN TIẾN. MANG LẠI HIỆU QUẢ VƯỢT
 					TRỘI</h2>
 				<p>NovAge giúp bạn cải thiện làn da ngay từ những dấu hiệu lão
