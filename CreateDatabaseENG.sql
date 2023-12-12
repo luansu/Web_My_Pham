@@ -361,8 +361,43 @@ VALUES
 (6, 4, 50, '2023-11-11', 180000),
 (7, 8, 40, '2023-11-10', 120000),
 (8, 1, 30, '2023-11-09', 90000);
+go
+CREATE TABLE RATING(
+	ratingId int Identity PRIMARY KEY,
+	productId int FOREIGN KEY REFERENCES PRODUCT(productId),
+	customerId int FOREIGN KEY REFERENCES CUSTOMER(customerId),
+    rating int,
+	review nvarchar(MAX),
+	reviewDate date default getdate()
+)
 
 
+INSERT INTO RATING (productId, customerId, rating, review, reviewDate)
+VALUES
+    -- Use nested loops to cover productId (1 to 10) and customerId (1 to 12)
+    (1, 1, 5, 'Great product!', '2023-01-01'),
+    (1, 2, 4, 'Good service.', '2023-01-02'),
+    (1, 3, 3, 'Average experience.', '2023-01-03'),
+    (1, 4, 5, 'Amazing!', '2023-01-04'),
+    (1, 5, 4, 'Satisfied.', '2023-01-05'),
+    (1, 6, 2, 'Disappointed.', '2023-01-06'),
+    (1, 7, 5, 'Highly recommended!', '2023-01-07'),
+    (1, 8, 4, 'Quick delivery.', '2023-01-08'),
+    (1, 9, 3, 'Needs improvement.', '2023-01-09'),
+    (1, 10, 5, 'Excellent!', '2023-01-10'),
+
+    (2, 1, 4, 'Satisfied.', '2023-01-05'),
+    (2, 2, 2, 'Disappointed.', '2023-01-06'),
+    -- ... Continue for productId 2 and customerId 3 to 12
+    (2, 12, 5, 'Highly recommended!', '2023-01-07'),
+
+    -- ... Continue for productId 3 to 10 and customerId 1 to 12
+    -- ...
+
+    (10, 1, 4, 'Quick delivery.', '2023-01-08'),
+    (10, 2, 3, 'Needs improvement.', '2023-01-09'),
+    -- ... Continue for productId 10 and customerId 3 to 12
+    (10, 12, 5, 'Excellent!', '2023-01-10');
 
 --select * from ACCOUNT
 --select * from CUSTOMER
