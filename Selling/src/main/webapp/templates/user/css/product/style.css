@@ -209,6 +209,7 @@
 }
 
 .ratings {
+	margin-top: 20px;
 	display: flex;
 	align-items: center;
 	margin-right: 10px;
@@ -224,6 +225,7 @@
 }
 
 .review-count {
+	margin-top: 20px;
 	font-weight: 400;
 	margin-bottom: 2px;
 	font-size: 12px !important;
@@ -248,10 +250,19 @@
 }
 
 .card__Name {
+	margin-top: 20px;
 	font-size: 20px!important;
 	width: 250px;
 }
 
+.card__Text{
+	font-size: 15px!important;
+	width: 250px;
+}
+.card__Price{
+	font-size: 30px!important;
+	width: 250px;
+}
 .card-text {
 	font-size: 40px;
 	width: 250px;
@@ -265,6 +276,7 @@
 }
 
 .card-body {
+    position: relative;
 	padding: 0px;
 }
 

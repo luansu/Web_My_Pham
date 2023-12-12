@@ -69,6 +69,7 @@ public class UserHomeControllers extends HttpServlet {
 	private void getHome(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		AccountModels user = (AccountModels) session.getAttribute("account");
+		session.setAttribute("ratingService", ratingService);
 		if (user != null) {
 			CustomerModels cus = cusService.findCustomerByAccountID(user.getAccountID());
 			CartModels cart1 = cartService.findCartByCustomerID(cus.getCustomerId());
@@ -76,19 +77,18 @@ public class UserHomeControllers extends HttpServlet {
 			req.setAttribute("username", user.getUsername());
 			req.setAttribute("accountID", user.getAccountID());
 			req.setAttribute("customerID", cus.getCustomerId());
-			
+			session.setAttribute("customer", cus);
 			session.setAttribute("customerID", cus.getCustomerId());
 			session = req.getSession(true);
 			session.setAttribute("cartID", cart1.getCartId());
-			session.setAttribute("ratingService", ratingService);
 			req.setAttribute("cartID", (int)session.getAttribute("cartID"));
 
 			int countCartItem = cartItemService.countCartItem((int)session.getAttribute("cartID"));
 			session.setAttribute("countCartItem", countCartItem);
 			req.setAttribute("countCartItem", (int)session.getAttribute("countCartItem"));
 		}
-		List<ProductModels> listProduct = productService.findTopProduct(12);
-		List<ProductModels> listProductSale = productService.findTopSaleProduct(4);
+		List<ProductModels> listProduct = productService.findTopProduct(9);
+		List<ProductModels> listProductSale = productService.findTopSaleProduct(3);
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		
 		req.setAttribute("list", listProduct);

@@ -61,7 +61,7 @@ public class WebHomeControllers extends HttpServlet {
 			}
 		}
 
-		resp.sendRedirect(req.getContextPath() + "/web/login");
+		resp.sendRedirect(req.getContextPath() + "/user/home");
 	}
 
 	@Override

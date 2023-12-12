@@ -100,8 +100,8 @@
 								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()} Reviews</h5>
 							</div>
 							<h5 class="card-title card__Name">${i.productName}</h5>
-							<p class="card-text">${i.description}</p>
-							<p class="price">${i.price}</p>
+							<p class="card-text card__Text">${i.description}</p>
+							<p class="price card__Price">${i.price}</p>
 						</div>
 					</div>
 				</c:forEach>
@@ -137,9 +137,9 @@
 								</div>
 								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()} Reviews</h5>
 							</div>
-							<h5 class="card-title">${i.productName}</h5>
-							<p class="card-text">${i.description}</p>
-							<p class="price">${i.price}</p>
+							<h5 class="card-title card__Name">${i.productName}</h5>
+							<p class="card-text card__Text">${i.description}</p>
+							<p class="price card__Price">${i.price}</p>
 						</div>
 					</div>
 				</c:forEach>
