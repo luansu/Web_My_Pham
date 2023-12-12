@@ -28,6 +28,7 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	
 </head>
 
 <body>
@@ -73,7 +74,7 @@
 			action="/Selling/user/product/searchProduct" method="post">
 			<div class="input-group">
 				<input class="form-control border-end-0 border" type="search"
-					value="search" id="example-search-input" name="searchProduct">
+					 placeholder="Search" id="example-search-input" name="searchProduct">
 				<span class="input-group-append">
 					<button
 						class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5"

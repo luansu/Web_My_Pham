@@ -35,7 +35,10 @@ public class AdminHomeControllers extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI();
 		if(url.contains("admin/home")) {
-			findAllShipper(req, resp);
+			//findAllShipper(req, resp);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
+			rd.forward(req, resp);
+			
 		}
 	}
 	@Override

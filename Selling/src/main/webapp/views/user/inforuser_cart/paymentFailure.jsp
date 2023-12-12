@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Đặt hàng thành công</title>
+<title> Thanh toán thất bại</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -29,8 +29,8 @@
                     </svg>
 			</div>
 			<div class="text-center">
-				<h1>Thank You !</h1>
-				<p>Đơn hàng đã được đặt thành công</p>
+				<h1>Payment failure !</h1>
+				<p>Thanh toán thất bại, đặt hàng không thành công</p>
 			<a href="/Selling/user/home"><button class="btn btn-primary">Trang chủ</button></a>	
 			<a href="${pageContext.request.contextPath}/user/findCartByCartID?cartID=${cartID}"><button class="btn btn-danger">Đơn hàng</button></a>	
 			</div>

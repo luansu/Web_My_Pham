@@ -1,6 +1,7 @@
 package orishop.controllers.admin;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import orishop.DAO.IEmployeeDAO;
 import orishop.models.CategoryModels;
 import orishop.models.CustomerModels;
 import orishop.models.EmployeeModels;
+import orishop.models.ProductModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.CustomerServiceImp;
 import orishop.services.EmployeeServiceImp;
@@ -23,7 +25,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listshipper", "/admin/shipperdetail", "/admin/searchshipper"})
+@WebServlet(urlPatterns = {"/admin/listshipper", "/admin/shipperdetail", "/admin/searchshipper","/admin/deleteshipper"})
 
 public class AdminShipperControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -41,10 +43,20 @@ public class AdminShipperControllers extends HttpServlet {
 		} else if(url.contains("admin/searchshipper")) {
 			getSearchShipper(req, resp);
 		}
+		 else if(url.contains("/admin/deleteshipper")) {
+				getDeleteShipper(req, resp);
+			}
+	}
+	private void getDeleteShipper(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		
+		String url = req.getRequestURI();
+		if(url.contains("admin/searchshipper")) {
+			getSearchShipper(req, resp);
+		}
 	}
 
 	//region shipper

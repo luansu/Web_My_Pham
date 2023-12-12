@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import orishop.models.CartItemModels;
 import orishop.services.CartItemServiceImpl;
 import orishop.services.CartServiceImpl;
 import orishop.services.CategoryServiceImp;
@@ -37,7 +38,7 @@ import orishop.services.OrderServiceImpl;
 import orishop.services.ProductServiceImp;
 import orishop.util.Config;
 
-@WebServlet(urlPatterns = { "/user/pay", "/user/error","/user/thanks"})
+@WebServlet(urlPatterns = { "/user/pay","/paymentInfo", "/user/error","/user/thanks"})
 
 public class PaymentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,7 +56,7 @@ public class PaymentController extends HttpServlet {
 
 		String url = req.getRequestURI().toString();
 
-		if (url.contains("pay")) {
+		if (url.contains("user/pay")) {
 			try {
 				String paymentUrl = getPay(req);
 				resp.sendRedirect(paymentUrl);
@@ -63,10 +64,32 @@ public class PaymentController extends HttpServlet {
 				e.printStackTrace();
 				resp.sendRedirect("/error");
 			}
-		} else if (url.contains("user/thanks")) {
-			req.getRequestDispatcher("/views/user/inforuser_cart/complete.jsp").forward(req, resp);
+		} else if (url.contains("paymentInfo")) {
+			paymentInfo(req, resp);
 		}
 
+	}
+
+	public void paymentInfo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+
+		String amount = req.getParameter("vnp_Amount");
+		String bankCode = req.getParameter("vnp_BankCode");
+		String orderId = req.getParameter("vnp_TxnRef");
+		String responseCode = req.getParameter("vnp_ResponseCode");
+
+		
+		int orderID = Integer.parseInt(orderId);
+		
+		if (responseCode.equals("00")) {
+			String paymentStatus = "paid";
+			orderService.updateOrderPaymentStatus(orderID, paymentStatus);
+			req.getRequestDispatcher("/views/user/inforuser_cart/complete.jsp").forward(req, resp);
+		} else {
+			req.getRequestDispatcher("/views/user/inforuser_cart/paymentFailure.jsp").forward(req, resp);
+		}
+		
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -78,7 +101,7 @@ public class PaymentController extends HttpServlet {
 		String vnp_Version = "2.1.0";
 		String vnp_Command = "pay";
 		String orderType = "other";
-		String bankCode = "NCB";
+		String bankCode = "";
 		
 		HttpSession session = req.getSession();
 		int orderID = orderService.findLatestOrderId();
