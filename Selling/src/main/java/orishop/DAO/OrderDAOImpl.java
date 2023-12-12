@@ -318,7 +318,7 @@ public class OrderDAOImpl implements IOrderDAO{
 	}
 
 	@Override
-	public void updateOrder(double totalPriceOrder, String deliveryMethod) {
+	public void updateOrder(double totalPriceOrder, String deliveryMethod, String paymentStatus) {
 		String sql = "update ORDERS set orderValue=?, paymentMethod=?, paymentStatus=?,deliveryMethod=? where orderId = ?";
 		try {
 
@@ -327,7 +327,7 @@ public class OrderDAOImpl implements IOrderDAO{
 			PreparedStatement ps = conn.prepareStatement(sql); //ném câu lệnh sql
 			ps.setDouble(1, totalPriceOrder);
 			ps.setString(2, "vnpay");
-			ps.setString(3, "paid");
+			ps.setString(3, paymentStatus);
 			ps.setString(4, deliveryMethod);
 			ps.setInt(5, orderDAO.findLatestOrderId());
 			ps.executeUpdate();

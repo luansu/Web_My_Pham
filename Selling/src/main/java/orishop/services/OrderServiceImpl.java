@@ -127,8 +127,8 @@ public class OrderServiceImpl implements IOrderService {
 		return result;
 	}
 	@Override
-	public void updateOrder(double totalPriceOrder, String deliveryMethod) {
-		orderDAO.updateOrder(totalPriceOrder, deliveryMethod);
+	public void updateOrder(double totalPriceOrder, String deliveryMethod, String paymentStatus) {
+		orderDAO.updateOrder(totalPriceOrder, deliveryMethod, paymentStatus);
 		
 	}
 

@@ -9,7 +9,7 @@ import orishop.models.OrdersModels;
 public interface IOrderService {
 	List<OrdersModels> findAllOrders();
 	void createOrder(OrdersModels model, int customerId, double totalPrice, List<CartItemModels> cartItems);
-	void updateOrder(double totalPriceOrder, String deliveryMethod);
+	void updateOrder(double totalPriceOrder, String deliveryMethod, String paymentStatus);
 	
 	List<OrdersModels> findOrderByShipperId(int id);
 	
