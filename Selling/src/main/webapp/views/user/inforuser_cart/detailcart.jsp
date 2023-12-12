@@ -205,12 +205,14 @@
 													style="letter-spacing: 0; margin: 0;">
 													<span style="margin: 0;">THANH TOÁN BẰNG</span> <span
 														style="color: #ed1c24; letter-spacing: 0; margin: 0;">VN</span>
-													<span style="color: #005baa;letter-spacing: 0;margin: -20p;margin: -10px;">PAY</span>
+													<span
+														style="color: #005baa; letter-spacing: 0; margin: -20p; margin: -10px;">PAY</span>
 												</h3>
 
 												<div class="mb-5 pt-2 text-center">
-													<img alt="vnpay" style="width: 200px; height: 200px;"
-														src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg">
+													<a href="${pageContext.request.contextPath}/user/pay" class="text-danger"><img
+														alt="vnpay" style="width: 200px; height: 200px;"
+														src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg"></a>
 												</div>
 												<h5 class="fw-bold mb-5"
 													style="position: absolute; bottom: 0;">
