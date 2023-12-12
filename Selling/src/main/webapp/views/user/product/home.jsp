@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-	
+
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 		rel="stylesheet"
@@ -61,7 +61,7 @@
 	<ul class="nav justify-content-center">
 		<c:forEach var="i" items="${listC}">
 			<li class="nav-item"><a class="nav-link"
-				href="product/productByCategory?cid=${i.categoryId}"><c:out
+				href="productByCategory?cid=${i.categoryId}"><c:out
 						value="${i.categoryName}" /></a></li>
 		</c:forEach>
 	</ul>
@@ -84,19 +84,17 @@
 				</c:if>
 				<c:forEach var="i" items="${list}">
 					<div class="card col-md-2" style="margin-left: 4.75rem;">
-						<a href="product/detailProduct?pid=${i.productId}"> <img
+						<a href="detailproduct?pid=${i.productId}"> <img
 							src="${i.imageURL}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="ratings">
-									<c:forEach begin="1" end="${ratingService.averageRating(i.productId) }">
-									<i class="fa fa-star rating-color"></i>
-									</c:forEach>
-									<c:forEach begin="1" end="${5-ratingService.averageRating(i.productId) }">
-									<i class="fa fa-star"></i>
-									</c:forEach>
+									<i class="fa fa-star rating-color"></i> <i
+										class="fa fa-star rating-color"></i> <i
+										class="fa fa-star rating-color"></i> <i
+										class="fa fa-star rating-color"></i> <i class="fa fa-star"></i>
 								</div>
-								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()} Reviews</h5>
+								<h5 class="review-count">12 Reviews</h5>
 							</div>
 							<h5 class="card-title">${i.productName}</h5>
 							<p class="card-text">${i.description}</p>
@@ -116,32 +114,32 @@
 						<ul class="pagination mb-sm-0">
 							<c:if test="${page<=1 }">
 								<li class="page-item disabled"><a
-									href="product/listProduct?page=${page - 1}" class="page-link"><i
+									href="listProduct?page=${page - 1}" class="page-link"><i
 										class="mdi mdi-chevron-left"></i></a></li>
 							</c:if>
 							<c:if test="${page>1 }">
 								<li class="page-item"><a
-									href="product/listProduct?page=${page - 1}" class="page-link"><i
+									href="listProduct?page=${page - 1}" class="page-link"><i
 										class="mdi mdi-chevron-left"></i></a></li>
 							</c:if>
 							<c:forEach var="i" begin="1" end="${num }">
 								<c:if test="${i==page }">
 									<li class="page-item active"><a
-										href="product/listProduct?page=${i}" class="page-link">${i }</a></li>
+										href="listProduct?page=${i}" class="page-link">${i }</a></li>
 								</c:if>
 								<c:if test="${i!=page }">
-									<li class="page-item"><a href="product/listProduct?page=${i}"
+									<li class="page-item"><a href="listProduct?page=${i}"
 										class="page-link">${i }</a></li>
 								</c:if>
 							</c:forEach>
 							<c:if test="${page<num}">
 								<li class="page-item"><a
-									href="product/listProduct?page=${page + 1}" class="page-link"><i
+									href="listProduct?page=${page + 1}" class="page-link"><i
 										class="mdi mdi-chevron-right"></i></a></li>
 							</c:if>
 							<c:if test="${page>=num}">
 								<li class="page-item disabled"><a
-									href="product/listProduct?page=${page + 1}" class="page-link"><i
+									href="listProduct?page=${page + 1}" class="page-link"><i
 										class="mdi mdi-chevron-right"></i></a></li>
 							</c:if>
 						</ul>
@@ -412,9 +410,7 @@
 		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
 		crossorigin="anonymous"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-		crossorigin="anonymous"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>

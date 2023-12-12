@@ -187,9 +187,9 @@
 													Tổng tiền thanh toán: <span class="amount">${totalPriceCart}
 														đ</span>
 												</div>
-												<a href="payment"><button type="button"
+												<button type="button"
 													class="btn btn-outline-primary btn-block btn-lg">Thanh
-													toán</button></a>
+													toán</button>
 											</div>
 										</div>
 									</div>

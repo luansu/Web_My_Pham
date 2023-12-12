@@ -4,23 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-	rel="stylesheet">
-<!-- Core theme CSS (includes Bootstrap)-->
-
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
@@ -33,20 +16,13 @@
 	rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="fonts/material-icon/css/material-design-iconic-font.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+	integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+	crossorigin="anonymous"></script>
 <link
 	href="${pageContext.request.contextPath}/templates/admin/css/manager.css"
 	rel="stylesheet" type="text/css" />
@@ -133,11 +109,11 @@ img {
 							<td class="change-content">${i.amount}</td>
 							<td class="change-content">${i.price}</td>
 							<td class="change-content">${i.categoryId}</td>
-							<td class="change-content">
-							<c:if test="${i.imageURL.startsWith('http')==false}">
-									<img src='<c:url value="image/?fname=products/${i.imageURL}"/>'
+							<td class="change-content"><c:if
+									test="${i.imageURL.substring(4) != 'http' }">
+									<img src='<c:url value="/image?fname=products/${i.imageURL}"/>'
 										alt="image1">
-								</c:if> <br> <c:if test="${i.imageURL.startsWith('http')==true}">
+								</c:if> <br> <c:if test="${i.imageURL.substring(4) == 'http' }">
 									<img src="${i.imageURL}" alt="image">
 								</c:if></td>
 							<td class="change-content">${i.category.categoryName}</td>
@@ -212,7 +188,7 @@ img {
 						</div>
 
 						<div class="form-group">
-							<label for='category'>Category</label> <select name="categoryId"
+							<label for='category'>Category</label> <select name="categoryID"
 								class="form-select" aria-label="Default select example">
 								<c:forEach var="item" items="${listcate}">
 									<option value="${item.categoryId}">${item.categoryName}</option>

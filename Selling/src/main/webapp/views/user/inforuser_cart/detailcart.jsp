@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%@ include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,56 +70,93 @@
 													hàng của bạn</h3>
 
 
-												<c:if test="${not empty listCartItem}">
-													<c:forEach var="i" items="${listCartItem}">
-														<div class="d-flex align-items-center mb-5">
-															<div class="flex-shrink-0">
-																<img
-																	src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F38557%2F38557.png%3Fversion%3D1674645309&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
-																	class="img-fluid" style="width: 150px;"
-																	alt="Generic placeholder image">
-															</div>
-															<div class="flex-grow-1 ms-3">
-																<h5 class="text-primary">${i.product.productName}</h5>
-																<h6 style="color: #9e9e9e;">Số lượng: ${i.quantity}</h6>
+												<div class="d-flex align-items-center mb-5">
+													<div class="flex-shrink-0">
+														<img
+															src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F38557%2F38557.png%3Fversion%3D1674645309&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+															class="img-fluid" style="width: 150px;"
+															alt="Generic placeholder image">
+													</div>
+													<div class="flex-grow-1 ms-3">
+														<h5 class="text-primary">Rose Nectar Hand & Body
+															Cream</h5>
+														<h6 style="color: #9e9e9e;">Số lượng: 3</h6>
 
-																<div class="d-flex align-items-center">
-																	<p class="fw-bold mb-0 me-5 pe-3">Tổng:
-																		${i.totalPrice}đ</p>
-																</div>
-															</div>
+														<div class="d-flex align-items-center">
+															<p class="fw-bold mb-0 me-5 pe-3">Tổng: 679$</p>
 														</div>
-													</c:forEach>
-												</c:if>
+													</div>
+												</div>
+
+												<div class="d-flex align-items-center mb-5">
+													<div class="flex-shrink-0">
+														<img
+															src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42519%2F42519.png%3Fversion%3D1605800700&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+															class="img-fluid" style="width: 150px;"
+															alt="Generic placeholder image">
+													</div>
+													<div class="flex-grow-1 ms-3">
+														<h5 class="text-primary">Rose Nectar Hand & Body Wash</h5>
+														<h6 style="color: #9e9e9e;">Số lượng: 2</h6>
+														<div class="d-flex align-items-center">
+															<p class="fw-bold mb-0 me-5 pe-3">Tổng: 789$</p>
+
+														</div>
+													</div>
+												</div>
+
+												<div class="d-flex align-items-center mb-5">
+													<div class="flex-shrink-0">
+														<img
+															src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F40788%2F40788.png%3Fversion%3D1643101200&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+															class="img-fluid" style="width: 150px;"
+															alt="Generic placeholder image">
+													</div>
+													<div class="flex-grow-1 ms-3">
+														<h5 class="text-primary">Nuit Eau de Parfum for her</h5>
+														<h6 style="color: #9e9e9e;">Số Lượng: 1</h6>
+														<div class="d-flex align-items-center">
+															<p class="fw-bold mb-0 me-5 pe-3">Tổng: 89$</p>
+														</div>
+													</div>
 												</div>
 
 												<hr class="mb-4"
 													style="height: 2px; background-color: #1266f1; opacity: 1;">
 												<div class="cham">
 													<h4>Phương thức vận chuyển</h4>
-													<a href="payment?deliveryMethod=${1}"><button class="btn btn-outline-primary ">Vận
-														chuyển thường</button><br><br></a>
-													<a href="payment?deliveryMethod=${2}"><button class="btn btn-outline-primary">Vận
-														chuyển hỏa tốc</button></a>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="flexRadioDefault" id="flexRadioDefault1"> <label
+															class="form-check-label" for="flexRadioDefault1">
+															<strong>Vận chuyển thường</strong>
+														</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="flexRadioDefault" id="flexRadioDefault2" checked>
+														<label class="form-check-label" for="flexRadioDefault2">
+															<strong>Vận chuyển hỏa tốc</strong>
+														</label>
+													</div>
 												</div>
-												
 
 
 												<hr class="mb-4"
 													style="height: 2px; background-color: #1266f1; opacity: 1;">
 
 												<div class="d-flex justify-content-between px-x">
-													<p class="fw-bold">Chi phí đơn hàng:</p>
-													<p class="fw-bold">${totalPriceCart}</p>
+													<p class="fw-bold">Giảm giá:</p>
+													<p class="fw-bold">99$</p>
 												</div>
 												<div class="d-flex justify-content-between px-x">
 													<p class="fw-bold">Phí giao hàng:</p>
-													<p class="fw-bold">${deliveryFee}</p>
+													<p class="fw-bold">9$</p>
 												</div>
 												<div class="d-flex justify-content-between p-2 mb-2"
 													style="background-color: #e1f5fe;">
 													<h5 class="fw-bold mb-0">Tổng:</h5>
-													<h5 class="fw-bold mb-0">${totalPriceCart+deliveryFee}</h5>
+													<h5 class="fw-bold mb-0">999$</h5>
 												</div>
 
 
@@ -175,14 +210,13 @@
 												</h3>
 
 												<div class="mb-5 pt-2 text-center">
-													<a href="${pageContext.request.contextPath}/user/pay"
-														class="text-danger"><img alt="vnpay"
-														style="width: 200px; height: 200px;"
+													<a href="${pageContext.request.contextPath}/user/pay" class="text-danger"><img
+														alt="vnpay" style="width: 200px; height: 200px;"
 														src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg"></a>
 												</div>
 												<h5 class="fw-bold mb-5"
 													style="position: absolute; bottom: 0;">
-													<a href="findCartByCartID?cartID=${cartID}"><i class="fas fa-angle-left me-2"></i>Quay
+													<a href="#!"><i class="fas fa-angle-left me-2"></i>Quay
 														lại</a>
 												</h5>
 
