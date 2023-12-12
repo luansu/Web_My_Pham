@@ -76,6 +76,7 @@ public class UserHomeControllers extends HttpServlet {
 
 			session = req.getSession(true);
 			session.setAttribute("cartID", cart1.getCartId());
+			session.setAttribute("customerID", cus.getCustomerId());
 			req.setAttribute("cartID", (int)session.getAttribute("cartID"));
 
 			int countCartItem = cartItemService.countCartItem((int)session.getAttribute("cartID"));

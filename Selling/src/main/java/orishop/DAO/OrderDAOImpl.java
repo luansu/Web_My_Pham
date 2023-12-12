@@ -14,7 +14,8 @@ public class OrderDAOImpl implements IOrderDAO{
 	ICartService cartService = new CartServiceImpl();
 	IEmployeeService empService = new EmployeeServiceImp();
 	IProductService proService = new ProductServiceImp();
-	
+	static IOrderDAO orderDAO = new OrderDAOImpl();
+
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
@@ -54,8 +55,8 @@ public class OrderDAOImpl implements IOrderDAO{
 
 	@Override
 	public void createOrder(OrdersModels model,int customerId, double totalPrice, List<CartItemModels> cartItems) {
-				
-		String sqlOrder = "INSERT INTO orders (orderValue, orderDate,cartId,customerId,paymentStatus,orderStatus,paymentMethod,deliveryMethod,employeeId) VALUES (?, getdate(), ?, ?, ?, ?, ?, ?, ?)";
+		
+		String sqlOrder = "INSERT INTO orders (orderValue, orderDate,cartId,customerId,paymentStatus,orderStatus,paymentMethod,deliveryMethod) VALUES (?, getdate(), ?, ?, ?, ?, ?, ?)";
 		String sqlOrderDetail = "INSERT INTO order_item (productId, orderId, quantity, totalPrice) VALUES (?, ?, ?, ?)";
 		try {
 
@@ -63,20 +64,23 @@ public class OrderDAOImpl implements IOrderDAO{
 			Connection conn = DBConnectionSQLServer.getConnectionW(); //ket noi CSDL
 			PreparedStatement psOrder = conn.prepareStatement(sqlOrder); //ném câu lệnh sql
 			PreparedStatement psOrderDetail = conn.prepareStatement(sqlOrderDetail);
-			//Insert into order table		
+			//Insert into order table	
+			int cartId = 0;
+			for (CartItemModels cartItem : cartItems) {
+                cartId = cartItem.getCartID();
+            }
 			psOrder.setDouble(1, totalPrice);
-			psOrder.setInt(2, model.getCart().getCartId());
+			psOrder.setInt(2, cartId);
             psOrder.setInt(3, customerId);
-            psOrder.setString(4, "paying");
+            psOrder.setString(4, "unpaid");
             psOrder.setString(5, "save");
-            psOrder.setString(6, "qrcode");
+            psOrder.setString(6, null);
             psOrder.setString(7, model.getDeliveryMethod());
-            psOrder.setInt(8, model.getEmployeeId());
 			psOrder.executeUpdate();
          // Insert into order_detail table
             for (CartItemModels cartItem : cartItems) {
                 psOrderDetail.setInt(1, cartItem.getProductID());
-                psOrderDetail.setInt(2, model.getOrderID());
+                psOrderDetail.setInt(2, orderDAO.findLatestOrderId());
                 psOrderDetail.setInt(3, cartItem.getQuantity());
                 psOrderDetail.setDouble(4, cartItem.getQuantity()*cartItem.getProduct().getPrice());
                 psOrderDetail.executeUpdate();
@@ -291,5 +295,25 @@ public class OrderDAOImpl implements IOrderDAO{
 		OrderDAOImpl d = new OrderDAOImpl();
 		long s = d.totalRevenueByYear(2023);
 		System.out.println(s);
+	}
+
+	@Override
+	public int findLatestOrderId() {
+		String sql = "select max(orderId) as max from ORDERS";
+		int  latestOrderId = 0;
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				latestOrderId = rs.getInt("max");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return latestOrderId;
 	}
 }

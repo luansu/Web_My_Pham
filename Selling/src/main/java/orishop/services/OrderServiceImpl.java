@@ -9,30 +9,30 @@ import orishop.models.CartItemModels;
 import orishop.models.OrdersItemModels;
 import orishop.models.OrdersModels;
 
-public class OrderServiceImpl implements IOrderService{
+public class OrderServiceImpl implements IOrderService {
 	IOrderDAO orderDAO = new OrderDAOImpl();
 
 	@Override
 	public List<OrdersModels> findAllOrders() {
-		
+
 		return orderDAO.findAllOrders();
 	}
-	
+
 	@Override
 	public void createOrder(OrdersModels model, int customerId, double totalPrice, List<CartItemModels> cartItems) {
-		
+
 		orderDAO.createOrder(model, customerId, totalPrice, cartItems);
 	}
 
 	@Override
 	public List<OrdersModels> findOrderByShipperId(int id) {
-		
+
 		return orderDAO.findOrderByShipperId(id);
 	}
 
 	@Override
 	public List<OrdersModels> findOrderByShipperIdAndDistributed(int id) {
-		
+
 		return orderDAO.findOrderByShipperIdAndDistributed(id);
 	}
 
@@ -45,20 +45,20 @@ public class OrderServiceImpl implements IOrderService{
 	public List<OrdersModels> getOrderByOrderStatus(int shipperId, String orderStatus) {
 		List<OrdersModels> listOrder = orderDAO.findAllOrders();
 		List<OrdersModels> result = new ArrayList<OrdersModels>();
-		for (OrdersModels order: listOrder) {
-			if(order.getOrderStatus().contains(orderStatus) & order.getEmployeeId() == shipperId) {
+		for (OrdersModels order : listOrder) {
+			if (order.getOrderStatus().contains(orderStatus) & order.getEmployeeId() == shipperId) {
 				result.add(order);
 			}
 		}
 		return result;
 	}
-	
+
 	@Override
 	public List<OrdersModels> getOrderByPaymentStatus(int shipperId, String paymentStatus) {
 		List<OrdersModels> listOrder = orderDAO.findAllOrders();
 		List<OrdersModels> result = new ArrayList<OrdersModels>();
-		for (OrdersModels order: listOrder) {
-			if(order.getPaymentStatus().contains(paymentStatus) & order.getEmployeeId() == shipperId) {
+		for (OrdersModels order : listOrder) {
+			if (order.getPaymentStatus().contains(paymentStatus) & order.getEmployeeId() == shipperId) {
 				result.add(order);
 			}
 		}
@@ -78,7 +78,7 @@ public class OrderServiceImpl implements IOrderService{
 	@Override
 	public int countOrderRequest() {
 		List<OrdersModels> listOrder = orderDAO.findAllOrders();
-		
+
 		listOrder.removeIf(order -> !"Save".equals(order.getOrderStatus()));
 		return listOrder.size();
 	}
@@ -96,5 +96,11 @@ public class OrderServiceImpl implements IOrderService{
 	@Override
 	public long totalRevenueByYear(int year) {
 		return orderDAO.totalRevenueByYear(year);
+	}
+
+	@Override
+	public int findLatestOrderId() {
+
+		return orderDAO.findLatestOrderId();
 	}
 }

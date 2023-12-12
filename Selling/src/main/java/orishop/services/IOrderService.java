@@ -29,4 +29,6 @@ public interface IOrderService {
 	long totalRevenueByMonth(int month);
 	
 	long totalRevenueByYear(int year);
+	
+	int findLatestOrderId();
 }
