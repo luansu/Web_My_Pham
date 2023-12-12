@@ -25,7 +25,7 @@ import orishop.services.ICartService;
 import orishop.services.ICustomerService;
 import orishop.services.IOrderService;
 import orishop.services.OrderServiceImpl;
-@WebServlet(urlPatterns = { "/user/payment"})
+@WebServlet(urlPatterns = { "/user/payment","/user/updateorder"})
 
 public class UserOrderController extends HttpServlet  {
 private static final long serialVersionUID = 1L;
@@ -62,25 +62,42 @@ private static final long serialVersionUID = 1L;
 				req.setAttribute("deliveryFee", 20000.0);
 				deliveryFee = (float) 20000.0;
 			}
-			OrdersModels model = new OrdersModels();
+			
 			int customerId = (int)session.getAttribute("customerID");
 			float totalPriceCart = (float)session.getAttribute("totalPriceCart");
 			float totalPriceOrder = totalPriceCart + deliveryFee;
 			session.setAttribute("totalPriceOrder", totalPriceOrder);
 			
 			String deliveryMethod = Integer.toString(choose);
+			session.setAttribute("deliveryMethod", deliveryMethod);
+			
+			
+			OrdersModels model = new OrdersModels();
 			model.setDeliveryMethod(deliveryMethod);
 			orderService.createOrder(model, customerId, totalPriceOrder, listCartItem);
 			cartItemService.deleteAllCartItem(cartID);
+			
+			
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/detailcart.jsp");
 			rd.forward(req, resp);
 		}
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		String url = req.getRequestURI().toString();
+		if (url.contains("/user/updateorder")) {
+			updateOrder(req, resp);
+		}
 	}
-	
+	private void updateOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+
+		HttpSession session = req.getSession();
+		float totalPriceOrder = (float) session.getAttribute("totalPriceOrder");
+		String deliveryMethod = (String) session.getAttribute("deliveryMethod");
+		orderService.updateOrder(totalPriceOrder, deliveryMethod);
+	}
 	
 }
 

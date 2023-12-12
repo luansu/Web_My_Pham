@@ -316,4 +316,25 @@ public class OrderDAOImpl implements IOrderDAO{
 		}
 		return latestOrderId;
 	}
+
+	@Override
+	public void updateOrder(double totalPriceOrder, String deliveryMethod) {
+		String sql = "update ORDERS set orderValue=?, paymentMethod=?, paymentStatus=?,deliveryMethod=? where orderId = ?";
+		try {
+
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW(); //ket noi CSDL
+			PreparedStatement ps = conn.prepareStatement(sql); //ném câu lệnh sql
+			ps.setDouble(1, totalPriceOrder);
+			ps.setString(2, "vnpay");
+			ps.setString(3, "paid");
+			ps.setString(4, deliveryMethod);
+			ps.setInt(5, orderDAO.findLatestOrderId());
+			ps.executeUpdate();
+			conn.close();
+         
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
