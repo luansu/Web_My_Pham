@@ -54,26 +54,26 @@ create table CUSTOMER (
 Go
 INSERT INTO CUSTOMER (customerName, birthday, gender, address, phone, mail, rank, reputation, rewardPoints, accountId)
 VALUES
-(N'Nguyễn Văn An', '1990-01-01', N'Nam', N'Số 10, đường Nguyễn Trãi, thành phố Mỹ Tho, tỉnh Tiền Giang', '0987654321', 'nguyenvanan@gmail.com', N'Khách hàng mới', 0, 0, 8),
-(N'Trần Thị My', '1991-02-02', N'Nữ', N'Số 20, đường Lê Lợi, quận 7, TP.HCM', '0998765432', 'tranthimy@gmail.com', N'Khách hàng thân thiết', 5, 100, 9),
-(N'Lê Quang Chung', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, quận Bình Tân, thành phố Hồ Chí Minh', '0909765432', 'lequangchung@gmail.com', N'Khách hàng VIP', 10, 200, 10),
-(N'Đỗ Thị Diệu', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, thành phố Bến Tre, tỉnh Bến Tre', '0911765432', 'dothidieu@gmail.com', N'Khách hàng mới', 0, 0, 4),
-(N'Huỳnh Văn Én', '1994-05-05', N'Nam', N'Số 50, đường Nguyễn Huệ, thành phố Mỹ Tho, tỉnh Tiền Giang', '0922765432', 'huynhvanen@gmail.com', N'Khách hàng thân thiết', 5, 100, 5),
-(N'Phan Thị Trúc', '1995-06-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, quận Ninh Kiều, thành phố Cần Thơ', '0933765432', 'phanthitruc@gmail.com', N'Khách hàng VIP', 10, 200, 2),
-(N'Nguyễn Thị Ngân', '1996-07-07', N'Nữ', N'Số 70, đường Lê Văn Duyệt, thành phố Mỹ Tho, tỉnh Tiền Giang', '0944765432', 'nguyenthingan@gmail.com', N'Khách hàng mới', 0, 0, 2),
-(N'Trương Văn Hải', '1997-08-08', N'Nam', N'Số 80, đường Lý Thường Kiệt, huyện Cao Lãnh, tỉnh Đồng Tháp', '0955765432', 'truongvanhai@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
-(N'Lý Thị Ngọc', '1998-09-09', N'Nữ', N'Số 90, đường Nguyễn Văn Trỗi, huyện Phụng Hiệp, tỉnh Hậu Giang', '0966765432', 'lythingoc@gmail.com', N'Khách hàng VIP', 10, 200, 2),
-(N'Trần Văn Bình', '1999-10-10', N'Nam', N'Số 100, đường Quang Trung, quận 10, TP.HCM', '0977765432', 'tranvanbinh@gmail.com', N'Khách hàng mới', 0, 0, 2),
-(N'Nguyễn Thị Thu', '2000-11-11', N'Nữ', N'Số 110, đường Cách Mạng Tháng Tám, quận 1, TP.HCM', '0988765432', 'nguyenthithu@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
-(N'Lê Văn Tâm', '2001-12-12', N'Nam', N'Số 120, đường Lê Duẩn, thành phố Nha Trang, tỉnh Khánh Hòa', '0999765432', 'levantam@gmail.com', N'Khách hàng VIP', 10, 200,2 ),
-(N'Phạm Thị Hương', '2002-01-01', N'Nữ', N'Số 130, đường Ngô Gia Tự, thành phố Hồ Chí Minh', '0901765432', 'phamthihuong@gmail.com', N'Khách hàng mới', 0, 0, 2),
-(N'Hoàng Văn Hòa', '2003-02-02', N'Nam', N'Số 140, đường Lê Thánh Tông, quận Cẩm Lệ, thành phố Đà Nẵng', '0912765432', 'hoangvanhoa@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
-(N'Mai Thị Quỳnh', '2004-03-03', N'Nữ', N'Số 150, đường Nguyễn Chí Thanh, quận Bắc Từ Liêm, Hà Nội', '0923765432', 'maithiquynh@gmail.com', N'Khách hàng VIP', 10, 200, 2),
-(N'Ngô Văn Hiển', '2005-04-04', N'Nam', N'Số 160, đường Trần Hưng Đạo, thành phố Vinh, tỉnh Nghệ An', '0934765432', 'ngovanhien@gmail.com', N'Khách hàng mới', 0, 0, 2),
-(N'Dương Thị Hoài', '2006-05-05', N'Nữ', N'Số 170, đường Nguyễn Trãi, quận Thanh Xuân, Hà Nội', '0945765432', 'duongthihoai@gmail.com', N'Khách hàng thân thiết', 5, 100, 2),
-(N'Võ Văn Tài', '2007-06-06', N'Nam', N'Số 180, đường Lý Tự Trọng, thành phố Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu', '0956765432', 'vovantai@gmail.com', N'Khách hàng VIP', 10, 200, 2),
-(N'Hồ Thị Thảo', '2008-07-07', N'Nữ', N'Số 190, đường Nguyễn Đình Chính, quận Gò Vấp, TP.HCM', '0967765432', 'hothithao@gmail.com', N'Khách hàng mới', 0, 0,2),
-(N'Đoàn Văn Lâm', '2009-08-08', N'Nam', N'Số 200, đường Đống Đa, thành phố Huế, tỉnh Thừa Thiên Huế', '0978765432', 'doanvanlam@gmail.com', N'Khách hàng thân thiết', 5, 100, 2);
+(N'Nguyễn Văn An', '1990-01-01', N'Nam', N'Số 10, đường Nguyễn Trãi, thành phố Mỹ Tho, tỉnh Tiền Giang', '0987654321', 'nguyenvanan@gmail.com', N'Khách hàng mới', 0, 0, 1),
+(N'Trần Thị My', '1991-02-02', N'Nữ', N'Số 20, đường Lê Lợi, quận 7, TP.HCM', '0998765432', 'tranthimy@gmail.com', N'Khách hàng thân thiết', 5, 100, 1),
+(N'Lê Quang Chung', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, quận Bình Tân, thành phố Hồ Chí Minh', '0909765432', 'lequangchung@gmail.com', N'Khách hàng VIP', 10, 200, 1),
+(N'Đỗ Thị Diệu', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, thành phố Bến Tre, tỉnh Bến Tre', '0911765432', 'dothidieu@gmail.com', N'Khách hàng mới', 0, 0, 1),
+(N'Huỳnh Văn Én', '1994-05-05', N'Nam', N'Số 50, đường Nguyễn Huệ, thành phố Mỹ Tho, tỉnh Tiền Giang', '0922765432', 'huynhvanen@gmail.com', N'Khách hàng thân thiết', 5, 100, 1),
+(N'Phan Thị Trúc', '1995-06-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, quận Ninh Kiều, thành phố Cần Thơ', '0933765432', 'phanthitruc@gmail.com', N'Khách hàng VIP', 10, 200, 1),
+(N'Nguyễn Thị Ngân', '1996-07-07', N'Nữ', N'Số 70, đường Lê Văn Duyệt, thành phố Mỹ Tho, tỉnh Tiền Giang', '0944765432', 'nguyenthingan@gmail.com', N'Khách hàng mới', 0, 0, 1),
+(N'Trương Văn Hải', '1997-08-08', N'Nam', N'Số 80, đường Lý Thường Kiệt, huyện Cao Lãnh, tỉnh Đồng Tháp', '0955765432', 'truongvanhai@gmail.com', N'Khách hàng thân thiết', 5, 100, 1),
+(N'Lý Thị Ngọc', '1998-09-09', N'Nữ', N'Số 90, đường Nguyễn Văn Trỗi, huyện Phụng Hiệp, tỉnh Hậu Giang', '0966765432', 'lythingoc@gmail.com', N'Khách hàng VIP', 10, 200, 1),
+(N'Trần Văn Bình', '1999-10-10', N'Nam', N'Số 100, đường Quang Trung, quận 10, TP.HCM', '0977765432', 'tranvanbinh@gmail.com', N'Khách hàng mới', 0, 0, 1),
+(N'Nguyễn Thị Thu', '2000-11-11', N'Nữ', N'Số 110, đường Cách Mạng Tháng Tám, quận 1, TP.HCM', '0988765432', 'nguyenthithu@gmail.com', N'Khách hàng thân thiết', 5, 100, 1),
+(N'Lê Văn Tâm', '2001-12-12', N'Nam', N'Số 120, đường Lê Duẩn, thành phố Nha Trang, tỉnh Khánh Hòa', '0999765432', 'levantam@gmail.com', N'Khách hàng VIP', 10, 200, 1),
+(N'Phạm Thị Hương', '2002-01-01', N'Nữ', N'Số 130, đường Ngô Gia Tự, thành phố Hồ Chí Minh', '0901765432', 'phamthihuong@gmail.com', N'Khách hàng mới', 0, 0, 1),
+(N'Hoàng Văn Hòa', '2003-02-02', N'Nam', N'Số 140, đường Lê Thánh Tông, quận Cẩm Lệ, thành phố Đà Nẵng', '0912765432', 'hoangvanhoa@gmail.com', N'Khách hàng thân thiết', 5, 100, 1),
+(N'Mai Thị Quỳnh', '2004-03-03', N'Nữ', N'Số 150, đường Nguyễn Chí Thanh, quận Bắc Từ Liêm, Hà Nội', '0923765432', 'maithiquynh@gmail.com', N'Khách hàng VIP', 10, 200, 1),
+(N'Ngô Văn Hiển', '2005-04-04', N'Nam', N'Số 160, đường Trần Hưng Đạo, thành phố Vinh, tỉnh Nghệ An', '0934765432', 'ngovanhien@gmail.com', N'Khách hàng mới', 0, 0, 1),
+(N'Dương Thị Hoài', '2006-05-05', N'Nữ', N'Số 170, đường Nguyễn Trãi, quận Thanh Xuân, Hà Nội', '0945765432', 'duongthihoai@gmail.com', N'Khách hàng thân thiết', 5, 100, 1),
+(N'Võ Văn Tài', '2007-06-06', N'Nam', N'Số 180, đường Lý Tự Trọng, thành phố Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu', '0956765432', 'vovantai@gmail.com', N'Khách hàng VIP', 10, 200, 1),
+(N'Hồ Thị Thảo', '2008-07-07', N'Nữ', N'Số 190, đường Nguyễn Đình Chính, quận Gò Vấp, TP.HCM', '0967765432', 'hothithao@gmail.com', N'Khách hàng mới', 0, 0, 1),
+(N'Đoàn Văn Lâm', '2009-08-08', N'Nam', N'Số 200, đường Đống Đa, thành phố Huế, tỉnh Thừa Thiên Huế', '0978765432', 'doanvanlam@gmail.com', N'Khách hàng thân thiết', 5, 100, 1);
 
 
 --DROP TABLE CART
