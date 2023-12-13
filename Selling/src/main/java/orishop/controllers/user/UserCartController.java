@@ -209,10 +209,12 @@ public class UserCartController extends HttpServlet {
 			List<OrdersModels> listOrdered = orderService.findAllOrderByUserAndOrderStatus(cus.getCustomerId(), "Save");
 			List<OrdersModels> listOrderDelivering = orderService.findAllOrderByUserAndOrderStatus(cus.getCustomerId(), "Đã giao cho shipper");
 			List<OrdersModels> listOrderComplete = orderService.findAllOrderByUserAndOrderStatus(cus.getCustomerId(), "Đã giao khách hàng");
+			List<OrdersModels> listordersave = orderService.findAllOrderByUserAndOrderStatus(cus.getCustomerId(), "Chưa giao cho shipper");
 			req.setAttribute("listorder", listOrder);
 			req.setAttribute("listordered", listOrdered);
 			req.setAttribute("listdelivering", listOrderDelivering);
 			req.setAttribute("listcomplete", listOrderComplete);
+			req.setAttribute("listordersave", listordersave);
 			
 			req.getRequestDispatcher("/views/user/inforuser_cart/mypurchase.jsp").forward(req, resp);
 		}

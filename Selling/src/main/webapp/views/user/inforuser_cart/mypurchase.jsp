@@ -1,5 +1,6 @@
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> -->
+<%@ include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,21 +80,13 @@
 							type="button" role="tab" aria-controls="pills-complete"
 							aria-selected="false">Hoàn thành</button>
 					</li>
-
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="pills-disabled-tab"
-							data-bs-toggle="pill" data-bs-target="#pills-disabled"
-							type="button" role="tab" aria-controls="pills-disabled"
-							aria-selected="false">Đã Hủy</button>
-					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="pills-return-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-return"
 							type="button" role="tab" aria-controls="pills-return"
-							aria-selected="false">Hoàn lại tiền</button>
+							aria-selected="false">Chờ lên đơn</button>
 					</li>
 				</ul>
-
 
 				<div class="tab-content" id="pills-tabContent">
 					<div class="tab-pane fade show active" id="pills-home"
@@ -124,18 +117,20 @@
 							</div>
 						</div>
 						<div style="margin-top: 10px" class="parent list-iteam">
-							<div class="d-flex align-items-center mb-5">
+							<c:forEach var="i" items="${listorder }">
+								<div class="d-flex align-items-center mb-5">
 								<div class="flex-shrink-0">
 									<img
-										src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42519%2F42519.png%3Fversion%3D1605800700&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+										src="${i.orderItems.get(0).product.imageURL }"
 										class="img-fluid" style="width: 150px;"
 										alt="Generic placeholder image">
 								</div>
 								<div class="flex-grow-1 ms-3">
-									<h5 class="text-primary">Rose Nectar Hand & Body Wash</h5>
-									<h6 style="color: #9e9e9e;">Số lượng: 2</h6>
+									<h5 class="text-primary">Mã đơn hàng: ${i.orderID }</h5>
+									<h6 style="color: #9e9e9e;">Khách hàng: ${i.customer.customerName }</h6>
 									<div class="d-flex align-items-center">
-										<p class="fw-bold mb-0 me-5 pe-3">Tổng: 789$</p>
+										<p class="fw-bold mb-0 me-5 pe-3">Tổng giá trị đơn hàng: ${i.orderValue }VNĐ</p>
+										<p class="fw-bold mb-0 me-5 pe-3">Trạng thái đơn hàng: ${i.orderStatus }</p>
 									</div>
 								</div>
 								<div class=" child ms-auto d-flex">
@@ -147,9 +142,11 @@
 										lại</button>
 								</div>
 							</div>
+							</c:forEach>
 						</div>
 
 					</div>
+					
 					<div class="tab-pane fade" id="pills-paied" role="tabpanel"
 						aria-labelledby="pills-paied-tab" tabindex="0">
 						<div class="search">
@@ -178,27 +175,37 @@
 							</div>
 						</div>
 						<div style="margin-top: 10px" class="parent list-iteam">
-							<div class="d-flex align-items-center mb-5">
+							<c:forEach var="i" items="${listorderpaid }">
+								<div class="d-flex align-items-center mb-5">
 								<div class="flex-shrink-0">
 									<img
-										src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42519%2F42519.png%3Fversion%3D1605800700&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+										src="${i.orderItems.get(0).product.imageURL }"
 										class="img-fluid" style="width: 150px;"
 										alt="Generic placeholder image">
 								</div>
 								<div class="flex-grow-1 ms-3">
-									<h5 class="text-primary">Rose Nectar Hand & Body Wash</h5>
-									<h6 style="color: #9e9e9e;">Số lượng: 2</h6>
+									<h5 class="text-primary">Mã đơn hàng: ${i.orderId }</h5>
+									<h6 style="color: #9e9e9e;">Khách hàng: ${i.customer.customerName }</h6>
 									<div class="d-flex align-items-center">
-										<p class="fw-bold mb-0 me-5 pe-3">Tổng: 789$</p>
+										<p class="fw-bold mb-0 me-5 pe-3">Tổng giá trị đơn hàng: ${i.orderValue }VNĐ</p>
 									</div>
 								</div>
 								<div class=" child ms-auto d-flex">
 									<button style="margin-right: 20px" type="button"
+										class="btn btn-success btn-sm">Đánh Giá</button>
+									<button style="margin-right: 20px" type="button"
 										class="btn btn-primary btn-sm">Trợ giúp</button>
+									<button type="button" class="btn btn-danger btn-sm">Mua
+										lại</button>
 								</div>
 							</div>
+							</c:forEach>
 						</div>
 					</div>
+					
+
+					
+					
 					<div class="tab-pane fade" id="pills-give" role="tabpanel"
 						aria-labelledby="pills-give-tab" tabindex="0">
 						<div class="search">
@@ -227,18 +234,19 @@
 							</div>
 						</div>
 						<div style="margin-top: 10px" class="parent list-iteam">
-							<div class="d-flex align-items-center mb-5">
+							<c:forEach var="i" items="${listorderdelivering }">
+								<div class="d-flex align-items-center mb-5">
 								<div class="flex-shrink-0">
 									<img
-										src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42519%2F42519.png%3Fversion%3D1605800700&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+										src="${i.orderItems.get(0).product.imageURL }"
 										class="img-fluid" style="width: 150px;"
 										alt="Generic placeholder image">
 								</div>
 								<div class="flex-grow-1 ms-3">
-									<h5 class="text-primary">Rose Nectar Hand & Body Wash</h5>
-									<h6 style="color: #9e9e9e;">Số lượng: 2</h6>
+									<h5 class="text-primary">Mã đơn hàng: ${i.orderId }</h5>
+									<h6 style="color: #9e9e9e;">Khách hàng: ${i.customer.customerName }</h6>
 									<div class="d-flex align-items-center">
-										<p class="fw-bold mb-0 me-5 pe-3">Tổng: 789$</p>
+										<p class="fw-bold mb-0 me-5 pe-3">Tổng giá trị đơn hàng: ${i.orderValue }VNĐ</p>
 									</div>
 								</div>
 								<div class=" child ms-auto d-flex">
@@ -250,84 +258,10 @@
 										lại</button>
 								</div>
 							</div>
-						</div>
-						<div style="margin-top: 10px" class="parent list-iteam">
-							<div class="d-flex align-items-center mb-5">
-								<div class="flex-shrink-0">
-									<img
-										src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F40788%2F40788.png%3Fversion%3D1643101200&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
-										class="img-fluid" style="width: 150px;"
-										alt="Generic placeholder image">
-								</div>
-								<div class="flex-grow-1 ms-3">
-									<h5 class="text-primary">Nuit Eau de Parfum for her</h5>
-									<h6 style="color: #9e9e9e;">Số lượng: 1</h6>
-									<div class="d-flex align-items-center">
-										<p class="fw-bold mb-0 me-5 pe-3">Tổng: 69$</p>
-									</div>
-								</div>
-								<div class=" child ms-auto d-flex">
-									<button style="margin-right: 20px" type="button"
-										class="btn btn-success btn-sm">Đánh Giá</button>
-									<button style="margin-right: 20px" type="button"
-										class="btn btn-primary btn-sm">Trợ giúp</button>
-									<button type="button" class="btn btn-danger btn-sm">Mua
-										lại</button>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="pills-disabled" role="tabpanel"
-						aria-labelledby="pills-disabled-tab" tabindex="0">
-						<div class="search">
-							<div class="row justify-content-center">
-								<div class="col-30 col-md-30 col-lg-15">
-									<form class="card card-sm">
-										<div class="card-body row no-gutters align-items-center">
-											<div class="col-auto">
-												<i class="fas fa-search h4 text-body"></i>
-											</div>
-											<!--end of col-->
-											<div class="col-md">
-												<input class="form-control" type="search"
-													placeholder="Nhập đơn hàng bạn cần tìm">
-											</div>
-											<!--end of col-->
-											<div class="col-auto">
-												<button class="btn btn-success" type="submit">Tìm
-													kiếm</button>
-											</div>
-											<!--end of col-->
-										</div>
-									</form>
-								</div>
-								<!--end of col-->
-							</div>
-						</div>
-						<div style="margin-top: 10px" class="parent list-iteam">
-							<div class="d-flex align-items-center mb-5">
-								<div class="flex-shrink-0">
-									<img
-										src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42519%2F42519.png%3Fversion%3D1605800700&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
-										class="img-fluid" style="width: 150px;"
-										alt="Generic placeholder image">
-								</div>
-								<div class="flex-grow-1 ms-3">
-									<h5 class="text-primary">Rose Nectar Hand & Body Wash</h5>
-									<h6 style="color: #9e9e9e;">Số lượng: 2</h6>
-									<div class="d-flex align-items-center">
-										<p class="fw-bold mb-0 me-5 pe-3">Tổng: 789$</p>
-									</div>
-								</div>
-								<div class=" child ms-auto d-flex">
-									<button style="margin-right: 20px" type="button"
-										class="btn btn-primary btn-sm">Trợ giúp</button>
-									<button type="button" class="btn btn-danger btn-sm">Mua
-										lại</button>
-								</div>
-							</div>
-						</div>
-					</div>
+					
 					<div class="tab-pane fade" id="pills-complete" role="tabpanel"
 						aria-labelledby="pills-complete-tab" tabindex="0">
 						<div class="search">
@@ -356,18 +290,19 @@
 							</div>
 						</div>
 						<div style="margin-top: 10px" class="parent list-iteam">
-							<div class="d-flex align-items-center mb-5">
+							<c:forEach var="i" items="${listordercomplete }">
+								<div class="d-flex align-items-center mb-5">
 								<div class="flex-shrink-0">
 									<img
-										src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42519%2F42519.png%3Fversion%3D1605800700&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+										src="${i.orderItems.get(0).product.imageURL }"
 										class="img-fluid" style="width: 150px;"
 										alt="Generic placeholder image">
 								</div>
 								<div class="flex-grow-1 ms-3">
-									<h5 class="text-primary">Rose Nectar Hand & Body Wash</h5>
-									<h6 style="color: #9e9e9e;">Số lượng: 2</h6>
+									<h5 class="text-primary">Mã đơn hàng: ${i.orderId }</h5>
+									<h6 style="color: #9e9e9e;">Khách hàng: ${i.customer.customerName }</h6>
 									<div class="d-flex align-items-center">
-										<p class="fw-bold mb-0 me-5 pe-3">Tổng: 789$</p>
+										<p class="fw-bold mb-0 me-5 pe-3">Tổng giá trị đơn hàng: ${i.orderValue }VNĐ</p>
 									</div>
 								</div>
 								<div class=" child ms-auto d-flex">
@@ -379,6 +314,7 @@
 										lại</button>
 								</div>
 							</div>
+							</c:forEach>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="pills-return" role="tabpanel"
@@ -409,27 +345,32 @@
 							</div>
 						</div>
 						<div style="margin-top: 10px" class="parent list-iteam">
-							<div class="d-flex align-items-center mb-5">
+							<c:forEach var="i" items="${listordersave }">
+								<div class="d-flex align-items-center mb-5">
 								<div class="flex-shrink-0">
 									<img
-										src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2F42519%2F42519.png%3Fversion%3D1605800700&w=720&bc=%23f5f5f5&ib=%23f5f5f5&h=720&q=70"
+										src="${i.orderItems.get(0).product.imageURL }"
 										class="img-fluid" style="width: 150px;"
 										alt="Generic placeholder image">
 								</div>
 								<div class="flex-grow-1 ms-3">
-									<h5 class="text-primary">Rose Nectar Hand & Body Wash</h5>
-									<h6 style="color: #9e9e9e;">Số lượng: 2</h6>
+									<h5 class="text-primary">Mã đơn hàng: ${i.orderID }</h5>
+									<h6 style="color: #9e9e9e;">Khách hàng: ${i.customer.customerName }</h6>
 									<div class="d-flex align-items-center">
-										<p class="fw-bold mb-0 me-5 pe-3">Tổng: 789$</p>
+										<p class="fw-bold mb-0 me-5 pe-3">Tổng giá trị đơn hàng: ${i.orderValue }VNĐ</p>
+										<p class="fw-bold mb-0 me-5 pe-3">Trạng thái đơn hàng: ${i.orderStatus }</p>
 									</div>
 								</div>
 								<div class=" child ms-auto d-flex">
+									<button style="margin-right: 20px" type="button"
+										class="btn btn-success btn-sm">Đánh Giá</button>
 									<button style="margin-right: 20px" type="button"
 										class="btn btn-primary btn-sm">Trợ giúp</button>
 									<button type="button" class="btn btn-danger btn-sm">Mua
 										lại</button>
 								</div>
 							</div>
+							</c:forEach>
 						</div>
 					</div>
 
