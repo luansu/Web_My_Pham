@@ -27,7 +27,7 @@ public interface IOrderService {
 	
 	List<OrdersModels> canceledOrder(int id);
 
-	double totalPriceProductSell();
+	long totalPriceProductSell();
 	List<OrdersItemModels> getOrderItems(int id);
 	
 	int countOrderRequest();

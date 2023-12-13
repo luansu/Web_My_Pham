@@ -66,7 +66,7 @@ public class OrderServiceImpl implements IOrderService {
 	}
 
 	@Override
-	public double totalPriceProductSell() {
+	public long totalPriceProductSell() {
 		return orderDAO.totalPriceProductSell();
 	}
 

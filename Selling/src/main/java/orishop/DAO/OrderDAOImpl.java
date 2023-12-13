@@ -178,7 +178,7 @@ public class OrderDAOImpl implements IOrderDAO{
 	}
 
 	@Override
-	public double totalPriceProductSell() {
+	public long totalPriceProductSell() {
 		String sql = "select sum(totalPrice) as erning from ORDER_ITEM";
 		try {
 			new DBConnectionSQLServer();
@@ -186,12 +186,12 @@ public class OrderDAOImpl implements IOrderDAO{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				return rs.getDouble("erning");
+				return rs.getLong("erning");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0.0;
+		return 0;
 	}
 
 	@Override

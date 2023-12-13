@@ -120,8 +120,8 @@
 									<div class="col mr-2">
 										<div
 											class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-											Tổng Đơn Hàng</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">${allcart}
+											Tổng Giá Trị Đơn Hàng</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${totalearning}
 											VNĐ</div>
 									</div>
 									<div class="col-auto">

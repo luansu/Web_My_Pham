@@ -26,8 +26,6 @@
 	crossorigin="anonymous" />
 </head>
 <body>
-
-
 	<div class="d-flex mt-4">
 		<div style="margin-left: 50px;margin-right: 50px;border-right: 1px solid #b7bbbf;" class="col-2">
 			<ul
