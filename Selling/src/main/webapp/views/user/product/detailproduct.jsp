@@ -162,13 +162,11 @@
 						</div>
 						<h3 style="padding: 20px 0 20px 0;">${p.price}</h3>
 						<form action="insertCartItem" method="post">
-							<div class="cart-item align-items-between row">
-								<label for="form1" class="col-auto">Số lượng: </label>
-								<div class="quantity col">
-
-									<input id="form1" min="0" name="quantity" type="number"
-										value="1" class="form-control text-center" />
-
+							<div class="cart-item align-items-center row">
+							<label for="form1" class="col-auto">Số lượng: </label>
+								<div class="quantity col-2 p-1">
+									<input id="form1" min="0" name="quantity"
+										value="1" class="form-control text-center mx-auto" style="width: 3rem; padding: 0;"/>
 								</div>
 								<button type="submit" class="add-to-cart col ms-3">
 									Thêm vào giỏ hàng</button>
