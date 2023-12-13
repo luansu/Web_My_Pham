@@ -24,13 +24,7 @@
 
 	<!-- content -->
 	<div class="container">
-		<div class="user__list">
-			<div class="mb-3 user__id">
-				<img
-					src="https://down-vn.img.susercontent.com/file/a9455e3e363b43ff11f546fd2332bd39_tn"
-					alt="ảnh hồ sơ">
-				<p>lananh113388</p>
-			</div>
+		<div class="user__list" style="margin-top: 120px;">
 			<ul class="list-group">
 				<a style="text-decoration: none;" href="editInfor">
 					<li
