@@ -24,25 +24,26 @@
 		rel="stylesheet" type="text/css">
 	<!-- content -->
 	<div class="container">
-		<div class="user__list" style="margin-top: 150px;">
+		<div class="user__list" style="margin-top: 50px;">
 			<ul class="list-group">
-				<!-- Default dropend button -->
-				<div class="btn-group dropend">
-					<li type="button"
-						class="list-group-item list-group-item-action list-group-item-primary"
-						data-bs-toggle="dropdown" aria-expanded="false"><i
+				<a style="text-decoration: none;" href="editInfor">
+					<li
+					class="list-group-item list-group-item-action list-group-item-primary"><i
 						class="fas fa-user"></i>Tài khoản của tôi</li>
-				</div>
-
+				</a>
+				<a style="text-decoration: none;" href="mypurchase">
 				<li
 					class="list-group-item list-group-item-action list-group-item-secondary"><i
 					class="fas fa-shopping-cart"></i>Đơn mua</li>
+				</a>
+
 				<li
 					class="list-group-item list-group-item-action list-group-item-success"><i
 					class="fas fa-bell"></i> Thông báo</li>
-				<li
+
+				<a style="text-decoration: none;" href="findCartByCartID"><li
 					class="list-group-item list-group-item-action list-group-item-primary"><i
-					class="fas fa-gift"></i>Giỏ hàng</li>
+						class="fas fa-gift"></i>Giỏ hàng</li> </a>
 				<li
 					class="list-group-item list-group-item-action list-group-item-danger"><i
 					class="fas fa-gift"></i>Kho Voucher</li>

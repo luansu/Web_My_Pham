@@ -24,30 +24,26 @@
 	<!-- content -->
 	<div class="container">
 		<div class="user__list">
-			<div class="mb-3 user__id">
-				<img
-					src="https://down-vn.img.susercontent.com/file/a9455e3e363b43ff11f546fd2332bd39_tn"
-					alt="ảnh hồ sơ">
-				<p>lananh113388</p>
-			</div>
-			<ul class="list-group">
-				<!-- Default dropend button -->
-				<div class="btn-group dropend">
-					<li type="button"
-						class="list-group-item list-group-item-action list-group-item-primary"
-						data-bs-toggle="dropdown" aria-expanded="false"><i
-						class="fas fa-user"></i>Tài khoản của tôi</li>
-				</div>
 
+			<ul class="list-group">
+				<a style="text-decoration: none;" href="editInfor">
+					<li
+					class="list-group-item list-group-item-action list-group-item-primary"><i
+						class="fas fa-user"></i>Tài khoản của tôi</li>
+				</a>
+				<a style="text-decoration: none;" href="mypurchase">
 				<li
 					class="list-group-item list-group-item-action list-group-item-secondary"><i
 					class="fas fa-shopping-cart"></i>Đơn mua</li>
+				</a>
+
 				<li
 					class="list-group-item list-group-item-action list-group-item-success"><i
 					class="fas fa-bell"></i> Thông báo</li>
-				<li
+
+				<a style="text-decoration: none;" href="findCartByCartID"><li
 					class="list-group-item list-group-item-action list-group-item-primary"><i
-					class="fas fa-gift"></i>Giỏ hàng</li>
+						class="fas fa-gift"></i>Giỏ hàng</li> </a>
 				<li
 					class="list-group-item list-group-item-action list-group-item-danger"><i
 					class="fas fa-gift"></i>Kho Voucher</li>

@@ -50,15 +50,11 @@ public class UserHomeControllers extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI();
-		if(url.contains("user/home")) {
-			
+		if(url.contains("user/home")) {		
 			getHome(req, resp);
 		} else if (url.contains("user/editInfor")) {
 			List<CustomerModels> listcustomer = cusService.findAll();
 			req.setAttribute("listcustomer", listcustomer);
-			int cusID = Integer.valueOf(req.getParameter("id"));
-			CustomerModels customer = cusService.findOne(cusID);
-			req.setAttribute("customer", customer);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/inforuser.jsp");
 			rd.forward(req, resp);
 		}

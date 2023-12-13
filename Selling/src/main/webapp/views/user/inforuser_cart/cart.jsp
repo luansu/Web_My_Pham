@@ -32,10 +32,12 @@
 					class="list-group-item list-group-item-action list-group-item-primary"><i
 						class="fas fa-user"></i>Tài khoản của tôi</li>
 				</a>
-
+				<a style="text-decoration: none;" href="mypurchase">
 				<li
 					class="list-group-item list-group-item-action list-group-item-secondary"><i
 					class="fas fa-shopping-cart"></i>Đơn mua</li>
+				</a>
+
 				<li
 					class="list-group-item list-group-item-action list-group-item-success"><i
 					class="fas fa-bell"></i> Thông báo</li>
