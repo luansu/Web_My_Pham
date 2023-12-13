@@ -23,7 +23,7 @@
 		rel="stylesheet" type="text/css">
 	<!-- content -->
 	<div class="container">
-		<div class="user__list">
+		<div class="user__list" style="margin-top: 35px;">
 
 			<ul class="list-group">
 				<a style="text-decoration: none;" href="editInfor">
