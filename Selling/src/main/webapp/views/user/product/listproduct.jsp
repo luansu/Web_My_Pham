@@ -64,7 +64,7 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 			<div class="row justify-content-center">
 				<c:forEach var="i" items="${list}">
 					<div class="card col-md-3"">
-						<a href="product/detailProduct?pid=${i.productId}"> <img
+						<a href="detailProduct?pid=${i.productId}"> <img
 							src="${i.imageURL}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<div class="d-flex justify-content-between align-items-center">
