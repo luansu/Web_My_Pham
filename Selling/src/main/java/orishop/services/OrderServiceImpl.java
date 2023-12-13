@@ -66,7 +66,7 @@ public class OrderServiceImpl implements IOrderService {
 	}
 
 	@Override
-	public double totalPriceProductSell() {
+	public long totalPriceProductSell() {
 		return orderDAO.totalPriceProductSell();
 	}
 
@@ -108,7 +108,7 @@ public class OrderServiceImpl implements IOrderService {
 		List<OrdersModels> listOrder = findAllOrders();
 		List<OrdersModels> result = new ArrayList<OrdersModels>();
 		for (OrdersModels order: listOrder) {
-			if(order.getCustomerID() == customerId & order.getOrderStatus() == orderStatus) {
+			if(order.getCustomerID() == customerId & order.getOrderStatus().contains(orderStatus)) {
 				result.add(order);
 			}
 		}
@@ -127,8 +127,23 @@ public class OrderServiceImpl implements IOrderService {
 		return result;
 	}
 	@Override
-	public void updateOrder(double totalPriceOrder, String deliveryMethod) {
-		orderDAO.updateOrder(totalPriceOrder, deliveryMethod);
+	public void updateOrder(double totalPriceOrder, String deliveryMethod, String paymentStatus) {
+		orderDAO.updateOrder(totalPriceOrder, deliveryMethod, paymentStatus);
 		
+	}
+
+	@Override
+	public void update(OrdersModels model) {
+		orderDAO.update(model);
+	}
+
+	@Override
+	public OrdersModels findOne(int orderId) {
+		return orderDAO.findOne(orderId);
+	}
+
+	@Override
+	public void updateOrderPaymentStatus(int orderId, String paymentStatus) {
+		orderDAO.updateOrderPaymentStatus(orderId, paymentStatus);
 	}
 }

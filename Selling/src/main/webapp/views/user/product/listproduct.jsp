@@ -6,14 +6,19 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 <html>
 
 <head>
-
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link
+	href="${pageContext.request.contextPath}/templates/user/css/product/style.css"
+	rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="${pageContext.request.contextPath}/templates/user/css/product/style.css" rel="stylesheet" type="text/css">
 	<nav aria-label="breadcrumb"
 		style="padding: 25px; padding-left: 100px; align-items: center;">
 		<ol class="breadcrumb">
@@ -21,7 +26,7 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 			<li class="breadcrumb-item"><a href="#">ListProduct</a></li>
 		</ol>
 	</nav>
-	
+
 	<!-- FILTER PRODUCTS -->
 	<div class="dropdown-center"
 		style="display: flex; justify-content: end; margin-right: 20px;">
@@ -58,24 +63,27 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 		<div style="margin: 20px;">
 			<div class="row justify-content-center">
 				<c:forEach var="i" items="${list}">
-					<div class="card col-md-2" style="margin-left: 4.75rem;">
+					<div class="card col-md-3"">
 						<a href="detailProduct?pid=${i.productId}"> <img
 							src="${i.imageURL}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="ratings">
-									<c:forEach begin="1" end="${ratingService.averageRating(i.productId) }">
-									<i class="fa fa-star rating-color"></i>
+									<c:forEach begin="1"
+										end="${ratingService.averageRating(i.productId) }">
+										<i class="fa fa-star rating-color"></i>
 									</c:forEach>
-									<c:forEach begin="1" end="${5-ratingService.averageRating(i.productId) }">
-									<i class="fa fa-star"></i>
+									<c:forEach begin="1"
+										end="${5-ratingService.averageRating(i.productId) }">
+										<i class="fa fa-star"></i>
 									</c:forEach>
 								</div>
-								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()} Reviews</h5>
+								<h5 class="review-count">${ratingService.findByProduct(i.productId).size()}
+									Reviews</h5>
 							</div>
-							<h5 class="card-title">${i.productName}</h5>
-							<p class="card-text">${i.description}</p>
-							<p class="price">${i.price}</p>
+							<h5 class="card-title card__Name">${i.productName}</h5>
+							<p class="card-text card__Text">${i.description}</p>
+							<p class="price card__Price">${i.price}</p>
 						</div>
 					</div>
 				</c:forEach>
@@ -83,62 +91,56 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 		</div>
 	</ul>
 	<div class="row g-0 align-items-center pb-4">
-			<div class="col-sm-6">
-				<div>
-					<p class="mb-sm-0">Hiển thị 1 đến 10 trong 12 mục</p>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="float-sm-end">
-					<ul class="pagination mb-sm-0">
-						<c:if test="${page<=1 }">
-							<li class="page-item disabled"><a
-								href="listProduct?page=${page - 1}" class="page-link"><i
-									class="mdi mdi-chevron-left"></i></a></li>
+		<div class="col-sm-6">
+			<div class="float-sm-end">
+				<ul class="pagination mb-sm-0">
+					<c:if test="${page<=1 }">
+						<li class="page-item disabled"><a
+							href="listProduct?page=${page - 1}" class="page-link"><i
+								class="mdi mdi-chevron-left"></i></a></li>
+					</c:if>
+					<c:if test="${page>1 }">
+						<li class="page-item"><a href="listProduct?page=${page - 1}"
+							class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+					</c:if>
+					<c:forEach var="i" begin="1" end="${num }">
+						<c:if test="${i==page }">
+							<li class="page-item active"><a href="listProduct?page=${i}"
+								class="page-link">${i }</a></li>
 						</c:if>
-						<c:if test="${page>1 }">
-							<li class="page-item"><a href="listProduct?page=${page - 1}"
-								class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
+						<c:if test="${i!=page }">
+							<li class="page-item"><a href="listProduct?page=${i}"
+								class="page-link">${i }</a></li>
 						</c:if>
-						<c:forEach var="i" begin="1" end="${num }">
-							<c:if test="${i==page }">
-								<li class="page-item active"><a href="listProduct?page=${i}"
-									class="page-link">${i }</a></li>
-							</c:if>
-							<c:if test="${i!=page }">
-								<li class="page-item"><a href="listProduct?page=${i}"
-									class="page-link">${i }</a></li>
-							</c:if>
-						</c:forEach>
-						<c:if test="${page<num}">
-							<li class="page-item"><a href="listProduct?page=${page + 1}"
-								class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
-						</c:if>
-						<c:if test="${page>=num}">
-							<li class="page-item disabled"><a
-								href="listProduct?page=${page + 1}" class="page-link"><i
-									class="mdi mdi-chevron-right"></i></a></li>
-						</c:if>
+					</c:forEach>
+					<c:if test="${page<num}">
+						<li class="page-item"><a href="listProduct?page=${page + 1}"
+							class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
+					</c:if>
+					<c:if test="${page>=num}">
+						<li class="page-item disabled"><a
+							href="listProduct?page=${page + 1}" class="page-link"><i
+								class="mdi mdi-chevron-right"></i></a></li>
+					</c:if>
 
-					</ul>
-				</div>
+				</ul>
 			</div>
 		</div>
-		</div>
-	<div class="button-container"
-		style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px">
-		<button type="button" class="btn btn-primary">Xem thêm</button>
+	</div>
 	</div>
 	<!-- NAVIGATION BAR END -->
 
 
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>

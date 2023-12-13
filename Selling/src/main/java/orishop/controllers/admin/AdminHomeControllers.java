@@ -22,6 +22,8 @@ import orishop.services.EmployeeServiceImp;
 import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
+import orishop.services.IOrderService;
+import orishop.services.OrderServiceImpl;
 
 @WebServlet(urlPatterns = {"/admin/home", "/admin/listoder"})
 
@@ -29,13 +31,15 @@ public class AdminHomeControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
 	IEmployeeService empService = new EmployeeServiceImp();
 	ICustomerService cusService = new CustomerServiceImp();
+	IOrderService orderService = new OrderServiceImpl();
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI();
 		if(url.contains("admin/home")) {
-			findAllShipper(req, resp);
+			//findAllShipper(req, resp);
+			getHomeAdmin(req, resp);
 		}
 	}
 	@Override
@@ -88,8 +92,18 @@ public class AdminHomeControllers extends HttpServlet {
 		
 	
 	//region order
-	private void findAllOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	private void getHomeAdmin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		long earningmonthly = orderService.totalRevenueByMonth(1);
+		long earningannual = orderService.totalRevenueByYear(1);
+		long totalearning = orderService.totalPriceProductSell();
+		int orderrequest = orderService.countOrderRequest();
 		
+		req.setAttribute("earningmonthly", earningmonthly);
+		req.setAttribute("earningannual", earningannual);
+		req.setAttribute("totalearning", totalearning);
+		req.setAttribute("orderrequest", orderrequest);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
+		rd.forward(req, resp);
 	}
 	//endregion	
 }

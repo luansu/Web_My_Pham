@@ -23,23 +23,19 @@
 <body>
 
 	<div class="container">
-		<div class="user__list">
-			<div class="mb-3 user__id">
-				<img
-					src="https://down-vn.img.susercontent.com/file/a9455e3e363b43ff11f546fd2332bd39_tn"
-					alt="ảnh hồ sơ">
-				<p>lananh113388</p>
-			</div>
+		<div class="user__list" style="margin-top: 35px;">
 			<ul class="list-group">
 				<a style="text-decoration: none;" href="editInfor">
 					<li
 					class="list-group-item list-group-item-action list-group-item-primary"><i
 						class="fas fa-user"></i>Tài khoản của tôi</li>
 				</a>
-
+				<a style="text-decoration: none;" href="mypurchase">
 				<li
 					class="list-group-item list-group-item-action list-group-item-secondary"><i
 					class="fas fa-shopping-cart"></i>Đơn mua</li>
+				</a>
+
 				<li
 					class="list-group-item list-group-item-action list-group-item-success"><i
 					class="fas fa-bell"></i> Thông báo</li>
@@ -92,13 +88,15 @@
 												</div>
 												<div
 													class="col-md-3 col-lg-3 col-xl-3 d-flex align-items-center">
-													<a
-														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
-														<button class="btn btn-link px-2"
+													<c:set var="decreaseDisabled" value="${i.quantity eq 1}" />
+														<button
+															class="btn btn-link px-2 ${decreaseDisabled ? 'disabled' : ''}"
+															${decreaseDisabled ? 'disabled' : ''}
 															onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-															<i class="fas fa-minus"></i>
+															<a	href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity-1}&totalPrice=${i.totalPrice}'/>">
+														<i class="fas fa-minus"></i></a>
 														</button>
-													</a> <input id="form1" min="0" name="quantity"
+													 <input id="form1" min="0" name="quantity"
 														value="${i.quantity}" class="form-control text-center"
 														readonly="readonly" /> <a
 														href="<c:url value='/user/updateCartItem?cartID=${cartID}&productID=${i.productID}&quantity=${i.quantity+1}&totalPrice=${i.totalPrice}'/>">
@@ -135,7 +133,7 @@
 							<div class="row g-0 align-items-center pb-4">
 								<div class="col-sm-6">
 									<div>
-										<p class="mb-sm-0">Hiển thị 1 đến 10 trong 57 mục</p>
+										<p class="mb-sm-0"></p>
 									</div>
 								</div>
 								<div class="col-sm-6">

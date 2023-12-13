@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Seller</title>
+<title>Admin</title>
 <!--FONTAWESOME-->
 <link
 	href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css"
@@ -26,64 +26,53 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+<script src="js/admin.js"></script>
 </head>
 <body>
-	<%@ include file="/common/manager/header.jsp"%>
-	<div class="container-fluid">
-		<!--Menu-->
-		<div class="row">
-			<div class="col-lg-2 border-end">
-				<div class="card mt-4">
-					<div class="card-header" data-bs-toggle="collapse"
-						href="#collapseExample1">Quản lý đơn hàng</div>
-					<div class="collapse" id="collapseExample1">
-						<div class="card-body">
-							<div class="list-group">
-								<a href="listorder" class="list-group-item list-group-item-action">Tất
-									cả</a> <a href="#" class="list-group-item list-group-item-action">Đơn
-									hủy</a> <a href="#" class="list-group-item list-group-item-action">Hoàn
-									tiền</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card mt-3">
-					<div class="card-header" data-bs-toggle="collapse"
-						href="#collapseExample2">Quản lý sản phẩm</div>
-					<div class="collapse" id="collapseExample2">
-						<div class="card-body">
-							<div class="list-group">
-								<a href="listproduct" class="list-group-item list-group-item-action">Tất
-									cả</a> 
-									<a href='<c:url value="/seller/insertpro"/>' class="list-group-item list-group-item-action">Thêm
-									sản phẩm</a>
-									 <a href="#"
-									class="list-group-item list-group-item-action">Sản phẩm và
-									vi phạm</a> 
-									<a href="#"
-									class="list-group-item list-group-item-action">Cài đặt sản
-									phẩm</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-9 mt-3">
-			
-				<div id="content"></div>
-				<!-- Page Heading -->
-				<div
-					class="d-sm-flex align-items-center justify-content-between mb-4">
-					<h1 class="h3 mb-0 text-gray-800">Doanh Thu</h1>
-					<a href="#"
-						class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-						class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-				</div>
 
+	<div class="d-flex mt-4">
+		<div
+			style="margin-left: 50px; margin-right: 50px; border-right: 1px solid #b7bbbf;"
+			class="col-2">
+			<ul
+				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+				id="menu">
+				<li class="nav-item"><a href="home"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fal fas fa-home" style="color: #7097db; font-size: 30px"></i>
+						<span class="d-none d-sm-inline" style="margin-left: 10px;">Trang
+							chủ</span>
+				</a></li>
+
+				<li><a href="listuser"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fal fas fa-users" style="color: #c77070; font-size: 30px"></i>
+						<span class="d-none d-sm-inline"
+						style="margin-left: 9px; color: #212529">Khách hàng</span>
+				</a></li>
+
+				<li><a href="listseller"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="far fas fa-user" style="color: #178254; font-size: 30px;"></i>
+						<span class="d-none d-sm-inline"
+						style="margin-left: 19px; color: #212529">Nhân Viên</span>
+				</a></li>
+
+				<li><a href="listshipper"
+					class="nav-link align-middle px-0 nav-menu"> <i
+						class="fal fas fa-shipping-fast"
+						style="color: #592731; font-size: 30px;"></i> <span
+						class="d-none d-sm-inline"
+						style="margin-left: 9px; color: #212529">Shipper</span>
+				</a></li>
+			</ul>
+		</div>
+		<div class="col-11">
+			<div class="col-lg-9 mt-3">
 				<!-- Content Row -->
 				<div class="row">
 
-					<!-- Earnings (Monthly) Card Example -->
+					<!-- thong ke-->
 					<div class="col-xl-3 col-md-6 mb-4">
 						<div class="card border-left-primary shadow h-100 py-2">
 							<div class="card-body">
@@ -91,8 +80,9 @@
 									<div class="col mr-2">
 										<div
 											class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-											Earnings (Monthly)</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningmonthly} VNĐ</div>
+											Doanh Thu Hàng Tháng</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningmonthly}
+											VNĐ</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -110,8 +100,9 @@
 									<div class="col mr-2">
 										<div
 											class="text-xs font-weight-bold text-success text-uppercase mb-1">
-											Earnings (Annual)</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningannual} VNĐ</div>
+											Doanh Thu Hàng Năm</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningannual}
+											VNĐ</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -123,28 +114,18 @@
 
 					<!-- Earnings (Monthly) Card Example -->
 					<div class="col-xl-3 col-md-6 mb-4">
-						<div class="card border-left-info shadow h-100 py-2">
+						<div class="card border-left-success shadow h-100 py-2">
 							<div class="card-body">
 								<div class="row no-gutters align-items-center">
 									<div class="col mr-2">
 										<div
-											class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-										</div>
-										<div class="row no-gutters align-items-center">
-											<div class="col-auto">
-												<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-											</div>
-											<div class="col">
-												<div class="progress progress-sm mr-2">
-													<div class="progress-bar bg-info" role="progressbar"
-														style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-											</div>
-										</div>
+											class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+											Tổng Giá Trị Đơn Hàng</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${totalearning}
+											VNĐ</div>
 									</div>
 									<div class="col-auto">
-										<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+										<i class="fas fa-box fa-2x text-gray-300"></i>
 									</div>
 								</div>
 							</div>
@@ -159,7 +140,7 @@
 									<div class="col mr-2">
 										<div
 											class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-											Pending Order</div>
+											Đang chuẩn bị hàng</div>
 										<div class="h5 mb-0 font-weight-bold text-gray-800">${orderrequest}</div>
 									</div>
 									<div class="col-auto">
@@ -330,9 +311,9 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
-	<%@ include file="/common/manager/footer.jsp"%>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -341,7 +322,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
 		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
 		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 	<script
 		src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

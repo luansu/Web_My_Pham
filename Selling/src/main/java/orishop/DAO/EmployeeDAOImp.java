@@ -115,18 +115,21 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			rs.next();
-            employee.setEmployeeId(rs.getInt("employeeId"));
-            employee.setEmployeeName(rs.getString("employeeName"));
-            employee.setBirthdate(rs.getDate("birthdate"));
-            employee.setGender(rs.getString("gender"));
-            employee.setAddress(rs.getString("address"));
-            employee.setPhone(rs.getString("phone"));
-            employee.setMail(rs.getString("mail"));
-            employee.setJob(rs.getString("job"));
-            employee.setAccountId(rs.getInt("accountId"));
-            employee.setActivityArea(rs.getString("activityArea"));
-            employee.setImageURL(rs.getString("imageURL"));
+			if(rs.next()) {
+	            employee.setEmployeeId(rs.getInt("employeeId"));
+	            employee.setEmployeeName(rs.getString("employeeName"));
+	            employee.setBirthdate(rs.getDate("birthdate"));
+	            employee.setGender(rs.getString("gender"));
+	            employee.setAddress(rs.getString("address"));
+	            employee.setPhone(rs.getString("phone"));
+	            employee.setMail(rs.getString("mail"));
+	            employee.setJob(rs.getString("job"));
+	            employee.setAccountId(rs.getInt("accountId"));
+	            employee.setActivityArea(rs.getString("activityArea"));
+	            employee.setImageURL(rs.getString("imageURL"));
+			} else {
+				return null;
+			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -135,12 +138,11 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 
 	@Override
 	public List<EmployeeModels> findShipper(String name) {
-		String sql = "SELECT * FROM Employee where job='Shipper' and employeeName=?";
+		String sql = "SELECT * FROM Employee where job='Shipper' and employeeName LIKE N'%" + name + "'";
 		List<EmployeeModels> listEmp = new ArrayList<EmployeeModels>();
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, name);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				EmployeeModels employee = new EmployeeModels();
@@ -274,6 +276,48 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 			e.printStackTrace();
 		}
 		return employee;
+	}
+
+	@Override
+	public boolean update(EmployeeModels employee) {
+		String sql = "UPDATE EMPLOYEE SET employeeName=?, birthdate=?, gender=?, address=?, phone=?, mail=?, job=?, accountId=?, activityArea=?, imageURL=? WHERE employeeId=?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, employee.getEmployeeName());
+			ps.setDate(2, new java.sql.Date(employee.getBirthdate().getTime()));
+			ps.setString(3, employee.getGender());
+			ps.setString(4, employee.getAddress());
+			ps.setString(5, employee.getPhone());
+			ps.setString(6, employee.getMail());
+			ps.setString(7, employee.getJob());
+			ps.setInt(8, employee.getAccountId());
+			ps.setString(9, employee.getActivityArea());
+			ps.setString(10, employee.getImageURL());
+			ps.setInt(11, employee.getEmployeeId());
+			ps.executeUpdate();
+			conn.close();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean delete(int employeeId) {
+		String sql = "DELETE FROM EMPLOYEE WHERE employeeId=?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, employeeId);
+			ps.executeUpdate();
+			conn.close();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }

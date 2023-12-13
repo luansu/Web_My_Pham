@@ -178,7 +178,7 @@ public class OrderDAOImpl implements IOrderDAO{
 	}
 
 	@Override
-	public double totalPriceProductSell() {
+	public long totalPriceProductSell() {
 		String sql = "select sum(totalPrice) as erning from ORDER_ITEM";
 		try {
 			new DBConnectionSQLServer();
@@ -186,12 +186,12 @@ public class OrderDAOImpl implements IOrderDAO{
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				return rs.getDouble("erning");
+				return rs.getLong("erning");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0.0;
+		return 0;
 	}
 
 	@Override
@@ -318,7 +318,7 @@ public class OrderDAOImpl implements IOrderDAO{
 	}
 
 	@Override
-	public void updateOrder(double totalPriceOrder, String deliveryMethod) {
+	public void updateOrder(double totalPriceOrder, String deliveryMethod, String paymentStatus) {
 		String sql = "update ORDERS set orderValue=?, paymentMethod=?, paymentStatus=?,deliveryMethod=? where orderId = ?";
 		try {
 
@@ -327,7 +327,7 @@ public class OrderDAOImpl implements IOrderDAO{
 			PreparedStatement ps = conn.prepareStatement(sql); //ném câu lệnh sql
 			ps.setDouble(1, totalPriceOrder);
 			ps.setString(2, "vnpay");
-			ps.setString(3, "paid");
+			ps.setString(3, paymentStatus);
 			ps.setString(4, deliveryMethod);
 			ps.setInt(5, orderDAO.findLatestOrderId());
 			ps.executeUpdate();
@@ -336,5 +336,83 @@ public class OrderDAOImpl implements IOrderDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void updateOrderPaymentStatus(int orderId, String paymentStatus) {
+		String sql = "update ORDERS set paymentStatus=? where orderId = ?";
+		try {
+
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW(); //ket noi CSDL
+			PreparedStatement ps = conn.prepareStatement(sql); //ném câu lệnh sql
+			ps.setString(1, paymentStatus);
+			ps.setInt(2, orderId);
+			ps.executeUpdate();
+			conn.close();
+         
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void update(OrdersModels model) {
+		String sql = "UPDATE ORDERS SET "
+                + "paymentStatus = ?, "
+                + "orderStatus = ?, "
+                + "paymentMethod = ?, "
+                + "deliveryMethod = ?, "
+                + "employeeId = ? "
+                + "WHERE orderId = ?";
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW(); //ket noi CSDL
+			PreparedStatement ps = conn.prepareStatement(sql); //ném câu lệnh sql
+			ps.setString(1, model.getPaymentStatus());
+			ps.setString(2, model.getOrderStatus());
+			ps.setString(3, model.getPaymentMethod());
+			ps.setString(4, model.getDeliveryMethod());
+			ps.setInt(5, model.getEmployeeId());
+			ps.setInt(6, model.getOrderID());
+			ps.executeUpdate();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public OrdersModels findOne(int orderId) {
+		String sql = "select * from orders where orderId=?";
+		OrdersModels model = new OrdersModels();
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, orderId);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				model.setOrderID(rs.getInt("orderId"));
+				model.setOrderValue(rs.getFloat("orderValue"));
+				model.setOrderDate(rs.getDate("orderDate"));
+				model.setCartID(rs.getInt("cartId"));
+				model.setCustomerID(rs.getInt("customerId"));
+				model.setPaymentStatus(rs.getString("paymentStatus"));
+				model.setOrderStatus(rs.getString("orderStatus"));
+				model.setPaymentMethod(rs.getString("paymentMethod"));
+				model.setDeliveryMethod(rs.getString("deliveryMethod"));
+				model.setEmployeeId(rs.getInt("employeeId"));
+				model.setCustomer(cusService.findOne(model.getCustomerID()));
+				model.setCart(cartService.findCartByCartID(model.getCartID()));
+				model.setShipper(empService.findShipper(model.getEmployeeId()));
+				model.setOrderItems(getOrderItems(model.getOrderID()));
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
 	}
 }

@@ -9,7 +9,9 @@ import orishop.models.OrdersModels;
 public interface IOrderService {
 	List<OrdersModels> findAllOrders();
 	void createOrder(OrdersModels model, int customerId, double totalPrice, List<CartItemModels> cartItems);
-	void updateOrder(double totalPriceOrder, String deliveryMethod);
+	void updateOrder(double totalPriceOrder, String deliveryMethod, String paymentStatus);
+	
+	void updateOrderPaymentStatus(int orderId, String paymentStatus);
 	
 	List<OrdersModels> findOrderByShipperId(int id);
 	
@@ -17,12 +19,15 @@ public interface IOrderService {
 	
 	List<OrdersModels> countOrderByShipperId(int employeeID);
 	
+	void update(OrdersModels model);
+	OrdersModels findOne(int orderId);
+	
 	List<OrdersModels> getOrderByOrderStatus(int shipperId, String orderStatus);
 	List<OrdersModels> getOrderByPaymentStatus(int shipperId, String paymentStatus);
 	
 	List<OrdersModels> canceledOrder(int id);
 
-	double totalPriceProductSell();
+	long totalPriceProductSell();
 	List<OrdersItemModels> getOrderItems(int id);
 	
 	int countOrderRequest();

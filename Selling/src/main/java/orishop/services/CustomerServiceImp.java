@@ -52,21 +52,17 @@ public class CustomerServiceImp implements ICustomerService{
 
 		cusDAO.editInfor(customer);
 	}
-
-	@Override
-	public CustomerModels editInfor(String customerID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public CustomerModels findOne(String parameter) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public List<CustomerModels> findCustomerByCustomerName (String customerName){
 		return cusDAO.findCustomerByCustomerName(customerName);
+	}
+
+	@Override
+	public boolean delete(int id) {
+		if (findOne(id)!=null) {
+			return cusDAO.delete(id);
+		}
+		return false;
 	}
 }

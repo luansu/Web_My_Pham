@@ -13,6 +13,9 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link
+	href="${pageContext.request.contextPath}/templates/user/css/product/style.css"
+	rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -21,7 +24,7 @@
 	padding-bottom: 20px;
 	border-radius: 10px;
 	overflow: hidden;
-	width: 310px;
+	width: 500px;
 }
 
 .quantity {
@@ -142,45 +145,31 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<div class="accordion" id="productDetailsAccordion">
+				<div class="accordion">
 					<h2>${p.productName}</h2>
 					<div>
-						<p class="review-count" style="margin-bottom: 0px;">12</p>
-						<div
-							class="product_detail_ratings d-flex justify-content-start align-items-start">
-							<div>
-								<i class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i
-									class="fa fa-star rating-color"></i> <i class="fa fa-star"></i>
-							</div>
-							<p style="margin-left: 4px;">Xem tất cả bình luận</p>
+						<p class="review-count" style="margin-bottom: 0px;">${ratingService.findByProduct(p.productId).size()}
+							Reviews</p>
+						<div class="ratings">
+							<c:forEach begin="1"
+								end="${ratingService.averageRating(p.productId) }">
+								<i class="fa fa-star rating-color"></i>
+							</c:forEach>
+							<c:forEach begin="1"
+								end="${5-ratingService.averageRating(p.productId) }">
+								<i class="fa fa-star"></i>
+							</c:forEach>
 						</div>
 						<h3 style="padding: 20px 0 20px 0;">${p.price}</h3>
 						<form action="insertCartItem" method="post">
-							<div class="cart-item align-items-between row">
-								<div class="quantity col">
-
-									<button class="btn btn-link px-2"
-										onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-										<i class="fas fa-minus"></i>
-									</button>
-
-
-									<input id="form1" min="0" name="quantity" type="number"
-										value="1" class="form-control text-center" />
-
-
-									<button class="btn btn-link px-2"
-										onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-										<i class="fas fa-plus"></i>
-									</button>
-
-
+							<div class="cart-item align-items-center row">
+							<label for="form1" class="col-auto">Số lượng: </label>
+								<div class="quantity col-2 p-1">
+									<input id="form1" min="0" name="quantity"
+										value="1" class="form-control text-center mx-auto" style="width: 3rem; padding: 0;"/>
 								</div>
 								<button type="submit" class="add-to-cart col ms-3">
 									Thêm vào giỏ hàng</button>
-
 
 							</div>
 						</form>
@@ -257,7 +246,85 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="centered-content" style="align-content: center;">
+		<h4>Đánh giá của sản phẩm</h4>
+	</div>
+	<div class="review-containers"
+		style="margin-left: 300px; margin-right: 300px">
+		<div class="review" style="margin: 10px auto; padding: 10px;">
+			<form action="review" method="post">
+				<div class="user-info">
+					<img
+						src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
+						alt="Profile" class="rounded-circle" style="width: 30px;">
+					<div class="name_star">
+						<h5 class="user-name">${customer.customerName }</h5>
+						<div class="star-rating" style="width: 100px">
+							<c:if
+								test="${ratingService.findOne(customer.customerId, p.productId) != null}">
+								<c:forEach begin="1"
+									end="${ratingService.findOne(customer.customerId, p.productId).rating }">
+									<span class="star">&#9733;</span>
+								</c:forEach>
+								<c:forEach begin="1"
+									end="${5 - ratingService.findOne(customer.customerId, p.productId).rating}">
+									<span class="star">&#9734;</span>
+								</c:forEach>
+							</c:if>
+							<c:if
+								test="${ratingService.findOne(customer.customerId, p.productId) == null}">
+								<input class="comment" rows="10"
+									style="height: 20px; width: 40px;" name="rating" type="number">
+							</c:if>
+						</div>
+					</div>
+					<p class="comment-time">${ratingService.findOne(customer.customerId, p.productId).reviewDate }</p>
+				</div>
+				<label for="comment"></label> <input class="comment" rows="10"
+					style="height: 100px; width: 400px"
+					placeholder="Nhập bình luận của bạn" required name="review"
+					value="${ratingService.findOne(customer.customerId, p.productId).review}">
+				<c:if
+					test="${ratingService.findOne(customer.customerId, p.productId) == null}">
+					<button type="submit">Gửi đánh giá</button>
+				</c:if>
+				<c:if
+					test="${ratingService.findOne(customer.customerId, p.productId) != null}">
+					<button type="submit">Sửa đánh giá</button>
+				</c:if>
+			</form>
+		</div>
+		<div class="review">
+			<c:forEach var="i"
+				items="${ratingService.findByProduct(p.productId) }">
+				<div class="user-comment"">
+					<div class="user-info">
+						<img
+							src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
+							alt="Profile" class="rounded-circle" style="width: 30px;">
+						<div class="name_star">
+							<h5 class="user-name">${i.customer.customerName }</h5>
+							<div class="star-rating">
+								<c:forEach begin="1" end="${i.rating }">
+									<span class="star">&#9733;</span>
+								</c:forEach>
+								<c:forEach begin="1" end="${5-i.rating }">
+									<span class="star">&#9734;</span>
+								</c:forEach>
+							</div>
+						</div>
+						<p class="comment-time">${i.reviewDate }</p>
+					</div>
+					<div class="comment-content">
+						<p class="comment">${i.review }</p>
+						<hr class="mb-4 divider"
+							style="height: 1px; background-color: #1266f1; opacity: 1;">
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -268,9 +335,19 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<!-- Template Main JS File -->
-	<script src="/main.js"></script>
+	<script>
+		const commentInput = document.querySelector('.comment');
 
+		commentInput.addEventListener('focus', function() {
+			this.removeAttribute('placeholder');
+		});
+
+		commentInput.addEventListener('blur', function() {
+			if (!this.value) {
+				this.setAttribute('placeholder', 'Nhập bình luận của bạn');
+			}
+		});
+	</script>
 </body>
 
 </html>

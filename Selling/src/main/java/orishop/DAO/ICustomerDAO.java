@@ -11,6 +11,7 @@ public interface ICustomerDAO {
 	public CustomerModels findCustomerByAccountID(int accountId);
 
 	void editInfor(CustomerModels model);
+	boolean delete(int id);
 
 	//CustomerModels findCustomerByCustomerID(int id);
 
