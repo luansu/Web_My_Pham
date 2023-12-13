@@ -196,5 +196,23 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
 		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
 		crossorigin="anonymous"></script>
+	<script>
+	    function updateOrder() {
+	        // Use AJAX to send a request to your server-side code
+	        var xhr = new XMLHttpRequest();
+	        xhr.open("POST", "${pageContext.request.contextPath}/user/updateorder", true);
+	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	        xhr.send();
+	
+	        // You can handle the response if needed
+	        xhr.onreadystatechange = function () {
+	            if (xhr.readyState == 4 && xhr.status == 200) {
+	                console.log(xhr.responseText);
+	                // Optionally, redirect to the payment page after the update
+	                window.location.href = "${pageContext.request.contextPath}/user/pay";
+	            }
+	        };
+	    }
+	</script>
 </body>
 </html>
