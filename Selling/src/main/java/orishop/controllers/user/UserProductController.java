@@ -96,20 +96,64 @@ public class UserProductController extends HttpServlet {
 
 	private void postSearchProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String proName = req.getParameter("searchProduct");
-		List<ProductModels> listP = productService.findProduct(proName);
+		List<ProductModels> listProduct = productService.findProduct(proName);
+		
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
+		
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("list", listP);
+
+		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 	}
 
 	private void getTopProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<ProductModels> listProduct = productService.findTopProduct(10);
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
+		
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("list", listProduct);
+
 		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 		
@@ -117,10 +161,31 @@ public class UserProductController extends HttpServlet {
 
 	private void getFilterAsc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<ProductModels> listProduct = productService.filterProductAscByPrice();
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
+		
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("list", listProduct);
+
 		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 		
@@ -141,25 +206,65 @@ public class UserProductController extends HttpServlet {
 	private void getProductByCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("cid"));
 		
-		List<ProductModels> listPro = productService.findByCategory(id);
-		List<CategoryModels> listCate = categoryService.findAllCategory();
-		ProductModels pro = productService.findLast();
+		List<ProductModels> listProduct = productService.findByCategory(id);
 		
-		req.setAttribute("list", listPro);
+		req.setAttribute("list", listProduct);
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
+		
+		List<CategoryModels> listCate = categoryService.findAllCategory();
+		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("tag", id);
-		req.setAttribute("P", pro);
+
+		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 	}
 
 	private void getFilterDesc(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		List<ProductModels> listProduct = productService.filterProductDescByPrice();
-		List<CategoryModels> listCate = categoryService.findAllCategory();
-		ProductModels pro = productService.findLast();
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
 		
+		List<CategoryModels> listCate = categoryService.findAllCategory();
+		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("P", pro);
-		req.setAttribute("list", listProduct);
+
 		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 
@@ -232,7 +337,7 @@ public class UserProductController extends HttpServlet {
 	private void getListProduct(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		List<ProductModels> listProduct = productService.findAllProduct();
-		int pagesize = 12;
+		int pagesize = 10;
 		int size = listProduct.size();
 		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
 		int page, numberpage = pagesize;

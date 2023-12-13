@@ -163,10 +163,12 @@
 						<h3 style="padding: 20px 0 20px 0;">${p.price}</h3>
 						<form action="insertCartItem" method="post">
 							<div class="cart-item align-items-between row">
-							<label for="form1" class="col-auto">Số lượng: </label>
+								<label for="form1" class="col-auto">Số lượng: </label>
 								<div class="quantity col">
+
 									<input id="form1" min="0" name="quantity" type="number"
 										value="1" class="form-control text-center" />
+
 								</div>
 								<button type="submit" class="add-to-cart col ms-3">
 									Thêm vào giỏ hàng</button>
@@ -291,7 +293,6 @@
 				<c:if
 					test="${ratingService.findOne(customer.customerId, p.productId) != null}">
 					<button type="submit">Sửa đánh giá</button>
-					<a type="button" href="deleterating?pid=${p.productId }">Xóa đánh giá</a>
 				</c:if>
 			</form>
 		</div>
