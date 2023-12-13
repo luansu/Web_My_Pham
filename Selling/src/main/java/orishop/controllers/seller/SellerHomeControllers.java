@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import orishop.models.CategoryModels;
+import orishop.models.OrdersModels;
 import orishop.models.ProductModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.CustomerServiceImp;
@@ -28,7 +29,7 @@ import orishop.services.IOrderService;
 
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, maxFileSize = 1024 * 1025 * 50, maxRequestSize = 1024 * 1024* 50)
-@WebServlet(urlPatterns = {"/seller/home", "/seller/listproduct", "/seller/insertpro", "/seller/updatepro", "/seller/deletepro"})
+@WebServlet(urlPatterns = {"/seller/home", "/seller/listorder", "/seller/detailorder", "/seller/updateorderSeller", "/seller/listproduct", "/seller/insertpro", "/seller/updatepro", "/seller/deletepro"})
 
 public class SellerHomeControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -78,6 +79,19 @@ public class SellerHomeControllers extends HttpServlet {
 		else if (url.contains("deletepro")) {
 			deleteProduct(req, resp);
 		}
+		else if (url.contains("listorder")) {
+			List<OrdersModels> listorder = orderService.findAllOrders();
+			req.setAttribute("listorder", listorder);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/seller/listorder.jsp");
+			rd.forward(req, resp);
+		}
+		else if (url.contains("detailorder")) {
+			int orderid = Integer.parseInt(req.getParameter("orderid"));
+			List<OrdersModels> detailorder = orderService.findOrderID(orderid);
+			req.setAttribute("detailorder", detailorder);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/seller/detailorder.jsp");
+			rd.forward(req, resp);
+		}
 	}	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -88,7 +102,19 @@ public class SellerHomeControllers extends HttpServlet {
 		else if (url.contains("updatepro")) {
 			UpdateProduct(req, resp);
 		}
+		else if (url.contains("updateorderSeller")) {
+			updateOrder(req, resp);
+		}
 	}
+
+	private void updateOrder(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+		String orderStatus = req.getParameter("orderStatus");
+		int orderId = Integer.parseInt(req.getParameter("orderId"));
+		orderService.UpdateOrderID(orderId, orderStatus);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/seller/listorder.jsp");
+		rd.forward(req, resp);
+	}
+	
 	private void deleteProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String id = (req.getParameter("id"));
 		ProductModels product = proService.findOne(id);
