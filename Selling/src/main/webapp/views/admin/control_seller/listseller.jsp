@@ -25,8 +25,10 @@
 	crossorigin="anonymous" />
 </head>
 <body>
-	<div class="d-flex mt-4" >
-		<div style="margin-left: 50px;margin-right: 50px;border-right: 1px solid #b7bbbf;" class="col-2">
+	<div class="d-flex mt-4">
+		<div
+			style="margin-left: 50px; margin-right: 50px; border-right: 1px solid #b7bbbf;"
+			class="col-2">
 			<ul
 				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
 				id="menu">

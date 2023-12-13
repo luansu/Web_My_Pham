@@ -25,7 +25,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listuser" , "/admin/userdetail","/admin/searchUser", "/admin/updateuser"})
+@WebServlet(urlPatterns = {"/admin/listuser" , "/admin/userdetail","/admin/searchUser", "/admin/updateuser", "/admin/deleteuser"})
 
 public class AdminUserControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -40,9 +40,10 @@ public class AdminUserControllers extends HttpServlet {
 			findAllUser(req, resp);
 		} else if(url.contains("admin/userdetail")) {
 			getUserDetail(req, resp);
-		}
-		else if(url.contains("admin/searchUser")) {
+		} else if(url.contains("admin/searchUser")) {
 			getSearchUser(req, resp);
+		} else if(url.contains("admin/deleteuser")) {
+			getDeleteUser(req, resp);
 		}
 	}
 	private void getSearchUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -107,7 +108,7 @@ public class AdminUserControllers extends HttpServlet {
 	}
 	
 	private void postUpdateUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		req.setCharacterEncoding("UTF-8");
+  		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
 		int customerId = Integer.valueOf(req.getParameter("customerId"));
@@ -115,10 +116,25 @@ public class AdminUserControllers extends HttpServlet {
 		try {
 			BeanUtils.populate(customer, req.getParameterMap());
 			cusService.editInfor(customer);
+			req.setAttribute("customer", customer);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/detailinforuser.jsp");
+		rd.forward(req, resp);
+	}
+	
+	private void getDeleteUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+  		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		int customerId = Integer.valueOf(req.getParameter("id"));
+		try {
+			cusService.delete(customerId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_user/listuser.jsp");
 		rd.forward(req, resp);
 	}
 	//endregion

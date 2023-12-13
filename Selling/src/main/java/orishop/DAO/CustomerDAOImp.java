@@ -184,4 +184,19 @@ public class CustomerDAOImp implements ICustomerDAO{
 			}
 			
 		}
+
+	@Override
+	public boolean delete(int id) {
+		String sql = "delete CUSTOMER where customerId=?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }

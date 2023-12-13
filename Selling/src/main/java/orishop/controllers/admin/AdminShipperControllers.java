@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import orishop.DAO.CustomerDAOImp;
 import orishop.DAO.IEmployeeDAO;
 import orishop.models.CategoryModels;
@@ -25,7 +27,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listshipper", "/admin/shipperdetail", "/admin/searchshipper","/admin/deleteshipper"})
+@WebServlet(urlPatterns = {"/admin/listshipper", "/admin/shipperdetail", "/admin/searchshipper","/admin/deleteshipper", "/admin/updateshipper"})
 
 public class AdminShipperControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -56,6 +58,8 @@ public class AdminShipperControllers extends HttpServlet {
 		String url = req.getRequestURI();
 		if(url.contains("admin/searchshipper")) {
 			getSearchShipper(req, resp);
+		} else if(url.contains("admin/updateshipper")) {
+			postUpdateShipper(req, resp);
 		}
 	}
 
@@ -123,6 +127,24 @@ public class AdminShipperControllers extends HttpServlet {
 		req.setAttribute("list", listShipper);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_shipper/listshipper.jsp");
 		rd.forward(req, resp);	
+	}
+	
+	private void postUpdateShipper(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		int shipperId = Integer.valueOf(req.getParameter("employeeId"));
+		EmployeeModels shipper = empService.findShipper(shipperId);
+		System.out.println(shipper.getJob());
+		try {
+			BeanUtils.populate(shipper, req.getParameterMap());
+			empService.updateShipper(shipper);
+			req.setAttribute("shipper", shipper);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_shipper/detailinforshipper.jsp");
+		rd.forward(req, resp);
 	}
 	//endregion
 }

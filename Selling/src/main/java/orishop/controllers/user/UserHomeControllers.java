@@ -55,12 +55,12 @@ public class UserHomeControllers extends HttpServlet {
 		String url = req.getRequestURI();
 		if(url.contains("user/home")) {
 			
-			
 			getHome(req, resp);
 		} else if (url.contains("user/editInfor")) {
 			List<CustomerModels> listcustomer = cusService.findAll();
 			req.setAttribute("listcustomer", listcustomer);
-			CustomerModels customer = cusService.findOne(req.getParameter("id"));
+			int cusID = Integer.valueOf(req.getParameter("id"));
+			CustomerModels customer = cusService.findOne(cusID);
 			req.setAttribute("customer", customer);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/inforuser_cart/inforuser.jsp");
 			rd.forward(req, resp);
@@ -120,17 +120,12 @@ public class UserHomeControllers extends HttpServlet {
 			//thông báo kết quả
 			req.setAttribute("customer", model);
 			req.setAttribute("message","Edit successful");
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("error","Edit fails");
 		}
-
 		resp.sendRedirect(req.getContextPath() + "/listcustomer");	
 	}
-		
-
 }
 	
 

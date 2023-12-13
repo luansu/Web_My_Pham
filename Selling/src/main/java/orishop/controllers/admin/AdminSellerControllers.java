@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import orishop.DAO.CustomerDAOImp;
 import orishop.DAO.IEmployeeDAO;
 import orishop.models.CategoryModels;
@@ -23,7 +25,7 @@ import orishop.services.ICategoryService;
 import orishop.services.ICustomerService;
 import orishop.services.IEmployeeService;
 
-@WebServlet(urlPatterns = {"/admin/listseller","/admin/searchSeller", "/admin/sellerdetail"})
+@WebServlet(urlPatterns = {"/admin/listseller","/admin/searchSeller", "/admin/sellerdetail", "/admin/updateseller", "/admin/deleteseller"})
 
 public class AdminSellerControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -60,6 +62,8 @@ public class AdminSellerControllers extends HttpServlet {
 		String url = req.getRequestURI();
 		if(url.contains("admin/searchSeller")) {
 			getSearchSeller(req, resp);
+		} else if(url.contains("admin/updateseller")) {
+			getUpdateSeller(req, resp);
 		}
 	}
 	
@@ -101,6 +105,24 @@ public class AdminSellerControllers extends HttpServlet {
 		
 		req.setAttribute("seller", seller);
 		
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_seller/detailinforseller.jsp");
+		rd.forward(req, resp);
+	}
+	
+	private void getUpdateSeller(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		int sellerId = Integer.valueOf(req.getParameter("employeeId"));
+		EmployeeModels seller = empService.findSeller(sellerId);
+		System.out.println(seller.getJob());
+		try {
+			BeanUtils.populate(seller, req.getParameterMap());
+			empService.updateSeller(seller);
+			req.setAttribute("seller", seller);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/control_seller/detailinforseller.jsp");
 		rd.forward(req, resp);
 	}

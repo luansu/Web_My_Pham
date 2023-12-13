@@ -295,7 +295,7 @@ public class EmployeeDAOImp implements IEmployeeDAO{
 			ps.setString(9, employee.getActivityArea());
 			ps.setString(10, employee.getImageURL());
 			ps.setInt(11, employee.getEmployeeId());
-			rs = ps.executeQuery();
+			ps.executeUpdate();
 			conn.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
