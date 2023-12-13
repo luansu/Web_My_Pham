@@ -328,8 +328,7 @@ public class ProductDAOImp implements IProductDAO {
 		String query = "update PRODUCT set productName = ?, description = ?, stock = ?, "
 				+ "amount = ?, price = ?, categoryId = ?, imageURL = ? where productId = ?";
 		
-		try {
-			
+		try {	
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, product.getProductName());
@@ -342,7 +341,6 @@ public class ProductDAOImp implements IProductDAO {
 			ps.setInt(8, product.getProductId());
 			ps.executeUpdate();
 			conn.close();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -407,13 +405,6 @@ public class ProductDAOImp implements IProductDAO {
 		return 0;
 	}
 	
-	public static void main(String[] args) {
-		ProductDAOImp dao = new ProductDAOImp();
-		int a = 10;
-		List<ProductModels> l = dao.findTopProduct(12);
-		for(ProductModels o : l) {
-			System.out.println(o);
-		}
-	}
+	
 	
 }

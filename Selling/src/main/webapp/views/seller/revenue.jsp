@@ -39,7 +39,7 @@
 					<div class="collapse" id="collapseExample1">
 						<div class="card-body">
 							<div class="list-group">
-								<a href="listproduct" class="list-group-item list-group-item-action">Tất
+								<a href="listorder" class="list-group-item list-group-item-action">Tất
 									cả</a> <a href="#" class="list-group-item list-group-item-action">Đơn
 									hủy</a> <a href="#" class="list-group-item list-group-item-action">Hoàn
 									tiền</a>
@@ -54,10 +54,13 @@
 						<div class="card-body">
 							<div class="list-group">
 								<a href="listproduct" class="list-group-item list-group-item-action">Tất
-									cả</a> <a href="#" class="list-group-item list-group-item-action">Thêm
-									sản phẩm</a> <a href="#"
+									cả</a> 
+									<a href='<c:url value="/seller/insertpro"/>' class="list-group-item list-group-item-action">Thêm
+									sản phẩm</a>
+									 <a href="#"
 									class="list-group-item list-group-item-action">Sản phẩm và
-									vi phạm</a> <a href="#"
+									vi phạm</a> 
+									<a href="#"
 									class="list-group-item list-group-item-action">Cài đặt sản
 									phẩm</a>
 							</div>
@@ -66,6 +69,8 @@
 				</div>
 			</div>
 			<div class="col-lg-9 mt-3">
+			
+				<div id="content"></div>
 				<!-- Page Heading -->
 				<div
 					class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -336,7 +341,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
 		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
 		crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
 	<script
 		src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
