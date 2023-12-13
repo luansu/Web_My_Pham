@@ -4,60 +4,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin</title>
-    <!--FONTAWESOME-->
-    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet"
-          type="text/css"/>
+<meta charset="UTF-8">
+<title>Admin</title>
+<!--FONTAWESOME-->
+<link
+	href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css"
+	rel="stylesheet" type="text/css" />
 
-    <!--FONT GOOGLE-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&dsplay=swap"
-          rel="stylesheet">
+<!--FONT GOOGLE-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&dsplay=swap"
+	rel="stylesheet">
 
-    <!--MAIN CSS-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-    <script src="js/admin.js"></script>
+<!--MAIN CSS-->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+<script src="js/admin.js"></script>
 </head>
 <body>
 
-	<div class="d-flex mt-4" >
-		<div style="margin-left: 50px;margin-right: 50px;border-right: 1px solid #b7bbbf;" class="col-2">
+	<div class="d-flex mt-4">
+		<div
+			style="margin-left: 50px; margin-right: 50px; border-right: 1px solid #b7bbbf;"
+			class="col-2">
 			<ul
-				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" 
+				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
 				id="menu">
 				<li class="nav-item"><a href="home"
 					class="nav-link align-middle px-0 nav-menu"> <i
 						class="fal fas fa-home" style="color: #7097db; font-size: 30px"></i>
-						<span class="d-none d-sm-inline" style="margin-left: 10px;">Trang chủ</span>
+						<span class="d-none d-sm-inline" style="margin-left: 10px;">Trang
+							chủ</span>
 				</a></li>
 
 				<li><a href="listuser"
 					class="nav-link align-middle px-0 nav-menu"> <i
 						class="fal fas fa-users" style="color: #c77070; font-size: 30px"></i>
-						<span class="d-none d-sm-inline" style="margin-left: 9px; color:#212529" >Khách hàng</span>
+						<span class="d-none d-sm-inline"
+						style="margin-left: 9px; color: #212529">Khách hàng</span>
 				</a></li>
 
 				<li><a href="listseller"
 					class="nav-link align-middle px-0 nav-menu"> <i
-						class="far fas fa-user"
-						style="color: #178254; font-size: 30px;"></i> <span
-						class="d-none d-sm-inline" style="margin-left: 19px;color:#212529">Nhân Viên</span>
+						class="far fas fa-user" style="color: #178254; font-size: 30px;"></i>
+						<span class="d-none d-sm-inline"
+						style="margin-left: 19px; color: #212529">Nhân Viên</span>
 				</a></li>
 
 				<li><a href="listshipper"
 					class="nav-link align-middle px-0 nav-menu"> <i
 						class="fal fas fa-shipping-fast"
 						style="color: #592731; font-size: 30px;"></i> <span
-						class="d-none d-sm-inline" style="margin-left: 9px;color:#212529">Shipper</span>
+						class="d-none d-sm-inline"
+						style="margin-left: 9px; color: #212529">Shipper</span>
 				</a></li>
 			</ul>
 		</div>
 		<div class="col-11">
-				<div class="col-lg-9 mt-3">
+			<div class="col-lg-9 mt-3">
 				<!-- Content Row -->
 				<div class="row">
 
@@ -70,7 +81,8 @@
 										<div
 											class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 											Doanh Thu Hàng Tháng</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningmonthly} VNĐ</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningmonthly}
+											VNĐ</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -89,7 +101,8 @@
 										<div
 											class="text-xs font-weight-bold text-success text-uppercase mb-1">
 											Doanh Thu Hàng Năm</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningannual} VNĐ</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${earningannual}
+											VNĐ</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -99,7 +112,7 @@
 						</div>
 					</div>
 
-						<!-- Earnings (Monthly) Card Example -->
+					<!-- Earnings (Monthly) Card Example -->
 					<div class="col-xl-3 col-md-6 mb-4">
 						<div class="card border-left-success shadow h-100 py-2">
 							<div class="card-body">
@@ -108,7 +121,8 @@
 										<div
 											class="text-xs font-weight-bold text-danger text-uppercase mb-1">
 											Tổng Đơn Hàng</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">${allcart} VNĐ</div>
+										<div class="h5 mb-0 font-weight-bold text-gray-800">${allcart}
+											VNĐ</div>
 									</div>
 									<div class="col-auto">
 										<i class="fas fa-box fa-2x text-gray-300"></i>
@@ -297,9 +311,10 @@
 					</div>
 				</div>
 			</div>
-		    
+
 		</div>
-			<script
+	</div>
+	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
 		crossorigin="anonymous"></script>
