@@ -1,6 +1,7 @@
 package orishop.controllers.admin;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import orishop.DAO.CustomerDAOImp;
 import orishop.DAO.IEmployeeDAO;
@@ -97,7 +100,14 @@ public class AdminHomeControllers extends HttpServlet {
 		long earningannual = orderService.totalRevenueByYear(1);
 		long totalearning = orderService.totalPriceProductSell();
 		int orderrequest = orderService.countOrderRequest();
-		
+		ObjectMapper objectMapper = new ObjectMapper();
+		Object[] revenue = orderService.thongke(2023);
+		String revenueJSON = objectMapper.writeValueAsString(revenue);
+		revenueJSON = URLEncoder.encode(revenueJSON, "UTF-8");
+		req.setAttribute("revenueJSON", revenueJSON);
+		for(Object o : revenue) {
+			System.out.println(o);
+		}
 		req.setAttribute("earningmonthly", earningmonthly);
 		req.setAttribute("earningannual", earningannual);
 		req.setAttribute("totalearning", totalearning);

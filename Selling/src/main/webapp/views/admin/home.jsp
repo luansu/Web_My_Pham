@@ -325,8 +325,85 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 	<script
 		src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+	<script src="<c:url value='/templates/seller/jsjquery.dataTables.min.js'/>"></script>
+	<script src="<c:url value='/templates/seller/jsjquery.min.js'/>"></script>
+	<script src="<c:url value='/templates/seller/jsjszip.min.js'/>"></script>
+	<script src="<c:url value='/templates/seller/jspdfmake.min.js'/>"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/templates/seller/js/index.js"></script>
+<%-- 	<script
+		src="${pageContext.request.contextPath}/templates/seller/js/index.js"></script> --%>
+	<script>
+	$(document).ready(function() {
+	    $('#example').dataTable( {
+	        "pageLength": 3,
+	        "lengthMenu": [ 3, 10, 25, 50, 100 ]
+	    } );
+	});
+	 function createChart(statistisData) {
+		 	var revenueJSON = decodeURIComponent('<c:out value="${revenueJSON}" />');
+		 	var revenue = JSON.parse(revenueJSON)
+		 
+		    // Get the canvas element
+		    let ctx = document.getElementById('myAreaChart').getContext('2d');
+		   
+		    // Sample data
+		    let data = {
+		        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+		        datasets: [{
+		            label: 'My Data',
+		            backgroundColor: 'rgba(75,192,192,0.4)',
+		            borderColor: 'rgba(75,192,192,1)',
+		            borderWidth: 1,
+		            data: [...revenue]
+		        }]
+		    };
+
+		    // Chart options
+		    let options = {
+		        responsive: true,
+		        maintainAspectRatio: false
+		    };
+
+		    // Create the area chart
+		    let myAreaChart = new Chart(ctx, {
+		        type: 'line',
+		        data: data,
+		        options: options
+		    });
+		}
+	// JavaScript code to set up the chart
+	document.addEventListener('DOMContentLoaded',function() {
+		createChart(JSON.parse('[10, 20, 15, 25, 30, 45, 75, 55, 100, 66, 47, 78]'));
+	});
+
+	$(document).ready(function () {
+	    // Sample data
+	    let data = {
+	        labels: ['Asia', 'North America', 'EU', 'Australia'],
+	        datasets: [{
+	            data: [300, 150, 100, 220],
+	            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#D7F9F9'],
+	            hoverOffset: 4
+	        }]
+	    };
+
+	    // Chart options
+	    let options = {
+	        responsive: true,
+	        maintainAspectRatio: false,
+	    };
+
+	    // Get the canvas element
+	    let ctx = document.getElementById('myPieChart').getContext('2d');
+
+	    // Create the pie chart
+	    let myPieChart = new Chart(ctx, {
+	        type: 'pie',
+	        data: data,
+	        options: options
+	    });
+	});
+</script>
+
 </body>
 </html>

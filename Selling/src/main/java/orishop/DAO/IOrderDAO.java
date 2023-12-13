@@ -27,6 +27,8 @@ public interface IOrderDAO {
 	
 	long totalRevenueByMonth(int month);
 	
+	long totalRevenueByMonth(int month, int year);
+	
 	long totalRevenueByYear(int year);
 	
 	int findLatestOrderId();

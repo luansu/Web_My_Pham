@@ -415,4 +415,25 @@ public class OrderDAOImpl implements IOrderDAO{
 		}
 		return model;
 	}
+
+	@Override
+	public long totalRevenueByMonth(int month, int year) {
+		String sql = "select sum(orderValue) from ORDERS where MONTH(orderDate) = ? and YEAR(orderDate) = ?";
+		try {
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, month);
+			ps.setInt(2, year);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				long total = rs.getLong(1);
+				
+				return total;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

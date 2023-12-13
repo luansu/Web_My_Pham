@@ -92,6 +92,11 @@ public class OrderServiceImpl implements IOrderService {
 	public long totalRevenueByMonth(int month) {
 		return orderDAO.totalRevenueByMonth(month);
 	}
+	
+	@Override
+	public long totalRevenueByMonth(int month, int year) {
+		return orderDAO.totalRevenueByMonth(month, year);
+	}
 
 	@Override
 	public long totalRevenueByYear(int year) {
@@ -146,4 +151,14 @@ public class OrderServiceImpl implements IOrderService {
 	public void updateOrderPaymentStatus(int orderId, String paymentStatus) {
 		orderDAO.updateOrderPaymentStatus(orderId, paymentStatus);
 	}
+	
+	public Object[] thongke(int year){
+		Object[] data = new Object[12];
+		for(int i=0; i<12; i++) {
+			data[i] = totalRevenueByMonth(i+1, year);
+		}
+		return data;
+	}
+	
+
 }

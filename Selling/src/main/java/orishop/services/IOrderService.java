@@ -34,7 +34,11 @@ public interface IOrderService {
 	
 	long totalRevenueByMonth(int month);
 	
+	long totalRevenueByMonth(int month, int year);
+	
 	long totalRevenueByYear(int year);
+	
+	Object[] thongke(int year);
 	
 	int findLatestOrderId();
 	List<OrdersModels> findAllOrderByUser(int customerId);
