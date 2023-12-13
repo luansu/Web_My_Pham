@@ -14,7 +14,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/templates/admin/css/stylelistshipper.css">
+	href="${pageContext.request.contextPath}/templates/admin/css/style.css">
 <!--  content -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"
@@ -64,7 +64,7 @@
 			<div class="search">
 				<div class="row justify-content-center">
 					<div class="col-30 col-md-30 col-lg-15">
-						<form class="card card-sm" action="searchshipper" method="post">
+					<form class="card card-sm" method="post" action="searchSeller">
 							<div class="card-body row no-gutters align-items-center">
 								<div class="col-auto">
 									<i class="fas fa-search h4 text-body"></i>
