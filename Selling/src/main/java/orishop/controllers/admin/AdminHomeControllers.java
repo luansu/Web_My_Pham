@@ -97,7 +97,7 @@ public class AdminHomeControllers extends HttpServlet {
 	//region order
 	private void getHomeAdmin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		long earningmonthly = orderService.totalRevenueByMonth(1);
-		long earningannual = orderService.totalRevenueByYear(1);
+		long earningannual = orderService.totalRevenueByYear(2023);
 		long totalearning = orderService.totalPriceProductSell();
 		int orderrequest = orderService.countOrderRequest();
 		
