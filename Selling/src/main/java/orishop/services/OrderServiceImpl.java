@@ -159,6 +159,13 @@ public class OrderServiceImpl implements IOrderService {
 		}
 		return data;
 	}
-	
-
+	@Override
+	public List<OrdersModels> getListOrderByPage(List<OrdersModels> listOrder, int start, int end) {
+		List<OrdersModels> listOrderPage = new ArrayList<>();
+		
+		for (int i = start; i < end; i++) {
+			listOrderPage.add(listOrder.get(i));
+		}
+		return listOrderPage;
+	}
 }
