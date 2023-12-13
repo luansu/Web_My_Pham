@@ -127,8 +127,3 @@ public class UserHomeControllers extends HttpServlet {
 		resp.sendRedirect(req.getContextPath() + "/listcustomer");	
 	}
 }
-	
-
-
-
-	
