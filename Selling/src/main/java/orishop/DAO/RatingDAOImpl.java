@@ -153,7 +153,7 @@ public class RatingDAOImpl implements IRatingDAO{
 
 	@Override
 	public boolean insert(RatingModels model) {
-		String sql = "INSERT INTO RATING (productId, customerId, rating, review, reviewDate) VALUES (?, ?, ?, ?, ?)";;
+		String sql = "INSERT INTO RATING (productId, customerId, rating, review, reviewDate) VALUES (?, ?, ?, ?, ?)";
 		try {
 			conn = DBConnectionSQLServer.getConnectionW();
 			ps = conn.prepareStatement(sql);
@@ -164,6 +164,27 @@ public class RatingDAOImpl implements IRatingDAO{
 			LocalDate currentDate = LocalDate.now();
 	        Date sqlDate = Date.valueOf(currentDate);
 			ps.setDate(5, sqlDate);
+			ps.executeUpdate();
+			conn.close();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean update(RatingModels model) {
+		String sql = "UPDATE RATING SET rating = ?, review = ?, reviewDate = ? WHERE ratingId = ?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, model.getRating());
+			ps.setString(2, model.getReview());
+			LocalDate currentDate = LocalDate.now();
+	        Date sqlDate = Date.valueOf(currentDate);
+			ps.setDate(3, sqlDate);
+			ps.setInt(4, model.getRatingId());
 			ps.executeUpdate();
 			conn.close();
 		} catch(Exception ex) {

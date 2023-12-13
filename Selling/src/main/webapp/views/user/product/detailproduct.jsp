@@ -171,7 +171,7 @@
 								</div>
 								<button type="submit" class="add-to-cart col ms-3">
 									Thêm vào giỏ hàng</button>
- 
+
 							</div>
 						</form>
 					</div>
@@ -255,7 +255,8 @@
 		<div class="review" style="margin: 10px auto; padding: 10px;">
 			<form action="review" method="post">
 				<div class="user-info">
-					<img src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
+					<img
+						src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
 						alt="Profile" class="rounded-circle" style="width: 30px;">
 					<div class="name_star">
 						<h5 class="user-name">${customer.customerName }</h5>
@@ -286,17 +287,21 @@
 					value="${ratingService.findOne(customer.customerId, p.productId).review}">
 				<c:if
 					test="${ratingService.findOne(customer.customerId, p.productId) == null}">
-
 					<button type="submit">Gửi đánh giá</button>
+				</c:if>
+				<c:if
+					test="${ratingService.findOne(customer.customerId, p.productId) != null}">
+					<button type="submit">Sửa đánh giá</button>
 				</c:if>
 			</form>
 		</div>
 		<div class="review">
 			<c:forEach var="i"
 				items="${ratingService.findByProduct(p.productId) }">
-				<div class="user-comment" ">
+				<div class="user-comment"">
 					<div class="user-info">
-						<img src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
+						<img
+							src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
 							alt="Profile" class="rounded-circle" style="width: 30px;">
 						<div class="name_star">
 							<h5 class="user-name">${i.customer.customerName }</h5>

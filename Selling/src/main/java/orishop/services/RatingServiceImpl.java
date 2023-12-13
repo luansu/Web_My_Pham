@@ -74,4 +74,12 @@ public class RatingServiceImpl implements IRatingService{
 		return false;
 		
 	}
+
+	@Override
+	public boolean update(RatingModels model) {
+		if (!model.getReview().isEmpty()) {
+			return ratingDAO.update(model);
+		} 
+		return false;
+	}
 }

@@ -12,4 +12,5 @@ public interface IRatingService {
 	int averageRating();
 	int averageRating(int productId);
 	boolean insert(RatingModels model);
+	boolean update(RatingModels model);
 }

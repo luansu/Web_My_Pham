@@ -10,4 +10,5 @@ public interface IRatingDAO {
 	List<RatingModels> findByProduct(int id);
 	List<RatingModels> findAllByUser(int id);
 	boolean insert(RatingModels model);
+	boolean update(RatingModels model);
 }

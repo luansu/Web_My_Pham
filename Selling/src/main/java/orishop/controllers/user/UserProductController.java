@@ -270,12 +270,18 @@ public class UserProductController extends HttpServlet {
 		String t = req.getParameter("rating");
 		System.out.println("Review: " + test);
 		System.out.println("Rating: " + t);
-		RatingModels rating = new RatingModels();
+		RatingModels rating = ratingService.findOne(customer.getCustomerId(), product.getProductId());
 		try {
-			BeanUtils.populate(rating, req.getParameterMap());
-			rating.setCustomerId(customer.getCustomerId());
-			rating.setProductId(product.getProductId());
-			ratingService.insert(rating);
+			if(rating != null) {
+				BeanUtils.populate(rating, req.getParameterMap());
+				ratingService.update(rating);
+			} else {
+				rating = new RatingModels();
+				BeanUtils.populate(rating, req.getParameterMap());
+				rating.setCustomerId(customer.getCustomerId());
+				rating.setProductId(product.getProductId());
+				ratingService.insert(rating);
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
