@@ -12,24 +12,33 @@ public class RatingModels {
     private Date reviewDate;
     // Constructors, getters, and setters
     // Constructor without parameters
+    
+    private CustomerModels customer;
+    private ProductModels product;
+    
     public RatingModels() {
     }
 
-    // Constructor with parameters
-    public RatingModels(int productId, int customerId, int rating, String review, Date reviewDate) {
-        this.productId = productId;
-        this.customerId = customerId;
-        this.rating = rating;
-        this.review = review;
-        this.reviewDate = reviewDate;
-    }
 
     // Getters and setters for all attributes
     public int getRatingId() {
         return ratingId;
     }
 
-    public void setRatingId(int ratingId) {
+    public RatingModels(int ratingId, int productId, int customerId, int rating, String review, Date reviewDate,
+			CustomerModels customer, ProductModels product) {
+		super();
+		this.ratingId = ratingId;
+		this.productId = productId;
+		this.customerId = customerId;
+		this.rating = rating;
+		this.review = review;
+		this.reviewDate = reviewDate;
+		this.customer = customer;
+		this.product = product;
+	}
+
+	public void setRatingId(int ratingId) {
         this.ratingId = ratingId;
     }
 
@@ -72,4 +81,26 @@ public class RatingModels {
     public void setReviewDate(Date reviewDate) {
         this.reviewDate = reviewDate;
     }
+
+
+	public CustomerModels getCustomer() {
+		return customer;
+	}
+
+
+	public void setCustomer(CustomerModels customer) {
+		this.customer = customer;
+	}
+
+
+	public ProductModels getProduct() {
+		return product;
+	}
+
+
+	public void setProduct(ProductModels product) {
+		this.product = product;
+	}
+    
+    
 }

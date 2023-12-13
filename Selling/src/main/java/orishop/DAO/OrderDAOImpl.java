@@ -339,6 +339,24 @@ public class OrderDAOImpl implements IOrderDAO{
 	}
 
 	@Override
+	public void updateOrderPaymentStatus(int orderId, String paymentStatus) {
+		String sql = "update ORDERS set paymentStatus=? where orderId = ?";
+		try {
+
+			new DBConnectionSQLServer();
+			Connection conn = DBConnectionSQLServer.getConnectionW(); //ket noi CSDL
+			PreparedStatement ps = conn.prepareStatement(sql); //ném câu lệnh sql
+			ps.setString(1, paymentStatus);
+			ps.setInt(2, orderId);
+			ps.executeUpdate();
+			conn.close();
+         
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
 	public void update(OrdersModels model) {
 		String sql = "UPDATE ORDERS SET "
                 + "paymentStatus = ?, "

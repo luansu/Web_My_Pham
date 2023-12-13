@@ -55,7 +55,7 @@
 			</div>
 			<div class="user-details-content">
 				<div class="user-details-left">
-					<form>
+					<form action="updateuser" method="post">
 						<div class="row mb-3">
 							<label for="inputPassword3" class="col-sm-2 col-form-label">Tên</label>
 							<div class="col-sm-10">
@@ -101,20 +101,20 @@
 							<legend class="col-form-label col-sm-2 pt-0">Giới tính</legend>
 							<div class="col-sm-10">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="gridRadios"
-										id="gridRadios1" value="option1" checked> <label
+									<input class="form-check-input" type="radio" name="gender"
+										id="gridRadios1" value="Nam" ${customer.gender == 'Nam' ? 'checked' : ''}> <label
 										class="form-check-label" for="gridRadios1">Nam</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="gridRadios"
-										id="gridRadios2" value="option2"> <label
+									<input class="form-check-input" type="radio" name="gender"
+										id="gridRadios2" value="Nữ" ${customer.gender == 'Nữ' ? 'checked' : ''}> <label
 										class="form-check-label" for="gridRadios2">Nữ</label>
 								</div>
-
 							</div>
+
 						</fieldset>
 						<div class="col-sm-10">
-							<a href="listcustomer" class="btn btn-outline-primary">Submit</a>
+							<button type="submit" class="btn btn-outline-primary">Submit</button>
 						</div>
 
 					</form>

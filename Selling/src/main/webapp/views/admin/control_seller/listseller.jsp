@@ -30,35 +30,33 @@
 			style="margin-left: 50px; margin-right: 50px; border-right: 1px solid #b7bbbf;"
 			class="col-2">
 			<ul
-				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" 
 				id="menu">
 				<li class="nav-item"><a href="home"
 					class="nav-link align-middle px-0 nav-menu"> <i
-						class="fal fa-house-night" style="color: #7097db; font-size: 30px"></i>
-						<span class="ms-1 d-none d-sm-inline">Trang chủ</span>
+						class="fal fas fa-home" style="color: #7097db; font-size: 30px"></i>
+						<span class="d-none d-sm-inline" style="margin-left: 10px;color:#212529">Trang chủ</span>
 				</a></li>
 
 				<li><a href="listuser"
 					class="nav-link align-middle px-0 nav-menu"> <i
-						class="fal fa-mail-bulk" style="color: #c77070; font-size: 30px"></i>
-						<span class="ms-1 d-none d-sm-inline">Khách hàng</span>
+						class="fal fas fa-users" style="color: #c77070; font-size: 30px"></i>
+						<span class="d-none d-sm-inline" style="margin-left: 9px; color:#212529" >Khách hàng</span>
 				</a></li>
 
 				<li><a href="listseller"
 					class="nav-link align-middle px-0 nav-menu"> <i
-						class="far fa-recycle fa-spin"
+						class="far fas fa-user"
 						style="color: #178254; font-size: 30px;"></i> <span
-						class="ms-1 d-none d-sm-inline">Nhân Viên</span>
+						class="d-none d-sm-inline" style="margin-left: 19px;">Nhân Viên</span>
 				</a></li>
 
 				<li><a href="listshipper"
 					class="nav-link align-middle px-0 nav-menu"> <i
-						class="fas fa-user-md-chat"
+						class="fal fas fa-shipping-fast"
 						style="color: #592731; font-size: 30px;"></i> <span
-						class="ms-1 d-none d-sm-inline">Shipper</span>
+						class="d-none d-sm-inline" style="margin-left: 9px;color:#212529">Shipper</span>
 				</a></li>
-
-
 			</ul>
 		</div>
 

@@ -141,4 +141,9 @@ public class OrderServiceImpl implements IOrderService {
 	public OrdersModels findOne(int orderId) {
 		return orderDAO.findOne(orderId);
 	}
+
+	@Override
+	public void updateOrderPaymentStatus(int orderId, String paymentStatus) {
+		orderDAO.updateOrderPaymentStatus(orderId, paymentStatus);
+	}
 }
