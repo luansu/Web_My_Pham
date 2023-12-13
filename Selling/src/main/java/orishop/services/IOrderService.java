@@ -43,4 +43,5 @@ public interface IOrderService {
 	int findLatestOrderId();
 	List<OrdersModels> findAllOrderByUser(int customerId);
 	List<OrdersModels> findAllOrderByUserAndOrderStatus(int customerId, String orderStatus);
+	List<OrdersModels> getListOrderByPage(List<OrdersModels> listOrder, int start, int end);
 }
