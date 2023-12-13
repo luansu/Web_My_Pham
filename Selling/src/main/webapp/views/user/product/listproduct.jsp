@@ -1,7 +1,6 @@
 c<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglist.jsp"%>
-
 <!DOCTYPE html>
 <html>
 
@@ -62,6 +61,7 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 		</div>
 		<div style="margin: 20px;">
 			<div class="row justify-content-center">
+				<c:if test="${list.size()>0 }">
 				<c:forEach var="i" items="${list}">
 					<div class="card col-md-3"">
 						<a href="detailProduct?pid=${i.productId}"> <img
@@ -87,6 +87,10 @@ c<%@ page language="java" contentType="text/html; charset=UTF-8"
 						</div>
 					</div>
 				</c:forEach>
+				</c:if>
+				<c:if test="${list.size()<=0 }">
+					<h1 style="text-align: center;">HIỆN CHƯA CÓ SẢN PHẢM LOẠI NÀY</h1>
+				</c:if>
 			</div>
 		</div>
 	</ul>

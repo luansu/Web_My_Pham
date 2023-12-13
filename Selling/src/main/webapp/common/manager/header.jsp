@@ -107,7 +107,7 @@
 						Log
 					</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#" data-bs-toggle="modal"
+					<a class="dropdown-item" href="/Selling/web/logout"
 						data-bs-target="#logoutModal"> <i
 						class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 						Logout
@@ -116,3 +116,17 @@
 		</ul>
 	</div>
 </nav>
+<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/templates/seller/js/index.js"></script>

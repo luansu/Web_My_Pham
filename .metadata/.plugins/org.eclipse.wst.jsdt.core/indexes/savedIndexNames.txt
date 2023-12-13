@@ -1,8 +1,14 @@
-INDEX VERSION 1.4+C:\Users\Admin\Documents\LuanSu\CNTT\HK5\Web\Project\back-up\Web_My_Pham\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-76254747.index
-4211979197.index
-1699096487.index
-2232487872.index
+INDEX VERSION 1.4+C:\Users\Admin\Documents\LuanSu\CNTT\HK5\Web\Project\New folder\Web_My_Pham\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2828737325.index
 1865663657.index
-1965539693.index
-3621201508.index
+1831319391.index
+3449723051.index
+100657148.index
+2232487872.index
+1834178220.index
+2617056428.index
+3881947130.index
+356607298.index
+1045543400.index
+3572973074.index
+1174381810.index

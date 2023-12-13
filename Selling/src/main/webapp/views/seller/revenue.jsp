@@ -28,7 +28,6 @@
 	href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 </head>
 <body>
-	<%@ include file="/common/manager/header.jsp"%>
 	<div class="container-fluid">
 		<!--Menu-->
 		<div class="row">
@@ -329,10 +328,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>	
 		</div>
 	</div>
-	<%@ include file="/common/manager/footer.jsp"%>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

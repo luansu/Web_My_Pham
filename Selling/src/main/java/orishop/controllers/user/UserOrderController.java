@@ -98,7 +98,7 @@ private static final long serialVersionUID = 1L;
 		HttpSession session = req.getSession();
 		float totalPriceOrder = (float) session.getAttribute("totalPriceOrder");
 		String deliveryMethod = (String) session.getAttribute("deliveryMethod");
-		String paymentStatus = "unpaid";
+		String paymentStatus = "Unpaid";
 		orderService.updateOrder(totalPriceOrder, deliveryMethod, paymentStatus);
 	}
 	

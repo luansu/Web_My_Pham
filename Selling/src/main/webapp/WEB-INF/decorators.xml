@@ -6,8 +6,8 @@
 		<pattern>/admin*</pattern>
 	</decorator>
 
-	<decorator name="manager" page="manager.jsp">
-		<pattern>/manager*</pattern>
+	<decorator name="seller" page="manager.jsp">
+		<pattern>/seller*</pattern>
 	</decorator>
 
 	<decorator name="shipper" page="shipper.jsp">

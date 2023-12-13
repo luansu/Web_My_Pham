@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import orishop.models.CategoryModels;
+import orishop.models.OrdersItemModels;
+import orishop.models.OrdersModels;
 import orishop.models.ProductModels;
 import orishop.services.CategoryServiceImp;
 import orishop.services.CustomerServiceImp;
@@ -29,7 +31,7 @@ import orishop.services.IOrderService;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, maxFileSize = 1024 * 1025 * 50, maxRequestSize = 1024 * 1024
 		* 50)
 @WebServlet(urlPatterns = { "/seller/home", "/seller/listproduct", "/seller/insertpro", "/seller/updatepro",
-		"/seller/deletepro" })
+		"/seller/deletepro", "/seller/listorder", "/seller/detailorder", "/seller/updateorderSeller"})
 
 public class SellerHomeControllers extends HttpServlet {
 	ICategoryService cateService = new CategoryServiceImp();
@@ -43,11 +45,12 @@ public class SellerHomeControllers extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURI();
 		if (url.contains("seller/home")) {
-			double totalPrice = orderService.totalPriceProductSell();
+			long totalPrice = orderService.totalRevenueByMonth(1);
+			long earningannual = orderService.totalRevenueByYear(2023);
+				
 			int orderrequest = orderService.countOrderRequest();
-
 			req.setAttribute("earningmonthly", totalPrice);
-			req.setAttribute("earningannual", totalPrice);
+			req.setAttribute("earningannual", earningannual);
 			req.setAttribute("orderrequest", orderrequest);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/seller/revenue.jsp");
 			rd.forward(req, resp);
@@ -75,7 +78,11 @@ public class SellerHomeControllers extends HttpServlet {
 			rd.forward(req, resp);
 		} else if (url.contains("deletepro")) {
 			deleteProduct(req, resp);
-		}
+		}  else if (url.contains("listorder")) {
+			getListOrder(req, resp);
+		} else if (url.contains("seller/detailorder")) {
+			getDetailOrder(req, resp);
+		} 
 	}
 
 	@Override
@@ -85,7 +92,11 @@ public class SellerHomeControllers extends HttpServlet {
 			addProduct(req, resp);
 		} else if (url.contains("updatepro")) {
 			UpdateProduct(req, resp);
-		}
+		} else if (url.contains("seller/detailorder")) {
+			postDetailOrder(req, resp);
+		} else if (url.contains("seller/updateorderSeller")) {
+			postUpdateOrder(req, resp);
+		} 
 	}
 
 	private void deleteProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -122,7 +133,7 @@ public class SellerHomeControllers extends HttpServlet {
 			req.setAttribute("error", "Add fails");
 		}
 
-		resp.sendRedirect(req.getContextPath() + "/listproduct");
+		resp.sendRedirect(req.getContextPath() + "/seller/listproduct");
 
 	}
 
@@ -150,5 +161,68 @@ public class SellerHomeControllers extends HttpServlet {
 		}
 
 		resp.sendRedirect(req.getContextPath() + "/seller/listproduct");
+	}
+	
+	private void postDetailOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		int id = Integer.valueOf(req.getParameter("orderId"));
+		OrdersModels model = orderService.findOne(id);
+		try {
+			// lay du lieu tu jsp bang beanutils
+			BeanUtils.populate(model, req.getParameterMap());
+
+			// thông báo kết quả
+			req.setAttribute("model", model);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		resp.sendRedirect(req.getContextPath() + "/seller/listproduct");
+	}
+		
+	private void postUpdateOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		int id = Integer.valueOf(req.getParameter("orderId"));
+		OrdersModels model = orderService.findOne(id);
+		try {
+			// lay du lieu tu jsp bang beanutils
+			BeanUtils.populate(model, req.getParameterMap());
+
+			// Xử lý truong image
+			orderService.update(model);
+			// thông báo kết quả
+			req.setAttribute("model", model);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		resp.sendRedirect(req.getContextPath() + "/seller/listorder");
+	}
+	
+	private void getDetailOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		int id = Integer.valueOf(req.getParameter("orderid"));
+		OrdersModels model = orderService.findOne(id);
+		req.setAttribute("i", model);
+
+		RequestDispatcher rd = req.getRequestDispatcher("/views/seller/detailorder.jsp");
+		rd.forward(req, resp);
+	}
+	
+	private void getListOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+
+		List<OrdersModels> listorder = orderService.findAllOrders();
+		
+		req.setAttribute("listorder", listorder);
+
+		RequestDispatcher rd = req.getRequestDispatcher("/views/seller/listorder.jsp");
+		rd.forward(req, resp);
 	}
 }

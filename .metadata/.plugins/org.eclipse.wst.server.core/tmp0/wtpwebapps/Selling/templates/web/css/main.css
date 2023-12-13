@@ -1,120 +1,135 @@
-
-
-body{
+body {
 	font-family: 'Times New Roman', serif;
-
 	background: #ececec;
 }
 
-.box-area{
+.box-area {
 	/*width: 900px;*/
-}
-::placeholder{
 	
+}
+
+::placeholder {
 	font-size: 16px;
 }
-.bg__img{
+
+.bg__img {
 	background: url("../images/contentImage.jpg") no-repeat;
 	background-size: cover;
 }
-.edit{
+
+.edit {
 	opacity: 0.9;
 }
-@media only screen and (max-width: 768px){
-	.box area{
+
+@media only screen and (max-width: 768px) {
+	.box area {
 		margin: 0 10px;
-		
 	}
-	.left-box{
-		height 100px;
+	.left-box {height 100px;
 		overflow: hidden;
-		
 	}
-	.right-box{
+	.right-box {
 		padding: 20px;
 	}
 }
 
 .material-icons-name {
-  font-size: 18px; }
-  
- /*
+	font-size: 18px;
+}
+
+/*
 ** Style Simple Ecommerce Theme for Bootstrap 4
 ** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
 */
 .bloc_left_price {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 150%;
+	color: #c01508;
+	text-align: center;
+	font-weight: bold;
+	font-size: 150%;
 }
+
 .category_block li:hover {
-    background-color: #007bff;
+	background-color: #007bff;
 }
+
 .category_block li:hover a {
-    color: #ffffff;
+	color: #ffffff;
 }
+
 .category_block li a {
-    color: #343a40;
+	color: #343a40;
 }
+
 .add_to_cart_block .price {
-    color: #c01508;
-    text-align: center;
-    font-weight: bold;
-    font-size: 200%;
-    margin-bottom: 0;
+	color: #c01508;
+	text-align: center;
+	font-weight: bold;
+	font-size: 200%;
+	margin-bottom: 0;
 }
+
 .add_to_cart_block .price_discounted {
-    color: #343a40;
-    text-align: center;
-    text-decoration: line-through;
-    font-size: 140%;
+	color: #343a40;
+	text-align: center;
+	text-decoration: line-through;
+	font-size: 140%;
 }
+
 .product_rassurance {
-    padding: 10px;
-    margin-top: 15px;
-    background: #ffffff;
-    border: 1px solid #6c757d;
-    color: #6c757d;
+	padding: 10px;
+	margin-top: 15px;
+	background: #ffffff;
+	border: 1px solid #6c757d;
+	color: #6c757d;
 }
+
 .product_rassurance .list-inline {
-    margin-bottom: 0;
-    text-transform: uppercase;
-    text-align: center;
-}a
+	margin-bottom: 0;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+a
 .product_rassurance .list-inline li:hover {
-    color: #343a40;
+	color: #343a40;
 }
+
 .reviews_product .fa-star {
-    color: gold;
+	color: gold;
 }
+
 .pagination {
-    margin-top: 20px;
+	margin-top: 20px;
 }
+
 footer {
-    background: #343a40;
-    padding: 40px;
+	background: #343a40;
+	padding: 40px;
 }
+
 footer a {
-    color: #f8f9fa!important
+	color: #f8f9fa !important
 }
-h5{
+
+h5 {
 	background: black;
 }
 
-.edit-modal{
+.edit-modal {
 	width: 60%;
 	margin: auto;
-	
 }
-.modal-body-edit{
+
+.modal-body-edit {
 	width: 100%;
 }
-.alert-danger{
+
+.alert-danger {
 	width: 95%;
-    left: 10px;
+	left: 10px;
 }
-.alert-success{
-	 width: 95%;
-    left: 10px;
+
+.alert-success {
+	width: 95%;
+	left: 10px;
 }

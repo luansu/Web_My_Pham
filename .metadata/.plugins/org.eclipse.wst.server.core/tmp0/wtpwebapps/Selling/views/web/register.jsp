@@ -3,8 +3,8 @@
 <%@include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
 <html lang="fr">
-<body>
-	<!-- Site meta -->
+<head>
+<!-- Site meta -->
 	<meta charset="utf-8">
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -49,8 +49,8 @@
 		href="fonts/material-icon/css/material-design-iconic-font.min.css">
 	<link rel="stylesheet"
 		href="${pageContext.request.contextPath}/templates/web/css/main.css">
-
-
+</head>
+<body>
 	<div class="bg__img">
 		<div class="container d-flex justify-content-center w-200 min-vh-100"
 			style="padding-top: 100px;">

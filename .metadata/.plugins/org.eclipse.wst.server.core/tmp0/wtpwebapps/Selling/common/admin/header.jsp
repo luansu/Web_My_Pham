@@ -69,7 +69,7 @@
 					width="30" height="30" class="d-inline-block align-top" alt="">
 				Admin
 			</div>
-			<div class="ms-3">Đăng xuất</div>
+			<a class="ms-3" href="/Selling/web/logout">Đăng xuất</a>
 		</div>
 	</nav>
 

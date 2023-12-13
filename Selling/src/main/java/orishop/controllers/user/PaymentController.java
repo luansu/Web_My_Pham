@@ -83,7 +83,7 @@ public class PaymentController extends HttpServlet {
 		int orderID = Integer.parseInt(orderId);
 		
 		if (responseCode.equals("00")) {
-			String paymentStatus = "paid";
+			String paymentStatus = "Paid";
 			orderService.updateOrderPaymentStatus(orderID, paymentStatus);
 			req.getRequestDispatcher("/views/user/inforuser_cart/complete.jsp").forward(req, resp);
 		} else {

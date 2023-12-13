@@ -3,6 +3,7 @@
 <%@include file="/common/taglist.jsp"%>
 <!DOCTYPE html>
 <html lang="fr">
+<head>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
@@ -40,6 +41,7 @@
 	href="fonts/material-icon/css/material-design-iconic-font.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/templates/web/css/main.css">
+</head>
 <body>
 
 
@@ -55,7 +57,7 @@
 				<!-- 		left box -->
 				<div
 					class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-					style="background: #908d8d">
+					style="background: #e9d4d4">
 					<div class="featured-image md-3">
 						<img
 							src="${pageContext.request.contextPath}/templates/web/images/Logo_Project.png"
@@ -71,23 +73,29 @@
 							<h1 style="font-size: 2rem;">SIGN-IN</h1>
 						</div>
 						<c:if test="${not empty message}">
-									<div class="alert alert-success">${message}</div>
+							<div class="alert alert-success">${message}</div>
 						</c:if>
 						<c:if test="${not empty error}">
-									<div class="alert alert-danger">${error}</div>
+							<div class="alert alert-danger">${error}</div>
 						</c:if>
 						<form action="login" method="post">
 
 							<div class="input-group mb-3">
-								<input type="text"
+								<span class="input-group-text" id="username-addon"> <i class="fa-solid fa-user"></i> <!-- Thay đổi bi bi-person thành icon bạn muốn sử dụng -->
+								</span> <input type="text"
 									class="form-control form-control-lg bg-light fs-6"
-									placeholder="Username" name="username">
+									placeholder="Username" name="username"
+									aria-describedby="username-addon">
 							</div>
+
 							<div class="input-group mb-4">
-								<input type="password"
+								<span class="input-group-text" id="password-addon"> <i class="fa-solid fa-key"></i>
+								</span> <input type="password"
 									class="form-control form-control-lg bg-light fs-6"
-									placeholder="Password" name="password">
+									placeholder="Password" name="password"
+									aria-describedby="password-addon">
 							</div>
+
 							<div class="input-group mb-5 d-flex justify-content-between">
 								<div class="form-check">
 									<input type="checkbox" class="form-check-input" id="formCheck"
@@ -96,7 +104,9 @@
 											me</small></label>
 								</div>
 								<div class="forgot">
-									<small><a href="${pageContext.request.contextPath }/web/forgotpass">Forgot Password?</a></small>
+									<small><a
+										href="${pageContext.request.contextPath }/web/forgotpass">Forgot
+											Password?</a></small>
 								</div>
 							</div>
 							<div class="input-group mb-3">

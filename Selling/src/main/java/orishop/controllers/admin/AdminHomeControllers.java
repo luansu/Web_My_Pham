@@ -100,14 +100,13 @@ public class AdminHomeControllers extends HttpServlet {
 		long earningannual = orderService.totalRevenueByYear(1);
 		long totalearning = orderService.totalPriceProductSell();
 		int orderrequest = orderService.countOrderRequest();
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 		Object[] revenue = orderService.thongke(2023);
 		String revenueJSON = objectMapper.writeValueAsString(revenue);
 		revenueJSON = URLEncoder.encode(revenueJSON, "UTF-8");
+		
 		req.setAttribute("revenueJSON", revenueJSON);
-		for(Object o : revenue) {
-			System.out.println(o);
-		}
 		req.setAttribute("earningmonthly", earningmonthly);
 		req.setAttribute("earningannual", earningannual);
 		req.setAttribute("totalearning", totalearning);

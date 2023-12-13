@@ -72,7 +72,6 @@
 					<div class="card-header">Thông tin Order Seller</div>
 					<div class="card-body">
 						<form action="updateorderSeller" method="post">
-							<c:forEach var="i" items="${detailorder}">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
@@ -144,11 +143,10 @@
 									</div>
 									<div class="text-center mt-3">
 										<button type="submit" class="btn btn-primary">
-											<a href="listorder" class="text-light text-decoration-none">Submit</a>
+											submit
 										</button>
 									</div>
 								</div>
-							</c:forEach>
 						</form>
 					</div>
 				</div>

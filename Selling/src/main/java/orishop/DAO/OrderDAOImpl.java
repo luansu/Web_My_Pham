@@ -366,9 +366,8 @@ public class OrderDAOImpl implements IOrderDAO{
                 + "employeeId = ? "
                 + "WHERE orderId = ?";
 		try {
-			new DBConnectionSQLServer();
-			Connection conn = DBConnectionSQLServer.getConnectionW(); //ket noi CSDL
-			PreparedStatement ps = conn.prepareStatement(sql); //ném câu lệnh sql
+			conn = DBConnectionSQLServer.getConnectionW(); //ket noi CSDL
+			ps = conn.prepareStatement(sql); //ném câu lệnh sql
 			ps.setString(1, model.getPaymentStatus());
 			ps.setString(2, model.getOrderStatus());
 			ps.setString(3, model.getPaymentMethod());

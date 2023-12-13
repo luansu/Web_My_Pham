@@ -1,4 +1,4 @@
-DROP DATABASE CosmeticStore
+--DROP DATABASE CosmeticStore
 GO
 
 CREATE DATABASE CosmeticStore
@@ -171,9 +171,13 @@ VALUES
 (N'Trần Quang C', '1992-03-03', N'Nam', N'Số 30, đường Hùng Vương, huyện Mỹ Xuyên, tỉnh Sóc Trăng', '0909765124', 'tranquangc@gmail.com', N'Seller', 3, N'Logistics', 'https://example.com/images/employees/lequangc.jpg'),
 (N'Đỗ Thị D', '1993-04-04', N'Nữ', N'Số 40, đường Trần Phú, huyện Tân Châu, tỉnh An Giang', '0911765453', 'dothid@gmail.com',N'Seller', 3, N'Marketing', 'https://example.com/images/employees/dothidu.jpg'),
 (N'Lý Văn E', '1994-12-05', N'Nam', N'Số 50, đường Nguyễn Huệ, huyện Kiên Lương, tỉnh Kiên Giang', '0922765725', 'lyvane@gmail.com', N'Shipper', 4, N'Administration', 'https://example.com/images/employees/huynhvane.jpg'),
-(N'Phan Thị F', '1995-04-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, huyện Hồng Ngự, tỉnh Đồng Tháp', '0933765824', 'phanthif@gmail.com', N'Shipper', 4, N'Finance', 'https://example.com/images/employees/phanthi.jpg');
+(N'Phan Thị Fc', '1995-04-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, huyện Hồng Ngự, tỉnh Đồng Tháp', '0933765824', 'phanthif@gmail.com', N'Shipper', 4, N'Finance', 'https://example.com/images/employees/phanthi.jpg'),
+(N'Lý Văn Eq', '1994-12-05', N'Nam', N'Số 50, đường Nguyễn Huệ, huyện Kiên Lương, tỉnh Kiên Giang', '0922765725', 'lyvane@gmail.com', N'Shipper', 4, N'Administration', 'https://example.com/images/employees/huynhvane.jpg'),
+(N'Phan Thị Fe', '1995-04-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, huyện Hồng Ngự, tỉnh Đồng Tháp', '0933765824', 'phanthif@gmail.com', N'Shipper', 4, N'Finance', 'https://example.com/images/employees/phanthi.jpg'),
+(N'Lý Văn EC', '1994-12-05', N'Nam', N'Số 50, đường Nguyễn Huệ, huyện Kiên Lương, tỉnh Kiên Giang', '0922765725', 'lyvane@gmail.com', N'Shipper', 4, N'Administration', 'https://example.com/images/employees/huynhvane.jpg'),
+(N'Phan Thị FE', '1995-04-06', N'Nữ', N'Số 60, đường Ba Tháng Hai, huyện Hồng Ngự, tỉnh Đồng Tháp', '0933765824', 'phanthif@gmail.com', N'Shipper', 4, N'Finance', 'https://example.com/images/employees/phanthi.jpg');
 
-
+go
 -- DROP TABLE ORDERS
 CREATE TABLE ORDERS (
     orderId int Identity PRIMARY KEY,
