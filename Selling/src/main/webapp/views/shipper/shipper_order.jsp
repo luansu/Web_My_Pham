@@ -284,14 +284,13 @@
 															class="mdi mdi-chevron-left"></i></a></li>
 												</c:if>
 												<c:if test="${page1>1 }">
-													<li class="page-item"><a
-														href="home?page1=${page1 - 1}" class="page-link"><i
-															class="mdi mdi-chevron-left"></i></a></li>
+													<li class="page-item"><a href="home?page1=${page1 - 1}"
+														class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
 												</c:if>
 												<c:forEach var="i" begin="1" end="${num1 }">
 													<c:if test="${i==page1 }">
-														<li class="page-item active"><a
-															href="home?page1=${i}" class="page-link">${i }</a></li>
+														<li class="page-item active"><a href="home?page1=${i}"
+															class="page-link">${i }</a></li>
 													</c:if>
 													<c:if test="${i!=page1 }">
 														<li class="page-item"><a href="home?page1=${i}"
@@ -299,9 +298,8 @@
 													</c:if>
 												</c:forEach>
 												<c:if test="${page1<num1}">
-													<li class="page-item"><a
-														href="home?page1=${page1 + 1}" class="page-link"><i
-															class="mdi mdi-chevron-right"></i></a></li>
+													<li class="page-item"><a href="home?page1=${page1 + 1}"
+														class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
 												</c:if>
 												<c:if test="${page1>=num1}">
 													<li class="page-item disabled"><a
@@ -386,14 +384,13 @@
 															class="mdi mdi-chevron-left"></i></a></li>
 												</c:if>
 												<c:if test="${page2>1 }">
-													<li class="page-item"><a
-														href="home?page2=${page2 - 1}" class="page-link"><i
-															class="mdi mdi-chevron-left"></i></a></li>
+													<li class="page-item"><a href="home?page2=${page2 - 1}"
+														class="page-link"><i class="mdi mdi-chevron-left"></i></a></li>
 												</c:if>
 												<c:forEach var="i" begin="1" end="${num2}">
 													<c:if test="${i==page2 }">
-														<li class="page-item active"><a
-															href="home?page2=${i}" class="page-link">${i }</a></li>
+														<li class="page-item active"><a href="home?page2=${i}"
+															class="page-link">${i }</a></li>
 													</c:if>
 													<c:if test="${i!=page2 }">
 														<li class="page-item"><a href="home?page2=${i}"
@@ -401,9 +398,8 @@
 													</c:if>
 												</c:forEach>
 												<c:if test="${page2<num2}">
-													<li class="page-item"><a
-														href="home?page2=${page2 + 1}" class="page-link"><i
-															class="mdi mdi-chevron-right"></i></a></li>
+													<li class="page-item"><a href="home?page2=${page2 + 1}"
+														class="page-link"><i class="mdi mdi-chevron-right"></i></a></li>
 												</c:if>
 												<c:if test="${page2>=num2}">
 													<li class="page-item disabled"><a
@@ -427,7 +423,7 @@
 						class="edit card-body d-flex align-items-center shadow p-3 mb-5 bg-white rounded"
 						style="width: 1150px;">
 						<div class="image-container mb-4 mb-lg-0 ">
-							<img src="${shipper.imageURL}" alt="..."
+							<img src="https://2sao.vietnamnetjsc.vn/images/2021/04/05/14/45/IU.jpg" alt="..."
 								class="object-fit-sm-contain">
 						</div>
 						<div class="col-lg-6 px-xl-10">
@@ -538,9 +534,13 @@
 							products
 									.forEach(function(product) {
 										var currentColor = getCurrentColor();
-										product.querySelector('.product-detail').style.backgroundColor = currentColor;
-										product.querySelector('.product-address').style.backgroundColor = currentColor;
-										product.querySelector('.product-button').style.backgroundColor = currentColor;
+										product
+												.querySelector('.product-detail').style.backgroundColor = currentColor;
+										product
+												.querySelector('.product-address').style.backgroundColor = currentColor;
+										product
+												.querySelector('.product-button').style.backgroundColor = currentColor;
+
 									});
 
 							function getCurrentColor() {
