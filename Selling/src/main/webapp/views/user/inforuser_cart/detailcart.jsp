@@ -165,7 +165,7 @@
 
 												<div class="mb-5 pt-2 text-center">
 													<a href="${pageContext.request.contextPath}/user/pay"
-														class="text-danger"><img alt="vnpay"
+														class="text-danger" onclick="updateOrder();"><img alt="vnpay"
 														style="width: 200px; height: 200px;"
 														src="https://vnpay.vn/assets/images/logo-icon/logo-primary.svg"></a>
 												</div>
