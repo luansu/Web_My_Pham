@@ -292,6 +292,7 @@
 				<c:if
 					test="${ratingService.findOne(customer.customerId, p.productId) != null}">
 					<button type="submit">Sửa đánh giá</button>
+					<a type="button" href="deleterating?pid=${p.productId }">Xóa đánh giá</a>
 				</c:if>
 			</form>
 		</div>
@@ -336,8 +337,6 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<!-- Template Main JS File -->
-	<script src="/main.js"></script>
 	<script>
 		const commentInput = document.querySelector('.comment');
 

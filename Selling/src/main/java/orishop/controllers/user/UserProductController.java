@@ -29,7 +29,8 @@ import orishop.services.RatingServiceImpl;
 @WebServlet(urlPatterns = {"/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
 		"/user/product/manager", "/user/product/insert", "/user/product/update",
 		"/user/product/delete", "/user/product/filterDesc", "/user/product/filterAsc", 
-		"/user/product/topProduct", "/user/product/searchProduct", "/user/product/review"})
+		"/user/product/topProduct", "/user/product/searchProduct", "/user/product/review",
+		"/user/product/deleterating"})
 public class UserProductController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -69,6 +70,9 @@ public class UserProductController extends HttpServlet {
 			getTopProduct(req, resp);
 
 		} else if (url.contains("review")) {
+			
+		} else if (url.contains("product/deleterating")) {
+			getDeleteRating(req, resp);
 		}
 	}
 	
@@ -223,7 +227,6 @@ public class UserProductController extends HttpServlet {
 		req.setAttribute("P", product);
 		req.setAttribute("listC", listcate);
 		req.getRequestDispatcher("/views/Product/updateproduct.jsp").forward(req, resp);
-
 	}
 
 	private void getListProduct(HttpServletRequest req, HttpServletResponse resp)
@@ -275,6 +278,7 @@ public class UserProductController extends HttpServlet {
 			if(rating != null) {
 				BeanUtils.populate(rating, req.getParameterMap());
 				ratingService.update(rating);
+				ratingService.delete(id);
 			} else {
 				rating = new RatingModels();
 				BeanUtils.populate(rating, req.getParameterMap());
@@ -291,7 +295,26 @@ public class UserProductController extends HttpServlet {
 		session = req.getSession(true);
 		session.setAttribute("productID", product.getProductId());
 		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
-
+	}
+	
+	private void getDeleteRating(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		int pid = Integer.parseInt(req.getParameter("pid"));
+		ProductModels product = productService.findOne(pid);
+		HttpSession session = req.getSession();
+		CustomerModels customer = (CustomerModels) session.getAttribute("customer");
+		
+		RatingModels rating = ratingService.findOne(customer.getCustomerId(), pid);
+		List<CategoryModels> listcate = categoryService.findAllCategory();
+		
+		ratingService.delete(rating.getRatingId());
+		req.setAttribute("p", product);
+		
+		session = req.getSession(true);
+		session.setAttribute("productID", product.getProductId());
+		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
 	}
 
 }

@@ -17,26 +17,6 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css" />
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-	rel="stylesheet">
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href='<c:url value="/stylecss/base/basecss.css" />'
-	rel="stylesheet" type="text/css">
-<link href='<c:url value="/css/bootstrap.css" />' rel="stylesheet"
-	type="text/css">
-
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css" />
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
