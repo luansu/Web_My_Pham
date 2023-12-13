@@ -15,13 +15,14 @@ import orishop.services.ICustomerService;
 import orishop.services.IProductService;
 import orishop.services.ProductServiceImp;
 
-public class RatingDAOImpl implements IRatingDAO{
+public class RatingDAOImpl implements IRatingDAO {
 
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	ICustomerService customerService = new CustomerServiceImp();
 	IProductService productService = new ProductServiceImp();
+
 	@Override
 	public List<RatingModels> findAll() {
 		List<RatingModels> listRating = new ArrayList<RatingModels>();
@@ -45,7 +46,7 @@ public class RatingDAOImpl implements IRatingDAO{
 				rating.setProduct(productService.findOne(rating.getProductId()));
 				listRating.add(rating);
 			}
-			
+
 			conn.close();
 
 		} catch (Exception e) {
@@ -79,7 +80,7 @@ public class RatingDAOImpl implements IRatingDAO{
 				rating.setProduct(productService.findOne(rating.getProductId()));
 				listRating.add(rating);
 			}
-			
+
 			conn.close();
 
 		} catch (Exception e) {
@@ -98,7 +99,7 @@ public class RatingDAOImpl implements IRatingDAO{
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
 				RatingModels rating = new RatingModels();
 				rating.setRatingId(rs.getInt(1));
@@ -111,7 +112,7 @@ public class RatingDAOImpl implements IRatingDAO{
 				rating.setProduct(productService.findOne(rating.getProductId()));
 				listRating.add(rating);
 			}
-			
+
 			conn.close();
 
 		} catch (Exception e) {
@@ -162,11 +163,11 @@ public class RatingDAOImpl implements IRatingDAO{
 			ps.setInt(3, model.getRating());
 			ps.setString(4, model.getReview());
 			LocalDate currentDate = LocalDate.now();
-	        Date sqlDate = Date.valueOf(currentDate);
+			Date sqlDate = Date.valueOf(currentDate);
 			ps.setDate(5, sqlDate);
 			ps.executeUpdate();
 			conn.close();
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
@@ -182,12 +183,28 @@ public class RatingDAOImpl implements IRatingDAO{
 			ps.setInt(1, model.getRating());
 			ps.setString(2, model.getReview());
 			LocalDate currentDate = LocalDate.now();
-	        Date sqlDate = Date.valueOf(currentDate);
+			Date sqlDate = Date.valueOf(currentDate);
 			ps.setDate(3, sqlDate);
 			ps.setInt(4, model.getRatingId());
 			ps.executeUpdate();
 			conn.close();
-		} catch(Exception ex) {
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean delete(int ratingId) {
+		String sql = "DELETE FROM RATING WHERE ratingId = ?";
+		try {
+			conn = DBConnectionSQLServer.getConnectionW();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, ratingId);
+			ps.executeUpdate();
+			conn.close();
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}

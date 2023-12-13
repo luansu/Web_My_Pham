@@ -6,6 +6,15 @@
 <html>
 <head>
 
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/templates/admin/css/style.css">
 <!--  content -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"
@@ -15,7 +24,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
 	integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc="
 	crossorigin="anonymous" />
-
 </head>
 <body>
 
@@ -96,11 +104,6 @@
 									<thead>
 										<tr>
 											<th scope="col" class="ps-4" style="width: 50px;">
-												<div class="form-check font-size-16">
-													<input type="checkbox" class="form-check-input"
-														id="contacusercheck" /><label class="form-check-label"
-														for="contacusercheck"></label>
-												</div>
 											</th>
 											<th scope="col">Tài khoản</th>
 											<th scope="col">Email</th>
@@ -118,8 +121,9 @@
 															for="contacusercheck1"></label>
 													</div>
 												</th>
+												
 												<td><img
-													src="https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-6/357053034_814960390037893_4922475779121350488_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF5HXwEGNMOPAGrytHpFsrR_aLOXQRBb7r9os5dBEFvuq1yibYhcbMKiV2CqFcBHaVpuYriGC2v8DMoF6Nbu4wB&_nc_ohc=-yKX52Urdn0AX8U0a-v&_nc_oc=AQlI2Ns9XLRTfcBwWgD0RHgOWIUMetQvlk_-r_YQaQQu_hub_sENbxLo6HLTTSsB0Ug&_nc_ht=scontent.fsgn3-1.fna&oh=00_AfAkwmC6el-T5G0ksuVne_5NYx6l7Dvg2p6XioTa2XhQgQ&oe=6556BE61"
+													src="https://scontent.fhan4-2.fna.fbcdn.net/v/t39.30808-6/357053034_814960390037893_4922475779121350488_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeF5HXwEGNMOPAGrytHpFsrR_aLOXQRBb7r9os5dBEFvuq1yibYhcbMKiV2CqFcBHaVpuYriGC2v8DMoF6Nbu4wB&_nc_ohc=stdyV6Zw6N0AX8H0sEu&_nc_oc=AQnCyngbl5CMeACfInXfkj2inNDRJG4drkLpVvd-5frReEBAZB3AxYcj3hm4BbrxPpo&_nc_ht=scontent.fhan4-2.fna&oh=00_AfBNfzUPRxG3Ku0hLK9M81r-7zrRxAwtOXeb_bomYe2Rzg&oe=657E4B61"
 													alt="" class="avatar-sm rounded-circle me-2" /><a
 													href="userdetail?id=${i.customerId }" class="text-body">${i.customerName}</a></td>
 												<td>${i.mail}</td>

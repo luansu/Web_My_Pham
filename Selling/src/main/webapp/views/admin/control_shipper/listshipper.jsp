@@ -62,7 +62,7 @@
 			<div class="search">
 				<div class="row justify-content-center">
 					<div class="col-30 col-md-30 col-lg-15">
-					<form class="card card-sm" method="post" action="searchSeller">
+					<form class="card card-sm" method="post" action="searchshipper">
 							<div class="card-body row no-gutters align-items-center">
 								<div class="col-auto">
 									<i class="fas fa-search h4 text-body"></i>

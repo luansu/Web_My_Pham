@@ -74,6 +74,7 @@ public class ProductServiceImp implements IProductService {
 	@Override
 	public void updateProduct(ProductModels product) {
 		ProductModels newproduct = proDAO.findOne(product.getProductId());
+		newproduct.setProductId(product.getProductId());
 		newproduct.setProductName(product.getProductName());
 		newproduct.setDescription(product.getDescription());
 		newproduct.setStock(product.getStock());
@@ -81,7 +82,8 @@ public class ProductServiceImp implements IProductService {
 		newproduct.setPrice(product.getPrice());
 		newproduct.setCategoryId(product.getCategoryId());
 		newproduct.setImageURL(product.getImageURL());
-		proDAO.updateProduct(product);
+		newproduct.setCategory(product.getCategory());
+		proDAO.updateProduct(newproduct);
 		
 	}
 
@@ -121,4 +123,6 @@ public class ProductServiceImp implements IProductService {
 	public List<ProductModels> findTopSaleProduct(int amount) {
 		return proDAO.findTopSaleProduct(amount);
 	}
+	
+	
 }

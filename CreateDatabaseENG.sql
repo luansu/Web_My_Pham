@@ -214,6 +214,48 @@ VALUES
 (14500000, '2023-11-11 05:50:00', 8, 8, 'Unpaid', 'Save', 'MoMo', N'Giao hàng tận nơi', null),
 (15000000, '2023-11-10 22:15:00', 9, 9, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 6);
 
+INSERT INTO ORDERS (orderValue, orderDate, cartId, customerId, paymentStatus, orderStatus, paymentMethod, deliveryMethod, employeeId)
+VALUES
+(5500000, '2023-01-29 09:10:00', 10, 10, 'Paid', N'Chưa giao cho shipper', 'Credit card', N'Giao hàng tận nơi', 7),
+(6000000, '2023-01-28 13:45:00', 11, 11, 'Unpaid', 'Save', 'Cash on Delivery', N'Giao hàng tận nơi', 8),
+(8000000, '2023-01-24 10:50:00', 15, 15, 'Unpaid', 'Save', 'Cash on Delivery', N'Giao hàng tận nơi', 3),
+(8500000, '2023-01-23 07:15:00', 16, 16, 'Unpaid', 'Save', 'Momo', N'Giao hàng tận nơi', 4),
+(9000000, '2023-01-22 23:40:00', 17, 17, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 5),
+
+(6500000, '2023-02-27 18:20:00', 12, 12, 'Paid', N'Đã giao cho shipper', 'MoMo', N'Giao hàng tận nơi', 9),
+(7000000, '2023-02-26 21:30:00', 13, 13, 'Unpaid', 'Save', 'Bank transfer', N'Giao hàng tận nơi', 1),
+(13000000, '2023-02-14 16:15:00', 5, 5, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 4),
+(13500000, '2023-02-13 12:00:00', 6, 6, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 5),
+(14000000, '2023-02-12 09:25:00', 7, 7, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 6),
+
+(7500000, '2023-03-25 14:05:00', 14, 14, 'Paid', N'Đã giao khách hàng', 'Credit card', N'Giao hàng tận nơi', 2),
+(8000000, '2023-03-24 10:50:00', 15, 15, 'Unpaid', 'Save', 'Cash on Delivery', N'Giao hàng tận nơi', 3),
+(11500000, '2023-03-17 08:10:00', 2, 2, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 1),
+(12000000, '2023-03-16 02:35:00', 3, 3, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 2),
+(12500000, '2023-03-15 19:50:00', 4, 4, 'Unpaid', 'Save', 'Momo', N'Giao hàng tận nơi', 3),
+
+(8500000, '2023-04-23 07:15:00', 16, 16, 'Unpaid', 'Save', 'Momo', N'Giao hàng tận nơi', 4),
+(9000000, '2023-04-22 23:40:00', 17, 17, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 5),
+(13000000, '2023-04-14 16:15:00', 5, 5, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 4),
+(13500000, '2023-04-13 12:00:00', 6, 6, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 5),
+(14000000, '2023-04-12 09:25:00', 7, 7, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 6),
+
+(9500000, '2023-05-21 17:25:00', 18, 18, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 6),
+(10000000, '2023-05-20 20:35:00', 19, 19, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 7),
+(10500000, '2023-06-19 15:00:00', 20, 20, 'Unpaid', 'Save', 'MoMo', N'Giao hàng tận nơi', 8),
+(11000000, '2023-06-18 11:45:00', 1, 1, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 9),
+(11500000, '2023-07-17 08:10:00', 2, 2, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 1),
+(12000000, '2023-07-16 02:35:00', 3, 3, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 2),
+(12500000, '2023-08-15 19:50:00', 4, 4, 'Unpaid', 'Save', 'Momo', N'Giao hàng tận nơi', 3),
+(13000000, '2023-08-14 16:15:00', 5, 5, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 4),
+(13500000, '2023-09-13 12:00:00', 6, 6, 'Unpaid', 'Save', 'Credit card', N'Giao hàng tận nơi', 5),
+(14000000, '2023-09-12 09:25:00', 7, 7, 'Paid', N'Đã giao khách hàng', 'Cash on delivery', N'Giao hàng tận nơi', 6),
+(14500000, '2023-10-11 05:50:00', 8, 8, 'Unpaid', 'Save', 'MoMo', N'Giao hàng tận nơi', 7),
+(15000000, '2023-10-10 22:15:00', 9, 9, 'Paid', N'Chưa giao cho shipper', 'Bank transfer', N'Giao hàng tận nơi', 8),
+(5500000, '2023-12-29 09:10:00', 10, 10, 'Paid', N'Chưa giao cho shipper', 'Credit card', N'Giao hàng tận nơi', 7),
+(6000000, '2023-12-28 13:45:00', 11, 11, 'Unpaid', 'Save', 'Cash on Delivery', N'Giao hàng tận nơi', 8);
+
+
 -- DROP TABLE PRODUCT
 CREATE TABLE PRODUCT (
     productId int Identity PRIMARY KEY,

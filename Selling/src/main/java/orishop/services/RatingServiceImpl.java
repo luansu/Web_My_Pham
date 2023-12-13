@@ -82,4 +82,9 @@ public class RatingServiceImpl implements IRatingService{
 		} 
 		return false;
 	}
+
+	@Override
+	public boolean delete(int ratingId) {
+		return ratingDAO.delete(ratingId);
+	}
 }

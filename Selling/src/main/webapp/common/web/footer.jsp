@@ -23,11 +23,6 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 	rel="stylesheet">
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href='<c:url value="/stylecss/base/basecss.css" />'
-	rel="stylesheet" type="text/css">
-<link href='<c:url value="/css/bootstrap.css" />' rel="stylesheet"
-	type="text/css">
 
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />

@@ -29,7 +29,8 @@ import orishop.services.RatingServiceImpl;
 @WebServlet(urlPatterns = {"/user/product/listProduct", "/user/product/productByCategory", "/user/product/detailProduct", 
 		"/user/product/manager", "/user/product/insert", "/user/product/update",
 		"/user/product/delete", "/user/product/filterDesc", "/user/product/filterAsc", 
-		"/user/product/topProduct", "/user/product/searchProduct", "/user/product/review"})
+		"/user/product/topProduct", "/user/product/searchProduct", "/user/product/review",
+		"/user/product/deleterating"})
 public class UserProductController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -69,6 +70,9 @@ public class UserProductController extends HttpServlet {
 			getTopProduct(req, resp);
 
 		} else if (url.contains("review")) {
+			
+		} else if (url.contains("product/deleterating")) {
+			getDeleteRating(req, resp);
 		}
 	}
 	
@@ -92,20 +96,64 @@ public class UserProductController extends HttpServlet {
 
 	private void postSearchProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String proName = req.getParameter("searchProduct");
-		List<ProductModels> listP = productService.findProduct(proName);
+		List<ProductModels> listProduct = productService.findProduct(proName);
+		
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
+		
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("list", listP);
+
+		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 	}
 
 	private void getTopProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<ProductModels> listProduct = productService.findTopProduct(10);
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
+		
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("list", listProduct);
+
 		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 		
@@ -113,10 +161,31 @@ public class UserProductController extends HttpServlet {
 
 	private void getFilterAsc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<ProductModels> listProduct = productService.filterProductAscByPrice();
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
+		
 		List<CategoryModels> listCate = categoryService.findAllCategory();
 		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("list", listProduct);
+
 		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 		
@@ -137,25 +206,65 @@ public class UserProductController extends HttpServlet {
 	private void getProductByCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("cid"));
 		
-		List<ProductModels> listPro = productService.findByCategory(id);
-		List<CategoryModels> listCate = categoryService.findAllCategory();
-		ProductModels pro = productService.findLast();
+		List<ProductModels> listProduct = productService.findByCategory(id);
 		
-		req.setAttribute("list", listPro);
+		req.setAttribute("list", listProduct);
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
+		
+		List<CategoryModels> listCate = categoryService.findAllCategory();
+		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("tag", id);
-		req.setAttribute("P", pro);
+
+		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 	}
 
 	private void getFilterDesc(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		List<ProductModels> listProduct = productService.filterProductDescByPrice();
-		List<CategoryModels> listCate = categoryService.findAllCategory();
-		ProductModels pro = productService.findLast();
+		int pagesize = 10;
+		int size = listProduct.size();
+		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
+		int page, numberpage = pagesize;
+		String xpage = req.getParameter("page");
+		if (xpage == null) {
+			page = 1;
+		}
+		else {
+			page = Integer.parseInt(xpage);
+		}
+		int start,end;
+		start = (page - 1) * numberpage;
+		end = Math.min(page*numberpage, size);
+		List<ProductModels> list = productService.getListEmpByPage(listProduct, start, end);
+		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		req.setAttribute("num", num);
+		req.setAttribute("count", listProduct.size());
 		
+		List<CategoryModels> listCate = categoryService.findAllCategory();
+		
+		req.setAttribute("list", list);
 		req.setAttribute("listC", listCate);
-		req.setAttribute("P", pro);
-		req.setAttribute("list", listProduct);
+
 		
 		req.getRequestDispatcher("/views/user/product/listproduct.jsp").forward(req, resp);
 
@@ -223,13 +332,12 @@ public class UserProductController extends HttpServlet {
 		req.setAttribute("P", product);
 		req.setAttribute("listC", listcate);
 		req.getRequestDispatcher("/views/Product/updateproduct.jsp").forward(req, resp);
-
 	}
 
 	private void getListProduct(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		List<ProductModels> listProduct = productService.findAllProduct();
-		int pagesize = 12;
+		int pagesize = 10;
 		int size = listProduct.size();
 		int num = (size%pagesize==0 ? (size/pagesize) : (size/pagesize + 1));
 		int page, numberpage = pagesize;
@@ -275,6 +383,7 @@ public class UserProductController extends HttpServlet {
 			if(rating != null) {
 				BeanUtils.populate(rating, req.getParameterMap());
 				ratingService.update(rating);
+				ratingService.delete(id);
 			} else {
 				rating = new RatingModels();
 				BeanUtils.populate(rating, req.getParameterMap());
@@ -291,7 +400,26 @@ public class UserProductController extends HttpServlet {
 		session = req.getSession(true);
 		session.setAttribute("productID", product.getProductId());
 		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
-
+	}
+	
+	private void getDeleteRating(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		int pid = Integer.parseInt(req.getParameter("pid"));
+		ProductModels product = productService.findOne(pid);
+		HttpSession session = req.getSession();
+		CustomerModels customer = (CustomerModels) session.getAttribute("customer");
+		
+		RatingModels rating = ratingService.findOne(customer.getCustomerId(), pid);
+		List<CategoryModels> listcate = categoryService.findAllCategory();
+		
+		ratingService.delete(rating.getRatingId());
+		req.setAttribute("p", product);
+		
+		session = req.getSession(true);
+		session.setAttribute("productID", product.getProductId());
+		req.getRequestDispatcher("/views/user/product/detailproduct.jsp").forward(req, resp);
 	}
 
 }

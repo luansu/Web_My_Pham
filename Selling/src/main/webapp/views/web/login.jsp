@@ -4,22 +4,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css" />
-	
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+	rel="stylesheet">
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href='<c:url value="/stylecss/base/basecss.css" />'
+	rel="stylesheet" type="text/css">
+<link href='<c:url value="/css/bootstrap.css" />' rel="stylesheet"
+	type="text/css">
+
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css" />
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
-	
+<link rel="stylesheet"
+	href="fonts/material-icon/css/material-design-iconic-font.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/templates/web/css/main.css">
 </head>
@@ -38,7 +57,7 @@
 				<!-- 		left box -->
 				<div
 					class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-					style="background: #908d8d">
+					style="background: #e9d4d4">
 					<div class="featured-image md-3">
 						<img
 							src="${pageContext.request.contextPath}/templates/web/images/Logo_Project.png"
@@ -62,15 +81,21 @@
 						<form action="login" method="post">
 
 							<div class="input-group mb-3">
-								<input type="text"
+								<span class="input-group-text" id="username-addon"> <i class="fa-solid fa-user"></i> <!-- Thay đổi bi bi-person thành icon bạn muốn sử dụng -->
+								</span> <input type="text"
 									class="form-control form-control-lg bg-light fs-6"
-									placeholder="Username" name="username">
+									placeholder="Username" name="username"
+									aria-describedby="username-addon">
 							</div>
+
 							<div class="input-group mb-4">
-								<input type="password"
+								<span class="input-group-text" id="password-addon"> <i class="fa-solid fa-key"></i>
+								</span> <input type="password"
 									class="form-control form-control-lg bg-light fs-6"
-									placeholder="Password" name="password">
+									placeholder="Password" name="password"
+									aria-describedby="password-addon">
 							</div>
+
 							<div class="input-group mb-5 d-flex justify-content-between">
 								<div class="form-check">
 									<input type="checkbox" class="form-check-input" id="formCheck"

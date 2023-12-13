@@ -24,7 +24,7 @@
 
 	<!-- content -->
 	<div class="container">
-		<div class="user__list" style="margin-top: 120px;">
+		<div class="user__list" style="margin-top: 35px;">
 			<ul class="list-group">
 				<a style="text-decoration: none;" href="editInfor">
 					<li
@@ -32,9 +32,9 @@
 						class="fas fa-user"></i>Tài khoản của tôi</li>
 				</a>
 				<a style="text-decoration: none;" href="mypurchase">
-				<li
+					<li
 					class="list-group-item list-group-item-action list-group-item-secondary"><i
-					class="fas fa-shopping-cart"></i>Đơn mua</li>
+						class="fas fa-shopping-cart"></i>Đơn mua</li>
 				</a>
 
 				<li
@@ -86,38 +86,37 @@
 														</div>
 													</c:forEach>
 												</c:if>
-											
 
-											<hr class="mb-4"
-												style="height: 2px; background-color: #1266f1; opacity: 1;">
-											<div class="cham">
-												<h4>Phương thức vận chuyển</h4>
-												<a href="payment?deliveryMethod=${1}"><button
-														class="btn btn-outline-primary ">Vận chuyển
-														thường</button>
-													<br>
-												<br></a> <a href="payment?deliveryMethod=${2}"><button
-														class="btn btn-outline-primary">Vận chuyển hỏa
-														tốc</button></a>
-											</div>
-											
 
-											<hr class="mb-4"
-												style="height: 2px; background-color: #1266f1; opacity: 1;">
+												<hr class="mb-4"
+													style="height: 2px; background-color: #1266f1; opacity: 1;">
+												<div class="cham">
+													<h4>Phương thức vận chuyển</h4>
+													<a href="payment?deliveryMethod=${1}"><button
+															class="btn btn-outline-primary ">Vận chuyển
+															thường</button> <br> <br></a> <a
+														href="payment?deliveryMethod=${2}"><button
+															class="btn btn-outline-primary">Vận chuyển hỏa
+															tốc</button></a>
+												</div>
 
-											<div class="d-flex justify-content-between px-x">
-												<p class="fw-bold">Chi phí đơn hàng:</p>
-												<p class="fw-bold">${totalPriceCart}</p>
-											</div>
-											<div class="d-flex justify-content-between px-x">
-												<p class="fw-bold">Phí giao hàng:</p>
-												<p class="fw-bold">${deliveryFee}</p>
-											</div>
-											<div class="d-flex justify-content-between p-2 mb-2"
-												style="background-color: #e1f5fe;">
-												<h5 class="fw-bold mb-0">Tổng:</h5>
-												<h5 class="fw-bold mb-0">${totalPriceCart+deliveryFee}</h5>
-											</div>
+
+												<hr class="mb-4"
+													style="height: 2px; background-color: #1266f1; opacity: 1;">
+
+												<div class="d-flex justify-content-between px-x">
+													<p class="fw-bold">Chi phí đơn hàng:</p>
+													<p class="fw-bold">${totalPriceCart}</p>
+												</div>
+												<div class="d-flex justify-content-between px-x">
+													<p class="fw-bold">Phí giao hàng:</p>
+													<p class="fw-bold">${deliveryFee}</p>
+												</div>
+												<div class="d-flex justify-content-between p-2 mb-2"
+													style="background-color: #e1f5fe;">
+													<h5 class="fw-bold mb-0">Tổng:</h5>
+													<h5 class="fw-bold mb-0">${totalPriceCart+deliveryFee}</h5>
+												</div>
 											</div>
 
 											<div class="col-lg-6 px-5 py-4">
@@ -188,5 +187,14 @@
 		</div>
 
 	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+		crossorigin="anonymous"></script>
 </body>
 </html>

@@ -9,15 +9,26 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Google fonts-->
 <link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+	rel="stylesheet">
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href='<c:url value="/stylecss/base/basecss.css" />'
+	rel="stylesheet" type="text/css">
+<link href='<c:url value="/css/bootstrap.css"/>' rel="stylesheet"
+	type="text/css">
+
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+
+<link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <link rel="stylesheet"
 	href="fonts/material-icon/css/material-design-iconic-font.min.css">
 <link rel="stylesheet"
@@ -41,11 +52,15 @@
 						<div class="alert alert-danger">${error}</div>
 					</c:if>
 					<div class="input-group mb-3">
-						<input type="text"
-							class="form-control form-control-lg bg-light fs-6"
-							placeholder="Nhập Username" name="username">
+						<span class="input-group-text" id="username-addon"> <i class="fa-solid fa-user"></i> <!-- Thay đổi bi bi-person thành icon bạn muốn sử dụng -->
+								</span> <input type="text"
+									class="form-control form-control-lg bg-light fs-6"
+									placeholder="Username" name="username"
+									aria-describedby="username-addon">
 					</div>
 					<div class="input-group mb-4">
+					<span class="input-group-text" id="username-addon"> <i class="fa-solid fa-envelope"></i> <!-- Thay đổi bi bi-person thành icon bạn muốn sử dụng -->
+								</span>
 						<input type="text"
 							class="form-control form-control-lg bg-light fs-6"
 							placeholder="Nhập Email" name="email">

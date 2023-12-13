@@ -17,9 +17,11 @@
 }
 
 .user-details {
-	width: 80%;
-	padding: 20px;
+    width: 100%;
+    padding: 30px;
+    margin-right: 27px;
 }
+
 
 /*CONTAINER*/
 .container {
@@ -33,11 +35,7 @@
 	width: 20%;
 }
 
-/* Phần "user-details" chiếm 80% còn lại */
-.user-details {
-	width: 80%;
-	padding: 20px;
-}
+
 
 .fas {
 	margin: 10px;
