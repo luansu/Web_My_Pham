@@ -247,7 +247,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="centered-content">
+	<div class="centered-content" style="align-content: center;">
 		<h4>Đánh giá của sản phẩm</h4>
 	</div>
 	<div class="review-containers"
@@ -255,12 +255,11 @@
 		<div class="review" style="margin: 10px auto; padding: 10px;">
 			<form action="review" method="post">
 				<div class="user-info">
-					<img
-						src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
-						alt="User Avatar" class="avatar">
+					<img src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
+						alt="Profile" class="rounded-circle" style="width: 30px;">
 					<div class="name_star">
 						<h5 class="user-name">${customer.customerName }</h5>
-						<div class="star-rating">
+						<div class="star-rating" style="width: 100px">
 							<c:if
 								test="${ratingService.findOne(customer.customerId, p.productId) != null}">
 								<c:forEach begin="1"
@@ -279,7 +278,7 @@
 							</c:if>
 						</div>
 					</div>
-					<p style="padding: 20px" class="comment-time">${ratingService.findOne(customer.customerId, p.productId).reviewDate }</p>
+					<p class="comment-time">${ratingService.findOne(customer.customerId, p.productId).reviewDate }</p>
 				</div>
 				<label for="comment"></label> <input class="comment" rows="10"
 					style="height: 100px; width: 400px"
@@ -295,11 +294,10 @@
 		<div class="review">
 			<c:forEach var="i"
 				items="${ratingService.findByProduct(p.productId) }">
-				<div class="user-comment" style="margin-bottom: 50px;">
+				<div class="user-comment" ">
 					<div class="user-info">
-						<img
-							src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
-							alt="User Avatar" class="avatar">
+						<img src="https://catscanman.net/wp-content/uploads/2021/09/anh-meo-cute-de-thuong-34.jpg"
+							alt="Profile" class="rounded-circle" style="width: 30px;">
 						<div class="name_star">
 							<h5 class="user-name">${i.customer.customerName }</h5>
 							<div class="star-rating">
@@ -311,7 +309,7 @@
 								</c:forEach>
 							</div>
 						</div>
-						<p style="padding: 20px" class="comment-time">${i.reviewDate }</p>
+						<p class="comment-time">${i.reviewDate }</p>
 					</div>
 					<div class="comment-content">
 						<p class="comment">${i.review }</p>
