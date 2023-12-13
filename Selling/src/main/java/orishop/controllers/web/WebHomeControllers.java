@@ -213,54 +213,6 @@ public class WebHomeControllers extends HttpServlet {
 		}
 	}
 
-	private void postRegister(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");
-		resp.setCharacterEncoding("UTF-8");
-		req.setCharacterEncoding("UTF-8");
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		String email = req.getParameter("email");
-
-		String alertMsg = "";
-		if (accountService.checkExistEmail(email)) {
-			alertMsg = "Email đã tồn tại";
-			req.setAttribute("error", alertMsg);
-			req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
-		} else if (accountService.checkExistUsername(username)) {
-			alertMsg = "Tài khoản đã tồn tại";
-			req.setAttribute("error", alertMsg);
-			req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
-		} else {
-			Email sm = new Email();
-			// get the 6-digit code
-			String code = sm.getRandom();
-			AccountModels user = new AccountModels(username, email, code);
-			boolean test = sm.sendEmail(user);
-
-			if (test) {
-				HttpSession session = req.getSession();
-				session.setAttribute("account", user);
-
-				boolean isSuccess = accountService.register(username, password, email, code);
-
-				if (isSuccess) {
-					resp.sendRedirect(req.getContextPath() + "/web/VerifyCode");
-
-				} else {
-					alertMsg = "Lỗi hệ thống!";
-					req.setAttribute("error", alertMsg);
-					req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
-				}
-			} else {
-				alertMsg = "Lỗi khi gửi mail!!!!!!!!!!!!!!";
-				req.setAttribute("error", alertMsg);
-				req.getRequestDispatcher("/views/web/register.jsp").forward(req, resp);
-
-			}
-		}
-
-	}
-
 	private void getWaiting(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// kiem tra session
