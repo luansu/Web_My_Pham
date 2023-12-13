@@ -47,6 +47,7 @@
 			</ul>
 		</div>
 		<section class="col-9">
+		<form action="updateshipper" method="post">
 			<div class="container py-5">
 				<div class="row">
 					<div class="col">
@@ -59,7 +60,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<form action="updateshipper" method="post">
+					
 						<div class="col-lg-4">
 							<div class="card mb-4">
 								<div class="card-body text-center">
@@ -173,9 +174,10 @@
 								</div>
 							</div>
 						</div>
-					</form>
+					
 				</div>
 			</div>
+			</form>
 		</section>
 	</div>
 </body>
